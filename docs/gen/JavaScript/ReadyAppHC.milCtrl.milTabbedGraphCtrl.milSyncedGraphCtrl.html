@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: milSyncedGraphCtrl</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: milSyncedGraphCtrl</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="ReadyAppHC.html">ReadyAppHC</a><a href="ReadyAppHC.milCtrl.html">.milCtrl</a><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.html">.milTabbedGraphCtrl</a>.</span>
+        
+        milSyncedGraphCtrl
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+<dt>
+    
+        <h4 class="name" id="milSyncedGraphCtrl"><span class="type-signature"></span>new milSyncedGraphCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Acts as the interface for all controllers that use graph directives. In
+ Physio, this includes <code>bar-graph.js</code>, <code>line-graph.js</code>,
+ and <code>time-graph.js</code>. <code>milSyncedGraphCtrl</code> provides functionality that allows
+ graphs to scroll and work synchronously with other graphs that exist in the same controller.
+ Using a graph directive in a controller that isn't a decendent of this class will cause
+ the graph to exhibit undefined behavior.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    <dl>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>transformData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An object with only one key, <code>xGraph</code>, that's used to determine the x-transform to apply to each graph. This property has a two-way binding with <code>bar-graph</code> and <code>line-graph</code> directives. When a graph requests a transform (that is, it had a pan gesture put upon it), it modifies the <code>xGraph</code> value in this object. All other graphs are listening for changes on this property (hence the two-way binding) and will update themselves accordingly.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An iterator that allows graphs to consume data in the order that they appear. (See the <code>nom</code> function to learn more.)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An array of JSON data to be consumed by each graph. Graphs will consume data in this array from the top down. This means that the first piece of data in this array will be consumed by the first graph from the top, and the last piece of data in this array will be consumed by the first graph from the bottom.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</dl>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Jonathan Ballands</li>
+        
+            <li>Blake Ball</li>
+        </ul>
+    </dd>
+    
+
+    
+    <dt class="tag-copyright">Copyright:</dt>
+    <dd class="tag-copyright"><ul class="dummy"><li>© 2014 IBM Corporation. All Rights Reserved.</li></ul></dd>
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="interfaces_mil-synced-graph-ctrl.js.html">interfaces/mil-synced-graph-ctrl.js</a>, <a href="interfaces_mil-synced-graph-ctrl.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><code>milTabbedGraphCtrl</code></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.html">ReadyAppHC.milCtrl.milTabbedGraphCtrl</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsCaloriesCtrl.html">metricsCaloriesCtrl</a></dt>
+            <dd></dd>
+        
+            <dt><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsCtrl.html">metricsCtrl</a></dt>
+            <dd></dd>
+        
+            <dt><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsHrCtrl.html">metricsHrCtrl</a></dt>
+            <dd></dd>
+        
+            <dt><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsPainCtrl.html">metricsPainCtrl</a></dt>
+            <dd></dd>
+        
+            <dt><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsStepsCtrl.html">metricsStepsCtrl</a></dt>
+            <dd></dd>
+        
+            <dt><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl.html">metricsWeightCtrl</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    
+        <h4 class="name" id="applyData"><span class="type-signature">(static) </span>applyData<span class="signature">(data)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Sets the <code>data</code> property in this controller and broadcasts an event that causes
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An array of JSON data that you would like to inject into each graph. The order of the JSON data matters (see the <code>data</code> property to learn more). The JSON data must be stringified, but not the array itself.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="interfaces_mil-synced-graph-ctrl.js.html">interfaces/mil-synced-graph-ctrl.js</a>, <a href="interfaces_mil-synced-graph-ctrl.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="nom"><span class="type-signature">(static) </span>nom<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Called by a graph when it wants to consume data. Implementations of <code>bar-graph</code> and <code>line-graph</code> call this function at the point where they want to consume JSON data (ie, when the graph is told to invalidate via a broadcast). This function uses the <code>iter</code> property to determine what element in the <code>data</code> array needs to be given to the graph.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="interfaces_mil-synced-graph-ctrl.js.html">interfaces/mil-synced-graph-ctrl.js</a>, <a href="interfaces_mil-synced-graph-ctrl.js.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="ReadyAppHC.barGraph.html">barGraph</a></li><li><a href="ReadyAppHC.choreographerService.html">choreographerService</a></li><li><a href="ReadyAppHC.graphMapProvider.html">graphMapProvider</a></li><li><a href="ReadyAppHC.lineGraph.html">lineGraph</a></li><li><a href="ReadyAppHC.milCtrl.html">milCtrl</a></li><li><a href="ReadyAppHC.milCtrl.dashboardCtrl.html">dashboardCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.html">milTabbedGraphCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.html">milSyncedGraphCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsCaloriesCtrl.html">metricsCaloriesCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsCtrl.html">metricsCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsHrCtrl.html">metricsHrCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsPainCtrl.html">metricsPainCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsStepsCtrl.html">metricsStepsCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl.html">metricsWeightCtrl</a></li><li><a href="ReadyAppHC.scrubberPopover.html">scrubberPopover</a></li><li><a href="ReadyAppHC.timeGraph.html">timeGraph</a></li></ul><h3>Namespaces</h3><ul><li><a href="ReadyAppHC.html">ReadyAppHC</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Mon Dec 29 2014 12:35:13 GMT-0600 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

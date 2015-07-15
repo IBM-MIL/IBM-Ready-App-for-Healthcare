@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="WorkLight">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/uicandroid.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/android-async-http.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/gcm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/worklight-android.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/bcprov.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

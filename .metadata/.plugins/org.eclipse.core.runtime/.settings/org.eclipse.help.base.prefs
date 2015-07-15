@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+remoteHelpHost=www-01.ibm.com,pic.dhe.ibm.com,127.0.0.1
+remoteHelpICEnabled=true,true,false
+remoteHelpName=WebSphere Application Server Developer Tools,Rational solution for Collaborative Lifecycle Management,Local
+remoteHelpOn=true
+remoteHelpPath=/support/knowledgecenter/was_beta_devtools,/infocenter/clmhelp/v4r0m6,/help
+remoteHelpPort=80,80,63650
+remoteHelpPreferred=true
+remoteHelpProtocol=http,http,http

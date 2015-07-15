@@ -1,0 +1,52 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojox/mobile/parser", "dojox/mobile/compat" ]);
+</script>
+
+<script type="text/javascript">
+	require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView",
+			"dojox/mobile/RoundRectList", "dojox/mobile/ListItem",
+			"dojox/mobile/Switch", "dojox/mobile/Slider",
+			"dojox/mobile/RoundRectCategory", "dojox/mobile/CheckBox",
+			"dojox/mobile/Button", "dojox/mobile/RadioButton" /*END_DEPENDENCIES*/ ]);
+</script>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="form_list" pattern.rootElement="true">
+	<form>
+		<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Category A</h2>
+		<div data-dojo-type="dojox.mobile.RoundRectList">
+			<div data-dojo-type="dojox.mobile.ListItem"
+				data-dojo-props="label:'Slider'">
+				<input type="range" data-dojo-type="dojox.mobile.Slider"
+					data-dojo-props="orientation:'H'">
+			</div>
+		</div>
+		<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Category B</h2>
+		<div data-dojo-type="dojox.mobile.RoundRectList">
+			<div data-dojo-type="dojox.mobile.ListItem"
+				data-dojo-props="label:'Switch'">
+				<div data-dojo-type="dojox.mobile.Switch" class="mblItemSwitch"></div>
+			</div>
+			<div data-dojo-type="dojox.mobile.ListItem"
+				data-dojo-props="label:'Item'">
+				<input id="checkbox" name="checkbox"
+					data-dojo-type="dojox.mobile.CheckBox" type="checkbox"> <label
+					for="checkbox">Checkbox</label>
+			</div>
+
+			<div data-dojo-type="dojox.mobile.ListItem">
+				<input type="radio" name="radio_group"
+					data-dojo-type="dojox.mobile.RadioButton" value="value1">Radio
+				1 <input type="radio" name="radio_group"
+					data-dojo-type="dojox.mobile.RadioButton" value="value2">Radio
+				2 <input type="radio" name="radio_group"
+					data-dojo-type="dojox.mobile.RadioButton" value="value3">Radio
+				3
+			</div>
+		</div>
+
+		<button data-dojo-type="dojox.mobile.Button" class="mblBlueButton"
+			style="width: 100%">Submit</button>
+	</form>
+</div>

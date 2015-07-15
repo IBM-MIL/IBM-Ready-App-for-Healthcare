@@ -1,0 +1,45 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojox/mobile", "dojox/mobile/parser", "dojox/mobile/compat" ]);
+</script>
+
+<script type="text/javascript">
+require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView", "dojox/mobile/Heading", "dojox/mobile/RoundRectCategory", "dojox/mobile/RoundRectList", "dojox/mobile/ListItem", "dojox/mobile/Switch", "dojox/mobile/TextBox" /*END_DEPENDENCIES*/ ]);
+</script>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="settings_panel" pattern.rootElement="true">
+	<div data-dojo-type="dojox.mobile.Heading"
+		data-dojo-props="label:'Settings', fixed: 'top'"></div>
+
+	<h2 data-dojo-type="dojox.mobile.RoundRectCategory">General</h2>
+	<div data-dojo-type="dojox.mobile.RoundRectList">
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Language',rightText:'English',moveTo:'#'"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Volume Level',rightText:'High',moveTo:'#'"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Button Color',rightText:'Blue',moveTo:'#'"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Background Color',rightText:'White',moveTo:'#'"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Cache Size',rightText:'100 kb',moveTo:'#'"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Auto Cache Clear'">
+			<div data-dojo-type="dojox.mobile.Switch" class="mblItemSwitch"
+				data-dojo-props="value:'off'"></div>
+		</div>
+	</div>
+	
+	<h2 data-dojo-type="dojox.mobile.RoundRectCategory">Account</h2>
+	<div data-dojo-type="dojox.mobile.RoundRectList">
+		<div data-dojo-type="dojox.mobile.ListItem">
+			<label for="username">User name:</label> <input type="text"
+				id="username" name="username" data-dojo-type="dojox.mobile.TextBox">
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem">
+			<label for="password">Password:</label> <input type="password"
+				id="password" name="password" data-dojo-type="dojox.mobile.TextBox">
+		</div>
+	</div>
+</div>

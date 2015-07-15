@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licensed Materials - Property of IBM
+ © Copyright IBM Corporation 2014, 2015. All Rights Reserved.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@android:color/white"
+    tools:context="com.ibm.mil.readyapps.physio.fragments.PainLocationFragment">
+
+    <RelativeLayout
+        android:id="@+id/topContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/zoomContainer"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/ready_red">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="What area is hurting?"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="Select a body part"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/white" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/frontButton"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="80dp"
+                    android:layout_height="34dp"
+                    android:layout_alignTop="@+id/button2"
+                    android:layout_toLeftOf="@+id/button2"
+                    android:layout_toStartOf="@+id/button2"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="FRONT"
+                    android:textColor="@color/ready_red" />
+
+                <Button
+                    android:id="@+id/backButton"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="80dp"
+                    android:layout_height="34dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="BACK"
+                    android:textColor="@color/ready_dark_gray" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.ibm.mil.readyapps.physio.views.ZoomableRelativeLayout
+        android:id="@+id/zoomContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="380dp"
+        android:layout_above="@+id/nextButton"
+        android:layout_gravity="center"
+        android:background="@android:color/white">
+
+        <RelativeLayout
+            android:id="@+id/bodyContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/white">
+
+            <RelativeLayout
+                android:id="@+id/head"
+                android:layout_width="42dp"
+                android:layout_height="65dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="304dp"
+                android:background="@drawable/male_head_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/torso"
+                android:layout_width="58dp"
+                android:layout_height="101dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="206dp"
+                android:background="@drawable/male_torso_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/shorts"
+                android:layout_width="67dp"
+                android:layout_height="41dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="168dp"
+                android:background="@drawable/male_groin_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/right_top"
+                android:layout_width="37dp"
+                android:layout_height="67dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="108dp"
+                android:layout_marginLeft="141dp"
+                android:background="@drawable/male_leftthigh_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/left_top"
+                android:layout_width="37dp"
+                android:layout_height="67dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="109dp"
+                android:layout_marginLeft="182dp"
+                android:background="@drawable/male_rightthigh_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/right_bot"
+                android:layout_width="24dp"
+                android:layout_height="76dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="40dp"
+                android:layout_marginLeft="137dp"
+                android:background="@drawable/male_leftcalf_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/left_bot"
+                android:layout_width="24dp"
+                android:layout_height="76dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="41dp"
+                android:layout_marginLeft="199dp"
+                android:background="@drawable/male_rightcalf_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/right_foot"
+                android:layout_width="24dp"
+                android:layout_height="42dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="129dp"
+                android:background="@drawable/male_leftfoot_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/left_foot"
+                android:layout_width="24dp"
+                android:layout_height="42dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="207dp"
+                android:background="@drawable/male_rightfoot_foot_3x" />
+
+            <RelativeLayout
+                android:id="@+id/right_arm"
+                android:layout_width="73dp"
+                android:layout_height="92dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="215dp"
+                android:layout_marginLeft="87dp"
+                android:background="@drawable/male_leftarm_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/left_arm"
+                android:layout_width="73dp"
+                android:layout_height="92dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="215dp"
+                android:layout_marginLeft="200dp"
+                android:background="@drawable/male_rightarm_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/right_hand"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="186dp"
+                android:layout_marginLeft="61dp"
+                android:background="@drawable/male_lefthand_front_3x" />
+
+            <RelativeLayout
+                android:id="@+id/left_hand"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="185dp"
+                android:layout_marginLeft="265dp"
+                android:background="@drawable/male_righthand_front_3x" />
+
+        </RelativeLayout>
+
+    </com.ibm.mil.readyapps.physio.views.ZoomableRelativeLayout>
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/ready_dark_gray"
+        android:gravity="center"
+        android:onClick="nextBtnPress"
+        android:text="Next"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

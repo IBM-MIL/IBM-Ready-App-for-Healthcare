@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+org.eclipse.wst.wsdl.ui.defaultEditorModeId=com.ibm.xwt.wsdl.ui.internal.SimplifiedMode
+org.eclipse.wst.wsdl.ui.productCustomizationProviderClassName=com.ibm.xwt.wsdl.ui.internal.RADProductCustomizationProvider
+org.eclipse.wst.wsdl.ui.productCustomizationProviderPluginId=com.ibm.xwt.wsdl.ui
+org.eclipse.wst.wsdl.ui.showEditorModeHelpDialogAgain=true

@@ -1,0 +1,72 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<style type="text/css">
+	.settings_panel div.ui-slider-switch {
+		position: absolute;
+		right: 0;
+	}
+</style>
+
+<div data-role="page" id="settings_panel" class="settings_panel" pattern.rootElement="true">
+	<div data-role="header" id="header" data-position="fixed">
+		<h3>Settings</h3>
+	</div>
+	<div data-role="content" style="padding: 15px">
+		<ul data-role="listview" data-inset="true">
+			<li>
+				<a href="#">Language
+					<p class="ui-li-aside">English</p>
+				</a>
+			</li>
+			<li>
+				<a href="#">Volume Level
+					<p class="ui-li-aside">High</p>
+				</a>
+			</li>
+			<li>
+				<a href="#">Button Color
+					<p class="ui-li-aside">Blue</p>
+				</a>
+			</li>
+			<li>
+				<a href="#">Background Color
+					<p class="ui-li-aside">White</p>
+				</a>
+			</li>
+			<li>
+				<label for="flip-remember-me"><strong>Remember Me</strong></label>
+				<select	name="flip-remember-me" id="flip-remember-me" data-role="slider">
+					<option	value="off">Off</option>
+					<option value="on" selected>On</option>
+				</select>
+			</li>
+			<li>
+				<a href="#">Cache Size
+					<p class="ui-li-aside">100 kb</p>
+				</a>
+			</li>
+			<li>
+				<label for="flip-auto-cache-clear"><strong>Auto Cache Clear</strong></label>
+				<select	name="flip-auto-cache-clear" id="flip-auto-cache-clear" data-role="slider">
+					<option	value="off" selected>Off</option>
+					<option value="on"></option>
+				</select>
+			</li>
+		</ul>
+	
+		<ul data-role="listview" data-inset="true">
+			<li>
+				<div data-role="fieldcontain">
+					<label for="username">User name:</label>
+					<input type="text" name="username" id="username">
+				</div>
+			</li>
+			<li>
+				<div data-role="fieldcontain">
+					<label for="password">Password:</label>
+					<input type="password" name="password" id="password">
+				</div>
+			</li>
+		</ul>		
+	</div>
+</div>

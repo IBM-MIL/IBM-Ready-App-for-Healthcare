@@ -1,0 +1,93 @@
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<!--
+    Licensed Materials - Property of IBM
+    © Copyright IBM Corporation 2014. All Rights Reserved.
+    This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+    payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+    run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+    of such an application, in customer's own products.
+-->
+
+<!DOCTYPE html>
+
+<html ng-app="ReadyAppHC">
+    
+    <!-- Head -->
+    <head>  
+        <!-- Meta -->
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        
+        <!-- Vendor -->
+        <script src="js/bower_components/angular/angular.js"></script>
+        <script src="js/bower_components/angular-route/angular-route.js"></script>
+        <script src="js/bower_components/angular-touch/angular-touch.js"></script>
+        <script src="js/bower_components/d3/d3.min.js"></script>
+        <script src="js/bower_components/moment/min/moment-with-locales.js"></script>
+        <script src="js/vendor/angular-translate.js"></script>
+        
+        <!-- App -->
+        <script src="js/src/index.js"></script>
+        
+        <!-- Config -->
+        <script src="js/src/config/routing.js"></script>
+        <script src="js/src/config/i18n.js"></script>
+        
+        <!-- Controllers -->
+        <script src="js/src/interfaces/mil-ctrl.js"></script>
+        <script src="js/src/interfaces/mil-tabbed-graph-ctrl.js"></script>
+        <script src="js/src/interfaces/mil-synced-graph-ctrl.js"></script>
+        <script src="js/src/controllers/dashboard-ctrl.js"></script>
+        <script src="js/src/controllers/metrics-ctrl.js"></script>
+        <script src="js/src/controllers/metrics-steps-ctrl.js"></script>
+        <script src="js/src/controllers/metrics-pain-ctrl.js"></script>
+        <script src="js/src/controllers/metrics-calories-ctrl.js"></script>
+        <script src="js/src/controllers/metrics-hr-ctrl.js"></script>
+        <script src="js/src/controllers/metrics-weight-ctrl.js"></script>
+        
+        <!-- Directives -->
+        <script src="js/src/directives/bar-graph.js"></script>
+        <script src="js/src/directives/line-graph.js"></script>
+        <script src="js/src/directives/time-graph.js"></script>
+        <script src="js/src/directives/scrubber-popover.js"></script>
+        
+        <!-- Services -->
+        <script src="js/src/providers/graph-map-factory.js"></script>
+        <script src="js/src/providers/choreographer-service.js"></script>
+        
+        <!-- Test: DO NOT INCLUDE IN FINAL PRODUCT; FOR MANUAL TESTING PURPOSES ONLY -->
+        <!-- <script src="js/test.js"></script> -->
+        
+        <!-- Title -->
+        <title>Physio</title>
+    </head>
+    
+    <!-- Body -->
+    <body>
+        <div id="mainView" ng-view></div>
+    </body>
+    
+</html>

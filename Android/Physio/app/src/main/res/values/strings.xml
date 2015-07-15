@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licensed Materials - Property of IBM
+ © Copyright IBM Corporation 2014, 2015. All Rights Reserved.
+-->
+<resources>
+
+    <string name="app_name">Physio</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- login activity -->
+    <string name="patient_id_hint">Patient ID</string>
+    <string name="password_hint">Password</string>
+    <string name="invalid_id">Invalid ID</string>
+    <string name="invalid_password">Invalid Password</string>
+    <string name="login">Log In</string>
+    <string name="login_failure">Login Failed.</string>
+    <string name="login_failure_button">Try another ID or Password</string>
+
+    <!-- landing activity -->
+    <string name="drawer_open">Navigation Drawer is Open</string>
+    <string name="drawer_close">Navigation Drawer is Closed</string>
+    <string name="patient_id_subtitle">User ID</string>
+    <string name="next_visit_subtitle">Next Visit</string>
+    <string name="week_subtitle">Recovery Completion</string>
+
+    <string-array name="menu_items">
+        <item>Home</item>
+        <item>Progress</item>
+        <item>Pain Management</item>
+        <item>Exercise Library</item>
+        <item>Forms</item>
+        <item>Log Out</item>
+    </string-array>
+
+    <!-- metrics tabs -->
+    <string name="heart_rate">Heart Rate</string>
+    <string name="bpm">bpm</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="weight">Weight</string>
+    <string name="lbs">lbs</string>
+    <string name="lbs_lost">lbs lost this week</string>
+    <string name="lbs_gained">lbs gained this week</string>
+    <string name="steps">Steps</string>
+    <string name="out_of">Out of</string>
+    <string name="goal">goal</string>
+
+    <!-- exercise library -->
+    <string-array name="library_items">
+        <item>Assigned</item>
+        <item>Neck</item>
+        <item>Back</item>
+        <item>Torso</item>
+        <item>Arm</item>
+        <item>Hand</item>
+        <item>Leg</item>
+        <item>Feet</item>
+    </string-array>
+
+    <string name="assigned">Assigned</string>
+
+    <string name="sample_routine_name">Routine 1</string>
+    <string name="routine_directions">Select a routine to start.</string>
+    <string name="sample_exercise_description">Ankle Plantar Flexion with Resistive Band</string>
+    <string name="mins">min</string>
+    <string name="reps">rep</string>
+    <string name="sets">set</string>
+
+    <string name="sample_exercise_name">Ankle Plantar Flexion with Resistive Band</string>
+    <string name="routine_name_label">Routine Name</string>
+    <string name="sample_routine_name2">1 of 9</string>
+    <string name="minutes_label">minutes</string>
+    <string name="repetitions_label">repetitions</string>
+    <string name="sets_label">sets</string>
+    <string name="tools_label">Tools</string>
+    <string name="tools_sample">Elastic band, Yoga Mat</string>
+    <string name="end_routine">End Routine</string>
+    <string name="next_exercise">Next Exercise</string>
+
+    <string name="end_routine_header_title">Why did you end your routine?</string>
+    <string name="end_routine_dialog_message">Are you sure you want to end your routine?</string>
+
+    <string-array name="end_routine_items">
+        <item>I\'m hurting.</item>
+        <item>I\'m tired.</item>
+        <item>I don\'t have time right now.</item>
+    </string-array>
+
+    <string name="exercise_completed">Exercise Completed!</string>
+    <string name="next_timer_label">Your next exercise will start in </string>
+    <string name="start_next">Start Next Exercise!</string>
+    <string name="todays_routine_completed">Today\'s Routine Completed!</string>
+
+    <string name="no_assets">Assets not added yet.</string>
+
+    <!-- pain location -->
+    <string name="what_hurts">What area is hurting?</string>
+    <string name="what_injured">What area is injured?</string>
+    <string name="select">Select a body part.</string>
+    <string name="front">FRONT</string>
+    <string name="back">BACK</string>
+    <string name="delete">DELETE</string>
+    <string name="next">Next</string>
+    <string name="warning">Please select a body part before continuing.</string>
+    <string name="exit">Would you like to exit the report?</string>
+    <string name="information">The information entered so far will be lost.</string>
+
+    <!-- pain management -->
+    <string name="pain_main_title">How much pain are you experiencing?</string>
+    <string name="submit_label">Submit</string>
+    <string name="description_label">Description</string>
+    <string name="description_hint">Add a description of your pain.</string>
+    <string name="pain_confirm">Are you sure you want to submit this Pain Report?</string>
+    <string name="pain_confirmed">Pain Report submitted.</string>
+
+    <!-- form -->
+    <string name="form_title">Medical Questionnaire</string>
+    <string name="form_directions">Select a bubble for each that applies.</string>
+    <string name="form_next">Next</string>
+    <string name="form_confirm">Are you sure you want to submit this Form?</string>
+    <string name="form_confirmed">Form submitted.</string>
+    <string name="question_selector_indicator">Question Selector Indicator</string>
+
+    <string-array name="form_questions">
+        <item>Had tests for this condition</item>
+        <item>Had similar condition before</item>
+        <item>Symptoms have worsened</item>
+        <item>Pain at rest</item>
+        <item>Pain with activity</item>
+        <item>Pain wakes you up at night</item>
+        <item>Smoke tobacco</item>
+    </string-array>
+
+    <!-- custom physio dialog -->
+    <string name="dialog_icon_desc">Dialog Icon</string>
+    <string name="dialog_button_placeholder">Button Text</string>
+    <string name="dialog_primary_message_placeholder">Primary Message</string>
+    <string name="dialog_secondary_message_placeholder">Secondary Message</string>
+    <string name="positive_text">Yes</string>
+    <string name="negative_text">No</string>
+
+    <!-- Google Fit -->
+    <string name="injection_title">Populate Google Fit</string>
+    <string name="injection_message">You are about to load a significant amount
+    of Heart Rate, Calories Burned, Body Weight, and Steps data into your Google Fit.
+    To remove this data from your Google Fit, log out from the menu.</string>
+    <string name="delete_title">Delete Google Fit Data</string>
+    <string name="delete_message">You are about to delete all data created by this app.
+    Data created from other sources will be unaffected.</string>
+    <string name="loading_fit_data">Loading Google Fit data</string>
+
+    <!-- number suffixes -->
+    <string name="st">st</string>
+    <!-- 1st -->
+    <string name="nd">nd</string>
+    <!-- 2nd -->
+    <string name="rd">rd</string>
+    <!-- 3rd -->
+    <string name="th">th</string>
+    <!-- 4th, 5th, etc... -->
+
+    <!-- other -->
+    <string name="item_text_placeholder">Item Text</string>
+
+    <!-- from Mongo DB -->
+    <string name="routine_1">Routine 1</string>
+    <string name="routine_2">Routine 2</string>
+    <string name="routine_3">Routine 3</string>
+    <string name="exercise_1">Exercise 1</string>
+    <string name="exercise_2">Exercise 2</string>
+    <string name="exercise_3">Exercise 3</string>
+    <string name="exercise_4">Exercise 4</string>
+    <string name="ankle_plantar_flexion">Ankle Plantar Flexion with Resistive Band</string>
+    <string name="abdominal_crunches">Abdominal Crunches</string>
+    <string name="squats">Squats</string>
+    <string name="standing_quad_stretch">Standing Quad Stretch</string>
+    <string name="elastic_band_and_yoga_mat">Elastic Band, Yoga Mat</string>
+    <string name="had_tests_for_this_condition">Had test for this condition</string>
+    <string name="had_similar_condition_before">Had similar condition before</string>
+    <string name="symptoms_have_worsened">Symptoms have worsened</string>
+    <string name="pain_at_rest">Pain at rest</string>
+    <string name="pain_with_activity">Pain with activity</string>
+    <string name="pain_wakes_you_up_at_night">Pain wakes you up at night</string>
+    <string name="smoke_tobacco">Smoke tobacco</string>
+
+</resources>

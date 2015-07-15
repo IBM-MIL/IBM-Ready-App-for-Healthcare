@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PainManagementTest" project="iOS_Automated_UI_Testing" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.ibm.mil.PainManagementTest" time="61.506">
+    <testcase name="PainManagementScreenTest" classname="com.ibm.mil.PainManagementTest" time="61.506"/>
+  </testsuite>
+</testrun>

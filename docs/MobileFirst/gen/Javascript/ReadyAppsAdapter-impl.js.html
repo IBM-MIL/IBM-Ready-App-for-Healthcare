@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ReadyAppsAdapter-impl.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ReadyAppsAdapter-impl.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * ReadyAppAdapter interfaces between the client and server. The clients can
+ * invoke the adapter procedure and send the correct parameters. The adapter will
+ * in turn make a call to the backend server. If the request is successful, the
+ * adapter will return true, otherwise it will return false.
+ */
+
+/**
+ * @class ReadyAppsAdapter-impl_.js
+ * @description ReadyAppsAdapter implementation files which acts as a mediator between
+ * the clients and the backend.
+ */
+/**
+ * return the Singleton instance of the MongoDBConnector class
+ */
+
+var mongoDBConnector = com.ibm.mil.readyapps.database.MongoDBConnector
+		.getInstance();
+
+/**
+ * Returns the user object associated with the current user
+ * @param username 
+ */
+function getUserObject(username) {
+	var queryResult = mongoDBConnector.getUserObject(username);
+	var success = true;
+	if (queryResult == null) {
+		success = false;
+		queryResult = "The user object was not found in the database";
+	}
+	return {
+		isSuccessful : success,
+		result : queryResult
+	};
+}
+
+/**
+ * Returns the routines assigned to the current user 
+ * @param user
+ * @returns routines array or null if user is not authenticated
+ */
+function getRoutines(user) {
+	var routinesResults = mongoDBConnector.getRoutines(user);
+	var success = false;
+	if (routinesResults != null) {
+		success = true;
+		return {
+			isSuccessful : success,
+			authRequired : false,
+			result : routinesResults
+		};
+
+	}
+	return {
+		onAuthRequired : onAuthRequired(null,
+				"Session timed out, please log in"),
+		isSuccessful : false
+	};
+
+}
+
+/**
+ * Returns the exercises for the assigned routine of the current user 
+ * @param routineId
+ * @returns exercises array or null if user is not authenticated
+ */
+function getExercisesForRoutine(routineId) {
+	var routinesResults = mongoDBConnector.getExercisesForRoutine(routineId);
+	var success = false;
+	if (routinesResults != null) {
+		success = true;
+		return {
+			isSuccessful : success,
+			authRequired : false,
+			result : routinesResults
+		};
+
+	}
+	return {
+		onAuthRequired : onAuthRequired(null,
+				"Session timed out, please log in"),
+		isSuccessful : false
+	};
+
+}
+
+/**
+ * Returns the questionnaire for the user to answer 
+ * @param user
+ * @returns questions array or null if user is not authenticated
+ */
+function getQuestionnaireForUser(username) {
+	var routinesResults = mongoDBConnector.getQuestionnaireForUser(username);
+	var success = false;
+	if (routinesResults != null) {
+		success = true;
+		return {
+			isSuccessful : success,
+			authRequired : false,
+			result : routinesResults
+		};
+
+	}
+	return {
+		onAuthRequired : onAuthRequired(null,
+				"Session timed out, please log in"),
+		isSuccessful : false
+	};
+}
+
+/**
+ * Ensures the user is properly authenticated. Callback for protected adapter procedures 
+ * @param headers
+ * @param errorMessage
+ * @returns true if user is not authenticated
+ */
+function onAuthRequired(headers, errorMessage) {
+	errorMessage = errorMessage ? errorMessage
+			: "Authentication required to invoke this procedure!";
+
+	return {
+		authRequired : true,
+		errorMessage : errorMessage
+	};
+}
+
+/**
+ * Exposed procedures to authenticate the user on initial login and subsequent logins
+ * @param username
+ * @param password
+ * @returns true/false depending on the credentials provided
+ */
+function submitAuthentication(username, password) {
+	var validUser = mongoDBConnector.verifyUser(username, password);
+
+	if (validUser) {
+
+		var userIdentity = {
+			userId : username,
+			displayName : username
+		};
+
+		WL.Server.setActiveUser("SingleStepAuthRealm", userIdentity);
+		return {
+			isSuccessful : validUser,
+			authRequired : false,
+
+		};
+	}
+	return {
+		onAuthRequired : onAuthRequired(null, "Invalid login credentials"),
+		isSuccessful : validUser
+	};
+
+}
+
+/**
+ * Logs out the user due to inactivity or app termination
+ */
+function onLogout() {
+	// TODO
+	WL.Logger.debug("Logged out");
+	WL.Server.setActiveUser("SingleStepAuthRealm",null);
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="ReadyAppsAdapter-impl_.js.html">js</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getExercisesForRoutine">getExercisesForRoutine</a></li><li><a href="global.html#getQuestionnaireForUser">getQuestionnaireForUser</a></li><li><a href="global.html#getRoutines">getRoutines</a></li><li><a href="global.html#getUserObject">getUserObject</a></li><li><a href="global.html#mongoDBConnector">mongoDBConnector</a></li><li><a href="global.html#onAuthRequired">onAuthRequired</a></li><li><a href="global.html#onLogout">onLogout</a></li><li><a href="global.html#submitAuthentication">submitAuthentication</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Mon Dec 29 2014 12:35:13 GMT-0600 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

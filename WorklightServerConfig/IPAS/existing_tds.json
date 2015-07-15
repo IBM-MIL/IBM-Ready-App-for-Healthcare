@@ -1,0 +1,21 @@
+{
+	"layers_nodes": "Connect Out",
+	
+	"model_nodes": {
+       "attributes": {
+        	"port": 9080, 
+			"server": "192.168.1.1"
+        },
+        "type": "Connect",
+        "id": "Connect Out"
+     },
+	
+	"model_links": {
+        "target": "Connect Out",
+        "attributes": {
+        },
+        "type": "Connect",
+        "source": "Worklight Server",
+        "id": "Connect_1"
+     }
+}

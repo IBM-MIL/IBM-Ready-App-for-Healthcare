@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mobilePatternSet xmlns="http://com.ibm.mobilePatternSet"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://com.ibm.mobilePatternSet mobilePatternSet.xsd "
+	id="com.ibm.mobile.patterns.default.set"
+	name="%MOBILE_PATTERN_SET_NAME"
+	default="true"
+	>
+
+	<category id="com.ibm.mobile.pattern.category.list" name="%LISTS">
+		<mobilePattern id="com.ibm.mobile.pattern.simple_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.category_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.form_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.group_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.search_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.editable_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.count_summary_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.table_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.single_choice_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.multiple_choice_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.simple_shop_list"/>
+		<mobilePattern id="com.ibm.mobile.pattern.rich_list"/>
+	</category>	
+
+	<category id="com.ibm.mobile.pattern.category.authentication" name="%AUTHENTICATION">
+		<mobilePattern id="com.ibm.mobile.pattern.login"/>
+		<mobilePattern id="com.ibm.mobile.pattern.registration"/>
+		<mobilePattern id="com.ibm.mobile.pattern.forgot_password"/>
+	</category>
+	
+	<category id="com.ibm.mobile.pattern.category.maps_and_graphics" name="%MAPS_AND_GRAPHICS">
+	</category>
+	
+	<category id="com.ibm.mobile.pattern.category.navigation_and_search" name="%NAVIGATION_AND_SEARCH">
+		<mobilePattern id="com.ibm.mobile.pattern.single_window_drill_down"/>
+		<mobilePattern id="com.ibm.mobile.pattern.navigation_bar"/>
+		<mobilePattern id="com.ibm.mobile.pattern.navigation_header"/>
+		<mobilePattern id="com.ibm.mobile.pattern.navigation_footer"/>
+		<mobilePattern id="com.ibm.mobile.pattern.flipbook"/>
+		<mobilePattern id="com.ibm.mobile.pattern.navigation_grid"/>
+	</category>
+	
+	<category id="com.ibm.mobile.pattern.category.retail" name="%RETAIL">
+	</category>
+	
+	<category id="com.ibm.mobile.patterns.category.configuration" name="%CONFIGURATION">
+		<mobilePattern id="com.ibm.mobile.pattern.switch_panel"/>
+		<mobilePattern id="com.ibm.mobile.pattern.settings_panel_android"/>
+		<mobilePattern id="com.ibm.mobile.pattern.settings_panel_ios"/>
+	</category>
+	
+</mobilePatternSet>

@@ -1,0 +1,127 @@
+
+
+IBM READY APPS SOFTWARE LICENSE AGREEMENT
+
+
+
+BY DOWNLOADING, INSTALLING, COPYING, ACCESSING, CLICKING ON AN “ACCEPT” BUTTON, OR OTHERWISE USING THE PROGRAM, LICENSEE AGREES TO THE TERMS OF THIS IBM READY APPS SOFTWARE LICENSE AGREEMENT (“AGREEMENT”). IF YOU ARE ACCEPTING THESE TERMS ON BEHALF OF LICENSEE, YOU REPRESENT AND WARRANT THAT YOU HAVE FULL AUTHORITY TO BIND LICENSEE TO THESE TERMS. IF YOU DO NOT AGREE TO THESE TERMS, DO NOT DOWNLOAD, INSTALL, COPY, ACCESS, CLICK ON AN “ACCEPT” BUTTON, OR USE THE PROGRAM. 
+
+WHEREAS, IBM has developed the IBM Ready Apps software, which provides industry-specific mobile application templates to help accelerate the development of mobile applications; and 
+
+WHEREAS, use of the IBM Ready Apps software requires IBM MobileFirst Platform Foundation v6.2 or later and Licensee has obtained appropriate valid entitlement to use IBM MobileFirst Platform Foundation; and
+
+WHEREAS, Licensee wishes to obtain a license to the IBM Ready App software described below, and IBM is willing to license such IBM Ready Apps software to Licensee in accordance with the terms and conditions set forth herein; 
+
+NOW, THEREFORE, for good and valuable consideration the receipt and sufficiency of which is hereby acknowledged, IBM and Licensee agree as follows:
+
+1.0	Definitions
+
+1.1 	“Application” means a uniquely named software program that is installable on a computing device, which adds significant and distinct features or functionality to the IBM Ready Apps software licensed under this Agreement. 
+
+1.2	“Effective Date” means the day on which Licensee downloads the Program.  
+
+1.3  	“Object Code” means computer software compiled or otherwise preprocessed for execution on a computer and those associated human readable files that are customarily distributed with executable files, such as user documentation, notices, and other end-user materials.  Object Code does not include the form of computer software that is used by programmers to create or edit the software.  For computer software written in non-compiled or scripting languages, such as JavaScript, the Object Code would include only those files which have been obfuscated or preprocessed such as to eliminate or reduce the ability to make modifications to the code.
+
+1.4	“Program” means the IBM Ready App for Connected Home, the IBM Ready App for Banking Small Business, the IBM Ready App for Engaged Shopper, the IBM Ready App for Business Accelerator, the IBM Ready App for Coordinated Care, the IBM Ready App for Government Citizen, or any other IBM Ready App template or templates that Licensee downloads. “Program” shall not include any open source or other third party code included in the IBM software delivered under this Agreement.  
+
+1.5	“Source Code” means computer programming code, other than Object Code, and related code level system documentation, comments, and procedural code, such as job control language and shell commands.
+
+2.0	License Grants
+
+2.1  	The Program is owned by IBM or an IBM supplier, and is copyrighted and licensed, not sold.
+
+2.2	IBM hereby grants to Licensee a nonexclusive, non-sublicensable, nontransferrable, world-wide copyright license right to: 
+
+(a) 	to reproduce and use the Source Code of the Program for Licensee’s internal use only, solely to develop a mobile Application, provided Licensee complies with the terms and conditions of any mobile software development kit (“SDK”) Licensee may also use to develop such Application; and
+
+(b) 	to use, reproduce, demonstrate, and distribute the Application in Object Code form only, in compliance with any applicable limitations or requirements, such as those which may be mandated by third party SDK providers.
+
+2.3	The Application is subject to the following conditions:
+
+(a)	The IBM copyright, and any other notices contained within the Program, may not be removed;
+
+(b)	No representations or warranties may be made on behalf of IBM; 
+
+(c)	Licensee is solely responsible for the content and functionality of the Application and will comply with all applicable laws, including without limitation, laws regarding data handling and privacy;
+
+(d)	At a minimum, in addition to any other third party requirements that may apply, distribution will be pursuant to a license agreement that conditions the license grant on the following provisions, or their legal equivalent:
+
+	(1)	the Application is licensed, and not sold, and Licensee does not pass title to any part of the Application or to any copy;
+
+	(2)	any warranties provided, including any implied warranties, are provided solely by Licensee and not by Licensee’s suppliers;
+
+	(3)	a disclaimer of all implied warranties, including the implied warranties of non-infringement, merchantability and fitness for a particular purpose, effective at least as to IBM as Licensee's supplier;
+
+	(4)	a prohibition of reverse assembling, reverse compiling or translating the Application except as permitted by the national or regional law of the places where the customer does business, without the opportunity for contractual waiver; and
+
+	(5)  	a limitation of liability that excludes all consequential damages effective at least as to IBM as Licensee’s supplier.
+
+
+3.0	IBM PartnerWorld Membership
+
+Licensee must be an active, current member in good standing of IBM PartnerWorld to use the Program. Otherwise, Licensee may not access or use the Program.
+
+4.0	Charges and Taxes
+
+4.1  	The Source Code is provided to Licensee free of charge. 
+
+4.2 	Licensee will bear and pay all taxes (including, but not limited to, sales, property and value added taxes) imposed by any governmental entity of any country in which Licensee is doing business as the result of the existence of this Agreement or the exercise of rights under this Agreement, except that Licensee will not be liable for any taxes based on IBM's net income.  
+	
+5.0	Support and Enhancements
+
+IBM is not obligated to provide any technical assistance, consultation or any other support to Licensee as part of this Agreement.  Licensee is solely responsible for the Application, including warranty, support and maintenance.  IBM is not obligated to provide maintenance modifications or enhancements relating to the Program or any other materials or equipment.	
+	
+6.0		Term and Termination
+
+6.1  	The term of this Agreement (“Term”) will commence on the Effective Date and continue in effect until terminated.
+
+6.2	Licensee may terminate this Agreement at any time by (a) destroying all copies, in whole or in part, of the Program in its possession, and (b) providing IBM written notice of its termination of this license.  
+
+If Licensee fails to comply with the terms of this Agreement, and such noncompliance is not cured, or a plan acceptable to IBM for such cure is not proposed, within thirty (30) days after written notice of non-compliance from IBM, IBM shall have the immediate right to terminate this Agreement.
+
+6.4	Upon termination of this Agreement, all licenses granted to Licensee hereunder shall terminate.
+
+6.5	No sublicense, assignment, or other transfer of this Agreement or the licenses hereunder is permitted, unless Licensee obtains prior written consent from IBM.  Any attempted transfer prior to obtaining IBM consent is a breach of this Agreement, and will result in automatic termination of the Agreement.  Change of control of Licensee, by operation of law or otherwise, will be considered to be an assignment for the purposes of this Agreement.  
+
+7.0	Confidentiality
+
+7.1	Licensee agrees to hold Program in trust and confidence for IBM and will preserve the confidentiality of the Source Code, including, but not limited to, implementation of reasonable Source Code security procedures.  Except for the expressly permitted distributions of Object Code, Licensee will limit disclosure of Program to those of its employees who have a need to know it and agrees to use the same care to avoid disclosure outside of those employees as it does with similar information of its own which it does not want to have disclosed.
+
+7.2	Licensee agrees to provide IBM periodic access to Licensee's facilities, at IBM's option, to enable IBM to audit Source Code security measures.
+
+7.3	Licensee may disclose Program if the disclosure is required by law, but Licensee must give IBM reasonable prior notice to give IBM an opportunity to obtain a protective order.  The obligations of this Article 7.0 will not apply to information that is:  (a) already rightfully in the possession of Licensee without an obligation of confidence; (b) independently developed by Licensee; or (c) publicly available when received by Licensee, or becomes publicly available through no fault of Licensee.
+
+7.4	Licensee represents that, in connection with this Agreement, it has not disclosed, nor will it disclose any information to IBM which is confidential to Licensee or any third party.  IBM will be free to use and disclose for any purpose any information provided by Licensee to IBM, subject to valid patents and copyrights.
+
+7.5	For five (5) years after the Effective Date, neither party will disclose the terms and conditions of this Agreement without the prior written consent of the other party, except as may be necessary to enforce its rights under this Agreement.  Notwithstanding the above, each party may use similar terms and conditions in other agreements and may disclose the terms and conditions of this Agreement, to the extent reasonably necessary and on a confidential basis, to its accountants, attorneys, and financial advisors.
+
+8.0	Indemnification
+
+Licensee will defend, indemnify and hold IBM harmless from any third party claims arising from or related to (i) Licensee’s infringement or alleged infringement of any third party intellectual property rights; or (ii) Licensee’s breach or alleged breach of any provision of this Agreement, including but not limited to, the terms governing Licensee’s distribution of an Application set forth in Section 2.3 of this Agreement.  IBM may participate in the proceedings at its option and expense.
+
+9.0	Disclaimers and Limitation of Liability
+
+9.1	
+SUBJECT TO ANY STATUTORY WARRANTIES THAT CANNOT BE EXCLUDED, THE PROGRAM IS PROVIDED “AS IS”, AND IBM MAKES NO WARRANTIES OR CONDITIONS, EXPRESS OR IMPLIED, REGARDING THE PROGRAM, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OR CONDITIONS OF MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE, AND TITLE, AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.
+
+IBM DOES NOT WARRANT THAT LICENSEE CAN SUCCESSFULLY DEVELOP AN APPLICATION USING THE PROGRAM.
+
+SOME STATES OR JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF EXPRESS OR IMPLIED WARRANTIES, SO THE ABOVE EXCLUSION MAY NOT APPLY TO LICENSEE. IN THAT EVENT, SUCH WARRANTIES ARE LIMITED IN DURATION TO THE MINIMUM PERIOD REQUIRED BY LAW. NO WARRANTIES APPLY AFTER THAT PERIOD. SOME STATES OR JURISDICTIONS DO NOT ALLOW LIMITATIONS ON HOW LONG AN IMPLIED WARRANTY LASTS, SO THE ABOVE LIMITATION MAY NOT APPLY TO LICENSEE. LICENSEE MAY HAVE OTHER RIGHTS THAT VARY FROM STATE TO STATE OR JURISDICTION TO JURISDICTION.
+
+9.2 	In no event will IBM be liable to Licensee for any direct, indirect, special consequential or other damages of any type for any use of the Program, including without limitation, any lost profits, business interruption, loss of programs or other data on your information handling system or otherwise, even if expressly advised of or aware of the possibility of such damages or losses. This exclusion and waiver of liability applies to all causes of action, whether based on contract, warranty, tort, or any other legal theories.
+
+10.0	General Provisions
+
+10.1	Except as explicitly provided in this Agreement, this Agreement does not grant any licenses, either directly or indirectly, by implication or estoppel or otherwise, to either party under any patent, copyright, or other intellectual property right of the other party.  This Agreement does not confer any rights to use in advertising, publicity or other marketing activities any name, trade name, trademark, or other designation of either party hereto, including any contraction, abbreviation, or simulation of any of the foregoing without prior written agreement.  
+
+
+10.2  	Each party agrees to comply and to reasonably assist the other in complying with applicable government export and import laws and regulations.  Further, Licensee agrees that unless authorized by applicable government license or regulation, including but not limited to U.S. authorization, it will not directly or indirectly export or reexport, at any time, any Program to any prohibited country (including to nationals, wherever they may be located, of any prohibited country) as specified in applicable export, embargo, and sanctions regulations.  Unless authorized by appropriate government license or regulations, Licensee agrees not to export, directly or indirectly, any Program to Cuba, Iran, Iraq, Libya, North Korea, Sudan or Syria. 
+
+10.3	This Agreement will not be construed to establish any form of partnership, agency, franchise or joint venture of any kind between Licensee and IBM, nor to constitute either party as the agent, employee, legal representative, or any other form of representative of the other.  Each party acknowledges that it has not relied on any promises, inducements, representations or other statements made by the other party regarding the commercial viability, profitability or success in the marketplace of any products or services, and that each party’s decision to enter into this Agreement is made independently from the other party.  Nothing in this Agreement will be construed to limit the right of either party, alone or with others, to design, develop, make, procure, market and/or maintain products and/or services, now or in the future, which may constitute competitive alternatives to the Program and nothing in this agreement shall prevent either party from entering into similar arrangements with third parties provided that such products, services or arrangements do not constitute an infringement of the other party's valid copyrights or patents, or violate the obligations of confidentiality or use as set forth in this Agreement.
+
+10.4	If any provision of this Agreement is held to be invalid, illegal or unenforceable, this agreement shall immediately terminate.  This Agreement is governed by the laws of the State of New York, without regard to the conflict of laws provisions thereof.  Any litigation relating to this Agreement will be brought in the United States District court for the Southern District of New York.  The parties waive the right to trial by jury in any matter which arises under this Agreement. 
+
+10.5	Except for breach of Articles 2.0, 7.0 or 8.0, neither party may bring an action, regardless of form, arising out of the performance or nonperformance of this Agreement more than one year after the cause of action has accrued.
+
+10.6	This Agreement is the complete and exclusive agreement between the parties regarding the subject matter hereof and supersedes any prior oral or written communications or understandings between the parties related to the subject matter hereof.  No modifications or amendments to any portion of this Agreement shall be valid until an authorized representative for each party has signed the modification or amendment.  This Agreement may be signed in one or more counterparts, each of which shall be deemed to be an original and all of which when taken together shall constitute the same Agreement.  Any signed copy of this Agreement made by photocopy, facsimile or PDF Adobe format shall be considered an original.
+

@@ -1,0 +1,4 @@
+var interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_google_fit_manager_1_1_calorie_callback =
+[
+    [ "returnCalories", "interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_google_fit_manager_1_1_calorie_callback.html#a41588f077f91afc07a6d6b21c9419ca0", null ]
+];

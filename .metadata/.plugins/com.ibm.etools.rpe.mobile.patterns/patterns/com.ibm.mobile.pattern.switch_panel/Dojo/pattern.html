@@ -1,0 +1,36 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojox/mobile/parser", "dojox/mobile/compat" ]);
+</script>
+
+<script type="text/javascript">
+require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView", "dojox/mobile/EdgeToEdgeCategory", "dojox/mobile/EdgeToEdgeList", "dojox/mobile/ListItem", "dojox/mobile/Switch" /*END_DEPENDENCIES*/ ]);
+</script>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="switch_panel" pattern.rootElement="true">
+	<h2 data-dojo-type="dojox.mobile.EdgeToEdgeCategory">Options Group A</h2>
+	<div data-dojo-type="dojox.mobile.EdgeToEdgeList">
+		<div data-dojo-type="dojox.mobile.ListItem"	data-dojo-props="label:'Option 1:'">
+			<div data-dojo-type="dojox.mobile.Switch" class="mblItemSwitch"></div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem"	data-dojo-props="label:'Option 2:'">
+			<div data-dojo-type="dojox.mobile.Switch" class="mblItemSwitch"></div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem"	data-dojo-props="label:'Option 3:'">
+			<div data-dojo-type="dojox.mobile.Switch" class="mblItemSwitch"></div>
+		</div>
+	</div>		
+	<h2 data-dojo-type="dojox.mobile.EdgeToEdgeCategory">Options Group B</h2>
+	<div data-dojo-type="dojox.mobile.EdgeToEdgeList">
+		<div data-dojo-type="dojox.mobile.ListItem"	data-dojo-props="label:'Option 4:'">
+			<div data-dojo-type="dojox.mobile.Switch" class="mblItemSwitch" data-dojo-props="value:'off'"></div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem"	data-dojo-props="label:'Option 5:'">
+			<div data-dojo-type="dojox.mobile.Switch" class="mblItemSwitch" data-dojo-props="value:'off'"></div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem"	data-dojo-props="label:'Option 6:'">
+			<div data-dojo-type="dojox.mobile.Switch" class="mblItemSwitch" data-dojo-props="value:'off'"></div>
+		</div>
+	</div>
+</div>

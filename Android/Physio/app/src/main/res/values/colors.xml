@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licensed Materials - Property of IBM
+ © Copyright IBM Corporation 2014, 2015. All Rights Reserved.
+-->
+<resources>
+    <color name="translucent_white">#7fff</color>
+    <color name="ready_blue">#1db3eb</color>
+    <color name="ready_red">#db5645</color>
+    <color name="ready_gray">#e6e6e3</color>
+    <color name="ready_dark_gray">#4e4d49</color>
+    <color name="ready_blue_translucent">#f21db3eb</color>
+</resources>

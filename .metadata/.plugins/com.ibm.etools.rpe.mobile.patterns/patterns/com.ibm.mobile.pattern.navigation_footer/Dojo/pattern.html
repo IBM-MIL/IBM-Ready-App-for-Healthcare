@@ -1,0 +1,76 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojox/mobile/parser", "dojox/mobile/compat" ]);
+</script>
+
+<script type="text/javascript">
+require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView", "dojox/mobile/TabBar", "dojox/mobile/TabBarButton" /*END_DEPENDENCIES*/ ]);
+</script>
+
+<style type="text/css" pattern.discardNode="true">
+.multipleViewsRibbon {
+	position: fixed;
+	left: 0px;
+	bottom: 15px;
+
+padding: 9px 7px 0px 7px;
+
+	height:40px;
+	width:80px;
+	
+	color: white;
+	text-align: center;
+	vertical-align:middle;
+	text-shadow: 0em 0.2em 0.2em black;
+	font-size: 12px;
+	
+	border-top: 3px solid white;
+	border-right: 3px solid white;
+	border-bottom: 3px solid white;
+	
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	
+	background: #00CC33;
+	background: -moz-linear-gradient(left,  #00CC33 0%, #006633 0%, #00bb55 40%, #00bb55 60%, #006633 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00CC33), color-stop(0%,#006633), color-stop(40%,#00bb55), color-stop(60%,#00bb55), color-stop(100%,#006633));
+	background: -webkit-linear-gradient(left,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	background: -o-linear-gradient(left,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	background: -ms-linear-gradient(left,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	background: linear-gradient(to right,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#006633',GradientType=1 );
+	
+	box-shadow: 0px 2px 2px 2px #555;
+	
+	z-index: 1998;
+}
+</style>
+
+<div class="multipleViewsRibbon" pattern.discardNode="true">
+	<div>Includes multiple views</div>
+</div>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="navigation_footer"
+	data-dojo-props="scrollDir:'v'" pattern.rootElement="true">
+	<ul data-dojo-type="dojox.mobile.TabBar" fixed="bottom">
+		<li data-dojo-type="dojox.mobile.TabBarButton"
+			data-dojo-props="moveTo:'$1', selected: true">Page 1</li>
+		<li data-dojo-type="dojox.mobile.TabBarButton"
+			data-dojo-props="moveTo:'$2'">Page 2</li>
+		<li data-dojo-type="dojox.mobile.TabBarButton"
+			data-dojo-props="moveTo:'$3'">Page 3</li>
+	</ul>
+	<div data-dojo-type="dojox.mobile.View" id="$1" pattern.preferredId="page1">
+		<div data-dojo-type="dojox.mobile.Heading"
+			data-dojo-props="label:'Page 1', selected: true"></div>
+	</div>
+	<div data-dojo-type="dojox.mobile.View" id="$2" pattern.preferredId="page2">
+		<div data-dojo-type="dojox.mobile.Heading"
+			data-dojo-props="label:'Page 2'"></div>
+	</div>
+	<div data-dojo-type="dojox.mobile.View" id="$3" pattern.preferredId="page3">
+		<div data-dojo-type="dojox.mobile.Heading"
+			data-dojo-props="label:'Page 3'"></div>
+	</div>
+</div>

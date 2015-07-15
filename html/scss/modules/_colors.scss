@@ -1,0 +1,36 @@
+/*
+ *  Licensed Materials - Property of IBM
+ *  © Copyright IBM Corporation 2014. All Rights Reserved.
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  of such an application, in customer's own products.
+ */
+
+$white-color:       #FFFFFF;
+$black-color:       #292826;
+$blue-color:        #1DB3EC;
+$dark-blue-color:   #0D659B;
+$red-color:         #DB5644;
+$dark-red-color:    #CE353A;
+$tooltip-color:     #CCCBCB;
+$light-gray-color:  #b9b9b9;
+$gray-color:        #4D4E4E;
+$dark-gray-color:   #383633;
+$background-color:  #E5E5E3;
+
+.font-red {
+    color: $red-color;
+}
+
+.font-blue {
+    color: $blue-color;
+}
+
+.font-gray {
+    color: $gray-color;
+}
+
+.font-black {
+    color: $black-color;
+}

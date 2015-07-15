@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Licensed Materials - Property of IBM
+    5725-I43 (C) Copyright IBM Corp. 2006, 2014. All Rights Reserved.
+    US Government Users Restricted Rights - Use, duplication or
+    disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+
+-->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>Worklight Administration Services</display-name>
+	<servlet>
+		<servlet-name>ManagementServlet</servlet-name>
+		<servlet-class>com.ibm.worklight.admin.services.RestServlet</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.ibm.worklight.admin.services.ManagementServiceServlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManagementServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring-management-service.xml</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.ibm.worklight.admin.listeners.WorklightManagementServletContextListener</listener-class>
+	</listener>
+
+	<!-- Declaring access to the mobile management database  -->	
+    <resource-ref>
+        <res-ref-name>jdbc/WorklightAdminDS</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+    
+	<!-- SECURITY ROLES -->
+
+	<security-role>
+		<role-name>worklightadmin</role-name>
+	</security-role>
+	<security-role>
+		<role-name>worklightdeployer</role-name>
+	</security-role>
+	<security-role>
+		<role-name>worklightmonitor</role-name>
+	</security-role>
+	<security-role>
+		<role-name>worklightoperator</role-name>
+	</security-role>
+
+	<!-- Documentation:
+	     http://docs.oracle.com/javaee/5/tutorial/doc/bncbe.html#bncbj
+	     http://docs.oracle.com/javaee/6/tutorial/doc/gkbaa.html#bncbk -->
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>allAccess</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>POST</http-method>
+			<http-method>PUT</http-method>
+			<http-method>DELETE</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>worklightadmin</role-name>
+			<role-name>worklightmonitor</role-name>
+			<role-name>worklightoperator</role-name>
+			<role-name>worklightdeployer</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+
+	<!-- AUTHENTICATION METHOD: Basic authentication -->
+	<!-- Documentation: http://docs.oracle.com/javaee/5/tutorial/doc/bncbe.html#bncbo -->
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>worklightRealm</realm-name>
+	</login-config>
+	
+	<filter>
+		<display-name>HTTP Strict Transport Security filter</display-name>
+		<filter-name>HSTSFilter</filter-name>
+		<filter-class>com.ibm.worklight.admin.common.filter.HSTSFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>HSTSFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- JNDI Properties -->
+	<!-- Note! All <env-entry-type> in this file are java.lang.String. -->
+	<!-- Note! All <env-entry-value> in this file are empty (because of WAS Full Profile). -->
+	<!-- Note! All JNDI properties that are not useful for Tomcat or WAS Liberty Profile
+	     are commented out, so that they are hidden in the WAS Full Profile administration
+	     console. -->	
+
+	 <env-entry>
+    	<description>
+    		[OPTIONAL] Hostname for the JMX REST connection (Liberty Profile only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.jmx.host</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		[OPTIONAL] Port for the JMX REST connection (Liberty Profile only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.jmx.port</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    	 <env-entry>
+    	<description>
+    		[OPTIONAL] User name for the JMX REST connection (Liberty Profile only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.jmx.user</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		[OPTIONAL] User password for the JMX REST connection (Liberty Profile only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.jmx.pwd</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		[OPTIONAL] RMI registry port for the JMX connection thru a firewall (Tomcat only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.rmi.registryPort</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		[OPTIONAL] RMI server port for the JMX connection thru a firewall (Tomcat only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.rmi.serverPort</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		[MANDATORY] JMX Connector type : RMI/SOAP (default) (WAS only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.jmx.connector</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>SOAP</env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		[MANDATORY] Deployment Manager host name (WAS ND only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.jmx.dmgr.host</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		[MANDATORY] Deployment Manager RMI or SOAP port (WAS ND only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.jmx.dmgr.port</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		[OPTIONAL] Environment identifier for the registration of the MBeans
+    	</description>
+        <env-entry-name>ibm.worklight.admin.environmentid</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		[OPTIONAL] Server identifier. Must be different for each server in the farm (farm of servers only)
+    	</description>
+        <env-entry-name>ibm.worklight.admin.serverid</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value></env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    		Server type. values: Liberty / WAS / Tomcat  
+    		Default: if missing will try to guess server type (less reliable).
+    	</description>
+        <env-entry-name>ibm.worklight.topology.platform</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>WAS</env-entry-value>
+    </env-entry>
+    <env-entry>
+    	<description>
+    	    In addition to server type, specify here the server topology. 
+    	    Allowed Values: Standalone / Cluster / Farm
+    	    Default: Standalone
+    	</description>
+        <env-entry-name>ibm.worklight.topology.clustermode</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>Farm</env-entry-value>
+    </env-entry>
+     <env-entry>
+    	<description>
+    	    [OPTIONAL] Type of the farm of nodes if a farm of nodes is to be used. Current only FILE is supported
+    	</description>
+        <env-entry-name>ibm.worklight.farm.type</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>FILE</env-entry-value>
+     </env-entry>
+     <env-entry>
+     <description>
+    	    [OPTIONAL] but [MANDATORY] In case of a FILE farm of nodes usage : defines the full path that accesses the xml definition of the farm of nodes.
+    	    This xml definition will be checked to be conformal with the FarmSchema.xsd which URL can be retrieved through a call to com.worklight.common.server.farm.FarmNodesFactory.getFarmNodesSchema()
+    	</description>
+        <env-entry-name>ibm.worklight.farm.definition.location</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>/opt/IBM/worklight/FarmNode.xml</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <description>
+    	    [OPTIONAL] Reserved for future use
+    	</description>
+        <env-entry-name>ibm.worklight.farm.plugin.implementor.klass</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value/>
+    </env-entry>
+
+    
+</web-app>

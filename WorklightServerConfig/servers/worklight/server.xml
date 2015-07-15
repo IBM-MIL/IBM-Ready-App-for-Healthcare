@@ -1,0 +1,128 @@
+<server description="worklight">
+
+       <featureManager>
+	<feature>servlet-3.0</feature>
+	<feature>jndi-1.0</feature>
+	<feature>jdbc-4.0</feature>
+	<feature>restConnector-1.0</feature>
+	<feature>jsp-2.2</feature>
+	<feature>appSecurity-1.0</feature>
+	<feature>ssl-1.0</feature>
+
+<!--
+        <feature>appSecurity-2.0</feature>
+        <feature>ldapRegistry-3.0</feature>
+-->
+        <feature>localConnector-1.0</feature>
+    </featureManager>
+
+    <webContainer invokeFlushAfterService="false"/>
+	<webContainer com.ibm.ws.webcontainer.suppressLoggingServiceRuntimeExcep="true"/>
+	<webContainer deferServletLoad="false"/>
+
+    <!-- non standard ports were used to avoid future collision with other WebSphere products. -->
+    <httpEndpoint host="*" httpPort="10080" httpsPort="10443" id="defaultHttpEndpoint">
+ 	<tcpOptions soReuseAddr="true"/>
+
+    </httpEndpoint>
+
+<!--  change Worklight server side logging: 
+      change consoleLogLevel to INFO to see Worklight JavaScript Logger API output
+      (for example: in Worklight Adapters).
+-->
+    <logging consoleLogLevel="AUDIT" copySystemStreams="false"/>
+
+    <!-- enable next element for Worklight Server traces. 
+         change traceSpecification to enable fine grain printing to trace.log file. 
+    <logging traceSpecification="com.worklight.*=debug=enabled"/>
+    -->
+
+    <applicationMonitor updateTrigger="mbean"/>
+
+    <administrator-role>
+       <user>admin</user>
+    </administrator-role>
+    <keyStore id="defaultKeyStore" password="worklight"/>
+    <jndiEntry jndiName="ibm.worklight.admin.jmx.host" value="localhost"/>
+    <jndiEntry jndiName="ibm.worklight.admin.jmx.port" value="10443"/>
+    <jndiEntry jndiName="ibm.worklight.topology.platform" value="Liberty"/>
+    <jndiEntry jndiName="ibm.worklight.topology.clustermode" value="Standalone"/>
+
+
+<!--
+	Worklight Console settings START ...
+-->
+    <basicRegistry id="worklight" realm="worklightRealm">
+        <user name="demo" password="demo"/>
+        <user name="monitor" password="demo"/>
+        <user name="deployer" password="demo"/>
+        <user name="operator" password="demo"/>
+        <user name="admin" password="admin"/>
+    </basicRegistry>
+<!--
+	JMX admin user JNDI entries
+-->
+    <jndiEntry jndiName="ibm.worklight.admin.jmx.user" value="admin"/>
+
+    <jndiEntry jndiName="ibm.worklight.admin.jmx.pwd" value="admin"/>
+<!--
+	Disabling security integration
+-->
+    <httpSession securityIntegrationEnabled="false"/>
+<!--
+	Declare the IBM Worklight Admin Services application.
+-->
+    <application context-root="worklightadmin" id="worklight-management-service" location="worklight-management-service.war" name="WorklightServices" type="war">
+        <application-bnd>
+            <security-role name="worklightadmin">
+                <user name="admin"/>
+            </security-role>
+                <security-role name="worklightdeployer">
+                <user name="deployer"/>
+            </security-role>
+                <security-role name="worklightmonitor">
+                <user name="monitor"/>
+            </security-role>
+                <security-role name="worklightoperator">
+                <user name="operator"/>
+            </security-role>
+        </application-bnd>
+        <classloader delegation="parentLast">
+            <privateLibrary>
+                <fileset dir="${wlp.install.dir}/lib" includes="com.ibm.ws.crypto.passwordutil*.jar"/>
+            </privateLibrary>
+        </classloader>
+    </application>
+<!--
+	Declare the IBM Worklight Admin Console application.
+-->
+    <application context-root="worklightconsole" id="worklight-management-ui" location="worklight-management-ui.war" name="WorklightConsole" type="war">
+        <application-bnd>
+            <security-role name="worklightadmin">
+                <user name="admin"/>
+            </security-role>
+                <security-role name="worklightdeployer">
+                <user name="deployer"/>
+            </security-role>
+                <security-role name="worklightmonitor">
+                <user name="monitor"/>
+            </security-role>
+                <security-role name="worklightoperator">
+                <user name="operator"/>
+            </security-role>
+        </application-bnd>
+    </application>
+
+    <library id="DerbyLib">
+        <fileset dir="${wlp.user.dir}/shared/resources/derby" includes="derby.jar"/>
+    </library>
+<!--
+	Declare the IBM Worklight Console admin database.
+-->
+    <dataSource jndiName="worklightadmin/jdbc/WorklightAdminDS" transactional="false">
+        <jdbcDriver libraryRef="DerbyLib"/>
+        <properties.derby.embedded createDatabase="create" databaseName="${wlp.user.dir}/shared/resources/derbyDB/WLADMIN" user="WLADMINISTRATOR"/>
+    </dataSource>
+<!--
+	... Worklight Console settings END
+--></server>

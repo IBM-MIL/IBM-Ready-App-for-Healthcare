@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+org.eclipse.wst.xsd.ui.productCustomizationProviderClassName=com.ibm.xwt.xsd.ui.internal.RADProductCustomizationProvider
+org.eclipse.wst.xsd.ui.productCustomizationProviderPluginId=com.ibm.xwt.xsd.ui
+org.eclipse.wst.xsd.ui.showEditorModeHelpDialogAgain=true

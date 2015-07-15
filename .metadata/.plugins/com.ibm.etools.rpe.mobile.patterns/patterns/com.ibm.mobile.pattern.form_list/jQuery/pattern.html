@@ -1,0 +1,33 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<div data-role="page" id="form_list" pattern.rootElement="true">
+	<div data-role="content">
+		<form id="form" action="">
+			<ul data-role="listview" data-inset="true">
+				<li>
+					<label for="text">Text Input:</label>
+					<input type="text" name="text" id="text">
+				</li>
+				<li>
+					<label for="flip">Toggle Switch:</label>
+					<select name="flip" id="flip" data-role="slider">
+						<option value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</li>
+				<li>
+					<select name="select" id="select">
+						<option value="option1">Option 1</option>
+						<option value="option2">Option 2</option>
+						<option value="option3">Option 3</option>
+					</select>
+				</li>
+				<li>
+					<label for="slider">Slider:</label>
+					<input type="range"	name="slider" id="slider" value="50" min="0" max="100">
+				</li>
+			</ul>
+			<button type="submit" data-role="button" id="button" data-theme="b">Submit</button>
+		</form>
+	</div>
+</div>

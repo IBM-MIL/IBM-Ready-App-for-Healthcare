@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/jsonstore/libs/sqlcipher.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/jsonstore/libs/commons-codec.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/jsonstore/libs/guava.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/jsonstore/libs/jackson-mapper-asl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/jsonstore/libs/jackson-core-asl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

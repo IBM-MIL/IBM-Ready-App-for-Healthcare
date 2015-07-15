@@ -1,0 +1,216 @@
+<!-- Licensed Materials - Property of IBM
+ © Copyright IBM Corporation 2014, 2015. All Rights Reserved.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ready_gray"
+    android:orientation="vertical"
+    tools:context="com.ibm.mil.readyapps.physio.fragments.library.VideoFragment">
+
+    <FrameLayout
+        android:id="@+id/youtube_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/exercise_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textSize="21sp"
+            android:textColor="@color/ready_dark_gray"
+            android:text="@string/sample_exercise_name" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:textSize="14sp"
+                android:textColor="@color/ready_dark_gray"
+                android:textStyle="bold"
+                android:text="@string/routine_name_label" />
+
+            <TextView
+                android:id="@+id/routine_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/ready_dark_gray"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/sample_routine_name2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/minutes_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-10dp"
+                    android:textSize="70sp"
+                    android:textColor="@color/ready_blue" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/ready_dark_gray"
+                    android:textAllCaps="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/minutes_label" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/repetitions_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-10dp"
+                    android:textSize="70sp"
+                    android:textColor="@color/ready_blue" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/ready_dark_gray"
+                    android:textAllCaps="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/repetitions_label" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sets_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-10dp"
+                    android:textSize="70sp"
+                    android:textColor="@color/ready_blue" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/ready_dark_gray"
+                    android:textAllCaps="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/sets_label" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/ready_dark_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:textSize="14sp"
+                android:textColor="@color/ready_dark_gray"
+                android:textStyle="bold"
+                android:text="@string/tools_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/ready_dark_gray"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/tools_sample"
+                android:id="@+id/tools" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ready_blue"
+        android:orientation="horizontal"
+        android:divider="@drawable/button_divider"
+        android:dividerPadding="10dp"
+        android:showDividers="middle">
+
+        <TextView
+            android:id="@+id/end_routine_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="25dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:text="@string/end_routine" />
+
+        <TextView
+            android:id="@+id/next_exercise_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="25dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:text="@string/next_exercise" />
+
+    </LinearLayout>
+
+</LinearLayout>

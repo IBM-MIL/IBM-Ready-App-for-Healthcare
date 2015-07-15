@@ -1,0 +1,6 @@
+FALLBACK_RUNTIME=com.ibm.ast.ws.wasWebServiceRT
+PREFERENCE_RUNTIME=com.ibm.ast.ws.jaxws.WasWebServiceRT
+PREFERENCE_SERVER=com.ibm.ws.ast.st.v85.server.base
+clientTypes=template.jst.web
+eclipse.preferences.version=1
+serviceTypes=template.jst.web

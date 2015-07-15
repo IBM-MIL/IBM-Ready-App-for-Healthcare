@@ -1,0 +1,129 @@
+<!--
+    Licensed Materials - Property of IBM
+    © Copyright IBM Corporation 2014. All Rights Reserved.
+    This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+    payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+    run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+    of such an application, in customer's own products.
+-->
+
+<div class="metrics_container">
+    
+    <!-- Scope base div -->
+    <div id="scope" class="foobar"></div>
+
+    <div class="metrics_tab-container">
+        <div class="metrics_tab" ng-click="tabClicked('day')" ng-class="{'selected': selectedTab == 48}" translate="_day_tab_metrics_">
+        </div>
+        <div class="metrics_tab" ng-click="tabClicked('week')" ng-class="{'selected': selectedTab == 14}" translate="_week_tab_metrics_">
+        </div>
+        <div class="metrics_tab" ng-click="tabClicked('month')" ng-class="{'selected': selectedTab == 8}" translate="_month_tab_metrics_">
+        </div>
+        <div class="metrics_tab" ng-click="tabClicked('year')" ng-class="{'selected': selectedTab == 24}" translate="_year_tab_metrics_">
+        </div>
+    </div>
+    
+    <div ng-switch="displayType">
+        
+        <!-- Many bar graphs -->
+        <div ng-switch-when="0">
+            
+            <time-graph class="metrics_time-graph" transform="transformData" datalength="{{dataLength}}"></time-graph>
+            
+            <div class="metrics_graph-container"> 
+                <div class="metrics_graph-triangle-container">
+                    <div class="metrics_graph-triangle"></div>
+                </div>
+                <div class="metrics_graph-center-line"></div>
+                
+                <!-- Heart rate -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_hr')">
+                    <img src="./img/redheart_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-red" translate="_hr_metrics_"></div>
+                    <bar-graph id="heart-rate" consume="nom()" transform="transformData" unit="{{measurementUnitHr}}"></bar-graph>
+                </div>
+
+                <!-- Weight -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_weight')">
+                    <img src="./img/greyweight_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-gray" translate="_weight_metrics_"></div>
+                    <bar-graph id="weight" consume="nom()" transform="transformData" unit="{{measurementUnitWeight}}"></bar-graph>
+                </div>
+
+                <!-- Steps -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_steps')">
+                    <img src="./img/bluesteps_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-blue" translate="_steps_metrics_"></div>
+                    <bar-graph id="steps" consume="nom()" transform="transformData" unit="{{measurementUnitSteps}}"></bar-graph>
+                </div>
+
+                <!-- Calories -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_calories')">
+                    <img src="./img/greycalorie_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-gray" translate="_calories_metrics_"></div>
+                    <bar-graph id="calories" consume="nom()" transform="transformData" unit="{{measurementUnitCalories}}"></bar-graph>
+                </div>
+
+                <!-- Pain -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_pain')">
+                    <img src="./img/redpain_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-red" translate="_pain_metrics_"></div>
+                    <bar-graph id="pain" consume="nom()" transform="transformData" unit="{{measurementUnitPain}}"></bar-graph>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Many line graphs -->
+        <div ng-switch-when="1">
+            
+            <time-graph class="metrics_time-graph" transform="transformData" datalength="{{dataLength}}"></time-graph>
+            
+            <div class="metrics_graph-container"> 
+                <div class="metrics_graph-triangle-container">
+                    <div class="metrics_graph-triangle"></div>
+                </div>
+                
+                <!-- Heart rate -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_hr')">
+                    <img src="./img/redheart_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-red">Heart Rate</div>
+                    <div class="metrics_graph-center-line"></div>
+                    <line-graph id="heart-rate" consume="nom()" transform="transformData" unit="avg bpm"></bar-graph>
+                </div>
+
+                <!-- Weight -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_weight')">
+                    <img src="./img/greyweight_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-gray">Weight</div>
+                    <div class="metrics_graph-center-line"></div>
+                    <line-graph id="weight" consume="nom()" transform="transformData" unit="lbs"></bar-graph>
+                </div>
+
+                <!-- Steps -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_steps')">
+                    <img src="./img/bluesteps_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-blue">Steps</div>
+                    <div class="metrics_graph-center-line"></div>
+                    <line-graph id="steps" consume="nom()" transform="transformData" unit="steps"></bar-graph>
+                </div>
+
+                <!-- Calories -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_calories')">
+                    <img src="./img/greycalorie_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-gray">Calories</div>
+                    <div class="metrics_graph-center-line"></div>
+                    <line-graph id="calories" consume="nom()" transform="transformData" unit="kcal"></bar-graph>
+                </div>
+
+                <!-- Pain -->
+                <div class="metrics_graph-section" ng-click="graphClicked('/WebView/metrics_pain')">
+                    <img src="./img/redpain_small.png" class="metrics_graph-section-icon" />
+                    <div class="metrics_graph-section-title font-red">Pain</div>
+                    <div class="metrics_graph-center-line"></div>
+                    <line-graph id="pain" consume="nom()" transform="transformData" unit="/ 10"></bar-graph>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

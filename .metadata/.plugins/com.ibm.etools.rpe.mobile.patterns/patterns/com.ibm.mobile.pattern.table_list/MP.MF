@@ -1,0 +1,5 @@
+id: com.ibm.mobile.pattern.table_list
+name: %NAME
+description: %DESCRIPTION
+vendor: %VENDOR
+version: 1.0

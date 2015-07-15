@@ -1,0 +1,311 @@
+<project name="RAHybrid" default="build" basedir=".">
+    <description>
+        Ready Apps Hybrid build project
+    </description>
+  <!-- set global properties for this build -->
+  <property name="build" location="build"/>
+  <property name="dist" location="dist" />
+  <property name="src.html" location="html"/>
+  <property name="src.android" location="Android/Physio/app/src/main/assets/html"/>
+  <property name="src.ios" location="iOS/html"/>
+
+  <target name="build-android" description="compile and distribute the source for Android" >
+         
+         <!-- wipe out directories --> 
+          <delete includeemptydirs="true">  
+            <fileset dir="${src.android}" includes="**/*"/>  
+          </delete>  
+
+          <copy todir="${src.android}" flatten="false">  
+            <fileset dir="${src.html}" includes="**">
+                <exclude name="**/test/**" />
+                <exclude name="**/node_modules/**" />
+            </fileset>  
+          </copy>
+  </target>
+
+   <target name="build-ios" description="compile and distribute the source for iOS" >
+          
+          <mkdir dir="${build}"/>
+
+          <copy todir="${build}/iOS" flatten="true">  
+            <fileset dir="${src.html}">
+                <include name="index.html" />
+                <include name="views/**" />
+                <include name="fonts/**" />
+                <include name="img/**" />
+                <include name="js/src/**" />
+                <include name="css/**" />
+                <include name="js/bower_components/angular/angular.js" />
+                <include name="js/bower_components/angular-route/angular-route.js" />
+                <include name="js/bower_components/angular-touch/angular-touch.js" />
+                <include name="js/bower_components/d3/d3.min.js" />
+                <include name="js/bower_components/moment/min/moment-with-locales.js" />
+                <include name="js/vendor/angular-translate.js" />
+            </fileset>
+          </copy>
+          
+          <replace value="" token="css/">
+            <fileset dir="${build}/iOS/">
+              <include name="*.html"/>
+            </fileset>
+          </replace>
+
+          <replace value="" token="./img/">
+            <fileset dir="${build}/iOS/">
+              <include name="*.html"/>
+              <include name="*.css"/>
+            </fileset>
+          </replace>
+
+          <replace value="" token="../img/">
+            <fileset dir="${build}/iOS/">
+              <include name="*.css"/>
+            </fileset>
+          </replace>
+
+          <replace value="" token="../../img/">
+            <fileset dir="${build}/iOS/">
+              <include name="*.css"/>
+            </fileset>
+          </replace>
+
+          <replace value="" token=".././img/">
+            <fileset dir="${build}/iOS/">
+              <include name="*.css"/>
+            </fileset>
+          </replace>
+
+          <replace value="" token="../fonts/">
+            <fileset dir="${build}/iOS/">
+              <include name="*.css"/>
+            </fileset>
+          </replace>
+
+         <replace value="" token="views/">
+            <fileset dir="${build}/iOS/">
+              <include name="*.js"/>
+            </fileset>
+          </replace>
+
+          <replace value="" token="../">
+            <fileset dir="${build}/iOS/">
+              <include name="*.html"/>
+              <include name="*.css"/>
+              <include name="*.js"/>
+            </fileset>
+          </replace>
+
+          <replace file="${build}/iOS/index.html" value="" token="js/bower_components/angular/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/bower_components/angular-route/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/bower_components/angular-touch/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/bower_components/d3/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/bower_components/moment/min/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/vendor/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/src/config/"/>
+          <replace file="${build}/iOS/index.html" value="" token="views/templates/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/src/controllers/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/src/directives/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/src/providers/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/src/interfaces/"/>
+          <replace file="${build}/iOS/index.html" value="" token="js/src/"/>
+
+          <!--replace file="${build}/iOS/metrics.html" value="" token="./img/"/>
+          <replace file="${build}/iOS/style.css" value="" token="../../img/"/>
+          <replace file="${build}/iOS/style.css" value="" token=".././img/"/>
+          <replace file="${build}/iOS/style.css" value="" token="../img/"/>
+          <replace file="${build}/iOS/style.css" value="" token="../fonts/"/>
+
+          <replace file="${build}/iOS/index.js" value="" token="views/"/>
+          <replace file="${build}/iOS/metrics-steps.html" value="" token="./img/"/-->
+
+          <!--replaceregexp file="${build}/iOS/index.html" match="(?=\w+\.\w{3,4}$).+" replace="" flags="g" byline="true" flags="g" /-->
+              
+          <!-- wipe out directories -->
+          <delete includeemptydirs="true">  
+            <fileset dir="${src.ios}" includes="**/*"/>  
+          </delete>  
+
+          <copy todir="${src.ios}" includeemptydirs="false">  
+            <fileset dir="${build}/iOS" includes="**"/>  
+          </copy>
+
+          <delete dir="${build}"/>
+  </target>
+
+   <target name="build" depends="build-ios,build-android" description="compile and distribute the source for each OS" >
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <delete dir="${build}"/>
+    <delete includeemptydirs="true">  
+          <fileset dir="${src.android}" includes="**/*"/>  
+    </delete>  
+    <delete includeemptydirs="true">  
+          <fileset dir="${src.ios}" includes="**/*"/>  
+    </delete>  
+  </target>
+
+ <target name="pkg-clean">
+    <delete dir="${dist}"/>
+ </target>
+ <target name="package-all" depends="pkg-clean,package-android,package-ios,
+        package-android-noopensource,package-ios-noopensource"
+    description="package Android and iOS files into a zip for distribution">
+ </target>
+
+ <target name="package-android" description="package Android files into a zip for distribution" >
+  <mkdir dir="${build}"/>
+  <zip compress="true" level="9" destfile="${dist}/package-android-with-opensource.zip" encoding="UTF-8" >
+    <fileset dir="." >
+      <include name="**/*" />
+      <exclude name="dist/**" />
+      <exclude name="automatedUITests/**" />
+      <exclude name="**/.git*" />
+      <exclude name="**/.DS_Store" />
+      <exclude name="iOS/**" />
+      <exclude name="Android/Physio/build/**" />
+      <exclude name="Android/Physio/app/build/**" />
+      <exclude name="Android/Physio/spinnerwheel/build/**" />
+      <exclude name="Android/Physio/ReadyAppsLibrary/build/**" />
+      <exclude name="Android/Physio/android.jks" />
+      <exclude name="automatedUITests/iOS_Automated_UI_Testing" />
+      <!-- These are artifacts that live only on the build machine.  -->
+      <exclude name="IBMMobileFirst/**" />
+      <exclude name="MILBase/**" />
+      <exclude name="MILCharts/**" />
+      <exclude name="MILReusableAssets/**" />
+      <exclude name="MILSocial/**" />
+      <exclude name="MIL_Common_Assets/**" />
+      <exclude name="build/**" />
+      <exclude name="cloc.xml" />
+      <exclude name="cpd-output-android.xml" />
+      <exclude name="cpd-output-ios.xml" />
+    </fileset>
+  </zip>
+ </target>
+
+ <target name="package-ios"  description="package iOS files into a zip for distribution" >
+  <mkdir dir="${build}"/>
+  <zip compress="true" level="9" destfile="${dist}/package-ios-with-opensource.zip" encoding="UTF-8" >
+    <fileset dir="." >
+      <include name="**/*" />
+      <exclude name="dist/**" />
+      <exclude name="automatedUITests/**" />
+      <exclude name="**/.git*" />
+      <exclude name="**/.DS_Store" />
+      <exclude name="Android/**" />
+      <exclude name="iOS/build/**" />
+      <exclude name="iOS/upload-tmp/**" />
+      <exclude name="iOS/buildenvoy_temp/**" />
+      <exclude name="iOS/*.gradle" />
+      <exclude name="iOS/RemoteBuildAndDeploy*.xml" />
+      <exclude name="iOS/apns-certificate-production.p12" />
+      <exclude name="automatedUITests/Android_Automated_UI_Testing" />
+      <!-- These are artifacts that live only on the build machine.  -->
+      <exclude name="IBMMobileFirst/**" />
+      <exclude name="MILBase/**" />
+      <exclude name="MILCharts/**" />
+      <exclude name="MILReusableAssets/**" />
+      <exclude name="MILSocial/**" />
+      <exclude name="MIL_Common_Assets/**" />
+      <exclude name="build/**" />
+      <exclude name="cloc.xml" />
+      <exclude name="cpd-output-android.xml" />
+      <exclude name="cpd-output-ios.xml" />
+    </fileset>
+  </zip>
+ </target>
+ <target name="package-android-noopensource" description="package Android files into a zip for distribution without open source" >
+  <mkdir dir="${build}"/>
+  <zip compress="true" level="9" destfile="${dist}/package-android.zip" encoding="UTF-8" >
+    <fileset dir="." >
+      <include name="**/*" />
+      <exclude name="dist/**" />
+      <exclude name="automatedUITests/**" />
+      <exclude name="**/.git*" />
+      <exclude name="**/.DS_Store" />
+      <exclude name="iOS/**" />
+      <exclude name="Android/Physio/build/**" />
+      <exclude name="Android/Physio/app/build/**" />
+      <exclude name="Android/Physio/spinnerwheel/build/**" />
+      <exclude name="Android/Physio/ReadyAppsLibrary/build/**" />
+      <exclude name="Android/Physio/android.jks" />
+      <exclude name="automatedUITests/iOS_Automated_UI_Testing" />
+      <!-- These are artifacts that live only on the build machine.  -->
+      <exclude name="IBMMobileFirst/**" />
+      <exclude name="MILBase/**" />
+      <exclude name="MILCharts/**" />
+      <exclude name="MILReusableAssets/**" />
+      <exclude name="MILSocial/**" />
+      <exclude name="MIL_Common_Assets/**" />
+      <exclude name="build/**" />
+      <exclude name="cloc.xml" />
+      <exclude name="cpd-output-android.xml" />
+      <exclude name="cpd-output-ios.xml" />
+      <!-- Removing open source from the project to be safe legally. -->
+      <exclude name="html/js/bower_components/angular/**" />
+      <exclude name="html/js/bower_components/angular-mocks/**" />
+      <exclude name="html/js/bower_components/angular-route/**" />
+      <exclude name="html/js/bower_components/angular-touch/**" />
+      <exclude name="html/js/bower_components/d3/**" />
+      <exclude name="html/js/bower_components/moment/**" />
+      <exclude name="html/js/vendor/**" />
+      <exclude name="Android/Physio/app/libs/*.jar" />
+      <exclude name="Android/Physio/spinnerwheel/*" />
+      <exclude name="Android/Physio/spinnerwheel/build/**" />
+      <exclude name="Android/Physio/spinnerwheel/libs/**" />
+      <exclude name="Android/Physio/spinnerwheel/src/**" />
+    </fileset>
+  </zip>
+ </target>
+
+ <target name="package-ios-noopensource"  description="package iOS files into a zip for distribution without open source" >
+  <mkdir dir="${build}"/>
+  <zip compress="true" level="9" destfile="${dist}/package-ios.zip" encoding="UTF-8" >
+    <fileset dir="." >
+      <include name="**/*" />
+      <exclude name="dist/**" />
+      <exclude name="automatedUITests/**" />
+      <exclude name="**/.git*" />
+      <exclude name="**/.DS_Store" />
+      <exclude name="Android/**" />
+      <exclude name="iOS/build/**" />
+      <exclude name="iOS/upload-tmp/**" />
+      <exclude name="iOS/buildenvoy_temp/**" />
+      <exclude name="iOS/*.gradle" />
+      <exclude name="iOS/RemoteBuildAndDeploy*.xml" />
+      <exclude name="iOS/apns-certificate-production.p12" />
+      <exclude name="automatedUITests/Android_Automated_UI_Testing" />
+      <!-- These are artifacts that live only on the build machine.  -->
+      <exclude name="IBMMobileFirst/**" />
+      <exclude name="MILBase/**" />
+      <exclude name="MILCharts/**" />
+      <exclude name="MILReusableAssets/**" />
+      <exclude name="MILSocial/**" />
+      <exclude name="MIL_Common_Assets/**" />
+      <exclude name="build/**" />
+      <exclude name="cloc.xml" />
+      <exclude name="cpd-output-android.xml" />
+      <exclude name="cpd-output-ios.xml" />
+      <!-- Removing open source from the project to be safe legally. -->
+      <exclude name="html/js/bower_components/angular/**" />
+      <exclude name="html/js/bower_components/angular-mocks/**" />
+      <exclude name="html/js/bower_components/angular-route/**" />
+      <exclude name="html/js/bower_components/angular-touch/**" />
+      <exclude name="html/js/bower_components/d3/**" />
+      <exclude name="html/js/bower_components/moment/**" />
+      <exclude name="html/js/vendor/*.js" />
+      <exclude name="iOS/html/*.js" />
+      <exclude name="iOS/ReadyAppPT/External/*" />
+      <exclude name="iOS/ReadyAppPT/External/SVProgressHUD/**" />
+      <exclude name="iOS/ReadyAppPT/External/WorklightAPI/**" />
+      <exclude name="iOS/ReadyAppPT/External/YoutubePlayer/**" />
+      <exclude name="iOS/ReadyAppPT/External/usr/**" />
+      <exclude name="iOS/ReadyAppPT/Resources/Roboto" />
+      <exclude name="iOS/ReadyAppPT/Resources/roboto-slab/**" />
+    </fileset>
+  </zip>
+ </target>
+</project>

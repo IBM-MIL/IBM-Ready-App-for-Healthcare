@@ -1,0 +1,26 @@
+{
+	"layers_nodes": "Routing Policy",
+	
+	"model_nodes": {
+		"groups": {
+			"BasicRouting": true,
+			"disableRouting": false
+		},
+		"attributes": {
+			"virtualHost": "host",
+			"https_schema": false,
+			"http_schema": true
+		},
+		"type": "RoutingPolicyofWAS",
+		"id": "Routing Policy"
+	},
+	
+	"model_links": {
+		"target": "Worklight Server",
+		"attributes": {
+			},
+		"type": "policy.RoutingPolicyofWAS",
+		"source": "Routing Policy",
+		"id": "policy.RoutingPolicyofWAS_1"
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" hostname="localhost" id="com.ibm.worklight.server.id" id-set="true" looseConfig="true" name="Worklight Development Server" runtime-id="com.ibm.worklight" server-type="com.ibm.ws.st.server.v85.was" server-type-id="com.ibm.ws.st.server.v85.was" serverName="worklight" start-timeout="180" stop-timeout="15" timestamp="0"/>
+</servers>

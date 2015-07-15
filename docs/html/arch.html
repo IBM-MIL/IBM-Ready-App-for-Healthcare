@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <!-- Title -->
+        <title>ReadyApp PT Docs</title>
+        
+        <!-- Style -->
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    
+    <body>
+        
+        <div class="header">        
+            <img class="logo" src="../img/logo.png" />
+            <span class="header-text">Physio Architecture</span>
+            
+            <div class="header-link-container">
+                <a href="../index.html"><span class="header-link" id="home"><img src="../img/Home.png" class="home-icon"/></span></a>
+                
+                <span class="header-link" id="start">Start<img src="../img/Menu.png" class="icon"/>
+                    <ul>
+                        <a href="../assets/IBM_dl_v1.pdf" target="_blank"><li><span>IBM Design Language <img src="../img/Tab.png" class="icon"/></span></li></a>
+                        <a href="dg.html"><li><span>Design Guidelines</span></li></a>
+                        <a href="arch.html"><li><span>Physio Architecture</span></li></a>
+                        <a href="igs.html"><li><span>Installation &amp; Getting Started</span></li></a>
+                    </ul>
+                </span>
+                
+                <span class="header-link" id="frontend">App<img src="../img/Menu.png" class="icon"/>
+                    <ul>
+                        <a href="../gen/Swift/index.html" target="_blank"><li><span>iOS</span> <img src="../img/Tab.png" class="icon"/></li></a>
+                        <a href="../gen/Java/html/index.html" target="_blank"><li><span>Android</span> <img src="../img/Tab.png" class="icon"/></li></a>
+                        <a href="../gen/JavaScript/index.html" target="_blank"><li><span>Hybrid</span> <img src="../img/Tab.png" class="icon"/></li></a>
+                    </ul>
+                </span>
+                
+                <span class="header-link" id="middleware">Middleware<img src="../img/Menu.png" class="icon"/>
+                    <ul>
+                         <a href="../MobileFirst/gen/Java/html/index.html" target="_blank"><li><span>Java</span> <img src="../img/Tab.png" class="icon"/></li></a>
+                        <a href="../MobileFirst/gen/Javascript/global.html" target="_blank"><li><span>JavaScript</span> <img src="../img/Tab.png" class="icon"/></li></a>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        
+        <div class="container">
+        
+            <h1>Physio Architecture</h1>
+            
+            <p>Physio's architecture is made up of 3 main components:
+                <ul>
+                    <li>Hybrid Application</li>
+                    <li>MobileFirst Platform v6.3</li>
+                    <li>A database</li>
+                </ul>
+            </p>
+            
+            <img src="../img/Physio%20Architecture%20Diagram.png" style="width:60%;display:block;margin:0 auto;" />
+            
+            <p>The hybrid application consists of a mixture of native artifacts and AngularJS/HTML/SaSS. The MobileFirst Platform is used as an interface to the Systems of Record and System of Engagements. MongoDB is used to simulate the System of Record and System of Engagement that you would need to interface your mobile application with.</p>
+
+            <p>ReadyApp Physio leverages Google Fit and Apples HealthKit to communicate with a variety of heath related wearables as long as they are compatible are with Google Fit or Apple's HealthKit.</p>
+
+            <h2>Hybrid Application</h2>
+
+            <p>The hybrid application is a mixture of native features along with AngularJS/HTML/SaSS code in order to give a blend of native look and feel along with some of the reusability of full bybrid applications.  </p>
+
+            <p>Using native controllers and views along with native transitions, the native experience can be preserved and the application can interchangeably use native code when performance is a necessity and hybrid when reusability of complex code or algorithms is desired.</p>
+
+            <h2>MobileFirst Platform</h2>
+
+            <p>The MobileFirst Platform is used to provide a well encapsulated interface between the mobile clients and backend systems of record and systems of engagement. It gives you the ability to concentrate on providing the best user experience while not sacrificing on security or integration.</p>
+
+            <p>You can spend more time perfecting your user experience while being able to access your critical business data exactly the same way from all of your client facing applications.</p>
+
+            <h2>Database</h2>
+
+            <p>A database is used to simulate a system of record and the system of engagement.  It contains data used for both authentication and user interactions.  As this is only a simulation it does not follow the normal standards of systems of engagement or systems of record and really only acts as a data store.</p>
+        
+        </div>
+        
+        <div class="footer">
+            <div class="footer-container">
+                <h1>Where To?</h1>
+                
+                <ul>
+                    <li>Previously...<br /><a href="dg.html">Design Guidelines</a></li>
+                    <li>Up next...<br /><a href="igs.html">Installation &amp; Getting Started</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </body>
+
+</html>

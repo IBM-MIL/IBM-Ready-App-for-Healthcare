@@ -1,0 +1,147 @@
+package com.ibm.mil;
+
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class PermissionsTest {
+	private static RemoteWebDriver driver;
+	private static IosUtilities utils = new IosUtilities();
+	private static SignInUtilities signInUtils = new SignInUtilities();
+
+	@Before
+	public void setup() throws Exception {
+		driver = (RemoteWebDriver) utils.iosTestSetupWebDriver(driver);
+	}
+
+	@Test
+	public void testPermissionScreen() throws Exception {
+		
+		//call the log in utilities
+		signInUtils.SignInUtility(driver);
+		
+		// Wait for next page to load, by waiting for nav bar title "Health Access"
+		utils.waitForElement(driver, "Health Access");
+		
+		//verify that we are asking for 8 permissions 
+		// there should be 8 table view cells
+		//get all of the table view cells
+		List<WebElement> tableCells = driver.findElements(By
+				.className("UIATableCell"));
+		//test that there are 8
+		Assert.assertEquals(9, tableCells.size());
+		
+		//verify what we are asking the user for
+		//make sure we're asking for active calories
+		By active_calories_cell = By.linkText("name=Active Calories");
+		WebElement active_calories_element = driver.findElement(active_calories_cell);
+
+		Assert.assertNotNull(
+				"Active Calories cell element exists, so we're asking for their calories.",
+				active_calories_element);
+		
+		//make sure we're asking for heart rate
+		By heart_rate_cell = By.linkText("name=Heart Rate");
+		WebElement heart_rate_element = driver.findElement(heart_rate_cell);
+
+		Assert.assertNotNull(
+				"Heart Rate cell label exists, so we're asking for their heart rate.",
+				heart_rate_element);
+		
+		//make sure we're asking for steps
+		By steps_cell = By.linkText("name=Steps");
+		WebElement steps_element = driver.findElement(steps_cell);
+
+		Assert.assertNotNull(
+				"Heart Rate cell label exists, so we're asking for their heart rate.",
+				steps_element);
+		
+		//make sure we're asking for weight
+		By weight_cell = By.linkText("name=Weight");
+		WebElement weight_element = driver.findElement(weight_cell);
+
+		Assert.assertNotNull(
+				"Heart Rate cell label exists, so we're asking for their heart rate.",
+				weight_element);
+		
+		//click allow on all of the tabs
+		// get all of the elements
+		List<WebElement> allowSliders = driver.findElements(By.className("UIASwitch"));
+		//verify that there are 8 sliders
+		Assert.assertEquals(9, allowSliders.size());
+		
+		//allow all of the write sliders
+		//select the first element aka the calories
+		WebElement active_calories_write = allowSliders.get(0);
+		active_calories_write.click();
+		
+		//select the second element aka the heart rate
+		WebElement heart_rate_write = allowSliders.get(1);
+		heart_rate_write.click();
+		
+		//select the third element aka the steps
+		WebElement steps_write = allowSliders.get(2);
+		steps_write.click();
+		
+		//select the fourth element aka the weight
+		WebElement weight_write = allowSliders.get(3);
+		weight_write.click();
+		
+		//allow the bottom set of sliders, to "read" data
+		//select the fifth element aka the active calories
+		WebElement active_calories_read = allowSliders.get(4);
+		active_calories_read.click();
+		
+		// select the sixth element aka the heart rate
+		WebElement heart_rate_read = allowSliders.get(5);
+		heart_rate_read.click();
+
+		// select the seveneth element aka the steps
+		WebElement steps_read = allowSliders.get(6);
+		steps_read.click();
+		
+		//select the fourth element aka the weight
+		WebElement weight_read = allowSliders.get(7);
+		weight_read.click();
+		
+		//check the nav bar title, make sure we didn't switch pages
+		By navTitle = By.linkText("name=Health Access");
+		WebElement navTitle1 = driver.findElement(navTitle);
+		Assert.assertNotNull(
+				"Nav title is not null so we're good",
+				navTitle1);
+		
+		//click the "done" button
+		By done_button = By.linkText("name=Done");
+		WebElement done = driver.findElement(done_button);
+		done.click();
+		
+		// Wait for next page to load
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//verify that the nav bar title has changed, therefore we're on the next screen
+		// TODO: When the app gets more fleshed out, this test will need to
+		// change to check for the new nav bar title as it changes
+		By navTitle2 = By.linkText("name=Physio");
+		WebElement navTitle3 = driver.findElement(navTitle2);
+		Assert.assertNotNull(
+				"Nav title is not null so we're good",
+				navTitle3);
+	}
+	@After
+	public void stop() {
+		// Close the session
+		utils.iosTestTeardownDriver(driver);
+	}
+}

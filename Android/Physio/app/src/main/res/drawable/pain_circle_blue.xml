@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licensed Materials - Property of IBM
+© Copyright IBM Corporation 2014, 2015. All Rights Reserved.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <solid android:color="@color/ready_blue" />
+    <size
+        android:width="50dp"
+        android:height="50dp" />
+
+</shape>

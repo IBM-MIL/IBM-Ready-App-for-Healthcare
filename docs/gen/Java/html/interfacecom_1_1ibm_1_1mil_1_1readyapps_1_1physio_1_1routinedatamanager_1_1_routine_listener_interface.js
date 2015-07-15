@@ -1,0 +1,4 @@
+var interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1routinedatamanager_1_1_routine_listener_interface =
+[
+    [ "handleRoutines", "interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1routinedatamanager_1_1_routine_listener_interface.html#a66829f0cc17744f434914f66ec01acc3", null ]
+];

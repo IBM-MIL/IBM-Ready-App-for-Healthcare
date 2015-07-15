@@ -1,0 +1,134 @@
+.container {
+    width: 80%;
+    margin: 100px auto;
+    margin-top: 130px;
+    color: $docs-gray;
+    font-size: 13pt;
+    
+    h1 {
+        font-weight: 600;
+        font-size: 42pt;
+        color: $docs-blue;
+        margin: 55px 0 25px 0;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 32pt;
+        color: $docs-blue;
+        margin: 35px 0 25px 0;
+    }
+    
+    h3 {
+        font-weight: 600;
+        font-size: 24pt;
+        margin: 15px 0 10px 0;
+    }
+    
+    p {
+        line-height: 1.2;
+        margin: 25px 0;
+    }
+    
+    .bold {
+        font-weight: 600;
+    }
+    
+    ul {
+        margin-left: 50px;
+        list-style: disc;
+        
+        li {
+            line-height: 1.2;
+        }
+    }
+    
+    a {
+        color: $docs-red;
+        font-weight: 600;
+        text-decoration: none;
+        
+        &:hover {
+            color: $docs-dark-red;
+        }
+    }
+    
+    code {
+        font-family: monospace;
+        font-weight: 600; 
+    }
+    
+    .column-container {
+        width: 100%;
+        overflow: hidden;
+        
+        .left {
+            width: 20%;
+            display: inline-block;
+            float: left;
+            
+            p, img {
+                margin-right: 25px;
+            }
+        }
+        .right {
+            width: 80%;
+            display: inline-block;
+            float: right;
+            
+            p, img {
+                margin-left: 25px;
+            }
+        }
+    }
+    
+    .index-box {
+        width: 300px;
+        background-color: $docs-off-white;
+        margin-top: 35px;
+        
+        .index-container {
+            padding: 20px;
+            padding-top: 5px;
+        }
+        
+        ul {
+            margin: 20px 0;
+            margin-left: 20px;
+            list-style: disc;
+            
+            li {
+                margin: 10px 0;
+                a {
+                    color: $docs-gray;
+                    &:hover {
+                        color: $docs-dark-gray;
+                    }
+                }
+            }
+            
+            ul {
+                margin: 0;
+                font-size: 11pt;
+                margin-left: 15px;
+                
+                li {
+                    margin: 1px 0;
+                    a {
+                        color: $docs-gray;
+                        &:hover {
+                            color: $docs-dark-gray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .well {
+        padding: 15px;
+        width: 90%;
+        margin: 0 auto;
+        background-color: $docs-off-white;
+    }
+}

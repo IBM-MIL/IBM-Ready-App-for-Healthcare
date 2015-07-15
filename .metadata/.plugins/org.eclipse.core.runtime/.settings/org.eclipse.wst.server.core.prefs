@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+runtimes=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<runtimes>\n  <runtime id\="com.ibm.worklight" id-set\="true" location\="/Users/atcabral/Development/eclipse/plugins/com.worklight.studio.plugin_6.2.0.00-20140613-0730/liberty/wlp" name\="Worklight Development Server" runtime-type-id\="com.ibm.ws.st.runtime.v85.was" timestamp\="0">\n    <list key\="user-dirs" value0\="/Users/atcabral/Ready.App.Physical.Therapist/WorklightServerConfig"/>\n  </runtime>\n</runtimes>\n

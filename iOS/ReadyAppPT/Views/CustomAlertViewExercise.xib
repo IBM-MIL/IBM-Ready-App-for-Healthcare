@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </mutableArray>
+        <mutableArray key="RobotoSlab-Regular.ttf">
+            <string>RobotoSlab-Regular</string>
+            <string>RobotoSlab-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomAlertViewExercise" customModule="ReadyAppPT" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D63-pj-gVI">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" red="0.21960784310000001" green="0.21176470589999999" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2q-bl-vzZ">
+                    <rect key="frame" x="20" y="209" width="281" height="150"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_blue" translatesAutoresizingMaskIntoConstraints="NO" id="WLJ-vk-GSZ">
+                            <rect key="frame" x="128" y="8" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="SvX-pg-KpE"/>
+                                <constraint firstAttribute="height" constant="25" id="k42-Jd-LeD"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Completed!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hl-0a-Sdd">
+                            <rect key="frame" x="8" y="41" width="265" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="Z1V-Hf-IAm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="18"/>
+                            <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your next exercise will start in 0:10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXe-9a-kWN">
+                            <rect key="frame" x="8" y="64" width="265" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Win-qN-oZl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                            <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAx-Nt-eAV">
+                            <rect key="frame" x="0.0" y="100" width="281" height="50"/>
+                            <color key="backgroundColor" red="0.15686274510000001" green="0.69411764710000001" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Erf-gC-qxR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="18"/>
+                            <state key="normal">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="nextButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="rik-55-LV9"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="FAx-Nt-eAV" secondAttribute="trailing" id="2dB-tF-Eau"/>
+                        <constraint firstAttribute="height" constant="150" id="6tL-tB-ryI"/>
+                        <constraint firstItem="lXe-9a-kWN" firstAttribute="leading" secondItem="Z2q-bl-vzZ" secondAttribute="leading" constant="8" id="KTs-Kv-8KP"/>
+                        <constraint firstAttribute="trailing" secondItem="lXe-9a-kWN" secondAttribute="trailing" constant="8" id="Nw6-Ro-pPV"/>
+                        <constraint firstItem="WLJ-vk-GSZ" firstAttribute="top" secondItem="Z2q-bl-vzZ" secondAttribute="top" constant="8" id="Twb-4T-qFA"/>
+                        <constraint firstAttribute="bottom" secondItem="FAx-Nt-eAV" secondAttribute="bottom" id="UvH-w0-jve"/>
+                        <constraint firstAttribute="trailing" secondItem="3hl-0a-Sdd" secondAttribute="trailing" constant="8" id="ZHL-s6-N3s"/>
+                        <constraint firstItem="FAx-Nt-eAV" firstAttribute="leading" secondItem="Z2q-bl-vzZ" secondAttribute="leading" id="b9p-Ud-sj2"/>
+                        <constraint firstItem="FAx-Nt-eAV" firstAttribute="top" secondItem="lXe-9a-kWN" secondAttribute="bottom" constant="15" id="oae-rf-U6f"/>
+                        <constraint firstItem="3hl-0a-Sdd" firstAttribute="leading" secondItem="Z2q-bl-vzZ" secondAttribute="leading" constant="8" id="syP-Ln-Qxf"/>
+                        <constraint firstItem="3hl-0a-Sdd" firstAttribute="top" secondItem="WLJ-vk-GSZ" secondAttribute="bottom" constant="8" id="uOn-tJ-hz8"/>
+                        <constraint firstAttribute="centerX" secondItem="WLJ-vk-GSZ" secondAttribute="centerX" id="x41-SU-8IF"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="D63-pj-gVI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9J9-OZ-vHQ"/>
+                <constraint firstItem="Z2q-bl-vzZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="BKp-Ox-lXr"/>
+                <constraint firstItem="D63-pj-gVI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CSQ-7q-HWa"/>
+                <constraint firstAttribute="trailing" secondItem="Z2q-bl-vzZ" secondAttribute="trailing" constant="19" id="D4N-2l-mrR"/>
+                <constraint firstAttribute="centerY" secondItem="Z2q-bl-vzZ" secondAttribute="centerY" id="b7P-sS-850"/>
+                <constraint firstAttribute="bottom" secondItem="D63-pj-gVI" secondAttribute="bottom" id="fp9-IO-ERr"/>
+                <constraint firstAttribute="trailing" secondItem="D63-pj-gVI" secondAttribute="trailing" id="tqX-jH-zks"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="imageView" destination="WLJ-vk-GSZ" id="TSL-EN-3Vb"/>
+                <outlet property="imageViewTopConstraint" destination="Twb-4T-qFA" id="Upk-eA-LwH"/>
+                <outlet property="labelMain" destination="3hl-0a-Sdd" id="eOJ-ed-M3l"/>
+                <outlet property="nextButton" destination="FAx-Nt-eAV" id="Dxa-BR-Wsu"/>
+                <outlet property="sublabel" destination="lXe-9a-kWN" id="vM9-fN-g1V"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="checkmark_blue" width="33" height="33"/>
+    </resources>
+</document>

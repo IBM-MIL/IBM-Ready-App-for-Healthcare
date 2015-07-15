@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="RobotoSlab-Regular.ttf">
+            <string>RobotoSlab-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomAlertView" customModule="ReadyAppPT" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GmU-wA-teS">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" red="0.21960784310000001" green="0.21176470589999999" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="De2-8z-aFz" appends="YES" id="ZSV-Bq-iCh"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2A-fd-r6N">
+                    <rect key="frame" x="20" y="234" width="280" height="100"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_blue" translatesAutoresizingMaskIntoConstraints="NO" id="rQN-79-bgd">
+                            <rect key="frame" x="128" y="16" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="EYr-YQ-bnn"/>
+                                <constraint firstAttribute="width" constant="25" id="eUV-w2-vAH"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form submitted" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eb-kY-PEz">
+                            <rect key="frame" x="8" y="44" width="264" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="hq4-8c-gco"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="18"/>
+                            <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.89411764705882346" green="0.89411764705882346" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="1eb-kY-PEz" firstAttribute="leading" secondItem="q2A-fd-r6N" secondAttribute="leading" constant="8" id="NW5-Rv-2dh"/>
+                        <constraint firstItem="1eb-kY-PEz" firstAttribute="top" secondItem="rQN-79-bgd" secondAttribute="bottom" constant="3" id="PG2-fR-UUT"/>
+                        <constraint firstAttribute="centerX" secondItem="rQN-79-bgd" secondAttribute="centerX" constant="-0.5" id="Xd0-s6-wcK"/>
+                        <constraint firstAttribute="trailing" secondItem="1eb-kY-PEz" secondAttribute="trailing" constant="8" id="kp2-bZ-48g"/>
+                        <constraint firstAttribute="height" constant="100" id="tGt-iV-w22"/>
+                        <constraint firstItem="rQN-79-bgd" firstAttribute="top" secondItem="q2A-fd-r6N" secondAttribute="top" constant="16" id="tRa-DD-DxD"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="GmU-wA-teS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3mG-BZ-jMg"/>
+                <constraint firstItem="GmU-wA-teS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8Qa-QX-Mx9"/>
+                <constraint firstItem="q2A-fd-r6N" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="GgX-EW-w0N"/>
+                <constraint firstAttribute="bottom" secondItem="GmU-wA-teS" secondAttribute="bottom" id="I5J-VI-HgD"/>
+                <constraint firstAttribute="centerY" secondItem="q2A-fd-r6N" secondAttribute="centerY" id="RAo-PA-KzX"/>
+                <constraint firstAttribute="trailing" secondItem="q2A-fd-r6N" secondAttribute="trailing" constant="20" id="crd-ze-mpZ"/>
+                <constraint firstAttribute="trailing" secondItem="GmU-wA-teS" secondAttribute="trailing" id="ojk-n4-Qog"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="alertLabel" destination="1eb-kY-PEz" id="GdV-CW-IGc"/>
+                <outlet property="imgView" destination="rQN-79-bgd" id="fLs-pD-EBH"/>
+            </connections>
+            <point key="canvasLocation" x="455" y="555"/>
+        </view>
+        <tapGestureRecognizer id="De2-8z-aFz"/>
+    </objects>
+    <resources>
+        <image name="checkmark_blue" width="33" height="33"/>
+    </resources>
+</document>

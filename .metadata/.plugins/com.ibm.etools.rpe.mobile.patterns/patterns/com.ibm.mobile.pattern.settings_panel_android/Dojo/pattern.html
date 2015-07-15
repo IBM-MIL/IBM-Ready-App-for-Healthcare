@@ -1,0 +1,50 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojox/mobile/parser", "dojox/mobile/compat" ]);
+</script>
+
+<script type="text/javascript">
+require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView", "dojox/mobile/EdgeToEdgeList", "dojox/mobile/ListItem", "dojox/mobile/Heading", "dojox/mobile/TextBox" /*END_DEPENDENCIES*/ ]);
+</script>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="settings_panel"
+	pattern.rootElement="true">
+	<div data-dojo-type="dojox.mobile.Heading"
+		data-dojo-props="label:'Settings', fixed:'top'"></div>
+	<div data-dojo-type="dojox.mobile.EdgeToEdgeList"
+		data-dojo-props="variableHeight: true">
+		<div data-dojo-type="dojox.mobile.ListItem">
+			Language
+			<div style="font-size: small; color: gray">English</div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem">
+			Volume Level
+			<div style="font-size: small; color: gray">High</div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem">
+			Button Color
+			<div style="font-size: small; color: gray">Blue</div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem">
+			Background Color
+			<div style="font-size: small; color: gray">White</div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem">
+			Cache Size
+			<div style="font-size: small; color: gray">100 kb</div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="checked:true">Auto Cache Clear</div>
+		<div data-dojo-type="dojox.mobile.ListItem">
+			<label for="username">User name:</label> <input type="text"
+				id="username" name="username" data-dojo-type="dojox.mobile.TextBox"
+				style="width: 100%">
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem">
+			<label for="password">Password:</label> <input type="password"
+				id="password" name="password" data-dojo-type="dojox.mobile.TextBox"
+				style="width: 100%">
+		</div>
+	</div>
+</div>

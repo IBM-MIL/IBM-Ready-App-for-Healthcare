@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licensed Materials - Property of IBM
+© Copyright IBM Corporation 2014, 2015. All Rights Reserved.
+-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="25dp"
+    android:drawableLeft="@drawable/form_unselected"
+    android:drawablePadding="25dp"
+    android:drawableStart="@drawable/form_unselected"
+    android:gravity="center_vertical"
+    android:text="@string/item_text_placeholder"
+    android:textColor="@color/ready_dark_gray"
+    android:textSize="14sp" />

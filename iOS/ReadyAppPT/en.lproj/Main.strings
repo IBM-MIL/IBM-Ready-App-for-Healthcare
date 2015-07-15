@@ -1,0 +1,284 @@
+/*
+ Licensed Materials - Property of IBM
+ © Copyright IBM Corporation 2014. All Rights Reserved.
+ This sample program is provided AS IS and may be used, executed, copied and modified without royalty payment by customer
+ (a) for its own instruction and study, (b) in order to develop applications designed to run with an IBM product,
+ either for customer's own internal use or for redistribution by customer, as part of such an application, in customer's
+ own products.
+ */
+
+/* Class = "IBUILabel"; text = "Weight"; ObjectID = "11k-T2-Ues"; */
+"11k-T2-Ues.text" = "Weight";
+
+/* Class = "IBUILabel"; text = "10"; ObjectID = "1Zv-fZ-i3W"; */
+"1Zv-fZ-i3W.text" = "10";
+
+/* Class = "IBUILabel"; text = "Elastic band, Yoga Mat"; ObjectID = "2DZ-Ae-Hce"; */
+"2DZ-Ae-Hce.text" = "Elastic band, Yoga Mat";
+
+/* Class = "IBUILabel"; text = "goal."; ObjectID = "42i-ZX-oH7"; */
+"42i-ZX-oH7.text" = "goal.";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "6Fw-AX-zOC"; */
+"6Fw-AX-zOC.title" = "Physio";
+
+/* Class = "IBUILabel"; text = "Out of "; ObjectID = "75R-qX-RoN"; */
+"75R-qX-RoN.text" = "Out of ";
+
+/* Class = "IBUILabel"; text = "Physio"; ObjectID = "7P2-6c-YBR"; */
+"7P2-6c-YBR.text" = "Physio";
+
+/* Class = "IBUIViewController"; title = "Video Player"; ObjectID = "7Wn-HR-WtV"; */
+"7Wn-HR-WtV.title" = "Video Player";
+
+/* Class = "IBUILabel"; text = "Invalid ID"; ObjectID = "7wk-US-He3"; */
+"7wk-US-He3.text" = "Invalid ID";
+
+/* Class = "IBUILabel"; text = "Medical Questionnaire"; ObjectID = "8LH-4n-mb4"; */
+"8LH-4n-mb4.text" = "Medical Questionnaire";
+
+/* Class = "IBUILabel"; text = "--/--"; ObjectID = "8kQ-qZ-ArP"; */
+"8kQ-qZ-ArP.text" = "--/--";
+
+/* Class = "IBUILabel"; text = "MINUTES"; ObjectID = "8pJ-Rt-gw7"; */
+"8pJ-Rt-gw7.text" = "MINUTES";
+
+/* Class = "IBUILabel"; text = "Exercise 1"; ObjectID = "AY3-J1-6wr"; */
+"AY3-J1-6wr.text" = "Exercise 1";
+
+/* Class = "IBUILabel"; text = "---"; ObjectID = "Adu-Gj-C3Y"; */
+"Adu-Gj-C3Y.text" = "---";
+
+/* Class = "IBUILabel"; text = "--"; ObjectID = "CpU-ZE-xbn"; */
+"CpU-ZE-xbn.text" = "--";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "Dd8-Fd-2by"; */
+"Dd8-Fd-2by.title" = "Physio";
+
+/* Class = "IBUILabel"; text = "Select an exercise to start."; ObjectID = "EL5-8l-27H"; */
+"EL5-8l-27H.text" = "Select an exercise to start.";
+
+/* Class = "IBUIButton"; normalTitle = "Next Exercise"; ObjectID = "Euk-FS-JvB"; */
+"Euk-FS-JvB.normalTitle" = "Next Exercise";
+
+/* Class = "IBUILabel"; text = "Calories"; ObjectID = "EzR-DS-ZZz"; */
+"EzR-DS-ZZz.text" = "Calories";
+
+/* Class = "IBUILabel"; text = "--"; ObjectID = "F8a-QN-LRw"; */
+"F8a-QN-LRw.text" = "--";
+
+/* Class = "IBUILabel"; text = "14"; ObjectID = "GVU-w1-G6A"; */
+"GVU-w1-G6A.text" = "14";
+
+/* Class = "IBUILabel"; text = "Description"; ObjectID = "GuM-gE-RCR"; */
+"GuM-gE-RCR.text" = "Description";
+
+/* Class = "IBUILabel"; text = "bpm"; ObjectID = "HOV-pZ-wGi"; */
+"HOV-pZ-wGi.text" = "bpm";
+
+/* Class = "IBUIViewController"; title = "Routine"; ObjectID = "IVb-c6-zqF"; */
+"IVb-c6-zqF.title" = "Routine";
+
+/* Class = "IBUILabel"; text = "MIN"; ObjectID = "Idv-sX-XoD"; */
+"Idv-sX-XoD.text" = "MIN";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "IzW-0i-ceo"; */
+"IzW-0i-ceo.text" = "Title";
+
+/* Class = "IBUILabel"; text = "lbs"; ObjectID = "JfZ-Bc-EZI"; */
+"JfZ-Bc-EZI.text" = "lbs";
+
+/* Class = "IBUILabel"; text = "---"; ObjectID = "LMd-qS-pJN"; */
+"LMd-qS-pJN.text" = "---";
+
+/* Class = "IBUILabel"; text = "--"; ObjectID = "N0g-dK-Rhc"; */
+"N0g-dK-Rhc.text" = "--";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "NK1-pK-kFZ"; */
+"NK1-pK-kFZ.title" = "Physio";
+
+/* Class = "IBUILabel"; text = "----"; ObjectID = "OWt-GW-ac4"; */
+"OWt-GW-ac4.text" = "----";
+
+/* Class = "IBUIViewController"; title = "Routine List"; ObjectID = "PUq-IG-9u9"; */
+"PUq-IG-9u9.title" = "Routine List";
+
+/* Class = "IBUIViewController"; title = "Dashboard"; ObjectID = "Pah-4R-QmJ"; */
+"Pah-4R-QmJ.title" = "Dashboard";
+
+/* Class = "IBUIButton"; normalTitle = "Finish"; ObjectID = "Qt1-Px-zqO"; */
+"Qt1-Px-zqO.normalTitle" = "Finish";
+
+/* Class = "IBUILabel"; text = "Invalid Password"; ObjectID = "REA-7G-ViD"; */
+"REA-7G-ViD.text" = "Invalid Password";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "Rxw-lH-tnd"; */
+"Rxw-lH-tnd.title" = "Physio";
+
+/* Class = "IBUILabel"; text = "How much pain are you experiencing?"; ObjectID = "SCJ-Uc-jGC"; */
+"SCJ-Uc-jGC.text" = "How much pain are you experiencing?";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "SCP-i5-caf"; */
+"SCP-i5-caf.text" = "Label";
+
+/* Class = "IBUILabel"; text = "10"; ObjectID = "SOZ-NI-AcU"; */
+"SOZ-NI-AcU.text" = "10";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "TF1-E5-blf"; */
+"TF1-E5-blf.title" = "Physio";
+
+/* Class = "IBUILabel"; text = "MIN"; ObjectID = "Tsc-bh-g3D"; */
+"Tsc-bh-g3D.text" = "MIN";
+
+/* Class = "IBUILabel"; text = "Heart Rate"; ObjectID = "UgI-hR-XGe"; */
+"UgI-hR-XGe.text" = "Heart Rate";
+
+/* Class = "IBUILabel"; text = "Tools"; ObjectID = "V0p-vy-N2n"; */
+"V0p-vy-N2n.text" = "Tools";
+
+/* Class = "IBUILabel"; text = "User ID"; ObjectID = "W4W-dc-ccN"; */
+"W4W-dc-ccN.text" = "User ID";
+
+/* Class = "IBUILabel"; text = "Routine #"; ObjectID = "WPt-IM-siB"; */
+"WPt-IM-siB.text" = "Routine #";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "Wru-hv-MIE"; */
+"Wru-hv-MIE.title" = "Physio";
+
+/* Class = "IBUILabel"; text = "--------"; ObjectID = "Yf8-gA-Bwu"; */
+"Yf8-gA-Bwu.text" = "--------";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "ZN1-Km-cLd"; */
+"ZN1-Km-cLd.text" = "Label";
+
+/* Class = "IBUIButton"; normalTitle = "End Routine"; ObjectID = "b7T-wu-yLf"; */
+"b7T-wu-yLf.normalTitle" = "End Routine";
+
+/* Class = "IBUILabel"; text = "REPETITIONS"; ObjectID = "bDE-oq-JAR"; */
+"bDE-oq-JAR.text" = "REPETITIONS";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "bM5-1e-Z8s"; */
+"bM5-1e-Z8s.title" = "Physio";
+
+/* Class = "IBUIButton"; normalTitle = "FRONT"; ObjectID = "cER-Ab-m2u"; */
+"cER-Ab-m2u.normalTitle" = "FRONT";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "dR8-87-DaB"; */
+"dR8-87-DaB.title" = "Physio";
+
+/* Class = "IBUILabel"; text = "MAX"; ObjectID = "dln-Rf-3bU"; */
+"dln-Rf-3bU.text" = "MAX";
+
+/* Class = "IBUILabel"; text = "---"; ObjectID = "dzz-WN-68G"; */
+"dzz-WN-68G.text" = "---";
+
+/* Class = "IBUILabel"; text = "What area is hurting?"; ObjectID = "eAI-NP-09u"; */
+"eAI-NP-09u.text" = "What area is hurting?";
+
+/* Class = "IBUILabel"; text = "Steps"; ObjectID = "ec1-Wz-F5a"; */
+"ec1-Wz-F5a.text" = "Steps";
+
+/* Class = "IBUILabel"; text = "Select a bubble for each."; ObjectID = "f6g-mz-eR8"; */
+"f6g-mz-eR8.text" = "Select a bubble for each.";
+
+/* Class = "IBUIButton"; normalTitle = "DELETE"; ObjectID = "fkN-vB-CAR"; */
+"fkN-vB-CAR.normalTitle" = "DELETE";
+
+/* Class = "IBUITextField"; placeholder = "Patient ID"; ObjectID = "g9T-wt-Alx"; */
+"g9T-wt-Alx.placeholder" = "Patient ID";
+
+/* Class = "IBUILabel"; text = "Visit -/-"; ObjectID = "gHb-0b-ZcM"; */
+"gHb-0b-ZcM.text" = "Visit -/-";
+
+/* Class = "IBUILabel"; text = "Next Visit"; ObjectID = "gfd-jy-VOf"; */
+"gfd-jy-VOf.text" = "Next Visit";
+
+/* Class = "IBUILabel"; text = "02 SET"; ObjectID = "hic-EA-9X9"; */
+"hic-EA-9X9.text" = "02 SET";
+
+/* Class = "IBUILabel"; text = "02"; ObjectID = "iwK-7A-woT"; */
+"iwK-7A-woT.text" = "02";
+
+/* Class = "IBUILabel"; text = "Recovery Completion"; ObjectID = "j0i-dO-iMq"; */
+"j0i-dO-iMq.text" = "Recovery Completion";
+
+/* Class = "IBUIButton"; normalTitle = "BACK"; ObjectID = "jSP-cX-bXS"; */
+"jSP-cX-bXS.normalTitle" = "BACK";
+
+/* Class = "IBUILabel"; text = "kcal"; ObjectID = "l16-Zh-oZk"; */
+"l16-Zh-oZk.text" = "kcal";
+
+/* Class = "IBUIButton"; normalTitle = "Next"; ObjectID = "leP-IO-VIR"; */
+"leP-IO-VIR.normalTitle" = "Next";
+
+/* Class = "IBUILabel"; text = "Out of "; ObjectID = "mRA-qv-1ev"; */
+"mRA-qv-1ev.text" = "Out of ";
+
+/* Class = "IBUILabel"; text = "MAX"; ObjectID = "mdQ-WF-0ir"; */
+"mdQ-WF-0ir.text" = "MAX";
+
+/* Class = "IBUILabel"; text = "Routine Name"; ObjectID = "obu-L8-6fn"; */
+"obu-L8-6fn.text" = "Routine Name";
+
+/* Class = "IBUILabel"; text = "Ankle Plantar Flexion with Resistive Band"; ObjectID = "oe3-qM-Ebr"; */
+"oe3-qM-Ebr.text" = "Ankle Plantar Flexion with Resistive Band";
+
+/* Class = "IBUIButton"; normalTitle = "Next"; ObjectID = "qWo-Q6-BbI"; */
+"qWo-Q6-BbI.normalTitle" = "Next";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "qfk-Jr-U2y"; */
+"qfk-Jr-U2y.title" = "Physio";
+
+/* Class = "IBUILabel"; text = "SETS"; ObjectID = "rcM-b1-rzY"; */
+"rcM-b1-rzY.text" = "SETS";
+
+/* Class = "IBUIViewController"; title = "List"; ObjectID = "rnc-77-BN0"; */
+"rnc-77-BN0.title" = "List";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "ru5-fU-NzJ"; */
+"ru5-fU-NzJ.text" = "0";
+
+/* Class = "IBUIButton"; normalTitle = "Submit"; ObjectID = "rvF-8Q-9Oi"; */
+"rvF-8Q-9Oi.normalTitle" = "Submit";
+
+/* Class = "IBUIButton"; normalTitle = "Log In"; ObjectID = "s4W-wz-7nw"; */
+"s4W-wz-7nw.normalTitle" = "Log In";
+
+/* Class = "IBUILabel"; text = "lbs lost this week."; ObjectID = "u4E-Dm-9GJ"; */
+"u4E-Dm-9GJ.text" = "lbs lost this week.";
+
+/* Class = "IBUILabel"; text = "15 MIN"; ObjectID = "uFy-SZ-IVk"; */
+"uFy-SZ-IVk.text" = "15 MIN";
+
+/* Class = "IBUIViewController"; title = "Progress"; ObjectID = "v0i-bR-DNj"; */
+"v0i-bR-DNj.title" = "Progress";
+
+/* Class = "IBUILabel"; text = "Select a body part."; ObjectID = "vDu-yJ-euc"; */
+"vDu-yJ-euc.text" = "Select a body part.";
+
+/* Class = "IBUILabel"; text = "kcal goal."; ObjectID = "w9e-JU-bBe"; */
+"w9e-JU-bBe.text" = "kcal goal.";
+
+/* Class = "IBUILabel"; text = "1 of 4"; ObjectID = "wOO-Pq-hA3"; */
+"wOO-Pq-hA3.text" = "1 of 4";
+
+/* Class = "IBUILabel"; text = "---"; ObjectID = "wbm-uB-MEZ"; */
+"wbm-uB-MEZ.text" = "---";
+
+/* Class = "IBUILabel"; text = "----"; ObjectID = "xIf-5f-f2i"; */
+"xIf-5f-f2i.text" = "----";
+
+/* Class = "IBUILabel"; text = "Ankle Plantar Flexion with Resistive Band"; ObjectID = "xQx-0j-BVZ"; */
+"xQx-0j-BVZ.text" = "Ankle Plantar Flexion with Resistive Band";
+
+/* Class = "IBUITextField"; placeholder = "Password"; ObjectID = "y3W-pP-145"; */
+"y3W-pP-145.placeholder" = "Password";
+
+/* Class = "IBUINavigationItem"; title = "Physio"; ObjectID = "z41-f5-vdm"; */
+"z41-f5-vdm.title" = "Physio";
+
+/* Class = "IBUILabel"; text = "10 REP"; ObjectID = "zLg-UV-6eg"; */
+"zLg-UV-6eg.text" = "10 REP";
+
+/* Class = "IBUILabel"; text = "Why did you end your routine?"; ObjectID = "zPW-um-RrM"; */
+"zPW-um-RrM.text" = "Why did you end your routine?";

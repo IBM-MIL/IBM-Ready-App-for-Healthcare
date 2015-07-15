@@ -1,0 +1,5 @@
+id: com.ibm.mobile.pattern.forgot_password
+name: %NAME
+description: %DESCRIPTION
+vendor: %VENDOR
+version: 1.0

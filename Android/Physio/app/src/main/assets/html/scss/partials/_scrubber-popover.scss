@@ -1,0 +1,64 @@
+/*
+ *  Licensed Materials - Property of IBM
+ *  © Copyright IBM Corporation 2014. All Rights Reserved.
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  of such an application, in customer's own products.
+ */
+
+scrubber-popover {
+    position: absolute;
+    left: 50%;
+    height: 50px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    
+    .scrubber-popover_triangle {
+        width: 0; 
+        height: 0;
+        margin-bottom: 10px;
+	    border-top: 7px solid transparent;
+	    border-bottom: 7px solid transparent;
+	    border-right: 11px solid $tooltip-color; 
+        display: inline-block;
+    }
+    
+    .scrubber-popover_bubble {
+        background-color: $tooltip-color;
+        border-radius: 10px;
+        min-width: 100px;
+        padding: 7px;
+        margin-left: -5px;
+        display: inline-block;
+        color: $gray-color;
+        
+        .scrubber-popover_above {
+            width: 100%;
+            
+            .scrubber-popover_time {
+                font-family: 'Roboto-Medium';
+                font-size: 8pt;
+                padding-bottom: 2px;
+                border-bottom: 1px solid $gray-color;
+            }
+        }
+        
+        .scrubber-popover_below {
+            width: 100%;
+            padding-top: 2px;
+
+            .scrubber-popover_value {
+                font-size: 21pt;
+                display: inline-block;
+            } 
+
+            .scrubber-popover_unit {
+                font-family: 'Roboto-Medium';
+                font-size: 8pt;
+                display: inline-block;
+            }
+        }
+    }  
+}

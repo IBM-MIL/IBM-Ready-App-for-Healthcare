@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: controllers/metrics-weight-ctrl.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: controllers/metrics-weight-ctrl.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ *  Licensed Materials - Property of IBM
+ *  © Copyright IBM Corporation 2014. All Rights Reserved.
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  of such an application, in customer's own products.
+ */
+
+/**
+ *  @class ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl
+ *  @augments ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl
+ *  @memberOf ReadyAppHC
+ *  @description Controller the operates the steps metric view after tapping the "weight" graph
+ *  in the {@linkcode metricsCtrl}.
+ *  @see {@linkcode metrics-weight.html}
+ *
+ *  @property {string} unit             - The current unit that is selected in the tab bar (eg: day, week, month, year).
+ *  @property {string} currTimeFrame    - The point in time that corresponds to {@linkcode unit}.
+ *  @property {string} currPerformance  - The value for the weight in {@linkcode currTimeFrame}.
+ *
+ *  @author Jonathan Ballands
+ *  @copyright © 2014 IBM Corporation. All Rights Reserved.
+ */
+
+angular.module('ReadyAppHC').controller('metricsWeightCtrl', function($scope, $controller, $filter, tab) {
+
+    // Inheritance
+    angular.extend(this, $controller('milSyncedGraphCtrl', {$scope: $scope, selectedTab: tab}));
+    
+    $scope.unit = $filter("translate")("_loading_");
+    $scope.currTimeFrame = "";
+    $scope.currPerformance = "...";
+    
+    $scope.measurementUnit = $filter("translate")("_weight_units_scrubber_");
+    
+    $scope.init = function() {
+        $scope.baseRoute = "/WebView/metrics_weight";
+    };
+    
+    /**
+     *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsCaloriesCtrl.viewAllClicked
+     *  @description Redirects this back to the {@linkcode metricsCtrl} view, keeping the currently selected
+     *  tab consistant.
+     */
+    $scope.viewAllClicked = function() {
+        
+        switch($scope.selectedTab) {
+            case $scope.dayVal:
+                $scope.switchRoute('/WebView/metrics_day');
+                break;
+            case $scope.weekVal:
+                $scope.switchRoute('/WebView/metrics_week');
+                break;
+            case $scope.monthVal:
+                $scope.switchRoute('/WebView/metrics_month');
+                break;
+            case $scope.yearVal:
+                $scope.switchRoute('/WebView/metrics_year');
+                break;
+        }
+    };
+    
+    /**
+     *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl.setUnit
+     *  @description Sets the unit that corresponds to the {@linkcode currTimeFrame} property.
+     *  @param {string} unit The unit of time (eg: day, week, month, year).
+     */
+    $scope.setUnit = function(unit) {
+        $scope.unit = unit;
+    }
+    
+    /**
+     *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl.setTimeFrame
+     *  @description Sets the point in time that corresponds to the {@linkcode unit} property.
+     *  @param {string} timeFrame The point in time that you are concerned with (eg: June 4, June 4 - June 11, June, or 2012).
+     */
+    $scope.setTimeFrame = function(timeFrame) {
+        $scope.currTimeFrame = timeFrame;
+    }
+    
+    /**
+     *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl.setPerformance
+     *  @description Sets the weight in {@linkcode currTimeFrame}.
+     *  @param {string} performance The weight in the time frame (eg: 3,904).
+     */
+    $scope.setPerformance = function(performance) {
+        $scope.currPerformance = performance;
+    }
+    
+    // Go
+    $scope.init();
+    
+})</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="ReadyAppHC.barGraph.html">barGraph</a></li><li><a href="ReadyAppHC.choreographerService.html">choreographerService</a></li><li><a href="ReadyAppHC.graphMapProvider.html">graphMapProvider</a></li><li><a href="ReadyAppHC.lineGraph.html">lineGraph</a></li><li><a href="ReadyAppHC.milCtrl.html">milCtrl</a></li><li><a href="ReadyAppHC.milCtrl.dashboardCtrl.html">dashboardCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.html">milTabbedGraphCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.html">milSyncedGraphCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsCaloriesCtrl.html">metricsCaloriesCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsCtrl.html">metricsCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsHrCtrl.html">metricsHrCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsPainCtrl.html">metricsPainCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsStepsCtrl.html">metricsStepsCtrl</a></li><li><a href="ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl.html">metricsWeightCtrl</a></li><li><a href="ReadyAppHC.scrubberPopover.html">scrubberPopover</a></li><li><a href="ReadyAppHC.timeGraph.html">timeGraph</a></li></ul><h3>Namespaces</h3><ul><li><a href="ReadyAppHC.html">ReadyAppHC</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Mon Dec 29 2014 12:35:13 GMT-0600 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

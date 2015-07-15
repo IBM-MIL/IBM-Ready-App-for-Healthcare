@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>com.worklight</groupId>
+        <artifactId>parent</artifactId>
+        <version>6.2.0-SNAPSHOT</version>
+        <relativePath>../parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>worklight-android-native</artifactId>
+    <packaging>bundle</packaging>
+    <name>Worklight Android Native SDK</name>
+    <description>Worklight Android Native SDK</description>
+
+    <properties>
+        <api.doc.title>Java client-side API for native Android apps</api.doc.title>
+        <finalName>worklight-android-native</finalName>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- NOTE: This must be before and Android dep as that apparently controsl
+              the CP order, if you don't the unit tests will fail because Android only
+              provides stubs for the org.json classes in the android.jar and a real implementation
+              at runtime -->
+            <!-- this is required only due compile Cordova plugins. Cordova depending
+              on Org.JSON classes. This lib comes with any Android SDK built in -->
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20090211</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.loopj.android.http</groupId>
+            <artifactId>android-async-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android.gcm</groupId>
+            <artifactId>gcm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.mobile</groupId>
+            <artifactId>tealeaf</artifactId>
+            <!-- yes, test scope. worklight-android should be able to tolerate
+              building without tealeaf jar in its classpath! -->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.trusteer</groupId>
+            <artifactId>taz-sdk</artifactId>
+            <version>3.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.mobile</groupId>
+            <artifactId>sqlcipher</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>r09</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.json</groupId>
+            <artifactId>json4j</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <!-- task 12487 : android SDK can work only with our special Http client
+              4.1.2 need to explore that. -->
+            <version>4.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${finalName}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <manifestLocation>META-INF</manifestLocation>
+                        <Bundle-Version>${mfp.worklight.studio.version}.${mfp.build.version}
+                        </Bundle-Version>
+                        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}
+                        </Bundle-SymbolicName>
+                        <Export-Package>
+                            com.worklight.*;version="${mfp.worklight.studio.version}"
+                        </Export-Package>
+                        <Require-Bundle>
+                            com.worklight.worklight-3rd-parties;bundle-version="${mfp.worklight.studio.version}",
+                            org.apache.httpcomponents.httpcore;bundle-version="4.1.2",
+                            org.apache.commons.lang;bundle-version="2.1.0",
+                            org.apache.commons.codec;bundle-version="1.5.0",
+                            org.junit
+                        </Require-Bundle>
+                        <Import-Package>
+                            !android.*,
+                            !org.apache.cordova.*,
+                            !net.sqlcipher.database.*,
+                            !com.google.android.gcm.*,
+                            !org.json.*,
+                            !com.tl.uic.*,
+                            !com.loopj.*,
+                            !org.bouncycastle.asn1.*,
+                            !org.bouncycastle.jce.*,
+                            *
+                        </Import-Package>
+                        <Bundle-RequiredExecutionEnvironment>JavaSE-1.6
+                        </Bundle-RequiredExecutionEnvironment>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>api-doc</id>
+            <properties>
+                <parent.basedir>${basedir}/..</parent.basedir>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.ibm.mobile</groupId>
+                    <artifactId>ibmjavadoc</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.ibm.mobile</groupId>
+                    <artifactId>TOCNavDoclet</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.ibm.mobile</groupId>
+                    <artifactId>ExcludeDoclet</artifactId>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy ibmjavadoc.jar to target</id>
+                                <phase>process-sources</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>com.ibm.mobile</groupId>
+                                            <artifactId>ibmjavadoc</artifactId>
+                                            <version>1.7.0</version>
+                                            <type>jar</type>
+                                            <outputDirectory>${project.build.directory}
+                                            </outputDirectory>
+                                            <destFileName>ibmjavadoc.jar</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy TOCNavDoclet.jar to target</id>
+                                <phase>process-sources</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>com.ibm.mobile</groupId>
+                                            <artifactId>TOCNavDoclet</artifactId>
+                                            <version>1.0</version>
+                                            <type>jar</type>
+                                            <outputDirectory>${project.build.directory}
+                                            </outputDirectory>
+                                            <destFileName>TOCNavDoclet.jar</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy ExcludeDoclet.jar to target</id>
+                                <phase>process-sources</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>com.ibm.mobile</groupId>
+                                            <artifactId>ExcludeDoclet</artifactId>
+                                            <version>1.0</version>
+                                            <type>jar</type>
+                                            <outputDirectory>${project.build.directory}
+                                            </outputDirectory>
+                                            <destFileName>ExcludeDoclet.jar</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>generate javadoc</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <taskdef resource="net/sf/antcontrib/antlib.xml">
+                                            <classpath>
+                                                <pathelement
+                                                    location="${basedir}/../buildtools/anttasks/ant-contrib-1.0b3.jar" />
+                                            </classpath>
+                                        </taskdef>
+
+                                        <!-- Set the correct jdk depending on the build type
+                                          worklight build will use ant jdk and release build will use IBM jdk. Set
+                                          an overview arg for release build only -->
+                                        <if>
+                                            <isset property="api.doc.wl" />
+                                            <then>
+                                                <property name="java.exec.path"
+                                                    value="${java.home}" />
+                                                <property name="extra.arg.name" value="-version" />
+                                                <property name="extra.arg.value" value="-version" />
+                                            </then>
+                                            <else>
+                                                <property name="java.exec.path"
+                                                    value="${ibm.jdk.path}" />
+                                                <property name="extra.arg.name" value="-overview" />
+                                                <property name="extra.arg.value"
+                                                    value="${javadoc.resources}/overview.html" />
+                                            </else>
+                                        </if>
+
+                                        <!-- Create a temp source directory containing only source
+                                          to be documented -->
+                                        <mkdir dir="${project.build.directory}/src" />
+                                        <copy todir="${project.build.directory}/src">
+                                            <fileset dir="${project.build.sourceDirectory}">
+                                                <include name="com/worklight/common/Logger.java" />
+                                                <include
+                                                    name="com/worklight/common/WLSimpleDataSharing.java" />
+                                                <include
+                                                    name="com/worklight/common/WLAnalytics.java" />
+                                                <include
+                                                    name="com/worklight/common/WLTrusteer.java" />
+                                                <include name="com/worklight/wlclient/api/*" />
+                                                <include
+                                                    name="com/worklight/wlclient/api/challengehandler/*" />
+                                                <include name="com/worklight/wlclient/ui/*" />
+                                                <include name="com/worklight/location/api/**/*" />
+                                                <include name="com/worklight/jsonstore/api/**/*" />
+                                                <include
+                                                    name="com/worklight/location/internal/**/*" />
+                                                <!-- copy over internal so inheritDoc tag will work properly -->
+                                                <exclude
+                                                    name="**/BaseProvisioningChallengeHandler.java" />
+                                                <exclude
+                                                    name="**/BaseDeviceAuthChallengeHandler.java" />
+                                                <exclude name="**/WLConstants.java" />
+                                                <exclude name="**/WLCookieExtractor.java" />
+                                            </fileset>
+                                            <fileset
+                                                dir="${basedir}/../worklight-android-hybrid/src/main/java">
+                                                <include
+                                                    name="com/worklight/androidgap/api/**.java" />
+                                            </fileset>
+                                        </copy>
+
+                                        <echo
+                                            message="${basedir}/../worklight-android-hybrid/src/main/java/com/worklight/androidgap/api/*" />
+
+                                        <!-- The ibmjavadoc.jar file is a stand-alone version
+                                          based on the javadoc tool in JDK7, with the following additional features:
+                                          * WCAG 2.0 accessibility compliance * WAI-ARIA Region enabled * Updates for
+                                          RPT ruleset 'CI162 v5.2 Plan DCP,03 August 2012 or later' It is the version
+                                          required to generate the javadocs of IBM products. -->
+
+                                        <echo>
+                                            <![CDATA[Invoking Javadoc with command:
+					<exec executable="${java.exec.path}/bin/java">
+					<arg value="-Xbootclasspath/p:${project.build.directory}/ibmjavadoc.jar"/>
+						<arg value="-Xms${javadoc.xms}" />
+					    <arg value="-Xmx${javadoc.xmx}" />
+					    <arg value="com.sun.tools.javadoc.Main"/>
+					    <arg value="-doclet"/>
+						<arg value="com.tonicsystems.doclet.ExcludeDoclet"/>
+    					<arg value="-docletpath"/>
+    					<arg value="${project.build.directory}/ExcludeDoclet.jar"/>
+					    <arg value="-encoding"/>
+					    <arg value="UTF-8"/>
+					    <arg value="-sourcepath"/>
+					    <arg value="${project.build.directory}/src"/>
+					    <arg value="-classpath"/>
+					    <arg value="${toString:maven.compile.classpath}"/>
+					    <arg value="-d"/>
+					    <arg value="${project.build.directory}/api-doc/plugin/topics"/>
+					    <arg value="-use"/>
+					    <arg value="-protected"/>
+					    <arg value="-splitindex"/>
+					    <arg value="-windowtitle"/>
+					    <arg value="${api.doc.title}"/>
+					    <arg value="-doctitle"/>
+					    <arg value="${api.doc.title}"/>
+					    <arg value="-bottom"/>
+					    <arg value="${api.doc.bottom}"/>
+					  	<arg value="${extra.arg.name}"/>
+						<arg value="${extra.arg.value}"/>
+					    <arg value="com.worklight.common"/>
+					    <arg value="com.worklight.wlclient.api"/>
+						<arg value="com.worklight.wlclient.ui"/>
+						<arg value="com.worklight.wlclient.api.challengehandler"/>
+						<arg value="com.worklight.location.api"/>
+						<arg value="com.worklight.location.api.geo"/>
+						<arg value="com.worklight.location.api.geo.triggers"/>
+						<arg value="com.worklight.location.api.wifi"/>
+						<arg value="com.worklight.location.api.wifi.triggers"/>
+						<arg value="com.worklight.jsonstore.api"/>
+						<arg value="com.worklight.jsonstore.api.options"/>
+						<arg value="com.worklight.androidgap.api"/>
+					</exec> ]]>
+                                        </echo>
+
+                                        <exec executable="${java.exec.path}/bin/java">
+                                            <arg
+                                                value="-Xbootclasspath/p:${project.build.directory}/ibmjavadoc.jar" />
+                                            <arg value="-Xms${javadoc.xms}" />
+                                            <arg value="-Xmx${javadoc.xmx}" />
+                                            <arg value="com.sun.tools.javadoc.Main" />
+                                            <arg value="-doclet" />
+                                            <arg value="com.tonicsystems.doclet.ExcludeDoclet" />
+                                            <arg value="-docletpath" />
+                                            <arg
+                                                value="${project.build.directory}/ExcludeDoclet.jar" />
+                                            <arg value="-encoding" />
+                                            <arg value="UTF-8" />
+                                            <arg value="-sourcepath" />
+                                            <arg value="${project.build.directory}/src" />
+                                            <arg value="-classpath" />
+                                            <arg value="${toString:maven.compile.classpath}" />
+                                            <arg value="-d" />
+                                            <arg
+                                                value="${project.build.directory}/api-doc/plugin/topics" />
+                                            <arg value="-use" />
+                                            <arg value="-protected" />
+                                            <arg value="-splitindex" />
+                                            <arg value="-windowtitle" />
+                                            <arg value="${api.doc.title}" />
+                                            <arg value="-doctitle" />
+                                            <arg value="${api.doc.title}" />
+                                            <arg value="-bottom" />
+                                            <arg value="${api.doc.bottom}" />
+                                            <arg value="${extra.arg.name}" />
+                                            <arg value="${extra.arg.value}" />
+                                            <arg value="com.worklight.common" />
+                                            <arg value="com.worklight.wlclient.api" />
+                                            <arg value="com.worklight.wlclient.ui" />
+                                            <arg
+                                                value="com.worklight.wlclient.api.challengehandler" />
+                                            <arg value="com.worklight.location.api" />
+                                            <arg value="com.worklight.location.api.geo" />
+                                            <arg value="com.worklight.location.api.geo.triggers" />
+                                            <arg value="com.worklight.location.api.wifi" />
+                                            <arg value="com.worklight.location.api.wifi.triggers" />
+                                            <arg value="com.worklight.jsonstore.api" />
+                                            <arg value="com.worklight.jsonstore.api.options" />
+                                            <arg value="com.worklight.androidgap.api" />
+                                        </exec>
+
+                                        <!-- Run IBM JavaTOC Doclet to create the Eclipse TOC -->
+                                        <javadoc destdir="${project.build.directory}/api-doc/plugin"
+                                            sourcepath="${project.build.directory}/src"
+                                            classpathref="maven.compile.classpath" public="true"
+                                            packagenames="com.worklight.common,com.worklight.wlclient.api,com.worklight.wlclient.ui,com.worklight.wlclient.api.challengehandler,com.worklight.location.api,com.worklight.location.api.geo,com.worklight.location.api.geo.triggers,com.worklight.location.api.wifi,com.worklight.location.api.wifi.triggers,com.worklight.jsonstore.api,com.worklight.jsonstore.api.options,com.worklight.androidgap.api">
+                                            <doclet name="com.ibm.malup.doclet.config.TOCDoclet"
+                                                path="${project.build.directory}/TOCNavDoclet.jar">
+                                                <param name="-d"
+                                                    value="${project.build.directory}/api-doc/plugin" />
+                                                <param name="-plugintitle"
+                                                    value="${api.doc.title}" />
+                                                <param name="-pluginid"
+                                                    value="${project.artifactId}" />
+                                                <param name="-version" value="1.0.0" />
+                                                <param name="-provider" value="IBM" />
+                                                <param name="-notree" />
+                                            </doclet>
+                                        </javadoc>
+
+                                        <!-- Rename Eclipse TOC to match IC requirements -->
+                                        <move
+                                            file="${project.build.directory}/api-doc/plugin/${project.artifactId}.toc.xml"
+                                            tofile="${project.build.directory}/refjava-${project.artifactId}.xml" />
+
+                                        <replace
+                                            file="${project.build.directory}/refjava-${project.artifactId}.xml"
+                                            token="topics/"
+                                            value="html/refjava-${project.artifactId}/html/" />
+                                        <!-- Add sort parameter for package classes -->
+                                        <replace
+                                            file="${project.build.directory}/refjava-${project.artifactId}.xml"
+                                            token='topic label="com'
+                                            value='topic sort="true" label="com' />
+                                        <replace
+                                            file="${project.build.directory}/refjava-${project.artifactId}.xml"
+                                            token="&lt;topic label=&quot;JSONStoreQueryPartItem&quot; href=&quot;html/refjava-worklight-android-native/html/com/worklight/jsonstore/api/JSONStoreQueryPartItem.html&quot;/&gt;"
+                                            value="" />
+
+                                        <!-- Create a ZIP with the apidoc and the xml TOC for
+                                          IC integration -->
+                                        <zip destfile="${project.build.directory}/api-doc.zip">
+                                            <zipfileset
+                                                dir="${project.build.directory}/api-doc/plugin/topics"
+                                                prefix="html/refjava-${project.artifactId}/html/" />
+                                            <zipfileset dir="${project.build.directory}"
+                                                includes="refjava-${project.artifactId}.xml"
+                                                prefix="toc/" />
+                                        </zip>
+
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>add-doc</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>attach-artifact</goal>
+                                </goals>
+                                <configuration>
+                                    <artifacts>
+                                        <artifact>
+                                            <file>${project.build.directory}/api-doc.zip</file>
+                                            <type>zip</type>
+                                            <classifier>apidoc</classifier>
+                                        </artifact>
+                                    </artifacts>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

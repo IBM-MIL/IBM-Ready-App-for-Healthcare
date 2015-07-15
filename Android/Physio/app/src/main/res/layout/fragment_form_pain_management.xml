@@ -1,0 +1,137 @@
+<!-- Licensed Materials - Property of IBM
+ © Copyright IBM Corporation 2014, 2015. All Rights Reserved.
+-->
+<!-- This layout only exists to defeat an Android API bug where a layout customized
+    at run-time breaks when an EditText widget becomes visible. The only difference
+     between this layout file and fragment_pain_management.xml is that certain background
+     drawables are blue instead of red. -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ibm.mil.readyapps.physio.fragments.PainManagementFragment">
+
+    <TextView
+        android:id="@+id/pain_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ready_blue"
+        android:gravity="center"
+        android:padding="25dp"
+        android:text="@string/pain_main_title"
+        android:textColor="@android:color/white"
+        android:textSize="21sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:paddingBottom="25dp"
+        android:paddingTop="25dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <antistatic.spinnerwheel.WheelHorizontalView
+                android:id="@+id/pain_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:id="@+id/pain_circle_number"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/pain_circle_blue"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="50sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/min_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="2dp"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/min_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="8dp"
+                android:text="@string/min"
+                android:textAllCaps="true"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/max_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="2dp"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/max_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/max"
+                android:textAllCaps="true"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/pain_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e6e6e3"
+        android:gravity="center_vertical"
+        android:paddingBottom="6dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="6dp"
+        android:text="@string/description_label"
+        android:textColor="@color/ready_dark_gray"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/enter_pain_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:ellipsize="end"
+        android:gravity="left|top"
+        android:hint="@string/description_hint"
+        android:padding="20dp"
+        android:singleLine="false"
+        android:textColor="@color/ready_dark_gray"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/pain_submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ready_blue"
+        android:padding="25dp"
+        android:text="@string/submit_label"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+</LinearLayout>

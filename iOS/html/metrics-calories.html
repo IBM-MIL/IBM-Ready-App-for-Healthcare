@@ -1,0 +1,78 @@
+<!--
+    Licensed Materials - Property of IBM
+    © Copyright IBM Corporation 2014. All Rights Reserved.
+    This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+    payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+    run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+    of such an application, in customer's own products.
+-->
+
+<div class="metrics-calories_container">
+    
+    <!-- Scope base div -->
+    <div id="scope" class="foobar"></div>
+
+    <div class="metrics-calories_tab-container">
+        <div class="metrics-calories_tab" ng-click="tabClicked('day')" ng-class="{'selected': selectedTab == 48}" translate="_day_tab_metrics_">
+        </div>
+        <div class="metrics-calories_tab" ng-click="tabClicked('week')" ng-class="{'selected': selectedTab == 14}" translate="_week_tab_metrics_">
+        </div>
+        <div class="metrics-calories_tab" ng-click="tabClicked('month')" ng-class="{'selected': selectedTab == 8}" translate="_month_tab_metrics_">
+        </div>
+        <div class="metrics-calories_tab" ng-click="tabClicked('year')" ng-class="{'selected': selectedTab == 24}" translate="_year_tab_metrics_">
+        </div>
+    </div>
+    
+    <div class="metrics-calories_current">
+        <div class="metrics-calories_title" translate="_calories_metrics_">
+        </div>
+        <div class="metrics-calories_time">
+            {{unit}} <span>{{currTimeFrame}}</span>
+        </div>
+        <div class="metrics-calories_performance">
+            
+            <span class="performance">{{currPerformance}}</span>
+            <div class="metrics-calories_units">
+                <img src="greycalorie_large.png" />
+                <span class="units">{{measurementUnit}}</span>
+            </div>
+
+        </div>
+        
+        <div class="metrics-calories_divider"></div>
+        
+        <div class="metrics-calories_goal">
+            <span translate="_goal_detailed_metrics_"></span> <span class="metrics-calories_goal-value">{{currGoal}} {{measurementUnit}}</span>
+        </div>
+        
+    </div>
+    
+    <div class="metrics-calories_graph-container" ng-switch="displayType">
+        
+        <time-graph class="metrics-calories_time-graph" transform="transformData" datalength="{{dataLength}}"></time-graph>
+        
+        <div class="metrics-calories_data-container">
+            
+            <div class="metrics_graph-triangle-container">
+                <div class="metrics_graph-triangle"></div>
+            </div>
+            <div class="metrics_graph-center-line"></div>
+
+            <!-- Single bar graph -->
+            <div ng-switch-when="0" class="metrics-calories_graph">
+                <bar-graph consume="nom()" transform="transformData" unit="{{measurementUnit}}"></bar-graph>
+            </div>
+
+            <!-- Single line graph -->
+            <div ng-switch-when="1" class="metrics-calories_graph">    
+                <line-graph consume="nom()" transform="transformData" unit="{{measurementUnit}}"></line-graph>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <div class="metrics-calories_back" ng-click="viewAllClicked()" translate="_view_all_detailed_metrics_">
+    </div>
+
+</div>

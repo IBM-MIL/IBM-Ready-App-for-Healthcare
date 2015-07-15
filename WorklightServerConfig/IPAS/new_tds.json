@@ -1,0 +1,68 @@
+{
+    "layers_nodes": "Worklight TDS",
+    "model_nodes": {
+        "groups": {},
+        "attributes": {
+            "LDIF_FILE": "artifacts/ldap-counter.ldif",
+            "GROUP_FILTER": "(|(objectclass=groupOfNames)(objectclass=groupOfUniqueNames))",
+            "USER_FILTER": "(objectclass=ePerson)",
+            "TDS_BASE_DN": "o=acme,c=us"
+        },
+        "type": "TDS",
+        "id": "Worklight TDS"
+    },
+    "model_links": [
+        {
+            "target": "Worklight TDS",
+            "groups": {},
+            "attributes": {
+                "xLDAP_ROLE_USER_MAPPING": "",
+                "xLDAP_ROLE_GROUP_MAPPING": "",
+                "xLDAP_ROLE_MAPPING": "worklightadmin",
+                "xLDAP_SPECIAL_SUBJECTS_MAPPING": "AllAuthenticatedUsers"
+            },
+            "type": "WASxLDAP",
+            "source": "Worklight Server",
+            "id": "WASxLDAP_1"
+        },
+        {
+            "target": "Worklight TDS",
+            "groups": {},
+            "attributes": {
+                "xLDAP_ROLE_USER_MAPPING": "",
+                "xLDAP_ROLE_GROUP_MAPPING": "",
+                "xLDAP_ROLE_MAPPING": "worklightdeployer",
+                "xLDAP_SPECIAL_SUBJECTS_MAPPING": "AllAuthenticatedUsers"
+            },
+            "type": "WASxLDAP",
+            "source": "Worklight Server",
+            "id": "WASxLDAP_2"
+        },
+        {
+            "target": "Worklight TDS",
+            "groups": {},
+            "attributes": {
+                "xLDAP_ROLE_USER_MAPPING": "",
+                "xLDAP_ROLE_GROUP_MAPPING": "",
+                "xLDAP_ROLE_MAPPING": "worklightmonitor",
+                "xLDAP_SPECIAL_SUBJECTS_MAPPING": "AllAuthenticatedUsers"
+            },
+            "type": "WASxLDAP",
+            "source": "Worklight Server",
+            "id": "WASxLDAP_3"
+        },
+        {
+            "target": "Worklight TDS",
+            "groups": {},
+            "attributes": {
+                "xLDAP_ROLE_USER_MAPPING": "",
+                "xLDAP_ROLE_GROUP_MAPPING": "",
+                "xLDAP_ROLE_MAPPING": "worklightoperator",
+                "xLDAP_SPECIAL_SUBJECTS_MAPPING": "AllAuthenticatedUsers"
+            },
+            "type": "WASxLDAP",
+            "source": "Worklight Server",
+            "id": "WASxLDAP_4"
+        }
+    ]
+}

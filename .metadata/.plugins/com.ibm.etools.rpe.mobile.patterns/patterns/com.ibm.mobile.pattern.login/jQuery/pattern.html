@@ -1,0 +1,104 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<style type="text/css" pattern.discardNode="true">
+.multipleViewsRibbon {
+	position: fixed;
+	left: 0px;
+	bottom: 15px;
+
+padding: 9px 7px 0px 7px;
+
+	height:40px;
+	width:80px;
+	
+	color: white;
+	text-align: center;
+	vertical-align:middle;
+	text-shadow: 0em 0.2em 0.2em black;
+	font-size: 12px;
+	
+	border-top: 3px solid white;
+	border-right: 3px solid white;
+	border-bottom: 3px solid white;
+	
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	
+	background: #00CC33;
+	background: -moz-linear-gradient(left,  #00CC33 0%, #006633 0%, #00bb55 40%, #00bb55 60%, #006633 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00CC33), color-stop(0%,#006633), color-stop(40%,#00bb55), color-stop(60%,#00bb55), color-stop(100%,#006633));
+	background: -webkit-linear-gradient(left,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	background: -o-linear-gradient(left,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	background: -ms-linear-gradient(left,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	background: linear-gradient(to right,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#006633',GradientType=1 );
+	
+	box-shadow: 0px 2px 2px 2px #555;
+	
+	z-index: 1998;
+}
+</style>
+
+<div class="multipleViewsRibbon" pattern.discardNode="true">
+	<div>Includes multiple views</div>
+</div>
+
+<div data-role="page" id="login" pattern.rootElement="true">
+	<div data-role="content" style="padding: 15px">
+		<form id="login" action="">
+			<label for="login_email">e-mail address: </label>
+			<input type="text" name="login_email" id="login_email">
+			
+			<label for="login_password">Password:</label>
+			<input type="password" name="login_password" id="login_password">
+			
+			<button type="submit" data-role="button" data-theme="b">Login</button>
+		</form>
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="#$1" data-role="button" data-mini="true">Forgot password</a>
+			</div>
+			<div class="ui-block-b">
+				<a href="#$2" data-role="button" data-mini="true">Create account</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="$1" pattern.preferredId="reset_password">
+	<div data-role="content" style="padding: 15px">
+		<form id="login" action="">
+			<label for="login_email">e-mail address: </label>
+			<input type="text" name="login_email" id="login_email">		
+			<button type="submit" data-role="button" data-theme="b">Reset Password</button>
+		</form>
+	</div>
+</div>
+<div data-role="page" id="$2" pattern.preferredId="register">
+	<div data-role="content">
+		<form id="form" action="">
+			<label for="register_email">e-mail address: </label>
+			<input type="text" name="register_email" id="register_email">
+			
+			<label for="register_first_name">First name:  </label>
+			<input type="text" name="register_first_name" id="register_first_name">
+			
+			<label for="register_last_name">Last name:  </label>
+			<input type="text" name="register_last_name" id="register_last_name">
+			
+			<label for="register_password">Password:</label>
+			<input type="password" name="register_password" id="register_password">
+			
+			<label for="register_repeat_password">Repeat password:</label>
+			<input type="password" name="register_repeat_password" id="register_repeat_password">
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<button type="submit" data-role="button" data-theme="b">Register</button>
+				</div>
+				<div class="ui-block-b">
+					<button type="reset" data-role="button">Cancel</button>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>

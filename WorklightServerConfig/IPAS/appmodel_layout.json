@@ -1,0 +1,56 @@
+{
+   "tooling": {
+      "nodes": [
+         {
+            "ismini": false,
+            "location": {
+               "x": "335px",
+               "y": "219px"
+            },
+            "id": "Worklight Server"
+         },
+         {
+            "ismini": false,
+            "location": {
+               "x": "322px",
+               "y": "35px"
+            },
+            "id": "Worklight Configuration"
+         },
+         {
+            "ismini": false,
+            "location": {
+               "x": "600px",
+               "y": "220px"
+            },
+            "id": "Worklight Runtime DB"
+         },
+         {
+            "ismini": false,
+            "location": {
+               "x": "609px",
+               "y": "395px"
+            },
+            "id": "Worklight Reports DB"
+         },
+         {
+            "ismini": false,
+            "location": {
+               "x": "606px",
+               "y": "44px"
+            },
+            "id": "Worklight Admin DB"
+         },
+         {
+            "ismini": false,
+            "location": {
+               "x": "343px",
+               "y": "453px"
+            },
+            "id": "Worklight TDS"
+         }
+      ],
+      "links": [
+      ]
+   }
+}

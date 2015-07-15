@@ -1,0 +1,66 @@
+version: 1
+dn: o=acme,c=us
+objectclass: organization
+objectclass: top
+o: ACME
+
+dn: cn=demo,o=acme,c=us
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+objectclass: ePerson
+cn: demo
+userpassword: demo
+initials: demo
+sn: demo
+uid: demo
+
+dn: cn=monitor,o=acme,c=us
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+objectclass: ePerson
+cn: monitor
+userpassword: demo
+initials: monitor
+sn: monitor
+uid: monitor
+
+dn: cn=deployer,o=acme,c=us
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+objectclass: ePerson
+cn: deployer
+userpassword: demo
+initials: deployer
+sn: deployer
+uid: deployer
+
+dn: cn=operator,o=acme,c=us
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+objectclass: ePerson
+cn: operator
+userpassword: demo
+initials: operator
+sn: operator
+uid: operator
+
+dn: cn=admin,o=acme,c=us
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+objectclass: ePerson
+cn: admin
+userpassword: admin
+initials: admin
+sn: admin
+uid: admin
+

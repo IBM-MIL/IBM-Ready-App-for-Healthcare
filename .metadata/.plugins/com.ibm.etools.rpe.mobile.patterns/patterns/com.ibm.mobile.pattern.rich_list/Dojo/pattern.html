@@ -1,0 +1,89 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojox/mobile/parser", "dojox/mobile/compat" ]);
+</script>
+
+<script type="text/javascript">
+require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView", "dojox/mobile/EdgeToEdgeList", "dojox/mobile/ListItem" /*END_DEPENDENCIES*/ ]);
+</script>
+
+<style type="text/css" pattern.discardNode="true">
+.dojoRibbon {
+	position: fixed;
+	right: 0px;
+	bottom: 15px;
+	
+	padding: 6px 7px 3px 7px;
+
+	height:40px;
+	width:80px;
+	
+	color: white;
+	text-align: center;
+	vertical-align:middle;
+	text-shadow: 0em 0.2em 0.2em black;
+	font-size: 12pt;
+	
+	border-top: 3px solid white;
+	border-left: 3px solid white;
+	border-bottom: 3px solid white;
+	
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	
+	background: #1e5799;
+	background: -moz-linear-gradient(left,  #1e5799 0%, #19195f 0%, #4f4fbf 40%, #4f4fbf 60%, #19195f 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#1e5799), color-stop(0%,#19195f), color-stop(40%,#4f4fbf), color-stop(60%,#4f4fbf), color-stop(100%,#19195f));
+	background: -webkit-linear-gradient(left,  #1e5799 0%,#19195f 0%,#4f4fbf 40%,#4f4fbf 60%,#19195f 100%);
+	background: -o-linear-gradient(left,  #1e5799 0%,#19195f 0%,#4f4fbf 40%,#4f4fbf 60%,#19195f 100%);
+	background: -ms-linear-gradient(left,  #1e5799 0%,#19195f 0%,#4f4fbf 40%,#4f4fbf 60%,#19195f 100%);
+	background: linear-gradient(to right,  #1e5799 0%,#19195f 0%,#4f4fbf 40%,#4f4fbf 60%,#19195f 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#19195f',GradientType=1 );
+	
+	box-shadow: 0px 2px 2px 2px #555;
+	
+	z-index: 9998;
+}
+
+.dojoRibbon .requires {
+	font-size: 10pt;
+}
+</style>
+
+<div class="dojoRibbon" pattern.discardNode="true">
+	<div class="requires">Requires</div>
+	Dojo1.8+
+</div>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="rich_list"
+	pattern.rootElement="true">
+	<div data-dojo-type="dojox.mobile.EdgeToEdgeList"
+		data-dojo-props="variableHeight:true">
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="moveTo:'#'" icon="">
+			Item 1
+			<div style="font-size: small; color: gray">Item description</div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="moveTo:'#'" icon="">
+			Item 2
+			<div style="font-size: small; color: gray">Item description</div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="moveTo:'#'" icon="">
+			Item 3
+			<div style="font-size: small; color: gray">Item description</div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="moveTo:'#'" icon="">
+			Item 4
+			<div style="font-size: small; color: gray">Item description</div>
+		</div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="moveTo:'#'" icon="">
+			Item 5
+			<div style="font-size: small; color: gray">Item description</div>
+		</div>
+	</div>
+</div>

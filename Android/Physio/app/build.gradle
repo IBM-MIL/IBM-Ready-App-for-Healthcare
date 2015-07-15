@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    signingConfigs {
+        config {
+            keyAlias 'Physio'
+            keyPassword 'ibmmil'
+            storeFile file('physio.keystore')
+            storePassword 'ibmmil'
+        }
+    }
+    defaultConfig {
+        applicationId "com.ibm.mil.readyapps.physio"
+        minSdkVersion 16
+        targetSdkVersion 19
+        versionCode 3
+        versionName "1.0.2"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':ReadyAppsLibrary')
+    compile 'com.android.support:appcompat-v7:21.0.0'
+    compile 'com.android.support:support-v4:21.0.0'
+    compile 'com.google.android.gms:play-services:6.1.11'
+    compile 'org.json:json:20141113'
+    compile files('src/main/assets/WorkLight/worklight-android.jar')
+    compile files('src/main/assets/WorkLight/uicandroid.jar')
+    compile files('src/main/assets/WorkLight/bcprov.jar')
+    compile files('src/main/assets/WorkLight/android-async-http.jar')
+    compile files('src/main/assets/WorkLight/gcm.jar')
+    compile 'io.realm:realm-android:0.76.0'
+    compile project(':Spinnerwheel')
+}

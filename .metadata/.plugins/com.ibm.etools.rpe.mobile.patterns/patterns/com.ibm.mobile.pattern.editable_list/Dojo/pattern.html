@@ -1,0 +1,60 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojo", "dojo/_base/connect", "dijit/registry", "dojox/mobile/parser", "dojox/mobile/compat" ],
+	// TODO: Really need a way to add this JS that needs to be in the require's callback
+	// method. Or find a way to insert it there.
+	function(dojo, connect, registry) {
+		var editable_list, startEditButton, stopEditButton, addItemButton;
+		connect.subscribe("/dojox/mobile/deleteListItem", function(item) {
+			setTimeout(function(){
+	    		item.destroy();
+	  		}, 0);
+		});
+		startEdit = function() {
+			editable_list.startEdit();
+			addItemButton.set ("style", "display:none");
+			startEditButton.set ("style", "display:none");
+			stopEditButton.set ("style", "display:inline; float:right");
+		}
+		
+		stopEdit = function() {
+			editable_list.endEdit();
+			addItemButton.set ("style", "display:inline");
+			startEditButton.set ("style", "display:inline; float:right");
+			stopEditButton.set ("style", "display:none");
+		}
+		
+		addItem = function() {
+			var newListItem = new dojox.mobile.ListItem({label:"Item X"});
+	        editable_list.addChild(newListItem);
+		}
+	
+		dojo.ready(function() {
+			editable_list = registry.byId('$1');
+			startEditButton = registry.byId("startEditButton");
+			stopEditButton = registry.byId("stopEditButton");
+			addItemButton = registry.byId("addItemButton");
+		});
+	}
+);
+</script>
+
+<script type="text/javascript">
+require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView", "dojox/mobile/Heading", "dojox/mobile/ToolBarButton", "dojox/mobile/EdgeToEdgeList", "dojox/mobile/ListItem" /*END_DEPENDENCIES*/]);
+</script>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="editable_list_pattern" pattern.rootElement="true">
+	<div data-dojo-type="dojox.mobile.Heading"
+		data-dojo-props="label:'Editable List'">
+		<button id="addItemButton" data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props='icon:"mblDomButtonWhitePlus"' onclick="addItem();"></button>
+		<button id="startEditButton" data-dojo-type="dojox.mobile.ToolBarButton" style="float:right;" onclick="startEdit();" data-dojo-props="label:'Edit'"></button>
+		<button id="stopEditButton" data-dojo-type="dojox.mobile.ToolBarButton" style="float:right; display:none;" onclick="stopEdit();">Done</button>
+	</div>
+	<div id="$1" pattern.preferredId="editable_list" data-dojo-type="dojox.mobile.EdgeToEdgeList">
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Item 1'"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Item 2'"></div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+-Dfile.encoding=UTF-8
+-Duser.language=en
+-Duser.country=US
+-Djava.awt.headless=true
+-Dwas.debug.mode=true
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=10777
+-Dcom.ibm.websphere.ras.inject.at.transform=true
+-Dibm.worklight.admin.db.type=DERBY
+-Xmx1024m
+
+-DwlDevEnv.enableCreateTables=true
+-Djmx.remote.x.client.connection.check.period=0
+
+-DwlSyncStart=false

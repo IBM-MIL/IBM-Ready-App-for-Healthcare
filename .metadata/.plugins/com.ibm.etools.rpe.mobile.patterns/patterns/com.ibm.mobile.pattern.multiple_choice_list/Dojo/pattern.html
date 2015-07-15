@@ -1,0 +1,24 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojox/mobile/parser", "dojox/mobile/compat" ]);
+</script>
+
+<script type="text/javascript">
+require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView", "dojox/mobile/EdgeToEdgeList", "dojox/mobile/ListItem" /*END_DEPENDENCIES*/ ]);
+</script>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="multiple_choice_list" pattern.rootElement="true">
+	<div data-dojo-type="dojox.mobile.EdgeToEdgeList" data-dojo-props='select:"multiple"'>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Item 1',checked:true"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Item 2'"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Item 3',checked:true"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Item 4'"></div>
+		<div data-dojo-type="dojox.mobile.ListItem"
+			data-dojo-props="label:'Item 5'"></div>
+	</div>
+</div>

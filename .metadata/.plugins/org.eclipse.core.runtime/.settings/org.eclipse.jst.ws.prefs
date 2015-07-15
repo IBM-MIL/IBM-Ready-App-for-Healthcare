@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+webServiceTestTypes=com.ibm.ccl.ws.jaxws.gstc.ui.WebServiceSampleTest,org.eclipse.jst.ws.internal.consumption.ui.widgets.test.WebServiceSampleTest,org.eclipse.jst.ws.internal.consumption.ui.widgets.test.explorer.WebServiceExplorer,com.ibm.ast.ws.gsc.internal.GSCTester,com.ibm.etools.webservice.was.consumption.ui.utc.WASUTCTest

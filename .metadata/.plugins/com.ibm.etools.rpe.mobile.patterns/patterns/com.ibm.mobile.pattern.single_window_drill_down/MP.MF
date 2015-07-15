@@ -1,0 +1,5 @@
+id: com.ibm.mobile.pattern.single_window_drill_down
+name: %NAME
+description: %DESCRIPTION
+vendor: %VENDOR
+version: 1.0

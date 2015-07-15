@@ -1,0 +1,39 @@
+<!--
+    Licensed Materials - Property of IBM
+    © Copyright IBM Corporation 2014. All Rights Reserved.
+    This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+    payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+    run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+    of such an application, in customer's own products.
+-->
+
+<div id="a" class="dshbrd_container">
+    
+    <!-- Scope base div -->
+    <div id="scope" class="foobar"></div>
+    
+    <div class="dshbrd_container-content">
+        <div class="dshbrd_date">
+            {{date}}
+        </div>
+        <div class="dshbrd_column-container">
+            <div class="dshbrd_column">
+                <div class="dshbrd_column-value">{{minutes}}</div>
+                <div class="dshbrd_column-dimen" translate="_minutes_dashboard_"></div>
+            </div>
+            <div class="dshbrd_column">
+                <div class="dshbrd_column-value">{{exercises}}</div>
+                <div class="dshbrd_column-dimen" translate="_exercises_dashboard_"></div>
+            </div>
+            <div class="dshbrd_column">
+                <div class="dshbrd_column-value">{{sessions}}</div>
+                <div class="dshbrd_column-dimen" translate="_sessions_dashboard_"></div>
+            </div>
+        </div>
+        
+        <div class="dshbrd_getstarted" ng-click="switchRoute('/NativeView/vid_library', false);" translate="_get_started_dashboard_">
+            Get started!
+        </div>
+    </div>
+
+</div>

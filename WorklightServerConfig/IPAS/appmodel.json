@@ -1,0 +1,174 @@
+{
+   "layers": [
+      {
+         "nodes": [
+            "Worklight Server",
+            "Worklight Configuration",
+            "Worklight Runtime DB",
+            "Worklight Reports DB",
+			"Worklight Admin DB"
+         ],
+         "id": "layer"
+      }
+   ],
+   "model": {
+      "nodes": [
+         {
+            "groups": {
+            },
+            "attributes": {
+               "clientInactivityTimeout": 60,
+               "archive": "artifacts\/worklight-vApp.ear",
+               "asyncResponseTimeout": 120,
+               "propogatedOrBMTTranLifetimeTimeout": 300,
+               "totalTranLifetimeTimeout": 120,
+               "ignoreFailedIfix": true
+            },
+            "type": "EAR",
+            "id": "Worklight Server"
+         },
+         {
+            "groups": {
+            },
+            "attributes": {
+               "console_protection": false,
+               "console_password": "<xor>OzoyMA==",
+               "console_username": "demo"
+            },
+            "type": "configuration",
+            "id": "Worklight Configuration"
+         },
+         {
+            "groups": {
+               "cloneApproach": false,
+               "workloadStandardApproach": true,
+               "advancedOptions": false,
+               "defaultWorkloadStandardApproach": false
+            },
+            "attributes": {
+               "cusVersionName": "V105Linux",
+               "workloadStandard": "departmental_OLTP",
+               "cusWorkloadStandard": "ffffffff-1111-2222-3333-000000000000",
+               "cusFixpackName": "db2_hybrid_en-10.5.0.1-linuxx64-20130902_tsamp.tgz",
+               "dbname": "WLRTIME",
+               "fixpackName": "db2_hybrid_en-9.7.0.8-linuxx64-20130401.tgz",
+               "cusHADRenable": false,
+               "cusDbDiskSize": 30,
+               "purpose": "production"
+            },
+            "type": "DB2",
+            "id": "Worklight Runtime DB"
+         },
+         {
+            "groups": {
+               "cloneApproach": false,
+               "workloadStandardApproach": true,
+               "advancedOptions": false,
+               "defaultWorkloadStandardApproach": false
+            },
+            "attributes": {
+               "cusVersionName": "V105Linux",
+               "workloadStandard": "departmental_OLTP",
+               "cusWorkloadStandard": "ffffffff-1111-2222-3333-000000000000",
+               "cusFixpackName": "db2_hybrid_en-10.5.0.1-linuxx64-20130902_tsamp.tgz",
+               "dbname": "WLRPTS",
+               "fixpackName": "db2_hybrid_en-9.7.0.8-linuxx64-20130401.tgz",
+               "cusHADRenable": false,
+               "cusDbDiskSize": 30,
+               "purpose": "production"
+            },
+            "type": "DB2",
+            "id": "Worklight Reports DB"
+         },
+         {
+            "groups": {
+               "cloneApproach": false,
+               "workloadStandardApproach": true,
+               "advancedOptions": false,
+               "defaultWorkloadStandardApproach": false
+            },
+            "attributes": {
+               "cusVersionName": "V105Linux",
+               "workloadStandard": "departmental_OLTP",
+               "cusWorkloadStandard": "ffffffff-1111-2222-3333-000000000000",
+               "cusFixpackName": "db2_hybrid_en-10.5.0.1-linuxx64-20130902_tsamp.tgz",
+               "dbname": "WLADM",
+               "fixpackName": "db2_hybrid_en-9.7.0.8-linuxx64-20130401.tgz",
+               "cusHADRenable": false,
+               "cusDbDiskSize": 30,
+               "purpose": "production"
+            },
+            "type": "DB2",
+            "id": "Worklight Admin DB"
+         }
+      ],
+      "app_type": "application",
+      "version": "6.2",
+      "links": [
+         {
+            "target": "Worklight Admin DB",
+            "groups": {
+            },
+            "attributes": {
+               "connectionTimeout": 180,
+               "transactionType": "Connection pool data source",
+               "nontransactional": true,
+               "resourceRefs": [
+                  "worklightadmin.war#jdbc/WorklightAdminDS"
+               ],
+               "maxConnectionPool": 50,
+               "jndiDataSource": "jdbc/WorklightAdminDS"
+            },
+            "type": "WASDB2",
+            "source": "Worklight Server",
+            "id": "WASDB2_1"
+         },
+         {
+            "target": "Worklight Runtime DB",
+            "groups": {
+            },
+            "attributes": {
+               "connectionTimeout": 180,
+               "transactionType": "Connection pool data source",
+               "nontransactional": true,
+               "resourceRefs": [
+               ],
+               "maxConnectionPool": 50,
+               "jndiDataSource": "jdbc/WorklightDS"
+            },
+            "type": "WASDB2",
+            "source": "Worklight Server",
+            "id": "WASDB2_2"
+         },
+         {
+            "target": "Worklight Reports DB",
+            "groups": {
+            },
+            "attributes": {
+               "connectionTimeout": 180,
+               "transactionType": "Connection pool data source",
+               "nontransactional": true,
+               "resourceRefs": [
+               ],
+               "maxConnectionPool": 50,
+               "jndiDataSource": "jdbc/WorklightReportsDS"
+            },
+            "type": "WASDB2",
+            "source": "Worklight Server",
+            "id": "WASDB2_3"
+         },
+         {
+            "target": "Worklight Configuration",
+            "attributes": {
+            },
+            "type": "WAS2WORKLIGHTLink",
+            "source": "Worklight Server",
+            "id": "WAS2WORKLIGHTLink_1"
+         }
+      ],
+      "locked": false,
+      "patterntype": "worklight.ptype",
+      "name": "Worklight 6.2 VAP",
+      "description": "IBM Mobile Application Platform Pattern"
+   }
+}

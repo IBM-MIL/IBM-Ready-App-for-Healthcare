@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Licensed Materials - Property of IBM
+ © Copyright IBM Corporation 2014, 2015. All Rights Reserved.
+-->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="75dp"
+    android:insetRight="25dp">
+
+    <shape android:shape="line">
+
+        <stroke
+            android:width="1px"
+            android:color="@color/ready_dark_gray" />
+
+        <size android:height="2dp" />
+
+    </shape>
+
+</inset>

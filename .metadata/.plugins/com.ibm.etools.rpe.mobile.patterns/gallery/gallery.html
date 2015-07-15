@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<title>Testing</title>
+<style type="text/css" media="screen" title="customStyle">
+.scaledPreview {
+	height: 480px;
+	width: 320px;
+	border-width: 2px;
+	transform: scale(1);
+	transform-origin: 0 0;
+	-ms-transform: scale(1);
+	-ms-transform-origin: 0 0;
+	-webkit-transform: scale(1);
+	-webkit-transform-origin: 0 0;
+	-moz-transform: scale(1);
+	-moz-transform-origin: 0 0;
+}
+
+.label {
+	position: relative;
+	width: 320px;
+	height: auto;
+	left: 0px;
+	top: 0px;
+	text-align: center;
+	font-size: 10pt;
+	font-weight: normal;
+	text-overflow:ellipsis;
+	padding-top: 5px;
+	cursor: default;	
+}
+
+.previewContainer {
+	/* height: 540px;
+	width: 360px; */
+	position: relative;
+	height: 551px;
+	width: 352px;
+	float: left;
+	overflow: hidden; /* Avoiding non-visible area to ocuppy space */
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+}
+
+.centeredDiv {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -250px 0 0 -160px;
+	font-size:0px;
+}
+
+.selectedSquare {
+	/* Uncomment for a solid square selection around
+		the preview frame */
+	/*
+	border-style: solid;
+	border-color: blue;
+	background: rgba(0, 0, 255, 0.1);
+	border-width: 3px;
+	*/
+	background-color: DarkBlue;
+}
+
+.unfocusedSelectedSquare {
+
+}
+
+.overlayDiv {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* z-index: 99; */
+	/* Had to set background color and opacity because otherwise the z-index
+       just didn't work on IE9 */
+	background-color:rgba(255, 255, 255, 0);
+}
+
+.disabledFrame
+{   
+    filter:alpha(opacity=60); /* IE */
+    opacity: 0.60; /* Safari, Opera */
+    -moz-opacity:0.60; /* FireFox */
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.nonSelectableContainer {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	user-select: none;
+}
+</style>
+<script type="text/javascript">
+	var height = 480;
+	var width = 320;
+	var scale = 1;
+	var currentSelection =  {};
+	var lastKeyHitElement = null;
+	var allowMultipleSelection = false;
+	var fontSize = 10;
+	var fontWeight = "normal";
+	var fontFamily = "Liberation Sans";
+	var selectionFontColor_Red = 255;
+	var selectionFontColor_Green = 255;
+	var selectionFontColor_Blue = 255;
+	var selectionBackgroundColor_Red = 134;
+	var selectionBackgroundColor_Green = 171;
+	var selectionBackgroundColor_Blue = 217;
+	
+	var unfocusedSelectionFontColor_Red = 0;
+	var unfocusedSelectionFontColor_Green = 0;
+	var unfocusedSelectionFontColor_Blue = 0;
+	var unfocusedSelectionBackgroundColor_Red = 237;
+	var unfocusedSelectionBackgroundColor_Green = 236;
+	var unfocusedSelectionBackgroundColor_Blue = 235;
+	
+	var INTERNAL_OVERLAY_DIV_ID = "__ibm__internal__overlay__div";
+	var isSafari = navigator.userAgent.indexOf("AppleWebKit") > -1;
+	
+	var selectionBorderWidth = 10;
+	var tempNumberOfPatternsCounter = 0;
+	var realPreviewWidth = width;
+	var realPreviewHeight = height;
+
+	function getStyleSheet(styleSheetName) {
+		for ( var i = 0; i < document.styleSheets.length; i++) {
+			var sheet = document.styleSheets[i];
+			if (sheet.title == styleSheetName) {
+				return sheet;
+			}
+		}
+	}
+	
+	function getLabelHeight () {
+		// Look for the first div having the "label" class, then
+		// calculate its client area height.
+		var labelStyle = "label";
+		var hasClassName = new RegExp("(?:^|\\s)" + labelStyle + "(?:$|\\s)");
+		var allDivs = document.getElementsByTagName("div");		
+		
+		// Need to find the "tallest" label, to make all possible frames
+		// to fit properly (not just the first one)
+		var maxHeight = 0;
+		
+		var div;
+		for (var i = 0; (div = allDivs[i]) != null; i++) {
+			var divClass = div.className;
+			if (divClass && divClass.indexOf(labelStyle) != -1 
+				&& hasClassName.test(divClass)) {
+				if (div.clientHeight > maxHeight) {
+					maxHeight = div.clientHeight; 
+				}
+			}
+		}
+		
+		return maxHeight;
+	}
+	
+	function getPreviewCount () {
+		// Look for all divs having the same style (let's say previewContainer)
+		var previewContainerStyle = "previewContainer";
+		var hasClassName = new RegExp("(?:^|\\s)" + previewContainerStyle + "(?:$|\\s)");
+		var allDivs = document.getElementsByTagName("div");
+		
+		var div;
+		var count = 0;
+		for (var i = 0; (div = allDivs[i]) != null; i++) {
+			var divClass = div.className;
+			if (divClass && divClass.indexOf(previewContainerStyle) != -1 
+				&& hasClassName.test(divClass))
+				count++;
+		}
+		
+		return count;
+	}
+	
+	function modifyStyleSheet(_scale) {
+		scale = _scale;
+		updateStyleSheet ();
+	}
+	
+
+	function updateStyleSheet() {
+		var styleSheet = getStyleSheet("customStyle");
+		// Delete all obsolete CSS rules, then add the new ones
+		for (var i = 0; i < 6; i++) {
+			if(styleSheet.cssRules != undefined) {
+				styleSheet.deleteRule (0);
+			} else {
+				// Use styleSheet.removeRule for IE8 and below
+				// styleSheet.removeRule (0);
+			}
+		}
+		
+		var ratio = 1 / scale;
+		
+		var frameBorderWidth = 2;
+		
+		if(styleSheet.cssRules != undefined) {
+			if (!isSafari) {
+				styleSheet.insertRule(
+					".scaledPreview { " +
+					"height: " + height + "px; " +
+					"width: " + width + "px; " + 
+					"border-width: " + frameBorderWidth + "px; " +
+					"transform: scale(" + scale + "); " +
+					"transform-origin: 0 0; " +
+					"-ms-transform: scale(" + scale + "); " +
+					"-ms-transform-origin: 0 0; " +
+					"-webkit-transform: scale(" + scale + "); " +
+					"-webkit-transform-origin: 0 0; " +
+					"-moz-transform: scale(" + scale + "); " +
+					"-moz-transform-origin: 0 0;}",
+					0);
+			} else {
+				styleSheet.insertRule(
+					".scaledPreview { " +
+					"height: " + height * scale + "px; " +
+					"width: " + width * scale + "px; " + 
+					"border-width: " + frameBorderWidth + "px; " +
+					"}",
+					0);
+			}
+				
+			var labelWidth = (parseFloat(width) + parseFloat(2 * frameBorderWidth)) / ratio; 
+			var labelTop = -(height - height / ratio);
+			if (isSafari) {
+				labelWidth = labelWidth = (width / ratio) + 2 * frameBorderWidth;
+				labelTop = 0; 
+			}
+			
+			var textPadding = Math.round(5 * scale);
+				
+			styleSheet.insertRule(
+				".label { " +
+				"position:relative; " +
+				"width: " + labelWidth + "px; " +
+				"left: 0px; " +
+				"top: " + labelTop  + "px; " +
+				"text-align: center; " +
+				"font-size: " + fontSize + "pt; " +
+				"font-weigth: " + fontWeight + "; " +
+				"font-family: '" + fontFamily + "'; "+ 
+				"height: auto; " +
+				"padding-top: " + textPadding + "px; " +
+				"overflow: hidden; " +
+				"white-space: nowrap; " +
+				"text-overflow:ellipsis; " +
+				"cursor: default; " +
+				" }",
+				0);
+			
+			var labelHeight = getLabelHeight();		
+				
+			realPreviewHeight = (parseFloat(height) + parseFloat(2 * frameBorderWidth)) / ratio;
+			if (isSafari) {
+				realPreviewHeight = (height / ratio) + 2 * frameBorderWidth;
+			}
+				
+			// Client preview area is the iframe + the label height + the known paddings
+			var clientPreviewHeight = (parseFloat(height) + parseFloat(2 * frameBorderWidth)) / ratio + labelHeight;
+			if (isSafari) {
+				clientPreviewHeight = (height / ratio) + (2 * frameBorderWidth) + labelHeight ;
+			}
+			
+			// Alternative, scaling the border size 
+			// Scaling the preview (selection) area to give space to a better selection size.
+			// var previewContainerHeight = clientPreviewHeight + 10 + 10 * scale;
+			
+			// Client height + up and bottom selection width
+			var previewContainerHeight = clientPreviewHeight + (2 * selectionBorderWidth);
+				
+			// Same as before, but for the width
+			var clientPreviewWidth = labelWidth
+			
+			// Alternative, scaling the border size;
+			// var previewContainerWidth = clientPreviewWidth + 10 + 20 * scale;
+			
+			var previewContainerWidth = clientPreviewWidth + (2 * selectionBorderWidth);
+			
+			realPreviewWidth = previewContainerWidth;
+					
+			styleSheet.insertRule(
+				".previewContainer { " +
+				"position: relative; " +
+				"height: " + previewContainerHeight + "px; " +
+				"width: " + previewContainerWidth + "px; " +
+				"float: left; " +
+				"overflow: hidden; /* Avoiding non-visible area to ocuppy space */ " +
+				"box-sizing: border-box; " +
+				"-moz-box-sizing: border-box; " +
+				"-ms-box-sizing: border-box; }", 
+				0);
+									
+			styleSheet.insertRule(
+				".centeredDiv { " +
+				"position:absolute; " +
+				"left:50%; " +
+				"top:50%; " +
+				"margin: -" + (clientPreviewHeight / 2) + "px 0 0 -" + (clientPreviewWidth / 2) + "px; " + 
+				"font-size:0px; }",
+				0);
+				
+			styleSheet.insertRule(
+				".selectedSquare { " +
+				"/* Uncomment for a solid square selection around the preview frame */ " +
+				"/* border-style: solid; " +
+				"border-color: blue; " +
+				"background: rgba(0, 0, 255, 0.1); " +
+				"border-width: 3px; " +
+				"*/ " +
+				"background-color:rgb(" + selectionBackgroundColor_Red + "," + selectionBackgroundColor_Green + "," + selectionBackgroundColor_Blue + "); }",
+				0);
+				
+			styleSheet.insertRule(
+				".unfocusedSelectedSquare { " +			
+				"background-color:rgb(" + unfocusedSelectionBackgroundColor_Red + "," + unfocusedSelectionBackgroundColor_Green + "," + unfocusedSelectionBackgroundColor_Blue + "); }",
+				0);
+		} else {
+			// Use styleSheet.addRule for IE8 and below
+		}
+		
+		updatePreviewsSize ();
+	}
+	
+	function updatePreviewsSize () {
+		var alliFrames = document.getElementsByTagName("iframe");
+		for (var i = 0; (currentIFrame = alliFrames[i]) != null; i++) {
+			var parentNode = currentIFrame.contentWindow.document.body;
+			
+			if (scale != 1) {
+				if (isSafari) {
+					// Scale the inner body to the "zoom" we want
+					parentNode.style.cssText =
+						"-webkit-transform: scale(" + scale + "); " +
+						"-webkit-transform-origin: 0 0; " +
+						"width:" + width + "px; " +
+						"height: " + height + "px; ";
+					parentNode.style.cssText += "overflow: hidden;";
+				} else {
+					parentNode.style.cssText = "";
+				}
+			} else {
+				parentNode.style.cssText = "";				
+				// Hack for Safari, because it just don't resize the inner overlay
+				if (isSafari) {
+					var overlayInternalDiv = currentIFrame.contentWindow.document.getElementById (INTERNAL_OVERLAY_DIV_ID);
+					if (overlayInternalDiv != null) {
+						overlayInternalDiv.style.cssText = "background-color: rgba(255, 255, 255, 0); height: " + height + "px; left: 0; position: fixed; top: 0; width: 100%; z-index: 9999;"
+					}
+				}
+			}
+			
+			currentIFrame.contentWindow.scrollTo(0, 0);
+		}
+	}
+	
+	function getElementPosition (currentElement) {
+		// We know currentElement has overlayDiv class, look
+		// for all the divs having the same class so we can iterate 
+		// until we find which one is this:
+		var overlayDivStyle = "overlayDiv";
+		var hasClassName = new RegExp("(?:^|\\s)" + overlayDivStyle + "(?:$|\\s)");
+		var allDivs = document.getElementsByTagName("div");
+		
+		var div;
+		var position = 0;
+		for (var i = 0; (div = allDivs[i]) != null; i++) {
+			var divClass = div.className;
+			if (divClass && divClass.indexOf(overlayDivStyle) != -1 
+				&& hasClassName.test(divClass)) {
+				if (allDivs[i] == currentElement) {
+					break;
+				}
+				// It was not this one, let's increment the position 
+				position ++;
+			}
+		}
+			
+		return position;
+	} 
+	
+	function getElementAbove (currentElement, rowsBefore) {
+		var visibleAreaWidth = document.getElementsByTagName('body')[0].clientWidth;
+		
+		// How many elements fit in a row
+		var elementsPerRow = Math.floor(visibleAreaWidth /  (currentElement.parentNode.clientWidth));
+		// There is an edge case where the above division returns 0, but the minimum visible
+		// elements at any is 1, so make sure we have a correct value for this:
+		if (elementsPerRow == 0) {
+			elementsPerRow = 1; 
+		}
+		
+		var currentElementPosition = getElementPosition (currentElement);
+		
+		if (currentElementPosition - rowsBefore * elementsPerRow >= 0) {
+			// Let's move one row above
+			return currentElementPosition - rowsBefore * elementsPerRow; 
+		}
+		
+		// Basically, return the same position because it has no sense to "move up"
+		return currentElementPosition;  
+	}
+	
+	function getElementBelow (currentElement, rowsAhead) {
+		var visibleAreaWidth = document.getElementsByTagName('body')[0].clientWidth;
+		
+		// How many elements fit in a row
+		var elementsPerRow = Math.floor(visibleAreaWidth /  (currentElement.parentNode.clientWidth));
+		var currentElementPosition = getElementPosition (currentElement);
+		
+		var previewCount = getPreviewCount ();
+		
+		if (currentElementPosition + rowsAhead * elementsPerRow < previewCount) {
+			// Let's move one row below
+			return currentElementPosition + rowsAhead * elementsPerRow; 
+		}
+		
+		// Basically, return the same position because it has no sense to "move up"
+		return currentElementPosition;  
+	}
+	
+	function addToSelection (id) {
+		if (!currentSelection.hasOwnProperty(id)) {
+			currentSelection[id] = true;
+		}
+	}
+	
+	function removeFromSelection (id) {
+		if (currentSelection.hasOwnProperty(id)) {
+			delete currentSelection[id];
+		}
+	}
+	
+	function clearSelection () {
+		currentSelection = {};
+	}
+	
+	/*
+		Finds the next node sibling.
+	*/
+	function next (elem) {
+    	do {
+    		elem = elem.nextSibling;
+    	} while (elem && elem.nodeType != 1);
+    	return elem;		
+	}
+	
+	function updateSelection (selectedElement) {
+		// First of all, we need to confirm if the current preview
+		// has the "disabled" style, if so, it can't be selected
+		// so we just return.
+		
+		// The overlay div receives the action, so let's test its style.
+		var currentStyle = selectedElement.className;
+		var disabledStyle = "disabledFrame";
+		if (currentStyle.indexOf (disabledStyle) != -1) {
+			// Just finish.
+			return;
+		}
+	
+		var selectionDivStyle = "previewContainer";
+		var selectedSquareStyle = "selectedSquare";
+		var hasClassName = new RegExp("(?:^|\\s)" + selectionDivStyle + "(?:$|\\s)");
+		var allDivs = document.getElementsByTagName("div");
+		
+		if (allowMultipleSelection == false) {
+			clearSelection();
+			// Remove the selection for all other preview frames
+			var div;
+			for (var i = 0; (div = allDivs[i]) != null; i++) {
+				var divClass = div.className;
+				if (divClass && divClass.indexOf(selectedSquareStyle) != -1 
+					&& hasClassName.test(divClass)) {
+					// Making it to have just the div style, but not
+					// the selection one.
+					div.className = selectionDivStyle;
+					
+					// Let's keep it simple
+					// We know the second child is the "centeredDiv" and its
+					// second child is the "label" which we
+					// just want to delete the text "color".
+					div.children[1].children[1].style.cssText = "";
+				}
+			}
+		}
+		
+		// Switch selection status (If selected -> deselect and viceversa)
+		var divClass = selectedElement.parentNode.className;
+		// Again, targeting to the preview's label
+		var centeredDivLabel = next (selectedElement).children[1];
+		if (divClass.indexOf (selectedSquareStyle) != -1 && hasClassName.test(divClass)) {
+			// Deselecting		
+			selectedElement.parentNode.className = selectionDivStyle;
+			centeredDivLabel.style.cssText = "";
+			removeFromSelection(selectedElement.id);
+		} else {
+			// Selecting
+			selectedElement.parentNode.className = selectionDivStyle + " " + selectedSquareStyle;
+			centeredDivLabel.style.cssText = "color: rgb(" + selectionFontColor_Red + "," + selectionFontColor_Green + "," + selectionFontColor_Blue + ")";
+			addToSelection(selectedElement.id);
+		}
+		
+		// Give focus and put scroll into view
+		lastKeyHitElement = selectedElement;
+		updateFocusStyle (selectedElement);
+		document.body.focus();
+		setFocusOnSWTBrowser ();
+	}
+	
+	function updateFocusStyle (focusedElement) {
+		// Actually, we want the parent node (the previewContainer), not the 
+		// overlay div
+		focusedElement = focusedElement.parentNode;
+	
+		// Since the focus style is going to change, we need to find all
+		// the preview containers and set its style to "unfocused"		
+		var previewContainerStyle = "previewContainer";
+		var hasClassName = new RegExp("(?:^|\\s)" + previewContainerStyle + "(?:$|\\s)");
+		var allDivs = document.getElementsByTagName("div");
+		
+		var div;
+		for (var i = 0; (div = allDivs[i]) != null; i++) {
+			var divClass = div.className;
+			if (divClass && divClass.indexOf(previewContainerStyle) != -1 
+				&& hasClassName.test(divClass)) {
+				div.style.cssText="";
+			}	
+		}
+		
+		// Now, "focus" the current element
+		focusedElement.style.cssText = "outline: 1px dotted;";
+		
+		if (!isElementInViewport(focusedElement)) {
+			focusedElement.scrollIntoView();
+		}
+	}
+	
+	function processBodyKeyEvent(event) {
+		var code;
+		if (!event) var event = window.event;
+		if (event.keyCode) code = event.keyCode;
+		else if (event.which) code = event.which;
+		
+		// If it's any of the keys we really care about
+		if (code >= 32 && code <= 40) {
+			var _currentSelection = getCurrentSelection();
+			if (_currentSelection.length == 0) {
+				// Find the first selecable node (if any)
+				var selectionDivStyle = "overlayDiv";
+				var hasClassName = new RegExp("(?:^|\\s)" + selectionDivStyle + "(?:$|\\s)");
+				var allDivs = document.getElementsByTagName("div");
+				
+				// TODO: Verify the node we find it's not disabled
+				var div;
+				var firstSelectableElement = null;
+				for (var i = 0; (div = allDivs[i]) != null; i++) {
+					var divClass = div.className;
+					if (divClass && divClass.indexOf(selectionDivStyle) != -1 
+						&& hasClassName.test(divClass)) {
+						firstSelectableElement = div;
+						break;
+					}
+				}
+				
+				if (firstSelectableElement != null) {
+					updateSelection(firstSelectableElement);
+				}
+			} else {
+				processKeyEvent(lastKeyHitElement, event);
+			}
+		}
+	}
+	
+	function processKeyEvent(currentSelectionDiv, event) {
+		var selectionDivStyle = "overlayDiv";
+		var hasClassName = new RegExp("(?:^|\\s)" + selectionDivStyle + "(?:$|\\s)");
+		var allDivs = document.getElementsByTagName("div");
+		var selectionDivs = [];
+		
+		var div;
+		for (var i = 0; (div = allDivs[i]) != null; i++) {
+			var divClass = div.className;
+			if (divClass && divClass.indexOf(selectionDivStyle) != -1 
+				&& hasClassName.test(divClass))
+				selectionDivs.push (div);
+		}
+		
+		// We have found the "selection" divs, then let's do the thing
+		// based on the pressed key:
+		var code;
+		if (!event) var event = window.event;
+		if (event.keyCode) code = event.keyCode;
+		else if (event.which) code = event.which;
+		
+		// Find the current element
+		var next = -1;
+		for (var i = 0; i < selectionDivs.length; i++) {
+    		if (selectionDivs[i] == currentSelectionDiv) {
+    			next = i;
+    			break;
+    		}
+		}
+		
+		// React to current key
+		
+		// Back-space / Selection
+		if (code == 32) {
+			updateSelection(currentSelectionDiv);
+		}
+		else		
+		// Left arrow 
+		if (code == 37) {		
+			// Grant focus to previous div (if not at the first element)
+			if (next > 0) {
+				next = next - 1;
+				var currentStyle = selectionDivs[next].className; 
+				var disabledStyle = "disabledFrame";
+				// The wanted frame is disabled, let's look another one. 
+				if (currentStyle.indexOf (disabledStyle) != -1) {
+					// Not at the first element
+					if (next != 0) {
+						processKeyEvent (selectionDivs[next], event);
+					}
+					return;
+				}
+			}
+		} else 
+		// Up arrow
+		if (code == 38) {
+			// TODO: Take a decision when the target element is disabled
+			next = getElementAbove (currentSelectionDiv, 1);
+		} else 
+		// Right arrow
+		if (code == 39) {
+			// Grant focus to next div (if not at the last element)
+			if (next < selectionDivs.length - 1) {
+				next = next + 1;
+				
+				var currentStyle = selectionDivs[next].className; 
+				var disabledStyle = "disabledFrame";
+				// The wanted frame is disabled, let's look another one. 
+				if (currentStyle.indexOf (disabledStyle) != -1) {
+					// Not at last element
+					if (next != selectionDivs.length - 1) {
+						processKeyEvent (selectionDivs[next], event);
+					}
+					return;
+				}
+			}
+		} else
+		// Down arrow 
+		if (code == 40) {
+			// TODO: Take a decision when the target element is disabled
+			next = getElementBelow (currentSelectionDiv, 1);
+		}  else
+		// Home 
+		if (code == 36) {
+			// Look for the first not disabled element
+			next = 0;
+			
+			var disabledStyle = "disabledFrame";
+			var currentStyle = selectionDivs[next].className;
+			while (currentStyle.indexOf (disabledStyle) != -1 && next < selectionDivs.length) {
+				next++;
+				currentStyle = selectionDivs[next].className;
+			}
+		}  else
+		// End 
+		if (code == 35) {
+			// Grant focus to last not disabled element
+			next = selectionDivs.length - 1;
+			
+			var disabledStyle = "disabledFrame";
+			var currentStyle = selectionDivs[next].className;
+			while (currentStyle.indexOf (disabledStyle) != -1 && next > 0) {
+				next--;
+				currentStyle = selectionDivs[next].className;
+			}
+		} else
+		// Page Up 
+		if (code == 33)
+		{
+			// TODO: Take a decision when the target element is disabled
+			var currentElementPos = next;
+			next = getElementAbove (currentSelectionDiv, 2);
+			// There was no change on position, we should be
+			// very close to the beginning
+			if (currentElementPos == next) {
+				// Grant focus to first element
+				next = 0;
+			}
+		}
+		else
+		// Page Down 
+		if (code == 34)		
+		{	
+			// TODO: Take a decision when the target element is disabled
+			var currentElementPos = next;
+			next = getElementBelow (currentSelectionDiv, 2);
+			// There was no change on position, we should be
+			// very close to the end
+			if (currentElementPos == next) {
+				// Grant focus to last element
+				next = selectionDivs.length - 1;
+			}
+		}
+		
+		if (allowMultipleSelection == false) {
+			updateSelection(selectionDivs[next])
+		} else {
+			selectionDivs[next].focus ();
+			updateFocusStyle (selectionDivs[next]);
+		}
+		
+		// Causes Safari to not launch the KeyPress event after KeyDown
+		event.preventDefault();
+	}
+	
+	function generatePatternPreviewFrameInnerHTML (previewData) {
+		var overlayDivClass = "overlayDiv";
+		if (previewData.disabled == "true") {
+			overlayDivClass += " disabledFrame";
+		}
+		
+		var previewHTML = '<div class="' + overlayDivClass + '" onmousedown="updateSelection(this);" id="' + previewData.id + '" tabindex="-1"><\/div>' +
+			'<div class="centeredDiv">' +
+				'<iframe src="' + previewData.src + '" class="scaledPreview" tabindex="-1" onload="patternPreviewLoaded(this);"><\/iframe>' +
+				'<div class="label"';
+			
+		if (previewData.selected == 'true' && previewData.disabled != 'true') {
+			previewHTML += "  style='color: rgb(" + selectionFontColor_Red + "," + selectionFontColor_Green + "," + selectionFontColor_Blue + ");'";
+		}
+		
+		previewHTML += ' onmousedown="updateSelection(this.parentNode.parentNode.firstChild)">' + previewData.label + '<\/div>' +
+			'<\/div>';
+			
+		return previewHTML;
+	}
+	
+	function isElementInViewport(el) {
+  		var top = el.offsetTop;
+  		var left = el.offsetLeft;
+  		var width = el.offsetWidth;
+  		var height = el.offsetHeight;
+
+  		while(el.offsetParent) {
+    		el = el.offsetParent;
+    		top += el.offsetTop;
+    		left += el.offsetLeft;
+  		}
+
+  		return (
+    		top >= window.pageYOffset &&
+    		left >= window.pageXOffset &&
+    		(top + height) <= (window.pageYOffset + window.innerHeight) &&
+    		(left + width) <= (window.pageXOffset + window.innerWidth)
+  		);
+	}
+	
+	function switchDeviceSize (_width, _height) {
+		width = _width;
+		height = _height;
+		updateStyleSheet();
+		
+	}
+	
+	/*
+		Returns an array with the current selection items (0 - n)
+	*/
+	function getCurrentSelection () {
+		var selectionArray = new Array ();
+		for (var selectionId in currentSelection) {
+			selectionArray.push (selectionId);
+		}
+		
+		return selectionArray;
+	}
+	
+	/*
+		Adds a preview frame.
+		
+		Receives a preview object (JSON) with all necessary data (id, src, label)
+	*/
+	function addPatternPreviewNode (patternData) {
+		var newPreviewFrame = document.createElement('div');
+		newPreviewFrame.setAttribute("class", "previewContainer");
+		newPreviewFrame.innerHTML = generatePatternPreviewFrameInnerHTML(patternData);
+		
+		document.body.appendChild(newPreviewFrame);		
+	}
+	
+	function backToTop() {
+		window.scrollTo(0, 0);
+	}
+	
+	function handleIFrameClick (event, outterId) {
+		updateSelection(document.getElementById(outterId));
+		focusGained ();
+		// This is a fix to avoid the user double-clicking the iframe, which
+		// causes some sort of undesirable selection of the content,
+		// however, even it works fine in IE and FF, in Safari it 
+		// prevents clicking on the scroll bars which is worst
+		if(!isSafari){
+			event.preventDefault();
+		}
+		return false;
+	}
+	
+	function handleIFrameKeyDown (event) {
+		// Incredibly, the iframe gets the focus in Safari,
+		// so we need to re-target the event to the body
+		// and prevent the default action that causes
+		// the iframe to navigate through its controls!
+		processBodyKeyEvent (event);
+		event.preventDefault();
+	}
+	
+	function patternPreviewLoaded (currentIFrame) {
+		tempNumberOfPatternsCounter--;
+		
+		// Injecting an internal overlay div to prevent clicking (but still show scrollbars)
+		var overlayInternalDiv = currentIFrame.contentWindow.document.createElement('div');
+		overlayInternalDiv.id = INTERNAL_OVERLAY_DIV_ID;
+		overlayInternalDiv.style.cssText = "background-color: rgba(255, 255, 255, 0); height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 9999;";
+		// Save the pattern id (which is the one of the outter overlay div)
+		currentIFrame.contentWindow.document.id = currentIFrame.parentNode.parentNode.firstChild.id;
+		currentIFrame.contentWindow.document.body.style.cssText = "overflow:hidden";
+		currentIFrame.contentWindow.document.body.appendChild(overlayInternalDiv);
+		currentIFrame.contentWindow.document.addEventListener('mousedown', function(event) {handleIFrameClick(event, this.id);}, false);
+		currentIFrame.contentWindow.document.addEventListener('keydown', function(event) {handleIFrameKeyDown(event);}, false);
+		currentIFrame.contentWindow.addEventListener('focus', function(event) {focusGained();}, false);
+		currentIFrame.contentWindow.addEventListener('blur', function(event) {focusLost();}, false);
+		
+		// All patterns were loaded
+		if (tempNumberOfPatternsCounter == 0) {
+			// Making it to show the scrollbars (if needed)
+			backToTop();
+			document.getElementById("content").style.cssText = "";
+			document.body.style.cssText = "";
+			updateStyleSheet();
+			
+			// Notifying the browser has completed its loading
+			patternsLoadingCompleted ();
+		}
+	}
+	
+	function findPos(obj) {
+		var curleft = curtop = 0;
+		if (obj.offsetParent) {
+			do {
+				curleft += obj.offsetLeft;
+				curtop += obj.offsetTop;
+			} while (obj = obj.offsetParent);
+			
+			return [curleft,curtop];
+		}
+	}
+	
+	function findIFrameAtPosition (x, y) {
+	    var iframes = document.getElementsByTagName("iframe");
+	    
+	    for (i = 0; i < iframes.length; ++i) {
+	    	var realPos = findPos((iframes[i]));
+	    	if (x >= realPos[0] && x <= (realPos[0] + realPreviewWidth) && 
+	    		y >= realPos[1] && y <= (realPos[1] + realPreviewHeight)) {
+	    		return iframes[i];
+	    	}
+	    }
+	    
+	    return null;
+	}
+
+	function getScrollBarWidth () {
+  		var inner = document.createElement('p');
+  		inner.style.width = "100%";
+  		inner.style.height = "200px";
+
+  		var outer = document.createElement('div');
+  		outer.style.position = "absolute";
+  		outer.style.top = "0px";
+  		outer.style.left = "0px";
+  		outer.style.visibility = "hidden";
+  		outer.style.width = "200px";
+  		outer.style.height = "150px";
+  		outer.style.overflow = "hidden";
+  		outer.appendChild (inner);
+
+  		document.body.appendChild (outer);
+  		var w1 = inner.offsetWidth;
+  		outer.style.overflow = 'scroll';
+  		var w2 = inner.offsetWidth;
+  		if (w1 == w2) w2 = outer.clientWidth;
+
+  		document.body.removeChild (outer);
+
+  		return (w1 - w2);
+	};
+	
+	/*
+		Set of frames to put on the body.
+		
+		Gets a JSON array with every pattern information, with following structure::
+			{
+				'patterns' : [	
+					{
+						'id':'form_list_updated', 
+						'src':'patterns/form_list.html', 
+						'label':'form_list_updated',
+						'selected':'true',
+						'disabled':'false'
+					},
+					{
+						'id':'group_list_updated', 
+						'src':'patterns/group_list.html', 
+						'label':'group_list_updated'
+						'selected':'false',
+						'disabled':'true'
+					}
+						
+				]
+			}
+			
+		To clear contents, you can do:
+			* setContent({'patterns': []});
+			* setContent(null);
+			
+	*/
+	function setContent (patternSet) {
+		// Clear body. This seems the easiest way, given that we are going to just show
+		// an entire set of elements. 
+		document.body.innerHTML = "";
+		
+		// Clearing selection items
+		clearSelection();
+	
+		if (patternSet == null || patternSet.patterns.length == 0)
+			return;
+			
+		tempNumberOfPatternsCounter = patternSet.patterns.length;
+		
+		// Since all the inner HTML was cleared, we can just set the
+		// entire new content here (instead creating and adding nodes
+		// which is expensive (and does not really look too good)
+		innerHTML =  "<div id='content' class='nonSelectableContainer' style='overflow:hidden; visibility: hidden;'> ";
+
+		for ( var i = 0; i < patternSet.patterns.length; i++) {
+			innerHTML += "<div class='previewContainer";
+			
+			// Test if it is supposed to be pre-selected, but it just
+			// have sense if it is not disabled
+			if (patternSet.patterns[i].selected == 'true' && 
+				patternSet.patterns[i].disabled != 'true') {
+				// It's selected, just add the appropriate style
+				innerHTML += " selectedSquare";
+				addToSelection(patternSet.patterns[i].id);
+			}
+			
+			innerHTML += "'" + 'onmousedown="updateSelection(this.firstChild);"' + ">" +	
+				generatePatternPreviewFrameInnerHTML (patternSet.patterns[i]) +
+				"<\/div>";			
+		}
+		
+		innerHTML += "<\/div>";
+		
+		// Let's make the entire body to hide for a moment
+		document.body.style.cssText = "overflow:hidden; visibility: hidden;"; 
+		
+		document.body.innerHTML += innerHTML;
+		
+		updateStyleSheet();
+	}
+	
+	/*
+		Enable or disable a flag to allow multiple selection
+	*/
+	function setAllowMultipleSelection (multiSelectEnabled) {
+		allowMultipleSelection = multiSelectEnabled;
+	}
+	
+	function focusLost () {
+		var selectionDivStyle = "previewContainer";
+ 		var unfocusedSquareStyle = "unfocusedSelectedSquare";
+ 		
+ 		// Clear every selection
+ 		var hasClassName = new RegExp("(?:^|\\s)" + selectionDivStyle + "(?:$|\\s)");
+ 		var allDivs = document.getElementsByTagName("div");
+ 		var div;
+ 		for (var i = 0; (div = allDivs[i]) != null; i++) {
+ 			var divClass = div.className;
+ 			if (divClass && hasClassName.test(divClass)) {
+ 				div.className = selectionDivStyle;
+ 				div.children[1].children[1].style.cssText = "";
+ 				div.style.cssText = "";
+ 			}
+ 		}
+		
+		// Update the style according to current selection
+		_currentSelection = getCurrentSelection();
+		for (var i = 0; i < _currentSelection.length; i++) {
+			div = document.getElementById(_currentSelection[i]);
+			div = div.parentNode;			
+			div.className = selectionDivStyle + " " + unfocusedSquareStyle;
+				
+			// Let's keep it simple
+			// We know the second child is the "centeredDiv" and its
+			// second child is the "label" which we/ just want to set 
+			// the text "color".
+			div.children[1].children[1].style.cssText = "color: rgb(" + unfocusedSelectionFontColor_Red + "," + 
+				unfocusedSelectionFontColor_Green + "," + unfocusedSelectionFontColor_Blue + ")";
+				
+			// Remove the dotted style
+			div.style.cssText = "";
+		}
+	}
+	
+	function focusGained () {
+ 		var selectionDivStyle = "previewContainer";
+ 		var selectedSquareStyle = "selectedSquare";
+ 		
+ 		// Clear every selection
+ 		var hasClassName = new RegExp("(?:^|\\s)" + selectionDivStyle + "(?:$|\\s)");
+ 		var allDivs = document.getElementsByTagName("div");
+ 		var div;
+ 		for (var i = 0; (div = allDivs[i]) != null; i++) {
+ 			var divClass = div.className;
+ 			if (divClass && hasClassName.test(divClass)) {
+ 				div.className = selectionDivStyle;
+ 				div.children[1].children[1].style.cssText = "";
+ 				div.style.cssText = "";
+ 			}
+ 		}
+
+		// Update the style according to current selection
+		_currentSelection = getCurrentSelection();
+		for (var i = 0; i < _currentSelection.length; i++) {
+			div = document.getElementById(_currentSelection[i]);
+			div = div.parentNode;			
+			div.className = selectionDivStyle + " " + selectedSquareStyle;
+				
+			// Let's keep it simple
+			// We know the second child is the "centeredDiv" and its
+			// second child is the "label" which we/ just want to set 
+			// the text "color".
+			div.children[1].children[1].style.cssText = "color: rgb(" + selectionFontColor_Red + "," + 
+				selectionFontColor_Green + "," + selectionFontColor_Blue + ")";
+			
+			// Add the dotted line
+			div.style.cssText = "outline: 1px dotted;";
+		}
+	}
+	
+	/*
+		Set the font size. Value in points (just a number)
+	*/
+	function setFontSize (newFontSize) {
+		fontSize = newFontSize;
+	}
+	
+	/*
+		Set the font weight. Value is a string (bold, normal, lighter, etc)
+	*/
+	function setFontWeight (newFontWeight) {
+		fontWeigth = newFontWeight;
+	}
+	
+	/*
+		Set the font family. Value is a string literal.
+	*/
+	function setFontFamily (newFontFamily) {
+		fontFamily = newFontFamily;
+	}
+	
+	/*
+		Set the color that will take the pattern label when
+		it becomes selected. This should be used in conjunction
+		with setSelectionBackgroundColor (r,g,b); 
+	*/
+	function setSelectionFontColor (red, green, blue) {
+		selectionFontColor_Red = red;
+		selectionFontColor_Green = green;
+		selectionFontColor_Blue = blue;
+	}
+	
+	/*
+		Set the color that will take the pattern background when
+		it becomes selected. This should be used in conjunction
+		with setSelectionFontColor (r,g,b); 
+	*/
+	function setSelectionBackgroundColor (red, green, blue) {
+		selectionBackgroundColor_Red = red;
+		selectionBackgroundColor_Green = green;
+		selectionBackgroundColor_Blue = blue;
+	}
+	
+	/*
+		Set the color that will take the pattern label when
+		it becomes selected (but unfocused). This should be used in conjunction
+		with setUnfocusedSelectionBackgroundColor (r,g,b); 
+	*/
+	function setUnfocusedSelectionFontColor (red, green, blue) {
+		unfocusedSelectionFontColor_Red = red;
+		unfocusedSelectionFontColor_Green = green;
+		unfocusedSelectionFontColor_Blue = blue;
+	}
+	
+	/*
+		Set the color that will take the pattern background when
+		it becomes selected (but onfocused). This should be used in conjunction
+		with setUnfocusedSelectionFontColor (r,g,b); 
+	*/
+	function setUnfocusedSelectionBackgroundColor (red, green, blue) {
+		unfocusedSelectionBackgroundColor_Red = red;
+		unfocusedSelectionBackgroundColor_Green = green;
+		unfocusedSelectionBackgroundColor_Blue = blue;
+	}
+	
+	/*
+		Sets the selection border preferred width. Default is 10;
+	*/
+	function setSelectionBorderWidth (borderWidth) {
+		selectionBorderWidth = borderWidth;
+	}
+	
+	function setEnabled (enabled) {
+		if (enabled == false) {
+			document.body.setAttribute ("class", "disabledFrame");
+		} else {
+			document.body.removeAttribute ("class");
+		}
+	}
+	
+	// Adding an onLoad listener, so we advise when page has fully loaded
+	window.onload = function () {
+		initialLoadingCompleted ();
+	}
+</script>
+</head>
+<body onkeydown="processBodyKeyEvent(event)" onfocus="focusGained();" onblur="focusLost();">
+</body>
+</html>

@@ -1,0 +1,179 @@
+/*
+ *  Licensed Materials - Property of IBM
+ *  © Copyright IBM Corporation 2014. All Rights Reserved.
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  of such an application, in customer's own products.
+ */
+
+.metrics_container {
+    
+    height: 100vh;
+    
+    .metrics_tab-container {
+        display: block;
+        overflow: auto;
+        font-size: 12pt;
+        background-color: $red-color;
+        color: $white-color;
+
+        .metrics_tab {
+            width: 24.9%;
+            float: left;
+            padding: 15px 0;
+            text-align: center;
+            font-family: 'RobotoSlab-Regular';
+        }
+        
+        .selected {
+            background-color: $dark-red-color;
+        }
+    }
+    
+    .metrics_time-graph {
+        height:35px;
+        width:100%;
+        display: block;
+        background-color: $tooltip-color;
+    }
+    
+    .metrics_graph-container {
+        position: absolute;
+        top: 81px;
+        bottom: 8px;
+        width: 100%;
+        
+        .metrics_graph-triangle-container{
+            
+            position: absolute;
+            left: 50.3%;
+            
+            .metrics_graph-triangle {
+                position: relative;
+                top: -8px;
+                bottom: 0;
+                left: -50%;
+                height: 100%;
+                border-left: 9px solid transparent;
+                border-right: 9px solid transparent;
+                border-top: 7px solid $tooltip-color; 
+                width: 0;
+                display: inline-block;
+                z-index: 100000;
+            }
+        }
+        
+        .metrics_graph-center-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            height: 100%;
+            width: 0;
+            border-left: 2px dashed $light-gray-color;
+        }
+        
+        .metrics_graph-section {
+            width: 100%;
+            height: 20%;
+            position: relative;
+            border-bottom: 1px solid $gray-color;
+
+            .metrics_graph-section-icon {
+                position: absolute;
+                top: 0;
+                display: inline-block;
+                padding: 7px 12px;
+            }
+
+            .metrics_graph-section-title {
+                font-size: 12pt;
+                padding: 7px;
+                margin-left: 30px;
+                margin-top: 1px;
+                position: absolute;
+                display: inline-block;
+                top: 0;
+                font-family: 'Roboto-Bold';
+            }
+
+            #heart-rate {
+                rect {
+                    fill: $red-color;
+                }
+                path {
+                    fill: none;
+                    stroke-width: 1.5px;
+                    stroke: $red-color;
+                }
+                circle {
+                    fill: $red-color;
+                    stroke-width: 3px;
+                    stroke: $white-color;
+                }
+                
+            }
+            #weight {
+                rect {
+                    fill: $gray-color;
+                }
+                path {
+                    fill: none;
+                    stroke-width: 1.5px;
+                    stroke: $gray-color;
+                }
+                circle {
+                    fill: $gray-color;
+                    stroke-width: 3px;
+                    stroke: $white-color;
+                }
+            }        
+            #steps {
+                rect {
+                    fill: $blue-color;
+                }
+                path {
+                    fill: none;
+                    stroke-width: 1.5px;
+                    stroke: $blue-color;
+                }
+                circle {
+                    fill: $blue-color;
+                    stroke-width: 3px;
+                    stroke: $white-color;
+                }
+            }
+            #calories {
+                rect {
+                    fill: $gray-color;
+                }
+                path {
+                    fill: none;
+                    stroke-width: 1.5px;
+                    stroke: $gray-color;
+                }
+                circle {
+                    fill: $gray-color;
+                    stroke-width: 3px;
+                    stroke: $white-color;
+                }
+            }
+            #pain {
+                rect {
+                    fill: $red-color;
+                }
+                path {
+                    fill: none;
+                    stroke-width: 1.5px;
+                    stroke: $red-color;
+                }
+                circle {
+                    fill: $red-color;
+                    stroke-width: 3px;
+                    stroke: $white-color;
+                }
+            }
+        }
+    }
+}

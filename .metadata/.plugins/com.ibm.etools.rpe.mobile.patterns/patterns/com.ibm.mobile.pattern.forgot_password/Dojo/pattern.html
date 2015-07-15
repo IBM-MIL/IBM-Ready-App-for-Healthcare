@@ -1,0 +1,21 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojox/mobile/parser", "dojox/mobile/compat" ]);
+</script>
+
+<script type="text/javascript">
+require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView", "dojox/mobile/RoundRect", "dojox/mobile/TextBox", "dojox/mobile/Button" /*END_DEPENDENCIES*/ ]);
+</script>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="reset" pattern.rootElement="true">
+	<div data-dojo-type="dojox.mobile.RoundRect">
+		<form action="">
+			<input id="email" name="email" data-dojo-type="dojox.mobile.TextBox"
+				style="width: 100%" placeHolder="Email">
+			<button type="submit" data-dojo-type="dojox.mobile.Button"
+				data-dojo-props="label:'Reset Password'"
+				style="width: 100%; margin-top: 10px"></button>
+		</form>
+	</div>
+</div>

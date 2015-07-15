@@ -1,0 +1,77 @@
+/*
+ *  Licensed Materials - Property of IBM
+ *  © Copyright IBM Corporation 2014. All Rights Reserved.
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  of such an application, in customer's own products.
+ */
+
+.dshbrd_container {
+
+    background-image: url(.././img/background_image.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: relative;
+    
+    .dshbrd_container-content {
+        position: absolute;
+        color: $white-color;
+        bottom: 0;
+        width: 100%;
+        
+        .dshbrd_date {
+            font-size: 16pt;
+            padding-left: 25px;
+            margin-bottom: 5px;
+        }
+        
+        .dshbrd_column-container {
+            display: block;
+            overflow: auto;
+            margin: 0 25px;
+            /*padding: 15px;*/
+            padding-bottom: 15px;
+            border-bottom: 1px solid $white-color;
+            
+            .dshbrd_column {
+                width: 33%;
+                float: left;
+                /*padding: 0 15px;*/
+                text-align: center;
+                
+                .dshbrd_column-value {
+                    width: 100%;
+                    font-size: 48pt;
+                }
+                
+                .dshbrd_column-dimen {
+                    font-family: 'Roboto-Light';
+                    width: 100%;
+                    font-size: 12pt;
+                }
+            }
+            
+            .dshbrd_column:first-child {
+                padding-left: 0;
+                text-align: left;
+            }
+            
+            .dshbrd_column:last-child {
+                padding-right: 0;
+                text-align: right;
+            }
+            
+        }
+        
+        .dshbrd_getstarted {
+            font-family: 'RobotoSlab-Light';
+            color: $blue-color;
+            text-align: center;
+            font-size: 16pt;
+            padding: 25px;
+        }
+        
+    }
+}

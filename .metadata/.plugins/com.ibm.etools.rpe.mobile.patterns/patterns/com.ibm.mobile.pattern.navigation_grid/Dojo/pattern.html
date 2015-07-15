@@ -1,0 +1,163 @@
+<!-- NLS_CHARSET=UTF-8 -->
+
+<script type="text/javascript" pattern.discardNode="true">
+require([ "dojox/mobile/parser", "dojox/mobile/compat" ]);
+</script>
+
+<script type="text/javascript">
+require([ /*START_DEPENDENCIES*/ "dojox/mobile/ScrollableView", "dojox/mobile/Heading", "dojox/mobile/GridLayout", "dojox/mobile/Button", "dojox/mobile/ContentPane", "dijit/registry" /*END_DEPENDENCIES*/ ]);
+</script>
+
+<script type="text/javascript">
+function performViewTransition (currentView, targetView) {
+	dijit.registry.byId (currentView).performTransition(targetView, 1, 'fade', null);
+}
+</script>
+
+<style type="text/css" pattern.discardNode="true">
+.dojoRibbon {
+	position: fixed;
+	right: 0px;
+	bottom: 15px;
+	
+	padding: 6px 7px 3px 7px;
+
+	height:40px;
+	width:80px;
+	
+	color: white;
+	text-align: center;
+	vertical-align:middle;
+	text-shadow: 0em 0.2em 0.2em black;
+	font-size: 12pt;
+	
+	border-top: 3px solid white;
+	border-left: 3px solid white;
+	border-bottom: 3px solid white;
+	
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	
+	background: #1e5799;
+	background: -moz-linear-gradient(left,  #1e5799 0%, #19195f 0%, #4f4fbf 40%, #4f4fbf 60%, #19195f 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#1e5799), color-stop(0%,#19195f), color-stop(40%,#4f4fbf), color-stop(60%,#4f4fbf), color-stop(100%,#19195f));
+	background: -webkit-linear-gradient(left,  #1e5799 0%,#19195f 0%,#4f4fbf 40%,#4f4fbf 60%,#19195f 100%);
+	background: -o-linear-gradient(left,  #1e5799 0%,#19195f 0%,#4f4fbf 40%,#4f4fbf 60%,#19195f 100%);
+	background: -ms-linear-gradient(left,  #1e5799 0%,#19195f 0%,#4f4fbf 40%,#4f4fbf 60%,#19195f 100%);
+	background: linear-gradient(to right,  #1e5799 0%,#19195f 0%,#4f4fbf 40%,#4f4fbf 60%,#19195f 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#19195f',GradientType=1 );
+	
+	box-shadow: 0px 2px 2px 2px #555;
+	
+	z-index: 9998;
+}
+
+.dojoRibbon .requires {
+	font-size: 10pt;
+}
+
+.multipleViewsRibbon {
+	position: fixed;
+	left: 0px;
+	bottom: 15px;
+
+padding: 9px 7px 0px 7px;
+
+	height:40px;
+	width:80px;
+	
+	color: white;
+	text-align: center;
+	vertical-align:middle;
+	text-shadow: 0em 0.2em 0.2em black;
+	font-size: 12px;
+	
+	border-top: 3px solid white;
+	border-right: 3px solid white;
+	border-bottom: 3px solid white;
+	
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	
+	background: #00CC33;
+	background: -moz-linear-gradient(left,  #00CC33 0%, #006633 0%, #00bb55 40%, #00bb55 60%, #006633 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00CC33), color-stop(0%,#006633), color-stop(40%,#00bb55), color-stop(60%,#00bb55), color-stop(100%,#006633));
+	background: -webkit-linear-gradient(left,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	background: -o-linear-gradient(left,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	background: -ms-linear-gradient(left,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	background: linear-gradient(to right,  #00CC33 0%,#006633 0%,#00bb55 40%,#00bb55 60%,#006633 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#006633',GradientType=1 );
+	
+	box-shadow: 0px 2px 2px 2px #555;
+	
+	z-index: 1998;
+}
+</style>
+
+<div class="multipleViewsRibbon" pattern.discardNode="true">
+	<div>Includes multiple views</div>
+</div>
+
+<div class="dojoRibbon" pattern.discardNode="true">
+	<div class="requires">Requires</div>
+	Dojo1.8+
+</div>
+
+<div data-dojo-type="dojox.mobile.ScrollableView" id="$1" pattern.rootElement="true">
+	<div data-dojo-type="dojox.mobile.GridLayout" data-dojo-props="cols:3">
+		<div data-dojo-type="dojox.mobile.ContentPane">
+			<button data-dojo-type="dojox.mobile.Button" data-dojo-props="label:'Page 1'" style="width: 100%; height: 100px" 
+				onclick="performViewTransition('$1', '$2');">
+			</button>
+		</div>
+		<div data-dojo-type="dojox.mobile.ContentPane">
+			<button data-dojo-type="dojox.mobile.Button" data-dojo-props="label:'Page 2'" style="width: 100%; height: 100px" 
+				onclick="performViewTransition('$1', '$3');">
+			</button>
+		</div>
+		<div data-dojo-type="dojox.mobile.ContentPane">
+			<button data-dojo-type="dojox.mobile.Button" data-dojo-props="label:'Page 3'" style="width: 100%; height: 100px" 
+				onclick="performViewTransition('$1', '$4');">
+			</button>
+		</div>
+		<div data-dojo-type="dojox.mobile.ContentPane">
+			<button data-dojo-type="dojox.mobile.Button" data-dojo-props="label:'Page 4'" style="width: 100%; height: 100px" 
+				onclick="performViewTransition('$1', '$5');">
+			</button>
+		</div>
+		<div data-dojo-type="dojox.mobile.ContentPane">
+			<button data-dojo-type="dojox.mobile.Button" data-dojo-props="label:'Page 5'" style="width: 100%; height: 100px" 
+				onclick="performViewTransition('$1', '$6');">
+			</button>
+		</div>
+		<div data-dojo-type="dojox.mobile.ContentPane">
+			<button data-dojo-type="dojox.mobile.Button" data-dojo-props="label:'Page 6'" style="width: 100%; height: 100px" 
+				onclick="performViewTransition('$1', '$7');">
+			</button>
+		</div>
+	</div>
+</div>
+<div data-dojo-type="dojox.mobile.ScrollableView" id="$2" pattern.preferredId="page1">
+	<div data-dojo-type="dojox.mobile.Heading"
+		data-dojo-props="label:'Page 1',back:'Back',moveTo:'$1'"></div>
+</div>
+<div data-dojo-type="dojox.mobile.ScrollableView" id="$3" pattern.preferredId="page2">
+	<div data-dojo-type="dojox.mobile.Heading"
+		data-dojo-props="label:'Page 2',back:'Back',moveTo:'$1'"></div>
+</div>
+<div data-dojo-type="dojox.mobile.ScrollableView" id="$4" pattern.preferredId="page3">
+	<div data-dojo-type="dojox.mobile.Heading"
+		data-dojo-props="label:'Page 3',back:'Back',moveTo:'$1'"></div>
+</div>
+<div data-dojo-type="dojox.mobile.ScrollableView" id="$5" pattern.preferredId="page4">
+	<div data-dojo-type="dojox.mobile.Heading"
+		data-dojo-props="label:'Page 4',back:'Back',moveTo:'$1'"></div>
+</div>
+<div data-dojo-type="dojox.mobile.ScrollableView" id="$6" pattern.preferredId="page5">
+	<div data-dojo-type="dojox.mobile.Heading"
+		data-dojo-props="label:'Page 5',back:'Back',moveTo:'$1'"></div>
+</div>
+<div data-dojo-type="dojox.mobile.ScrollableView" id="$7" pattern.preferredId="page6">
+	<div data-dojo-type="dojox.mobile.Heading"
+		data-dojo-props="label:'Page 6',back:'Back',moveTo:'$1'"></div>
+</div>

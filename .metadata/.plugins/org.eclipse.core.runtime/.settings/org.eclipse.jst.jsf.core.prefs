@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+org.eclipse.jst.jsf.core.BINARY_OP_CANNOT_COERCE_ARGUMENT_TO_BOOLEAN=warning
+org.eclipse.jst.jsf.core.BINARY_OP_COULD_NOT_COERCE_LITERALS_TO_NUMBERS=warning
+org.eclipse.jst.jsf.core.BINARY_OP_COULD_NOT_MAKE_NUMERIC_COERCION=warning
+org.eclipse.jst.jsf.core.BINARY_OP_EQUALITY_COMP_WITH_NULL_ALWAYS_EVAL_SAME=ignore
+org.eclipse.jst.jsf.core.BINARY_OP_NO_AVAILABLE_TYPE_COERCION=warning
+org.eclipse.jst.jsf.core.CANNOT_FIND_FACELET_TAGLIB=ignore
+org.eclipse.jst.jsf.core.INCOMPATIBLE_METHOD_TYPES=warning
+org.eclipse.jst.jsf.core.METHOD_EXPRESSION_EXPECTED=warning
+org.eclipse.jst.jsf.core.UNARY_OP_CANNOT_COERCE_ARGUMENT_TO_BOOLEAN=warning
+org.eclipse.jst.jsf.core.UNARY_OP_CONSTANT_EXPRESSION_EVAL_SAME=ignore
+org.eclipse.jst.jsf.core.UNARY_OP_COULD_NOT_MAKE_NUMERIC_COERCION=warning
+org.eclipse.jst.jsf.core.UNARY_OP_EMPTY_ALWAYS_FALSE_ON_TYPE=ignore
+org.eclipse.jst.jsf.core.VALUE_EXPRESSION_EXPECTED=warning
+org.eclipse.jst.jsf.designtime.jsp.registry.StrategyIDOrder=Cached Data Tag Resolver,org.eclipse.jst.jsf.designtime.PersistedDataTagStrategy,true,Meta-data Driven Resolver,org.eclipse.jst.jsf.metadata.DefaultJSPTagResolver,true,Introspecting Tag Resolver,org.eclipse.jst.jsf.designtime.TagIntrospectingStrategy,false,
+org.eclipse.jst.jsf.ui.ValidateJSFELBuild=false

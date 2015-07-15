@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<featureInfo name="core" location="/Users/atcabral/Development/eclipse/plugins/com.worklight.studio.plugin_6.2.0.00-20140613-0730/liberty/wlp"> 
+    <feature name="appSecurity-1.0"> 
+        <symbolicName>com.ibm.websphere.appserver.appSecurity-1.0</symbolicName> 
+        <displayName>Application Security</displayName> 
+        <superseded>true</superseded> 
+        <supersededBy>appSecurity-2.0</supersededBy> 
+        <supersededBy>[servlet-3.0]</supersededBy> 
+        <supersededBy>[ldapRegistry-3.0]</supersededBy> 
+        <description>This feature is superseded by appSecurity-2.0. Support for securing the server runtime environment and applications. This feature enables servlet-3.0 and web application security, support for LDAP and basic user registries, and SSL. To support secure EJB applications, you must add the ejbLite-3.1 feature. When you add this feature to your server, you need to configure a user registry, such as the basic user registry or the LDAP user registry. </description> 
+        <enables>servlet-3.0</enables> 
+        <enables>appSecurity-2.0</enables> 
+        <enables>ldapRegistry-3.0</enables> 
+    </feature> 
+    <feature name="appSecurity-2.0"> 
+        <symbolicName>com.ibm.websphere.appserver.appSecurity-2.0</symbolicName> 
+        <displayName>Application Security</displayName> 
+        <description>This feature enables support for securing the server runtime environment and applications; it includes a basic user registry. This feature supersedes appSecurity-1.0 and does not include servlet-3.0 or support for the LDAP user registry. To secure web applications, add the servlet-3.0 feature. To secure EJB applications, add the ejbLite-3.1 feature. To use LDAP, add the ldapRegistry-3.0 feature. When you add the appSecurity-2.0 feature to your server, you need to configure a user registry, such as the basic user registry or the LDAP user registry.</description> 
+        <enables>ssl-1.0</enables> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.anno_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.annotation.1.1_1.0.1.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.classloading_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.artifact_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.containerServices_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.security_1.0.2.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.javaeedd_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.servlet.3.0_1.0.1.jar</apiJar> 
+        <configElement>authCache</configElement> 
+        <configElement>jaasLoginModule</configElement> 
+        <configElement>quickStartSecurity</configElement> 
+        <configElement>authentication</configElement> 
+        <configElement>ltpa</configElement> 
+        <configElement>jaasLoginContextEntry</configElement> 
+        <configElement>library</configElement> 
+        <configElement>classloader</configElement> 
+        <configElement>basicRegistry</configElement> 
+        <configElement>administrator-role</configElement> 
+    </feature> 
+    <protectedFeature> 
+        <symbolicName>com.ibm.websphere.appserver.appmanager-1.0</symbolicName> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.application_1.0.0.jar</spiJar> 
+        <apiPackage type="ibm-api">com.ibm.websphere.security</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.security.auth</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.security.cred</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.wsspi.security.registry</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.logging</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.application</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.filemonitor</apiPackage> 
+        <spiPackage>com.ibm.wsspi.application.handler</spiPackage> 
+    </protectedFeature> 
+    <kernelFeature> 
+        <symbolicName>com.ibm.websphere.appserver.binary.logging-1.0</symbolicName> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.hpel_1.0.1.jar</apiJar> 
+        <configElement>binaryLog</configElement> 
+        <configElement>binaryTrace</configElement> 
+    </kernelFeature> 
+    <protectedFeature> 
+        <symbolicName>com.ibm.websphere.appserver.classloading-1.0</symbolicName> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.classloading_1.0.0.jar</spiJar> 
+        <spiPackage>com.ibm.wsspi.classloading</spiPackage> 
+        <spiPackage>com.ibm.wsspi.classloading</spiPackage> 
+        <spiPackage>com.ibm.wsspi.library</spiPackage> 
+    </protectedFeature> 
+    <protectedFeature> 
+        <symbolicName>com.ibm.websphere.appserver.containerServices-1.0</symbolicName> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.containerServices_1.0.0.jar</spiJar> 
+        <spiPackage>com.ibm.ws.container.service.annotations</spiPackage> 
+        <spiPackage>com.ibm.ws.container.service.app.deploy</spiPackage> 
+        <spiPackage>com.ibm.ws.container.service.config</spiPackage> 
+        <spiPackage>com.ibm.ws.container.service.metadata</spiPackage> 
+        <spiPackage>com.ibm.ws.container.service.naming</spiPackage> 
+        <spiPackage>com.ibm.ws.container.service.security</spiPackage> 
+        <spiPackage>com.ibm.ws.container.service.state</spiPackage> 
+        <spiPackage>com.ibm.websphere.crypto</spiPackage> 
+        <spiPackage>com.ibm.ws.serialization</spiPackage> 
+        <spiPackage>com.ibm.wsspi.resource</spiPackage> 
+    </protectedFeature> 
+    <feature name="jaxrs-1.1"> 
+        <symbolicName>com.ibm.websphere.appserver.jaxrs-1.1</symbolicName> 
+        <displayName>Java API for XML RESTful Web Services</displayName> 
+        <description>This feature enables support for Java API for RESTful Web Services.  JAX-RS annotations can be used to define web service clients and endpoints that comply with the REST architectural style. Endpoints are accessed through a common interface that is based on the HTTP standard methods.</description> 
+        <enables>servlet-3.0</enables> 
+        <enables>json-1.0</enables> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.jaxrs_1.0.3.jar</apiJar> 
+        <apiJar>dev/api/third-party/com.ibm.websphere.appserver.thirdparty.jaxrs_1.0.3.jar</apiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.annotation.1.1_1.0.1.jar</apiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.jaxrs.1.1_1.0.1.jar</apiJar> 
+        <apiPackage type="spec">javax.ws.rs</apiPackage> 
+        <apiPackage type="spec">javax.ws.rs.core</apiPackage> 
+        <apiPackage type="spec">javax.ws.rs.ext</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.jaxrs.server</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.jaxrs.providers.json4j</apiPackage> 
+        <apiPackage type="internal">org.apache.wink.server.utils</apiPackage> 
+        <apiPackage type="internal">org.apache.wink.common.annotations</apiPackage> 
+        <apiPackage type="internal">org.apache.wink.common.model.synd</apiPackage> 
+        <apiPackage type="internal">org.apache.wink.common.model.atom</apiPackage> 
+        <apiPackage type="internal">org.apache.wink.common.model.opensearch</apiPackage> 
+        <apiPackage type="internal">org.apache.wink.common.model.csv</apiPackage> 
+        <apiPackage type="internal">org.apache.wink.common.model.wadl</apiPackage> 
+        <apiPackage type="internal">org.apache.wink.common.utils</apiPackage> 
+        <apiPackage type="internal">org.apache.wink.common.internal.utils</apiPackage> 
+        <apiPackage type="internal">org.codehaus.jackson.xc</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.client</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.client.handlers</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.client.internal</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.client.internal.handlers</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.client.internal.log</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.annotations</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.categories</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.http</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.application</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.contexts</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.http</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.i18n</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.lifecycle</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.log</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.model</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.model.admin</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.properties</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.providers.entity</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.providers.entity.app</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.providers.entity.atom</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.providers.entity.csv</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.providers.entity.json</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.providers.entity.xml</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.providers.error</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.providers.header</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.providers.multipart</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.registry</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.registry.metadata</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.runtime</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.uri</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.uritemplate</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.internal.utils</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.model</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.model.app</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.model.atom</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.model.csv</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.model.multipart</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.model.opensearch</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.model.synd</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.model.rss</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.model.wadl</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.common.utils</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.jcdi.server.internal</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.jcdi.server.internal.extension</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.jcdi.server.internal.lifecycle</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.providers.abdera</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.providers.jackson</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.providers.json4j</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.providers.jettison</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.providers.json</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.handlers</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.application</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.contexts</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.handlers</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.handlers.ejb</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.lifecycle</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.lifecycle.metadata</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.log</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.providers.entity.html</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.providers.exception</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.registry</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.resources</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.servlet</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.servlet.contentencode</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.internal.utils</apiPackage> 
+        <apiPackage type="third-party">org.apache.wink.server.utils</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.annotate</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.impl</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.io</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.jaxrs</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map.annotate</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map.deser</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map.exc</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map.introspect</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map.jsontype</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map.jsontype.impl</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map.ser</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map.type</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.map.util</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.node</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.schema</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.sym</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.type</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.util</apiPackage> 
+        <apiPackage type="third-party">org.codehaus.jackson.xc</apiPackage> 
+    </feature> 
+    <feature name="jdbc-4.0"> 
+        <symbolicName>com.ibm.websphere.appserver.jdbc-4.0</symbolicName> 
+        <displayName>Java Database Connectivity</displayName> 
+        <description>This feature enables the configuration of DataSources to access Databases from applications. Any database that complies with the JDBC 4.0 specification can be used; customized configuration of many specific providers is included. High performance connection pooling is also provided.</description> 
+        <enables>jndi-1.0</enables> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.transaction_1.0.2.jar</apiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.transaction.1.1_1.0.1.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.anno_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.annotation.1.1_1.0.1.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.classloading_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.artifact_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.containerServices_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.javaeedd_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.transaction.1.1_1.0.1.jar</apiJar> 
+        <apiPackage type="internal">com.ibm.wsspi.zos.tx</apiPackage> 
+        <configElement>dataSource</configElement> 
+        <configElement>properties.derby.client</configElement> 
+        <configElement>properties.microsoft.sqlserver</configElement> 
+        <configElement>properties.oracle</configElement> 
+        <configElement>properties.informix</configElement> 
+        <configElement>transaction</configElement> 
+        <configElement>properties</configElement> 
+        <configElement>connectionManager</configElement> 
+        <configElement>properties.db2.i.toolbox</configElement> 
+        <configElement>properties.sybase</configElement> 
+        <configElement>properties.db2.jcc</configElement> 
+        <configElement>properties.derby.embedded</configElement> 
+        <configElement>library</configElement> 
+        <configElement>classloader</configElement> 
+        <configElement>authData</configElement> 
+        <configElement>properties.informix.jcc</configElement> 
+        <configElement>properties.datadirect.sqlserver</configElement> 
+        <configElement>jdbcDriver</configElement> 
+        <configElement>properties.db2.i.native</configElement> 
+    </feature> 
+    <feature name="jndi-1.0"> 
+        <symbolicName>com.ibm.websphere.appserver.jndi-1.0</symbolicName> 
+        <displayName>Java Naming and Directory Interface</displayName> 
+        <description>This feature enables the use of Java Naming and Directory Interface (JNDI) to access server configured resources such as DataSources or JMS Connection Factories. It also allows access to Java primitives configured in the server as a jndiEntry.</description> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.anno_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.annotation.1.1_1.0.1.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.artifact_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.containerServices_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.javaeedd_1.0.0.jar</spiJar> 
+        <configElement>jndiEntry</configElement> 
+    </feature> 
+    <feature name="json-1.0"> 
+        <symbolicName>com.ibm.websphere.appserver.json-1.0</symbolicName> 
+        <displayName>JavaScript Object Notation for Java</displayName> 
+        <description>This feature provides access to the JavaScript Object Notation (JSON4J) library. The JSON4J library provides a simple Java model for constructing and manipulating data to be rendered as JSON data.</description> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.json_1.0.1.jar</apiJar> 
+        <apiPackage type="ibm-api">com.ibm.json.java</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.json.xml</apiPackage> 
+    </feature> 
+    <feature name="jsp-2.2"> 
+        <symbolicName>com.ibm.websphere.appserver.jsp-2.2</symbolicName> 
+        <displayName>JavaServer Pages</displayName> 
+        <description>This feature enables support for Java Server Pages (JSPs) that are written to the JSP 2.2 specification. This framework simplifies the construction of user interfaces.</description> 
+        <enables>servlet-3.0</enables> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.jsp.tld.2.2_1.0.2.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.jsp_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.jstl.1.2_1.0.2.jar</apiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.el.2.2_1.0.3.jar</apiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.jsp.2.2_1.0.0.jar</apiJar> 
+        <apiPackage type="spec">javax.servlet.jsp</apiPackage> 
+        <apiPackage type="spec">javax.servlet.jsp.el</apiPackage> 
+        <apiPackage type="spec">javax.servlet.jsp.resources</apiPackage> 
+        <apiPackage type="spec">javax.servlet.jsp.tagext</apiPackage> 
+        <apiPackage type="spec">javax.servlet.jsp.jstl.sql</apiPackage> 
+        <apiPackage type="spec">javax.servlet.jsp.jstl.tlv</apiPackage> 
+        <apiPackage type="spec">javax.servlet.jsp.jstl.core</apiPackage> 
+        <apiPackage type="spec">javax.servlet.jsp.jstl.fmt</apiPackage> 
+        <apiPackage type="spec">javax.el</apiPackage> 
+        <apiPackage type="internal">com.ibm.ws.jsp</apiPackage> 
+        <apiPackage type="internal">com.ibm.ws.jsp.runtime</apiPackage> 
+        <apiPackage type="internal">org.apache.jasper.runtime</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.common.core</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.common.fmt</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.common.sql</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.common.xml</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.el.core</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.el.fmt</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.el.sql</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.el.xml</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.functions</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.rt.core</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.rt.fmt</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.rt.sql</apiPackage> 
+        <apiPackage type="internal">org.apache.taglibs.standard.tag.rt.xml</apiPackage> 
+        <apiPackage type="internal">org.apache.el</apiPackage> 
+        <apiPackage type="internal">org.apache.el.lang</apiPackage> 
+        <apiPackage type="internal">org.apache.jasper.el</apiPackage> 
+        <spiPackage>com.ibm.wsspi.jsp.taglib.config</spiPackage> 
+        <configElement>jspEngine</configElement> 
+    </feature> 
+    <kernelFeature> 
+        <symbolicName>com.ibm.websphere.appserver.kernel-1.0</symbolicName> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.kernel.metatype_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/third-party/com.ibm.wsspi.thirdparty.equinox_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/spec/com.ibm.wsspi.org.osgi.core.5.0.0_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.kernel.embeddable_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.kernel.service_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.threading_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.kernel.filemonitor_1.0.0.jar</spiJar> 
+    </kernelFeature> 
+    <kernelFeature> 
+        <symbolicName>com.ibm.websphere.appserver.kernelCore-1.0</symbolicName> 
+        <spiJar>dev/spi/spec/com.ibm.wsspi.org.osgi.cmpn.5.0.0_1.0.0.jar</spiJar> 
+        <spiPackage>com.ibm.wsspi.config</spiPackage> 
+        <spiPackage>com.ibm.wsspi.kernel.filemonitor</spiPackage> 
+        <spiPackage>com.ibm.wsspi.kernel.service.location</spiPackage> 
+        <spiPackage>com.ibm.wsspi.kernel.service.utils</spiPackage> 
+        <spiPackage>com.ibm.wsspi.threading</spiPackage> 
+        <spiPackage type="spec">org.osgi.service.cm</spiPackage> 
+        <spiPackage type="spec">org.osgi.service.component</spiPackage> 
+        <spiPackage type="spec">org.osgi.service.coordinator</spiPackage> 
+        <spiPackage type="spec">org.osgi.service.event</spiPackage> 
+        <spiPackage type="spec">org.osgi.service.log</spiPackage> 
+        <spiPackage type="spec">org.osgi.service.metatype</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.framework.console</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.framework.eventmgr</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.framework.log</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.service.datalocation</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.service.debug</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.service.environment</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.service.localization</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.service.resolver</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.service.runnable</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.service.security</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.service.urlconversion</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.signedcontent</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.storagemanager</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.osgi.util</spiPackage> 
+        <spiPackage type="third-party">org.eclipse.equinox.log</spiPackage> 
+        <configElement>fileset</configElement> 
+        <configElement>executor</configElement> 
+        <configElement>config</configElement> 
+        <configElement>featureManager</configElement> 
+    </kernelFeature> 
+    <feature name="ldapRegistry-3.0"> 
+        <symbolicName>com.ibm.websphere.appserver.ldapRegistry-3.0</symbolicName> 
+        <displayName>LDAP User Registry</displayName> 
+        <description>This feature enables support for using  an LDAP server as a user registry. Any server that supports LDAP Version 3.0 may be used.</description> 
+        <enables>ssl-1.0</enables> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.anno_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.annotation.1.1_1.0.1.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.classloading_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.artifact_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.containerServices_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.javaeedd_1.0.0.jar</spiJar> 
+        <configElement>domino50LdapFilterProperties</configElement> 
+        <configElement>edirectoryLdapFilterProperties</configElement> 
+        <configElement>federatedRepository</configElement> 
+        <configElement>library</configElement> 
+        <configElement>classloader</configElement> 
+        <configElement>activedLdapFilterProperties</configElement> 
+        <configElement>securewayLdapFilterProperties</configElement> 
+        <configElement>administrator-role</configElement> 
+        <configElement>customLdapFilterProperties</configElement> 
+        <configElement>idsLdapFilterProperties</configElement> 
+        <configElement>netscapeLdapFilterProperties</configElement> 
+        <configElement>iplanetLdapFilterProperties</configElement> 
+        <configElement>ldapRegistry</configElement> 
+    </feature> 
+    <feature name="localConnector-1.0"> 
+        <symbolicName>com.ibm.websphere.appserver.localConnector-1.0</symbolicName> 
+        <displayName>Local JMX Connector</displayName> 
+        <description>This feature allows the use of a local JMX connector that is built into the JVM to access JMX resources in the server. The JMX connector can only be used on the same host machine by a client that has the same user ID and the same JDK as the server process. It enables local access by JMX clients such as jConsole, or other JMX clients that use the Attach API.</description> 
+    </feature> 
+    <kernelFeature> 
+        <symbolicName>com.ibm.websphere.appserver.logging-1.0</symbolicName> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.logging_1.0.0.jar</spiJar> 
+        <configElement>logging</configElement> 
+    </kernelFeature> 
+    <kernelFeature> 
+        <symbolicName>com.ibm.websphere.appserver.os400.extensions-1.0</symbolicName> 
+    </kernelFeature> 
+    <feature name="restConnector-1.0"> 
+        <symbolicName>com.ibm.websphere.appserver.restConnector-1.0</symbolicName> 
+        <displayName>REST JMX Connector</displayName> 
+        <description>A secure JMX connector that can be used locally or remotely using any JDK. It enables remote access by JMX clients via a REST-based connector and requires SSL and basic user security configuration.</description> 
+        <enables>servlet-3.0</enables> 
+        <enables>jaxrs-1.1</enables> 
+        <enables>ssl-1.0</enables> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.restConnector_1.0.1.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.classloading_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.anno_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.annotation.1.1_1.0.1.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.artifact_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.httptransport_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.security_1.0.2.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.application_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.basics_1.0.3.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.javaeedd_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.containerServices_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.servlet.3.0_1.0.1.jar</apiJar> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.endpoint_1.0.0.jar</apiJar> 
+        <apiPackage type="ibm-api">com.ibm.websphere.jmx.connector.rest</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.ws.jmx.connector.client.rest</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.filetransfer</apiPackage> 
+        <configElement>channelfw</configElement> 
+        <configElement>jaasLoginModule</configElement> 
+        <configElement>application</configElement> 
+        <configElement>quickStartSecurity</configElement> 
+        <configElement>applicationMonitor</configElement> 
+        <configElement>httpOptions</configElement> 
+        <configElement>ltpa</configElement> 
+        <configElement>jaasLoginContextEntry</configElement> 
+        <configElement>tcpOptions</configElement> 
+        <configElement>basicRegistry</configElement> 
+        <configElement>trustAssociation</configElement> 
+        <configElement>mimeTypes</configElement> 
+        <configElement>authCache</configElement> 
+        <configElement>httpAccessLogging</configElement> 
+        <configElement>httpDispatcher</configElement> 
+        <configElement>virtualHost</configElement> 
+        <configElement>authentication</configElement> 
+        <configElement>remoteFileAccess</configElement> 
+        <configElement>httpEncoding</configElement> 
+        <configElement>classloader</configElement> 
+        <configElement>library</configElement> 
+        <configElement>httpEndpoint</configElement> 
+        <configElement>administrator-role</configElement> 
+    </feature> 
+    <feature name="servlet-3.0"> 
+        <symbolicName>com.ibm.websphere.appserver.servlet-3.0</symbolicName> 
+        <displayName>Servlet</displayName> 
+        <description>This feature enables support for HTTP Servlets written to the Java Servlet 3.0 specification. The servlets can be packaged in Java EE specified WAR or EAR files.  If servlet security is required, an appSecurity feature should also be configured; in the absence of a security feature any security constraints for the application will be ignored.</description> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.servlet_1.0.2.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.servlet_1.0.2.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.servlet.3.0_1.0.1.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.classloading_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.anno_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/spec/com.ibm.ws.javaee.annotation.1.1_1.0.1.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.artifact_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.httptransport_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.containerServices_1.0.0.jar</spiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.application_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.basics_1.0.3.jar</apiJar> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.javaeedd_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.endpoint_1.0.0.jar</apiJar> 
+        <apiPackage type="spec">javax.servlet.annotation</apiPackage> 
+        <apiPackage type="spec">javax.servlet.descriptor</apiPackage> 
+        <apiPackage type="spec">javax.servlet.resources</apiPackage> 
+        <apiPackage type="spec">javax.servlet.http</apiPackage> 
+        <apiPackage type="spec">javax.servlet</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.servlet.session</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.wsspi.servlet.session</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.servlet.error</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.servlet.container</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.servlet.context</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.servlet.event</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.webcontainer</apiPackage> 
+        <apiPackage type="internal">com.ibm.wsspi.webcontainer</apiPackage> 
+        <apiPackage type="internal">com.ibm.wsspi.webcontainer.annotation</apiPackage> 
+        <spiPackage>com.ibm.wsspi.webcontainer</spiPackage> 
+        <spiPackage>com.ibm.wsspi.webcontainer.collaborator</spiPackage> 
+        <spiPackage>com.ibm.wsspi.webcontainer.extension</spiPackage> 
+        <spiPackage>com.ibm.wsspi.webcontainer.filter</spiPackage> 
+        <spiPackage>com.ibm.wsspi.webcontainer.metadata</spiPackage> 
+        <spiPackage>com.ibm.wsspi.webcontainer.osgi.extension</spiPackage> 
+        <spiPackage>com.ibm.wsspi.webcontainer.servlet</spiPackage> 
+        <spiPackage>com.ibm.wsspi.webcontainer.webapp</spiPackage> 
+        <spiPackage>com.ibm.websphere.servlet.filter</spiPackage> 
+        <spiPackage>com.ibm.websphere.servlet.response</spiPackage> 
+        <spiPackage>com.ibm.ws.webcontainer.extension</spiPackage> 
+        <configElement>webContainer</configElement> 
+        <configElement>channelfw</configElement> 
+        <configElement>application</configElement> 
+        <configElement>applicationMonitor</configElement> 
+        <configElement>httpOptions</configElement> 
+        <configElement>pluginConfiguration</configElement> 
+        <configElement>httpSession</configElement> 
+        <configElement>tcpOptions</configElement> 
+        <configElement>mimeTypes</configElement> 
+        <configElement>enterpriseApplication</configElement> 
+        <configElement>httpAccessLogging</configElement> 
+        <configElement>httpDispatcher</configElement> 
+        <configElement>virtualHost</configElement> 
+        <configElement>httpEncoding</configElement> 
+        <configElement>webApplication</configElement> 
+        <configElement>classloader</configElement> 
+        <configElement>library</configElement> 
+        <configElement>httpEndpoint</configElement> 
+    </feature> 
+    <feature name="ssl-1.0"> 
+        <symbolicName>com.ibm.websphere.appserver.ssl-1.0</symbolicName> 
+        <displayName>Secure Socket Layer</displayName> 
+        <description>This feature enables support for Secure Sockets Layer (SSL) connections. The secure HTTPS listener is not started unless the ssl-1.0 feature is enabled.  The Liberty profile provides a dummy keystore and a dummy truststore, which are the same as those provided by previous versions of WebSphere Application Server.</description> 
+        <spiJar>dev/spi/ibm/com.ibm.websphere.appserver.spi.ssl_1.0.0.jar</spiJar> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.endpoint_1.0.0.jar</apiJar> 
+        <spiPackage>com.ibm.websphere.ssl</spiPackage> 
+        <spiPackage>com.ibm.wsspi.ssl</spiPackage> 
+        <configElement>channelfw</configElement> 
+        <configElement>keyStore</configElement> 
+        <configElement>sslOptions</configElement> 
+        <configElement>sslDefault</configElement> 
+        <configElement>ssl</configElement> 
+        <configElement>tcpOptions</configElement> 
+    </feature> 
+    <protectedFeature> 
+        <symbolicName>com.ibm.websphere.appserver.transaction-1.1</symbolicName> 
+        <apiPackage type="spec">javax.transaction</apiPackage> 
+        <apiPackage type="spec">javax.transaction.xa</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.wsspi.uow</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.jtaextensions</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.websphere.uow</apiPackage> 
+        <apiPackage type="ibm-api">com.ibm.tx.jta</apiPackage> 
+        <apiPackage type="internal">com.ibm.ws.Transaction.resources</apiPackage> 
+        <apiPackage type="internal">com.ibm.ws.LocalTransaction.resources</apiPackage> 
+    </protectedFeature> 
+    <autoFeature> 
+        <symbolicName>com.ibm.websphere.appserver.webAppSecurity-1.0</symbolicName> 
+        <autoProvision>(&amp;(type=osgi.subsystem.feature)(osgi.identity=com.ibm.websphere.appserver.servlet-3.0))</autoProvision> 
+        <autoProvision>(&amp;(type=osgi.subsystem.feature)(osgi.identity=com.ibm.websphere.appserver.appSecurity-2.0))</autoProvision> 
+        <apiJar>dev/api/ibm/com.ibm.websphere.appserver.api.webcontainer.security.app_1.0.0.jar</apiJar> 
+        <apiPackage type="ibm-api">com.ibm.websphere.security.web</apiPackage> 
+        <configElement>trustAssociation</configElement> 
+        <configElement>application-bnd</configElement> 
+        <configElement>webAppSecurity</configElement> 
+    </autoFeature> 
+    <kernelFeature> 
+        <symbolicName>com.ibm.websphere.appserver.zos.extensions-1.0</symbolicName> 
+        <configElement>zosLogging</configElement> 
+    </kernelFeature> 
+    <protectedFeature> 
+        <symbolicName>com.ibm.wsspi.appserver.webBundle-1.0</symbolicName> 
+    </protectedFeature> 
+</featureInfo>

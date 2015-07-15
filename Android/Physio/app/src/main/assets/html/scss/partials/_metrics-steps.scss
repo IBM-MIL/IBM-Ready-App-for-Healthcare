@@ -1,0 +1,202 @@
+/*
+ *  Licensed Materials - Property of IBM
+ *  © Copyright IBM Corporation 2014. All Rights Reserved.
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  of such an application, in customer's own products.
+ */
+
+.metrics-steps_container {
+    position: relative;
+    height: 100vh;
+    
+    .metrics-steps_tab-container {
+        display: block;
+        overflow: auto;
+        font-size: 12pt;
+        background-color: $blue-color;
+        color: $white-color;
+
+        .metrics-steps_tab {
+            width: 24.9%;
+            float: left;
+            padding: 15px 0;
+            text-align: center;
+            font-family: 'RobotoSlab-Regular';
+        }
+        
+        .selected {
+            background-color: $dark-blue-color;
+        }
+    }
+    
+    .metrics-steps_current {
+        position: absolute;
+        top: 46px;
+        height: 210px;
+        width: 100%;
+        
+        .metrics-steps_title {
+            position: relative;
+            margin-top: 20px;
+            margin-left: 30px;
+            font-size: 28pt;
+            color: $blue-color;
+        }
+        
+        .metrics-steps_time {
+            position: relative;
+            margin-top: 5px;
+            margin-left: 30px;
+            font-size: 12pt;
+            color: $gray-color;
+            font-family: 'Roboto-Bold';
+            
+            span {
+                font-family: 'Roboto-Light';
+            }
+        }
+        
+        .metrics-steps_performance {
+            position: relative;
+            text-align: center;
+            margin-top: 10px;
+            
+            .metrics-steps_units {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                position: relative;
+                
+                .units {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    font-family: 'Roboto-Light';
+                    color: $gray-color;
+                    font-size: 14pt;
+                }
+                
+                img {
+                    position: absolute;
+                    top: 5px;
+                    left: 0;
+                    width: 20px;
+                    margin-left: 13px;
+                }
+            }
+            
+            .performance {
+                font-family: 'RobotoSlab-Bold';
+                font-size: 48pt;
+                color: $blue-color;
+            }
+        }
+        
+        .metrics-steps_divider {
+            height: 1px;
+            
+            margin-top: 15px;
+            margin-bottom: 5px;
+            margin-left: 30px;
+            margin-right: 30px;
+            
+            border-bottom: 1px solid $gray-color;
+        }
+        
+        .metrics-steps_goal {
+            position: relative;
+            margin-left: 30px;
+            font-size: 12pt;
+            color: $gray-color;
+
+            span {
+                font-family: 'Roboto-Bold';
+            }
+
+            .metrics-steps_goal-value {
+                font-family: 'Roboto-Light';
+            }
+        }
+    }
+    
+    .metrics-steps_graph-container {
+        position: absolute;
+        top: 256px;
+        bottom: 91px;
+        width: 100%;
+        
+        .metrics-steps_time-graph {
+            height:35px;
+            width:100%;
+            display: block;
+            background-color: $tooltip-color;
+        }
+
+        .metrics-steps_data-container {
+            position: relative;
+            height: 100%;
+            
+            .metrics_graph-triangle-container{
+            
+                position: absolute;
+                left: 50.3%;
+
+                .metrics_graph-triangle {
+                    position: relative;
+                    top: -8px;
+                    bottom: 0;
+                    left: -50%;
+                    height: 100%;
+                    border-left: 9px solid transparent;
+                    border-right: 9px solid transparent;
+                    border-top: 7px solid $tooltip-color; 
+                    width: 0;
+                    display: inline-block;
+                    z-index: 100000;
+                }
+            }
+            .metrics_graph-center-line {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                height: 100%;
+                width: 0;
+                border-left: 2px dashed $light-gray-color;
+            }
+
+            .metrics-steps_graph {
+                width: 100%;
+                height: 100%;
+                position: relative;
+
+                rect {
+                    fill: $blue-color;
+                }
+                path {
+                    fill: none;
+                    stroke-width: 1.5px;
+                    stroke: $blue-color;
+                }
+                circle {
+                    fill: $blue-color;
+                    stroke-width: 3px;
+                    stroke: $white-color;
+                }
+            }
+        }
+    }
+    
+    .metrics-steps_back {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        padding: 20px 0;
+        text-align: center;
+        background-color: $blue-color;
+        font-family: 'RobotoSlab-Light';
+        color: $white-color;
+    }
+}
