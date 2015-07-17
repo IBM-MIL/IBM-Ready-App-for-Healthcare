@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>protocol</key>
-	<string>http</string>
+	<string>Your-MobileFirst-Server-Protocol</string>
 	<key>host</key>
-	<string>192.168.1.148</string>
+	<string>Your-MobileFirst-Server-Host</string>
 	<key>port</key>
-	<string>10080</string>
+	<string>Your-MobileFirst-Server-Port</string>
 	<key>wlServerContext</key>
 	<string>/ReadyAppsMobileFirst/</string>
 	<key>application id</key>
