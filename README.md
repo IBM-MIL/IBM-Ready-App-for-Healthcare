@@ -15,4 +15,4 @@ For demo purposes, if users would like to see pre-populated HealthKit/Google Fit
 | user2   | password2 |
 
 ##Documentation
-For access to the full documentation please visit http://lexdcy040194.ecloud.edst.ibm.com/hatch_1_0_0/home
+For access to the full documentation please visit http://lexdcy040194.ecloud.edst.ibm.com/physio_1_0_2/home
