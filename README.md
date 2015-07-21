@@ -10,7 +10,7 @@ The user credentials for login into IBM Ready App for Healthcare are:
 |---------|----------|
 | user1   | password1 |
 
-For demo purposes, if users would like to see pre-populated HealthKit/Google Fit data, log out of the app and login again with the following credentials:
+For demo purposes, if users would like to see pre-populated HealthKit/Google Fit data, they can log out of the app and log in again with the following credentials:
 
 | Patient ID | Password |
 |---------|----------|
