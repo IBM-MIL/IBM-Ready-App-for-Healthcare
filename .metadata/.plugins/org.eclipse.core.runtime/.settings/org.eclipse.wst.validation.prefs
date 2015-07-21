@@ -1,2 +1,0 @@
-DELEGATES_PREFERENCE=delegateValidatorListorg.eclipse.wst.wsdl.validation.internal.eclipse.WSDLDelegatingValidator\=com.ibm.ccl.soa.sdo.wsdl.validation.internal.EclipseWSDLBasedValidator;org.eclipse.wst.xsd.core.internal.validation.eclipse.XSDDelegatingValidator\=com.ibm.ccl.soa.sdo.xsd.validation.internal.EclipseXSDBasedValidator;
-eclipse.preferences.version=1

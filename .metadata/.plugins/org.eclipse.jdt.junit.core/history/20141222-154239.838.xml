@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="MenuTest (1)" project="iOS_Automated_UI_Testing" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.ibm.mil.MenuTest" time="42.405">
-    <testcase name="testMenuAccessibility" classname="com.ibm.mil.MenuTest" time="42.405"/>
-  </testsuite>
-</testrun>

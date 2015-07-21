@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="StepsDetailProgress" project="iOS_Automated_UI_Testing" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.ibm.mil.StepsDetailProgress" time="55.414">
-    <testcase name="testStepsView" classname="com.ibm.mil.StepsDetailProgress" time="55.414"/>
-  </testsuite>
-</testrun>

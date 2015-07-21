@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="ExerciseLibraryTest" project="iOS_Automated_UI_Testing" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="com.ibm.mil.ExerciseLibraryTest" time="100.829">
-    <testcase name="testExerciseLibrary" classname="com.ibm.mil.ExerciseLibraryTest" time="54.326"/>
-    <testcase name="testEndRoutine" classname="com.ibm.mil.ExerciseLibraryTest" time="46.503"/>
-  </testsuite>
-</testrun>
