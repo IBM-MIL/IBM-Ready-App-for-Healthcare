@@ -4,6 +4,8 @@
 
 IBM Ready App for Healthcare is the first app delivered for the IBM ReadyApp Program.  It seeks to improve patient recovery timeframes and patient adherence to at home physical therapy programs by tracking patient progress regardless of wearable. Ready App for Heatlhcare utilizes the MobileFirst Platform Foundation and is integrated with HealthKit and Google Fit.
 
+The user credentials for login into IBM Ready App for Healthcare are:
+
 | Patient ID | Password |
 |---------|----------|
 | user1   | password1 |
