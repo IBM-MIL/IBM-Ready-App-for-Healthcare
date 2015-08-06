@@ -1,4 +1,0 @@
-var interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_google_fit_manager_1_1_heart_rate_callback =
-[
-    [ "returnHeartRateMap", "interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_google_fit_manager_1_1_heart_rate_callback.html#ac696a48e361ee12183bc2963a748ea57", null ]
-];

@@ -1,5 +1,0 @@
-var interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_login_listener_interface =
-[
-    [ "ResultType", "enumcom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_login_listener_interface_1_1_result_type.html", "enumcom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_login_listener_interface_1_1_result_type" ],
-    [ "handleLogin", "interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_login_listener_interface.html#a36dbf058790909094bffbe0dea7bbce0", null ]
-];

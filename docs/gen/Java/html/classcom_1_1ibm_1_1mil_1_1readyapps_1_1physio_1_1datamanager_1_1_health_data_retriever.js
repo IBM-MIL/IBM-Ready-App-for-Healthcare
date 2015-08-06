@@ -1,6 +1,0 @@
-var classcom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_health_data_retriever =
-[
-    [ "DataType", "enumcom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_health_data_retriever_1_1_data_type.html", "enumcom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_health_data_retriever_1_1_data_type" ],
-    [ "Handler", "interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_health_data_retriever_1_1_handler.html", "interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_health_data_retriever_1_1_handler" ],
-    [ "retrieve", "classcom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_health_data_retriever.html#a7d984943b42f9de1aa27c0628bbe054f", null ]
-];

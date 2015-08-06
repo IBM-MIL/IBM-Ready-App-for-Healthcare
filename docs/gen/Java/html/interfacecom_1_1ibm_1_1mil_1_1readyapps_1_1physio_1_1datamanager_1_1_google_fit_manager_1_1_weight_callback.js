@@ -1,4 +1,0 @@
-var interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_google_fit_manager_1_1_weight_callback =
-[
-    [ "returnWeight", "interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_google_fit_manager_1_1_weight_callback.html#a5d734da54a69e627507c4ac9e06902ac", null ]
-];

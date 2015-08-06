@@ -1,4 +1,0 @@
-var interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1exercisedatamanager_1_1_exercise_listener_interface =
-[
-    [ "handleExercises", "interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1exercisedatamanager_1_1_exercise_listener_interface.html#a27ead7ba4e4e298e4cfa3fc9e232a300", null ]
-];

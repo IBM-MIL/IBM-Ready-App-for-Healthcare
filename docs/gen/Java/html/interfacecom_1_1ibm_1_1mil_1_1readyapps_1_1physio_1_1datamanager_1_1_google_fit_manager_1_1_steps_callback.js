@@ -1,4 +1,0 @@
-var interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_google_fit_manager_1_1_steps_callback =
-[
-    [ "returnSteps", "interfacecom_1_1ibm_1_1mil_1_1readyapps_1_1physio_1_1datamanager_1_1_google_fit_manager_1_1_steps_callback.html#a62d1465d1fb42bfad9db0903a957adb9", null ]
-];
