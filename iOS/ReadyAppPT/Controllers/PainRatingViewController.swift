@@ -187,7 +187,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
         PainData.createInManagedObjectContext(self.managedObjectContext!, rating: painRating, description: painDescription)
         PainData.saveData(self.managedObjectContext!)
         
-        var timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: Selector("navigateToRoot"), userInfo: nil, repeats: false)
+        _ = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: Selector("navigateToRoot"), userInfo: nil, repeats: false)
     }
     
     /**
@@ -206,7 +206,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
                 Utils.returnToDashboard()
             } else if numViewControllers > NUM_CONTROLLERS_IN_PAIN_FLOW {
                 let indexToPopTo = numViewControllers! - NUM_CONTROLLERS_IN_PAIN_FLOW - 1
-                let vc: UIViewController = self.navigationController?.viewControllers[indexToPopTo] as! UIViewController
+                let vc: UIViewController = (self.navigationController?.viewControllers[indexToPopTo])!
                 self.navigationController?.popToViewController(vc, animated: true)
             }
         }

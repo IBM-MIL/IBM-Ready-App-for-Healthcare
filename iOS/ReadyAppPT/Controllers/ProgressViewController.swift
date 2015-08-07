@@ -349,7 +349,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
             let painData = PainData.fetchDataInRange(self.managedObjectContext!, start: startDate!, end: todaysDate, dateComps: intervalData, timeUnit: timeUnit)
             
             self.currentGoal = 2
-            var error: NSError?
+            var error: NSError? = nil
             injectSumMetricData((painData.average as NSString).doubleValue, error: &error)
             
             dataLock.graphString = Utils.prepareGraphInjectionString("applyData(['\(painData.json)']);")
@@ -480,7 +480,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
     - parameter result: value returned from healthkit method
     - parameter error:  error value if any
     */
-    func injectSumMetricData(result: Double, error: NSError!) {
+    func injectSumMetricData(result: Double, error: NSError?) {
         if error == nil{
             self.delay(0.4, closure: {
                 var finalResult = result.format(self.format)

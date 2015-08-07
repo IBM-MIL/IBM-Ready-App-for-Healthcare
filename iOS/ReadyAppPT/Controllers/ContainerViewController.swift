@@ -297,7 +297,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     */
     func popAndReturnHome() {
         
-        var temp: [AnyObject] = [self.centerViewController]
+        var temp: [UIViewController] = [self.centerViewController] as [UIViewController]
         swap(&self.centerNavigationController.viewControllers[0], &temp[0])
         self.centerNavigationController.navigationBar.translucent = true
         self.centerNavigationController.popToRootViewControllerAnimated(true)

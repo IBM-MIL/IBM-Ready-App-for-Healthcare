@@ -57,9 +57,9 @@ class PainData: NSManagedObject {
     
     - parameter moc: the managedObjectContext for the whole application
     */
-    class func presentAllData(moc: NSManagedObjectContext) {
+    class func presentAllData(moc: NSManagedObjectContext) throws {
         let fetchRequest = NSFetchRequest(entityName: painDataName)
-        if let fetchResults = moc.executeFetchRequest(fetchRequest) as? [PainData] {
+        if let fetchResults = try moc.executeFetchRequest(fetchRequest) as? [PainData] {
             for result in fetchResults {
                 print("desc: \(result.painDescription), rating: \(result.painRating), date: \(result.timeStamp)")
             }
@@ -68,6 +68,7 @@ class PainData: NSManagedObject {
                 print(NSLocalizedString("No data was found", comment: "n/a"))
             }
         }
+
     }
     
     /**
@@ -75,9 +76,9 @@ class PainData: NSManagedObject {
     
     - parameter moc: the managedObjectContext for the whole application
     */
-    class func deleteAllPainData(moc: NSManagedObjectContext) {
+    class func deleteAllPainData(moc: NSManagedObjectContext) throws {
         let fetchRequest = NSFetchRequest(entityName: painDataName)
-        if let fetchResults = moc.executeFetchRequest(fetchRequest) as? [PainData] {
+        if let fetchResults = try moc.executeFetchRequest(fetchRequest) as? [PainData] {
             for result in fetchResults {
                 moc.deleteObject(result)
                 PainData.saveData(moc)
@@ -129,36 +130,39 @@ class PainData: NSManagedObject {
         let datePredicate = NSPredicate(format: "timeStamp > %@ AND timeStamp < %@", start, end)
         fetchRequest.predicate = datePredicate
 
-        var error: NSError?
-        if let results: [PainData] = moc.executeFetchRequest(fetchRequest) as? [PainData] {
-            // iterate through dates
-            var date: NSDate = end.copy() as! NSDate
-            var previousDate = date
-            while resultAverages.count < num_points {
-                date = cal.dateByAddingComponents(dateComps, toDate: date, options: [])!
-                var avg = 0
-                var count = 0
-                // find all dates in sub range and average them out before inserting into json
-                for result in results {
-                    let tempDate = result.timeStamp
-                    if tempDate.timeIntervalSinceDate(previousDate) <= 0 && tempDate.timeIntervalSinceDate(date) >= 0 {
-                        avg += result.painRating.integerValue
-                        count++
+        do {
+            if let results: [PainData] = try moc.executeFetchRequest(fetchRequest) as? [PainData] {
+                // iterate through dates
+                var date: NSDate = end.copy() as! NSDate
+                var previousDate = date
+                while resultAverages.count < num_points {
+                    date = cal.dateByAddingComponents(dateComps, toDate: date, options: [])!
+                    var avg = 0
+                    var count = 0
+                    // find all dates in sub range and average them out before inserting into json
+                    for result in results {
+                        let tempDate = result.timeStamp
+                        if tempDate.timeIntervalSinceDate(previousDate) <= 0 && tempDate.timeIntervalSinceDate(date) >= 0 {
+                            avg += result.painRating.integerValue
+                            count++
+                        }
                     }
-                }
-                
-                if count > 0 {
-                    avg = avg / count
                     
-                    totalAverage.0 += avg
-                    totalAverage.1++
+                    if count > 0 {
+                        avg = avg / count
+                        
+                        totalAverage.0 += avg
+                        totalAverage.1++
+                    }
+                    
+                    resultAverages.append(avg)
+                    
+                    xValue++
+                    previousDate = date
                 }
-                
-                resultAverages.append(avg)
-                
-                xValue++
-                previousDate = date
             }
+        } catch {
+            print("Caught exception: \(error)")
         }
         
         for (index, avg) in resultAverages.enumerate() {

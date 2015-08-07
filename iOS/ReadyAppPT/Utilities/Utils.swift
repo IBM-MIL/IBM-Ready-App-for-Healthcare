@@ -43,7 +43,7 @@ class Utils {
     - returns: String of Json
     */
     class func JSONStringify(value: AnyObject, prettyPrinted: Bool) -> String {
-        var options = prettyPrinted ? NSJSONWritingOptions.PrettyPrinted : nil
+        var options: NSJSONWritingOptions = NSJSONWritingOptions.PrettyPrinted // Seems to be only option
         if NSJSONSerialization.isValidJSONObject(value) {
             do {
                 let data = try NSJSONSerialization.dataWithJSONObject(value, options: options)
@@ -144,7 +144,7 @@ class Utils {
         }
         
         if pieces.count >= 2 {
-            var year = "\(Utils.extractYearFromDate(date))"
+            let year = "\(Utils.extractYearFromDate(date))"
             if var index = pieces.indexOf(year) {
                 pieces.removeAtIndex(index)
             }

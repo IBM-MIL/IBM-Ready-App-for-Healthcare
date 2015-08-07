@@ -228,17 +228,17 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         }
         
         var zoomIn: Bool = false    // will be set to true only if there are layers that are colored
-        var point = recognizer.locationInView(self.imgView)
-        var hitLayer: CALayer = self.imgView.layer.hitTest(point)
+        let point = recognizer.locationInView(self.imgView)
+        let hitLayer: CALayer = self.imgView.layer.hitTest(point)!
         
         // Fill in the tapped layer
         originalFillColors = []
         lastTappedLayer = hitLayer
-        var parentLayer = lastTappedLayer?.superlayer
-        for layer in parentLayer!.sublayers{
+        let parentLayer = lastTappedLayer?.superlayer
+        for layer in parentLayer!.sublayers! {
             if let childLayer = layer as? CAShapeLayer {
                 zoomIn = true
-                originalFillColors.append(childLayer.fillColor)
+                originalFillColors.append(childLayer.fillColor!)
                 if self.useBlueColor {
                     childLayer.fillColor = UIColor.readyAppBlue().CGColor
                 } else {
@@ -252,23 +252,23 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         if (zoomIn) {
             // Get the layer that contains the overall image. Need this to center on the tapped layer correctly. This is hacky and
             // depends on the SVG file being the correct format, but I dont see a way around this
-            var imgLayer = lastTappedLayer!.superlayer.superlayer
+            let imgLayer = lastTappedLayer!.superlayer!.superlayer
             
             // Get the center of the parent layer of the tapped layer. This parent layer is a square around that entire body part.
-            var centerOfLayer = CGPointMake(CGRectGetMidX(lastTappedLayer!.superlayer.frame), CGRectGetMidY(lastTappedLayer!.superlayer.frame))
-            centerOfLayer.x += imgLayer.frame.origin.x
-            centerOfLayer.y += imgLayer.frame.origin.y
+            var centerOfLayer = CGPointMake(CGRectGetMidX(lastTappedLayer!.superlayer!.frame), CGRectGetMidY(lastTappedLayer!.superlayer!.frame))
+            centerOfLayer.x += imgLayer!.frame.origin.x
+            centerOfLayer.y += imgLayer!.frame.origin.y
             
             var newZoom: CGFloat = MAX_ZOOM_SCALE
             newZoom = min(newZoom, self.scrollView.maximumZoomScale)
             
-            var scrollViewSize = self.scrollView.bounds.size
-            var width = scrollViewSize.width / newZoom
-            var height = scrollViewSize.height / newZoom
-            var x = centerOfLayer.x - (width / 2.0)
-            var y = centerOfLayer.y - (height / 2.0)
+            let scrollViewSize = self.scrollView.bounds.size
+            let width = scrollViewSize.width / newZoom
+            let height = scrollViewSize.height / newZoom
+            let x = centerOfLayer.x - (width / 2.0)
+            let y = centerOfLayer.y - (height / 2.0)
             
-            var rectToZoomInto = CGRect(x: x, y: y, width: width, height: height)
+            let rectToZoomInto = CGRect(x: x, y: y, width: width, height: height)
             self.zoomedIn = true
             self.scrollView.zoomToRect(rectToZoomInto, animated:true)
             
@@ -340,7 +340,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         var testFrame = currentPointer.frame
         testFrame.offset(dx: xOffset, dy: 0)
         var testPoint = CGPoint(x: testFrame.origin.x + (currentPointer.frame.size.width / 2), y: testFrame.origin.y + testFrame.size.height)
-        var hitLayer: CALayer = self.imgView.layer.hitTest(testPoint)
+        var hitLayer: CALayer = self.imgView.layer.hitTest(testPoint)!
         if hitLayer.superlayer == lastTappedLayer?.superlayer {
             newOrigin.x = testFrame.origin.x
         } else {
@@ -351,7 +351,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         testFrame = currentPointer.frame
         testFrame.offset(dx: 0, dy: yOffset)
         testPoint = CGPoint(x: testFrame.origin.x + (currentPointer.frame.size.width / 2), y: testFrame.origin.y + testFrame.size.height)
-        hitLayer = self.imgView.layer.hitTest(testPoint)
+        hitLayer = self.imgView.layer.hitTest(testPoint)!
         if hitLayer.superlayer == lastTappedLayer?.superlayer {
             newOrigin.y = testFrame.origin.y
         } else {
@@ -381,10 +381,10 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         self.scrollView.userInteractionEnabled = true
         if self.zoomedIn {
             // Create pointer and place on screen
-            var imgLayer = lastTappedLayer!.superlayer.superlayer
-            var centerOfLayer = CGPointMake(CGRectGetMidX(lastTappedLayer!.superlayer.frame), CGRectGetMidY(lastTappedLayer!.superlayer.frame))
-            centerOfLayer.x += imgLayer.frame.origin.x
-            centerOfLayer.y += imgLayer.frame.origin.y
+            var imgLayer = lastTappedLayer!.superlayer!.superlayer
+            var centerOfLayer = CGPointMake(CGRectGetMidX(lastTappedLayer!.superlayer!.frame), CGRectGetMidY(lastTappedLayer!.superlayer!.frame))
+            centerOfLayer.x += imgLayer!.frame.origin.x
+            centerOfLayer.y += imgLayer!.frame.origin.y
             centerOfLayer.x = centerOfLayer.x * MAX_ZOOM_SCALE - PAIN_POINTER_WIDTH / 2
             centerOfLayer.y = centerOfLayer.y * MAX_ZOOM_SCALE - PAIN_POINTER_HEIGHT
 
@@ -569,7 +569,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
             // Clear the last tapped layer
             if let lastLayer = lastTappedLayer {
                 var parentLayer = lastLayer.superlayer
-                for var index = 0; index < parentLayer!.sublayers.count; ++index {
+                for var index = 0; index < parentLayer!.sublayers!.count; ++index {
                     if let childLayer = parentLayer!.sublayers[index] as? CAShapeLayer {
                         childLayer.fillColor = originalFillColors[index]
                         childLayer.opacity = 1.0
