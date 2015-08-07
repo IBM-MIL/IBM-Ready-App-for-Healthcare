@@ -253,7 +253,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     func populateSidePanelWithUserData() {
         var thePatient =  DataManager.dataManager.currentPatient
         leftViewController!.userIDLabel.text = "\(thePatient.userID)"
-        var components = NSCalendar.currentCalendar().components(NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit, fromDate: thePatient.dateOfNextVisit)
+        var components = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay, fromDate: thePatient.dateOfNextVisit)
         
         // creates a localized month/day formatted string
         var localizedDate = NSDateFormatter.localizedStringFromDate(thePatient.dateOfNextVisit, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)

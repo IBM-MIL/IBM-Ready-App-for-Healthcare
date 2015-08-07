@@ -188,12 +188,9 @@
 		CD09D0421A23EA47008949FA /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0351A23EA47008949FA /* LICENSE.txt */; };
 		CD09D0431A23EA47008949FA /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0361A23EA47008949FA /* Roboto-Black.ttf */; };
 		CD09D0441A23EA47008949FA /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0371A23EA47008949FA /* Roboto-BlackItalic.ttf */; };
-		CD09D0451A23EA47008949FA /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0381A23EA47008949FA /* Roboto-Bold.ttf */; };
 		CD09D0461A23EA47008949FA /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0391A23EA47008949FA /* Roboto-BoldItalic.ttf */; };
 		CD09D0471A23EA47008949FA /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D03A1A23EA47008949FA /* Roboto-Italic.ttf */; };
-		CD09D0481A23EA47008949FA /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D03B1A23EA47008949FA /* Roboto-Light.ttf */; };
 		CD09D0491A23EA47008949FA /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D03C1A23EA47008949FA /* Roboto-LightItalic.ttf */; };
-		CD09D04A1A23EA47008949FA /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D03D1A23EA47008949FA /* Roboto-Medium.ttf */; };
 		CD09D04B1A23EA47008949FA /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D03E1A23EA47008949FA /* Roboto-MediumItalic.ttf */; };
 		CD09D04C1A23EA47008949FA /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D03F1A23EA47008949FA /* Roboto-Regular.ttf */; };
 		CD09D04D1A23EA47008949FA /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0401A23EA47008949FA /* Roboto-Thin.ttf */; };
@@ -1384,7 +1381,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD09D0491A23EA47008949FA /* Roboto-LightItalic.ttf in Resources */,
-				CD09D0451A23EA47008949FA /* Roboto-Bold.ttf in Resources */,
 				80A0E2421A964C5100EF486F /* scrubber-popover.html in Resources */,
 				7EE09F501A46413800EDF3CA /* Localizations.bundle in Resources */,
 				80A0E23A1A964C5100EF486F /* redpain_small.png in Resources */,
@@ -1407,7 +1403,6 @@
 				CD8642E81A1BEF4C00E7E9B3 /* healthData.json in Resources */,
 				A21316281A30C43A00B324A8 /* Localizable.strings in Resources */,
 				CD09D04E1A23EA47008949FA /* Roboto-ThinItalic.ttf in Resources */,
-				CD09D04A1A23EA47008949FA /* Roboto-Medium.ttf in Resources */,
 				CDD6F8091A3F64DB00BA8992 /* CustomAlertViewExercise.xib in Resources */,
 				80A0E2211A964C5100EF486F /* greycalorie_small.png in Resources */,
 				054022FE1A1E51F0000DC63E /* PleaseWaitViewController~iPhone.xib in Resources */,
@@ -1450,7 +1445,6 @@
 				80A0E2311A964C5100EF486F /* metrics-weight-ctrl.js in Resources */,
 				2E7A45161A02ECF100B76E63 /* SVProgressHUD.bundle in Resources */,
 				80A0E23E1A964C5100EF486F /* RobotoSlab-Bold.ttf in Resources */,
-				CD09D0481A23EA47008949FA /* Roboto-Light.ttf in Resources */,
 				CD09D04C1A23EA47008949FA /* Roboto-Regular.ttf in Resources */,
 				80A0E22A1A964C5100EF486F /* metrics-ctrl.js in Resources */,
 				CD38B9F91A23E24800BFFA36 /* femaleback.svg in Resources */,

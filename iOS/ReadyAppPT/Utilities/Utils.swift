@@ -77,7 +77,7 @@ class Utils {
     :returns: Int of the current year
     */
     class func extractYearFromDate(date: NSDate) -> Int {
-        var components = NSCalendar.currentCalendar().components(NSCalendarUnit.YearCalendarUnit, fromDate: date)
+        var components = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitYear, fromDate: date)
         return components.year
     }
     
@@ -89,7 +89,7 @@ class Utils {
     :returns: The current month name
     */
     class func extractMonthNameFromDate(date: NSDate) -> String {
-        var components = NSCalendar.currentCalendar().components(NSCalendarUnit.MonthCalendarUnit, fromDate: date)
+        var components = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitMonth, fromDate: date)
         var df = NSDateFormatter()
         return df.monthSymbols[components.month - 1] as! String
     }
@@ -102,7 +102,7 @@ class Utils {
     :returns: The current day digit
     */
     class func extractDayFromDate(date: NSDate) -> Int {
-        var components = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit, fromDate: date)
+        var components = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitDay, fromDate: date)
         return components.day
     }
     
@@ -215,7 +215,7 @@ class Utils {
             if nav.viewControllers.count == 1 {
                 
                 var childVC: AnyObject? = nav.childViewControllers.first
-                var menuIcon = UIBarButtonItem(image: UIImage(named: "menu_icon"), style: UIBarButtonItemStyle.Bordered, target: childVC, action: "openSideMenu" )
+                var menuIcon = UIBarButtonItem(image: UIImage(named: "menu_icon"), style: UIBarButtonItemStyle.Plain, target: childVC, action: "openSideMenu" )
                 menuIcon.tintColor = UIColor.whiteColor()
                 childVC?.navigationItem.leftBarButtonItem = menuIcon
                 
