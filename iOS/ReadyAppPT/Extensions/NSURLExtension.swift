@@ -13,13 +13,13 @@ extension NSURL {
     /**
     NSURL extension method to parse a URL, gathering the last components to perform the appropriate action on the return value
     
-    :returns: (object, action) a tuple with the object to make and the action to perform
+    - returns: (object, action) a tuple with the object to make and the action to perform
     */
     func urlParser() -> (object: String, action: String) {
         var absString = self.absoluteString
         
         // get everything after .html and parse components
-        var relevantPath = absString?.componentsSeparatedByString(self.lastPathComponent!).last
+        var relevantPath = absString.componentsSeparatedByString(self.lastPathComponent!).last
         var params = relevantPath!.componentsSeparatedByString("/") as Array<String>
         
         // return a tuple of important data

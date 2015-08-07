@@ -96,7 +96,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
 
-        if var font = UIFont(name: "RobotoSlab-Bold", size: 18) {
+        if let font = UIFont(name: "RobotoSlab-Bold", size: 18) {
             let textFontAttributes = [NSFontAttributeName: font, NSForegroundColorAttributeName : UIColor.whiteColor()]
             self.navigationController?.navigationBar.titleTextAttributes = textFontAttributes
         }
@@ -128,7 +128,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     override func viewDidAppear(animated: Bool) {
         
         // ensure route is correct so get started button will work every time
-        var reload = Utils.prepareCodeInjectionString("switchRoute('/WebView/dashboard', false)")
+        let reload = Utils.prepareCodeInjectionString("switchRoute('/WebView/dashboard', false)")
         self.webView.stringByEvaluatingJavaScriptFromString(reload)
 
         
@@ -137,7 +137,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
                 DISPATCH_TIME_NOW,
                 Int64(0.2 * Double(NSEC_PER_SEC))
             ), dispatch_get_main_queue(), {
-                var localeLoad = Utils.prepareCodeInjectionString("setLanguage('\(NSLocale.currentLocale().localeIdentifier)')")
+                let localeLoad = Utils.prepareCodeInjectionString("setLanguage('\(NSLocale.currentLocale().localeIdentifier)')")
                 self.webView.stringByEvaluatingJavaScriptFromString(localeLoad)
                 self.updateHybridView()
         })
@@ -170,23 +170,23 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     */
     func updateHybridView() {
         // retrieve and format date
-        var currentDate = NSDate()
+        let currentDate = NSDate()
         var formattedDate = ""
 
         // Currently only support ordinal number endings for english dates
         if NSLocale.currentLocale().localeIdentifier == "en_US" || NSLocale.currentLocale().localeIdentifier == "en" {
-            var month: String = Utils.extractMonthNameFromDate(currentDate)
-            var day: Int = Utils.extractDayFromDate(currentDate)
+            let month: String = Utils.extractMonthNameFromDate(currentDate)
+            let day: Int = Utils.extractDayFromDate(currentDate)
             formattedDate = "\(month) \(Utils.daySuffixFromDay(day))"
         } else {
             formattedDate = Utils.localizedMonthDay(currentDate, dateStyle: NSDateFormatterStyle.LongStyle)
         }
         
         // format and send data to the hybrid view
-        var dateUpdate = Utils.prepareCodeInjectionString("setDate('\(formattedDate)')")
-        var minuteUpdate = Utils.prepareCodeInjectionString("setMinutes('\(Utils.formatSingleDigits(45))')")
-        var exerciseUpdate = Utils.prepareCodeInjectionString("setExercises('\(Utils.formatSingleDigits(22))')")
-        var sessionUpdate = Utils.prepareCodeInjectionString("setSessions('\(Utils.formatSingleDigits(2))')")
+        let dateUpdate = Utils.prepareCodeInjectionString("setDate('\(formattedDate)')")
+        let minuteUpdate = Utils.prepareCodeInjectionString("setMinutes('\(Utils.formatSingleDigits(45))')")
+        let exerciseUpdate = Utils.prepareCodeInjectionString("setExercises('\(Utils.formatSingleDigits(22))')")
+        let sessionUpdate = Utils.prepareCodeInjectionString("setSessions('\(Utils.formatSingleDigits(2))')")
         self.webView.stringByEvaluatingJavaScriptFromString(dateUpdate + minuteUpdate + exerciseUpdate + sessionUpdate)
     }
     
@@ -201,12 +201,12 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
             self.view.layoutIfNeeded()
         }, completion: nil)
         
-        UIView.animateWithDuration(0.3, delay: 0.1, options: nil, animations: {
+        UIView.animateWithDuration(0.3, delay: 0.1, options: [], animations: {
             self.secondTabConstraint.constant = self.secondLeadingConstant
             self.view.layoutIfNeeded()
         }, completion: nil)
         
-        UIView.animateWithDuration(0.3, delay: 0.2, options: nil, animations: {
+        UIView.animateWithDuration(0.3, delay: 0.2, options: [], animations: {
             self.firstTabConstraint.constant = self.thirdLeadingConstant
             self.view.layoutIfNeeded()
             }, completion: { (done: Bool) in
@@ -263,9 +263,9 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     /**
     Method to determine if tab x value is in specified range
     
-    :param: value current tab x value to test
+    - parameter value: current tab x value to test
     
-    :returns: true if in specified range
+    - returns: true if in specified range
     */
     func inTabRange(value: CGFloat) -> Bool {
         return (value >= (self.view.frame.size.width - initialTabWidth) && (value <= self.view.frame.size.width))
@@ -275,12 +275,12 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     This method determines the leading edge constraint for the 3 different tabs.
     Ensures smooth panning with each tab offset by 30 from eachother.
     
-    :param: xValue      potential leading edge value if in range
-    :param: panningLeft bool to represent if user is panning left
+    - parameter xValue:      potential leading edge value if in range
+    - parameter panningLeft: bool to represent if user is panning left
     */
     func determineTabPlacement(xValue: CGFloat, panningLeft: Bool) {
-        var middleTabOffset: CGFloat = 30
-        var topTabOffset: CGFloat = middleTabOffset * 2
+        let middleTabOffset: CGFloat = 30
+        let topTabOffset: CGFloat = middleTabOffset * 2
         
         // The other constants are offset from the firstLeadingConstant
         if inTabRange(xValue) {
@@ -307,7 +307,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     /**
     Method to control movement of metric tabs on and off screen with a panning gesture
     
-    :param: recognizer the recognizer added to the dashboard
+    - parameter recognizer: the recognizer added to the dashboard
     */
     func handlePanGesture(recognizer: UIPanGestureRecognizer) {
         
@@ -335,14 +335,14 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
             // .Changed evaluates if tempValue is in the valid range set up for the metric tabs
         case .Changed:
             
-            var tempValue = baselineValue + recognizer.translationInView(view).x
+            let tempValue = baselineValue + recognizer.translationInView(view).x
             determineTabPlacement(tempValue, panningLeft: recognizer.velocityInView(view).x < 0 ? true : false)
 
             // .Ended finishes metric tab animation to a visible or hidden state
         case .Ended:
             
             isDragging = false
-            var halfOfRange = self.view.frame.size.width - (initialTabWidth/2)
+            let halfOfRange = self.view.frame.size.width - (initialTabWidth/2)
             
             if (firstLeadingConstant > halfOfRange) {
                 // animate metric tabs to hidden state
@@ -372,7 +372,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     /**
     Method to call delegate menu to toggle left side panel
     
-    :param: sender The UIButton calling this action
+    - parameter sender: The UIButton calling this action
     */
     @IBAction func openSideMenu(sender: AnyObject) {
         if let del = centerViewDelegate {
@@ -390,7 +390,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
 
         var startDate = NSDate()
         startDate = startDate.dateTwoWeeksAgo()   //Get data for the past 7 days
-        var format = ".0"
+        let format = ".0"
         
         // retrieve data and update UI on main thread for immediate change
         HealthKitManager.healthKitManager.getSteps(startDate, callback: { (steps, error) in
@@ -428,13 +428,13 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
                             self.poundsLabel.text = Utils.getLocalizedWeightUnit(val)
     
                             if let change = data[WeightInPoundsData.Start.rawValue] {
-                                var weightLost = val - change
+                                let weightLost = val - change
                                 self.poundsLostLabel.text = Utils.getLocalizedWeight(weightLost)
                                 if (weightLost > 0) {
-                                    var progressText = NSLocalizedString(" gained this week.", comment: "n/a")
+                                    let progressText = NSLocalizedString(" gained this week.", comment: "n/a")
                                     self.thisWeekLabel.text = Utils.getLocalizedWeightUnit(val) + progressText
                                 } else {
-                                    var progressText = NSLocalizedString(" lost this week.", comment: "n/a")
+                                    let progressText = NSLocalizedString(" lost this week.", comment: "n/a")
                                     self.thisWeekLabel.text = Utils.getLocalizedWeightUnit(val) + progressText
                                 }
                             }
@@ -465,7 +465,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     */
     func addTapGesturesToTabs() {
         for index in 0...2 {
-            var tap = UITapGestureRecognizer(target: self, action: "openProgressView:")
+            let tap = UITapGestureRecognizer(target: self, action: "openProgressView:")
             tap.delegate = self
             tap.numberOfTapsRequired = 1
             self.availableTabs[index].addGestureRecognizer(tap)
@@ -477,10 +477,10 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     /**
     Tap handler on metric tab to push a ProgressViewController with the appropriate data
     
-    :param: recognizer tap gesture calling this method
+    - parameter recognizer: tap gesture calling this method
     */
     func openProgressView(recognizer: UITapGestureRecognizer) {
-        var main = UIStoryboard.progressViewController()
+        let main = UIStoryboard.progressViewController()
         for index in 0...2 {
             if recognizer.view == self.availableTabs[index] {
                 main?.viewType = self.routeExtension[index]
@@ -500,14 +500,14 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     /**
     Method called when a native action should be taken from a webview interaction
     
-    :param: pathComponents components that help route to the appropriate action
+    - parameter pathComponents: components that help route to the appropriate action
     */
     func nativeViewHasChanged(pathComponents: Array<String>) {
         if pathComponents.last == "vid_library" {
             SVProgressHUD.showWithMaskType(SVProgressHUDMaskType.Gradient)
             // Load exercise data from server before navigating to VideoPlayerViewController
             var routineID : [String] = DataManager.dataManager.currentPatient.routineId
-            var exerciseDataManager = ExerciseDataManager.exerciseDataManager
+            let exerciseDataManager = ExerciseDataManager.exerciseDataManager
             exerciseDataManager.getExercisesForRoutine(routineID[0], callback: exerciseDataGathered)
         }
     }
@@ -515,15 +515,15 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     /**
     Callback method that gets called when data is returned from the server
     
-    :param: result the result stating if the database call was successful
+    - parameter result: the result stating if the database call was successful
     */
     func exerciseDataGathered(result: ExerciseResultType) {
         SVProgressHUD.dismiss()
         if result == ExerciseResultType.Success {
             if var exercises = ExerciseDataManager.exerciseDataManager.exercises {
-                if var first = exercises.first {
+                if let first = exercises.first {
                     
-                    var videoViewController = UIStoryboard.videoPlayerViewController()
+                    let videoViewController = UIStoryboard.videoPlayerViewController()
                     videoViewController?.exerciseName = first.exerciseDescription == nil ? "" : first.exerciseDescription
                     videoViewController?.videoStats = (first.minutes.integerValue, first.repetitions.integerValue, first.sets.integerValue)
                     videoViewController?.tools = first.tools == nil ? "" : first.tools
@@ -534,12 +534,12 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
                 }
             }
         } else {
-            var alert = UIAlertController(title: NSLocalizedString("Connection Error", comment: "n/a"), message: NSLocalizedString("Could not retrieve data from the server, try again later.", comment: ""), preferredStyle: .Alert)
+            let alert = UIAlertController(title: NSLocalizedString("Connection Error", comment: "n/a"), message: NSLocalizedString("Could not retrieve data from the server, try again later.", comment: ""), preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "n/a"), style: .Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             
             // ensure route is correct so get started button will work every time
-            var reload = Utils.prepareCodeInjectionString("switchRoute('/WebView/dashboard', false)")
+            let reload = Utils.prepareCodeInjectionString("switchRoute('/WebView/dashboard', false)")
             self.webView.stringByEvaluatingJavaScriptFromString(reload)
         }
     }
@@ -550,12 +550,12 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     Method lays out positioning of side tabs on the right
     */
     func setupAutoLayoutConstraints() {
-        self.view.removeConstraints(self.view.constraints())
+        self.view.removeConstraints(self.view.constraints)
         
         // Tab size won't change so we may be able to remove constraints for tabs and just use storyboard placement
-        self.heartTab.removeConstraints(self.heartTab.constraints())
-        self.weightTab.removeConstraints(self.weightTab.constraints())
-        self.stepsTab.removeConstraints(self.stepsTab.constraints())
+        self.heartTab.removeConstraints(self.heartTab.constraints)
+        self.weightTab.removeConstraints(self.weightTab.constraints)
+        self.stepsTab.removeConstraints(self.stepsTab.constraints)
         
         // Declare visualConstarint variables
         viewsDictionary["heartTab"] = self.heartTab
@@ -596,10 +596,10 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
         func fillViewWithImage(view: UIView, item: String) {
             view.addConstraints(
                 NSLayoutConstraint.constraintsWithVisualFormat(
-                    "V:|[\(item)]|", options: nil, metrics: nil, views: viewsDictionary))
+                    "V:|[\(item)]|", options: [], metrics: nil, views: viewsDictionary))
             view.addConstraints(
                 NSLayoutConstraint.constraintsWithVisualFormat(
-                    "H:|[\(item)]|", options: nil, metrics: nil, views: viewsDictionary))
+                    "H:|[\(item)]|", options: [], metrics: nil, views: viewsDictionary))
         }
         
         routeExtension = ["metrics_hr_week", "metrics_weight_week", "metrics_steps_week"]
@@ -625,10 +625,10 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
         // firstTab constraints which can change based on availableTabs
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-80-[\(availableTabStrings[0])(90)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|-80-[\(availableTabStrings[0])(90)]", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[\(availableTabStrings[0])(108)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[\(availableTabStrings[0])(108)]", options: [], metrics: nil, views: viewsDictionary))
         
         // assign to a variable so we can animate later
         firstTabConstraint = NSLayoutConstraint(item: availableTabs[0], attribute: .Leading, relatedBy: .Equal,
@@ -639,10 +639,10 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
         // secondTab constraints
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[\(availableTabStrings[0])]-10-[\(availableTabStrings[1])(90)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[\(availableTabStrings[0])]-10-[\(availableTabStrings[1])(90)]", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[\(availableTabStrings[1])(108)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[\(availableTabStrings[1])(108)]", options: [], metrics: nil, views: viewsDictionary))
         secondTabConstraint = NSLayoutConstraint(item: availableTabs[1], attribute: .Leading, relatedBy: .Equal,
             toItem: self.view, attribute: .Leading, multiplier: 1.0, constant: leftTabConstraintConstant)
         self.view.addConstraint(secondTabConstraint)
@@ -650,132 +650,132 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
         // thirdTab constraints
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[\(availableTabStrings[1])]-10-[\(availableTabStrings[2])(90)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[\(availableTabStrings[1])]-10-[\(availableTabStrings[2])(90)]", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[\(availableTabStrings[2])(108)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[\(availableTabStrings[2])(108)]", options: [], metrics: nil, views: viewsDictionary))
         thirdTabConstraint = NSLayoutConstraint(item: availableTabs[2], attribute: .Leading, relatedBy: .Equal,
             toItem: self.view, attribute: .Leading, multiplier: 1.0, constant: leftTabConstraintConstant)
         self.view.addConstraint(thirdTabConstraint)
         
         
         // internal heartTab constraints
-        fillViewWithImage(self.heartTab, "heartImageView")
+        fillViewWithImage(self.heartTab, item: "heartImageView")
         
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-7-[heartRateTitle(14)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|-7-[heartRateTitle(14)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-25-[heartRateTitle(60)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-25-[heartRateTitle(60)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-35-[heartLabel(33)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|-35-[heartLabel(33)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-10-[heartLabel(58)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-10-[heartLabel(58)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-50-[bpmLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|-50-[bpmLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[heartLabel][bpmLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[heartLabel][bpmLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[heartLabel][minHeartLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[heartLabel][minHeartLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-10-[minHeartLabel(13)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-10-[minHeartLabel(13)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[heartLabel][minLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[heartLabel][minLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[minHeartLabel]-2-[minLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[minHeartLabel]-2-[minLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[heartLabel][maxHeartLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[heartLabel][maxHeartLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[minLabel][maxHeartLabel(16)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[minLabel][maxHeartLabel(16)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[heartLabel][maxLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[heartLabel][maxLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.heartTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[maxHeartLabel]-2-[maxLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[maxHeartLabel]-2-[maxLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         
         // internal weightTab constraints
-        fillViewWithImage(self.weightTab, "weightImageView")
+        fillViewWithImage(self.weightTab, item: "weightImageView")
         
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-7-[weightTitle(14)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|-7-[weightTitle(14)]", options: [], metrics: nil, views: viewsDictionary))
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-25-[weightTitle(42)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-25-[weightTitle(42)]", options: [], metrics: nil, views: viewsDictionary))
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-35-[weightLabel(33)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|-35-[weightLabel(33)]", options: [], metrics: nil, views: viewsDictionary))
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-10-[weightLabel(58)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-10-[weightLabel(58)]", options: [], metrics: nil, views: viewsDictionary))
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-50-[poundsLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|-50-[poundsLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[weightLabel][poundsLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[weightLabel][poundsLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[weightLabel][poundsLostLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[weightLabel][poundsLostLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-10-[poundsLostLabel(14)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-10-[poundsLostLabel(14)]", options: [], metrics: nil, views: viewsDictionary))
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[weightLabel][thisWeekLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[weightLabel][thisWeekLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.weightTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[poundsLostLabel]-2-[thisWeekLabel(80)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[poundsLostLabel]-2-[thisWeekLabel(80)]", options: [], metrics: nil, views: viewsDictionary))
         
         // internal stepsTab constraints
-        fillViewWithImage(self.stepsTab, "stepsImageView")
+        fillViewWithImage(self.stepsTab, item: "stepsImageView")
         
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-7-[stepTitle(14)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|-7-[stepTitle(14)]", options: [], metrics: nil, views: viewsDictionary))
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-25-[stepTitle(30)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-25-[stepTitle(30)]", options: [], metrics: nil, views: viewsDictionary))
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-35-[stepCountLabel(33)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|-35-[stepCountLabel(33)]", options: [], metrics: nil, views: viewsDictionary))
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-10-[stepCountLabel(95)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-10-[stepCountLabel(95)]", options: [], metrics: nil, views: viewsDictionary))
         
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[stepCountLabel][firstGoalLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[stepCountLabel][firstGoalLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-10-[firstGoalLabel(28)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-10-[firstGoalLabel(28)]", options: [], metrics: nil, views: viewsDictionary))
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[stepCountLabel][goalNumberLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[stepCountLabel][goalNumberLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[firstGoalLabel][goalNumberLabel(24)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[firstGoalLabel][goalNumberLabel(24)]", options: [], metrics: nil, views: viewsDictionary))
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[stepCountLabel][secondGoalLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[stepCountLabel][secondGoalLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         self.stepsTab.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[goalNumberLabel]-2-[secondGoalLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:[goalNumberLabel]-2-[secondGoalLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         
         self.setupWebViewConstraints()
     }

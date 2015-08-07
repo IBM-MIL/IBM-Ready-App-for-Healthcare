@@ -47,7 +47,7 @@ class SampleTestingProjectTests: XCTestCase {
     }
     
     func testBinaryTreeSum() {
-        var tree = BinaryTree(val: 5, left: BinaryTree(val: 3, left: nil, right: nil), right: BinaryTree(val: 4, left: nil, right: nil))
+        let tree = BinaryTree(val: 5, left: BinaryTree(val: 3, left: nil, right: nil), right: BinaryTree(val: 4, left: nil, right: nil))
         XCTAssertEqual(BinaryTree.computeSum(tree), 12, "sum of binary tree with nodes 3, 4, 5 should be 12")
     }
     

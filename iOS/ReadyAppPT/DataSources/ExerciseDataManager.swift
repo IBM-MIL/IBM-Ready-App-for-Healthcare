@@ -36,12 +36,12 @@ class ExerciseDataManager: NSObject, WLDataDelegate {
     /**
     Delgate method for WorkLight. Called when connection and return is successful
     
-    :param: response Response from WorkLight
+    - parameter response: Response from WorkLight
     */
     func onSuccess(response: WLResponse!) {
         let responseJson = response.getResponseJson() as NSDictionary
-        println("---exerciseDataManager onSuccess")
-        println(response.responseText)
+        print("---exerciseDataManager onSuccess")
+        print(response.responseText)
         //on success call utils method to format data
         exercises = Utils.getExercisesforRoutine(responseJson)
         exerciseCallBack(ExerciseResultType.Success)
@@ -51,11 +51,11 @@ class ExerciseDataManager: NSObject, WLDataDelegate {
     Delgate method for WorkLight. Called when 
     connection or return is unsuccessful
     
-    :param: response Response from WorkLight
+    - parameter response: Response from WorkLight
     */
     func onFailure(response: WLFailResponse!) {
-        println("---exerciseDataManager onFailure")
-        println(response.responseText)
+        print("---exerciseDataManager onFailure")
+        print(response.responseText)
         exerciseCallBack(ExerciseResultType.Failure)
     }
     
@@ -76,8 +76,8 @@ class ExerciseDataManager: NSObject, WLDataDelegate {
     /**
     Method called to get exercises from the server
     
-    :param: routineId the routine ID for a routine
-    :param: callback  callback for when we have a result
+    - parameter routineId: the routine ID for a routine
+    - parameter callback:  callback for when we have a result
     */
     func getExercisesForRoutine(routineId: String!, callback: (ExerciseResultType)->()) {
         exerciseCallBack = callback

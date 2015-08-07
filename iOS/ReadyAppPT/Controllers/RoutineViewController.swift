@@ -16,7 +16,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("in routineViewController viewDidLoad()")
+        print("in routineViewController viewDidLoad()")
 
     }
 
@@ -36,10 +36,10 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("routineCell") as! ListTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("routineCell") as! ListTableViewCell
 
         if var routines = self.currentRoutines {
-            var routine = routines[indexPath.row]
+            let routine = routines[indexPath.row]
             cell.primaryLabel.text = routine.routineTitle
         }
         
@@ -57,13 +57,13 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // set up our custom highlighting of the cell
     func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! ListTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ListTableViewCell
         cell.contentView.backgroundColor = UIColor.readyAppDarkBlue()
         cell.backgroundColor = UIColor.readyAppDarkBlue()
     }
     
     func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! ListTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ListTableViewCell
         cell.contentView.backgroundColor = UIColor.readyAppBlue()
         cell.backgroundColor = UIColor.readyAppBlue()
     }
@@ -74,7 +74,7 @@ class RoutineViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
         if segue.identifier == "routineDetailSegue" {
-            var routineOptionsVC = segue.destinationViewController as! RoutineOptionsViewController
+            let routineOptionsVC = segue.destinationViewController as! RoutineOptionsViewController
             routineOptionsVC.routineTitle = selectedTitle
         }
     }

@@ -22,7 +22,7 @@ class RoutineOptionsViewController: UIViewController, UIGestureRecognizerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer!.delegate = self
         routineLabel.text = routineTitle
     }
 
@@ -45,14 +45,14 @@ class RoutineOptionsViewController: UIViewController, UIGestureRecognizerDelegat
     This table view sets all the info on each videoTableViewCell
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("videoCell") as! VideoTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("videoCell") as! VideoTableViewCell
         
         if var exercises = self.currentExercises {
-            var exercise = exercises[indexPath.row]
+            let exercise = exercises[indexPath.row]
             
             // Configure cell with video information
             // All data pulled from server except images, which are local
-            var imageFile = "exercise_thumb\(indexPath.row + 1)"
+            let imageFile = "exercise_thumb\(indexPath.row + 1)"
             cell.thumbNail.image = UIImage(named: imageFile)
             cell.exerciseTitle.text = exercise.exerciseTitle == nil ? "" : exercise.exerciseTitle
             cell.exerciseDescription.text = exercise.exerciseDescription == nil ? "" : exercise.exerciseDescription
@@ -78,8 +78,8 @@ class RoutineOptionsViewController: UIViewController, UIGestureRecognizerDelegat
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "videoSegue" {
-            var videoVC = segue.destinationViewController as! VideoPlayerViewController
-            if var cell = selectedCell {
+            let videoVC = segue.destinationViewController as! VideoPlayerViewController
+            if let cell = selectedCell {
                 videoVC.exerciseName = cell.exerciseDescription.text!
                 videoVC.videoStats = cell.videoStats
                 videoVC.tools = cell.tools

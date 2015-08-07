@@ -59,7 +59,7 @@ class WLProcedureCaller {
         if(response.responseText != nil){
            //append to response text
             resultText = resultText + response.responseText
-            println(resultText)
+            print(resultText)
         }
         self.dataDelegate.onPostExecute()
         self.response.onFailure(response)

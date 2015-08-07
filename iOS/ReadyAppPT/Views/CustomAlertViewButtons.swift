@@ -26,13 +26,13 @@ class CustomAlertViewButtons: UIView {
     /**
     The function used to initialize the alert view.
     
-    :param: buttonColor Sets the background color of the two buttons.
-    :param: alertText   Changes the text of the label
+    - parameter buttonColor: Sets the background color of the two buttons.
+    - parameter alertText:   Changes the text of the label
     
-    :returns: Returns an instance of the CustomAlertViewButtons
+    - returns: Returns an instance of the CustomAlertViewButtons
     */
     class func initWithButtonColor(buttonColor: UIColor, alertText: String) -> CustomAlertViewButtons {
-        var view = UINib(nibName: "CustomAlertViewButtons", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! CustomAlertViewButtons
+        let view = UINib(nibName: "CustomAlertViewButtons", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! CustomAlertViewButtons
         view.alertLabel.text = alertText
         view.yesButton.backgroundColor = buttonColor
         view.yesButton.setTitle(NSLocalizedString("Yes", comment:""), forState: UIControlState.Normal)
@@ -44,7 +44,7 @@ class CustomAlertViewButtons: UIView {
     /**
     Gesture tap recognizer. Passes control to the delegate
     */
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.delegate?.handleAlertTap()
     }
     

@@ -59,7 +59,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
         centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
         panGestureRecognizer.delegate = self
 
-        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
         centerViewController.view.addGestureRecognizer(tapGestureRecognizer)
         tapGestureRecognizer.delegate = self
 
@@ -97,7 +97,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     /**
     This method adds the sidepanel to the main view as a child
     
-    :param: sidePanelController The viewController to add as a child
+    - parameter sidePanelController: The viewController to add as a child
     */
     func addChildSidePanelController(sidePanelController: SidePanelViewController) {
         //sidePanelController.delegate = centerViewController
@@ -112,9 +112,9 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     /**
     Method to determine what type of animation needs to happen
     
-    :param: shouldExpand A variable to determine if side panel should expand out or not
+    - parameter shouldExpand: A variable to determine if side panel should expand out or not
     */
-    func animateLeftPanel(#shouldExpand: Bool, delay: Bool) {
+    func animateLeftPanel(shouldExpand shouldExpand: Bool, delay: Bool) {
         if shouldExpand {
             currentState = .LeftExpanded
             centerViewController.panGestureRecognizer.enabled = false
@@ -140,10 +140,10 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     /**
     Method that performs the horizontal side menu animation
     
-    :param: targetPosition The ending x value for centerNavigationController frame
-    :param: completion An optional completion closure
+    - parameter targetPosition: The ending x value for centerNavigationController frame
+    - parameter completion: An optional completion closure
     */
-    func animateCenterPanelXPosition(#targetPosition: CGFloat, shouldDelay: Bool, completion: ((Bool) -> Void)! = nil) {
+    func animateCenterPanelXPosition(targetPosition targetPosition: CGFloat, shouldDelay: Bool, completion: ((Bool) -> Void)! = nil) {
         UIView.animateWithDuration(0.45, delay: (shouldDelay ? 0.15 : 0), usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
             self.centerNavigationController.view.frame.origin.x = targetPosition
             }, completion: completion)
@@ -152,7 +152,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     /**
     Method to add shadow opacity to centerNavigationController
     
-    :param: shouldShowShadow This variable determines to add a shadow or remove a shadow
+    - parameter shouldShowShadow: This variable determines to add a shadow or remove a shadow
     */
     func showShadowForCenterViewController(shouldShowShadow: Bool) {
         if (shouldShowShadow) {
@@ -165,7 +165,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     /**
     Method that determines if side panel is expanded and centerViewController should allow user interaction
     
-    :returns: Bool Method returns value to determine if centerViewController interaction should be disabled
+    - returns: Bool Method returns value to determine if centerViewController interaction should be disabled
     */
     func isSidePanelExpanded() -> Bool {
         if currentState == .LeftExpanded {
@@ -177,7 +177,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     /**
     Method to enable or disable panning gesture for sidePanel
     
-    :param: enable value to assign to panning gesture's enabled property
+    - parameter enable: value to assign to panning gesture's enabled property
     */
     func togglePanGesture(enable: Bool) {
         panGestureRecognizer.enabled = enable
@@ -188,7 +188,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     /**
     Method that recognizes the sidePanel panning gesture and moves the views accordingly.
     
-    :param: recognizer the centerNavigationController is the view being panned
+    - parameter recognizer: the centerNavigationController is the view being panned
     */
     func handlePanGesture(recognizer: UIPanGestureRecognizer) {
         let gestureIsDragging = (recognizer.velocityInView(view).x > 0)
@@ -212,7 +212,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
             // only translate view if pan gesture is going left to right
             case .Changed:
                 
-                var newCenterX = recognizer.view!.center.x + recognizer.translationInView(view).x
+                let newCenterX = recognizer.view!.center.x + recognizer.translationInView(view).x
                 // only move centerViewController if less than menu width from center and greater than originalCenter
                 if (newCenterX < (originalCenter.x + menuWidth) && newCenterX > originalCenter.x) {
                     recognizer.view!.center.x = newCenterX
@@ -235,7 +235,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     /**
     Method to recognize tap on centerViewController and close sidePanel if it is open.
     
-    :param: recognizer recognizer added the centerViewController
+    - parameter recognizer: recognizer added the centerViewController
     */
     func handleTapGesture(recognizer: UITapGestureRecognizer) {
         if currentState == .LeftExpanded {
@@ -253,11 +253,11 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     func populateSidePanelWithUserData() {
         var thePatient =  DataManager.dataManager.currentPatient
         leftViewController!.userIDLabel.text = "\(thePatient.userID)"
-        var components = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay, fromDate: thePatient.dateOfNextVisit)
+        var components = NSCalendar.currentCalendar().components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: thePatient.dateOfNextVisit)
         
         // creates a localized month/day formatted string
         var localizedDate = NSDateFormatter.localizedStringFromDate(thePatient.dateOfNextVisit, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
-        var pieces = split(localizedDate, maxSplit: Int.max, allowEmptySlices: false, isSeparator: {$0 == "/"})
+        var pieces = localizedDate.characters.split(Int.max, allowEmptySlices: false, isSeparator: {$0 == "/"}).map { String($0) }
         if pieces.count >= 2 {
             leftViewController!.dateLabel.text = "\(pieces.first!)/\(pieces[1])"
         }
@@ -269,7 +269,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     /**
     Method to swap out root view controllers for the conatiner
     
-    :param: centerVC view controller to set as root
+    - parameter centerVC: view controller to set as root
     */
     func updateCenterViewController(centerVC: UIViewController) {
         

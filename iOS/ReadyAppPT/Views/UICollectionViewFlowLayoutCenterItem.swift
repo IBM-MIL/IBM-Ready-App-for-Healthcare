@@ -13,15 +13,15 @@ class UICollectionViewFlowLayoutCenterItem: UICollectionViewFlowLayout {
     /**
     Init method that sets default properties for collectionViewlayout
     
-    :param: viewWidth width of screen to base paddings off of.
+    - parameter viewWidth: width of screen to base paddings off of.
     
-    :returns: UICollectionViewFlowLayout object
+    - returns: UICollectionViewFlowLayout object
     */
     init(viewWidth: CGFloat) {
         super.init()
 
-        var cellSize: CGSize = CGSizeMake(65, 100)
-        var inset = viewWidth/2 - cellSize.width/2
+        let cellSize: CGSize = CGSizeMake(65, 100)
+        let inset = viewWidth/2 - cellSize.width/2
         
         self.sectionInset = UIEdgeInsetsMake(0, inset, 0, inset)
         self.scrollDirection = UICollectionViewScrollDirection.Horizontal
@@ -29,7 +29,7 @@ class UICollectionViewFlowLayoutCenterItem: UICollectionViewFlowLayout {
         self.minimumInteritemSpacing = 0
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -37,9 +37,9 @@ class UICollectionViewFlowLayoutCenterItem: UICollectionViewFlowLayout {
     // Method ensures a cell is centered when scrolling has ended
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         
-        var width = self.collectionView!.bounds.size.width
-        var proposedContentOffsetCenterX = proposedContentOffset.x + width * CGFloat(0.5)
-        var proposedRect = self.layoutAttributesForElementsInRect(self.collectionView!.bounds) as! [UICollectionViewLayoutAttributes]
+        let width = self.collectionView!.bounds.size.width
+        let proposedContentOffsetCenterX = proposedContentOffset.x + width * CGFloat(0.5)
+        let proposedRect = self.layoutAttributesForElementsInRect(self.collectionView!.bounds)!
         
         var candidateAttributes: UICollectionViewLayoutAttributes?
         for attributes in proposedRect {
@@ -66,7 +66,7 @@ class UICollectionViewFlowLayoutCenterItem: UICollectionViewFlowLayout {
     }
     
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        var oldBounds = self.collectionView!.bounds
+        let oldBounds = self.collectionView!.bounds
         if CGRectGetWidth(oldBounds) != CGRectGetWidth(newBounds) {
             return true
         }

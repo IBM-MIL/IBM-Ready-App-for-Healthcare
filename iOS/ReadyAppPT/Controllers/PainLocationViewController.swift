@@ -94,13 +94,13 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         self.setupVectorGraphics()
         
         // Setup the alert view that will be displayed if the user tries to select Next before selecting a body part
-        var alertString = NSLocalizedString("Please select a body part before continuing", comment: "")
+        let alertString = NSLocalizedString("Please select a body part before continuing", comment: "")
         var alertImageName = "x_red"
         if self.useBlueColor {
             alertImageName = "x_blue"
         }
         alertView = CustomAlertView.initWithText(alertString, imageName: alertImageName)
-        alertView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        alertView.translatesAutoresizingMaskIntoConstraints = false
         alertView.delegate = self
         alertView.hidden = true
         self.view.addSubview(alertView)
@@ -119,7 +119,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
             if self.isMale {
                 imgName = "malefront.svg"
             }
-            var vectorImage: SVGKImage = SVGKImage(named: imgName)
+            let vectorImage: SVGKImage = SVGKImage(named: imgName)
             vectorWidth = self.scrollView.frame.size.height / WIDTH_SCALE       // Ensure the vector graphic has the correct ratio
             vectorImage.size = CGSize(width: vectorWidth, height: self.scrollView.frame.size.height)
             self.setupConstraints()
@@ -129,7 +129,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
             // Disable pinch to zoom in the scroll view
             if scrollView.gestureRecognizers?.count > 0 {
                 for i in 0...self.scrollView.gestureRecognizers!.count-1 {
-                    var gesture: UIGestureRecognizer = self.scrollView.gestureRecognizers![i] as! UIGestureRecognizer
+                    let gesture: UIGestureRecognizer = self.scrollView.gestureRecognizers![i] 
                     if gesture.isKindOfClass(UIPinchGestureRecognizer) {
                         gesture.enabled = false
                     }
@@ -147,7 +147,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     Method to open the side panel
     */
     func openSideMenu() {
-        var container = self.navigationController?.parentViewController as! ContainerViewController
+        let container = self.navigationController?.parentViewController as! ContainerViewController
         container.toggleLeftPanel()
         self.scrollView.userInteractionEnabled = false
         menuTapGestureRecognizer.enabled = true
@@ -160,7 +160,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     */
     func setupVectorGraphics() {
         self.imgView = SVGKLayeredImageView(frame: CGRect(x: 0, y: 0, width: self.scrollView.frame.size.width, height: self.scrollView.frame.size.height))
-        self.imgView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.imgView.translatesAutoresizingMaskIntoConstraints = false
         self.imgView.userInteractionEnabled = true
         self.imgView.contentMode = UIViewContentMode.Center
         self.imgView.addGestureRecognizer(self.tapGestureRecognizer)
@@ -171,20 +171,20 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     Adds constraints to the SVGKit Layered Image View so that it will fill the entire scroll view
     */
     func setupConstraints() {
-        self.imgView.removeConstraints(self.imgView.constraints())
+        self.imgView.removeConstraints(self.imgView.constraints)
         var viewsDict = Dictionary<String, UIView>()
-        var metricsDict = ["imgViewWidth": vectorWidth]
+        let metricsDict = ["imgViewWidth": vectorWidth]
         viewsDict["imgView"] = self.imgView
         viewsDict["scrollView"] = self.scrollView
         
         // Height
         self.scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[imgView]-0-|", options: NSLayoutFormatOptions.DirectionLeadingToTrailing, metrics: nil, views: viewsDict))
-        self.scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[imgView(==scrollView)]", options: nil, metrics: nil, views: viewsDict))
+        self.scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[imgView(==scrollView)]", options: [], metrics: nil, views: viewsDict))
         
         // Width
         self.scrollView.addConstraint(NSLayoutConstraint(
             item: self.imgView, attribute: NSLayoutAttribute.CenterX, relatedBy: .Equal, toItem: self.scrollView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0))
-         self.scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[imgView(imgViewWidth)]", options: nil, metrics: metricsDict, views: viewsDict))
+         self.scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[imgView(imgViewWidth)]", options: [], metrics: metricsDict, views: viewsDict))
     }
     
     /**
@@ -205,10 +205,10 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     /**
     Method to handle taps when the side menu is open
     
-    :param: recognizer tap gesture used to call method
+    - parameter recognizer: tap gesture used to call method
     */
     func menuTapDetected(recognizer: UITapGestureRecognizer) {
-        var container = self.navigationController?.parentViewController as! ContainerViewController
+        let container = self.navigationController?.parentViewController as! ContainerViewController
         container.toggleLeftPanel()
         self.scrollView.userInteractionEnabled = true
         menuTapGestureRecognizer.enabled = false
@@ -218,7 +218,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     If the scroll view is not zoomed in on a body part, this function will zoom in and color the tapped body part.  
     If already zoomed in, this function passes the tap gesture to the handlePointerTap() function
     
-    :param: recognizer UITapGestureRecognizer that triggered this function
+    - parameter recognizer: UITapGestureRecognizer that triggered this function
     */
     func handleTap(recognizer: UITapGestureRecognizer) {
         // If already zoomed in, call function to handle tap
@@ -284,12 +284,12 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     This function gets called when a tap is recognized when the view is zoomed in on a body part. The function determines
     if the tap was on one of the non-selected pain pointers and changes that pointer to the active one.
     
-    :param: recognizer UITapGestureRecognizer that triggered this function
+    - parameter recognizer: UITapGestureRecognizer that triggered this function
     */
     func handlePointerTap(recognizer: UITapGestureRecognizer) {
-        var point = recognizer.locationInView(self.scrollView)
-        for (index, element) in enumerate(painPointers) {
-            var pointer = element as UIImageView
+        let point = recognizer.locationInView(self.scrollView)
+        for (index, element) in painPointers.enumerate() {
+            let pointer = element as UIImageView
             /* 
             Found the first pointer in the stack that contains the point, so change the current pointer to light-gray,
             change the found pointer to dark gray, move the current pointer to the front and move it into index=0 (top of the stack)
@@ -311,10 +311,10 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     attempts to move the active pain pointer that same offset value.  Checks are done on the pain pointer's possible new location to make sure
     it doesn't fall outside of the active body part layer.
     
-    :param: recognizer UIPanGestureRecognizer that trigged this function
+    - parameter recognizer: UIPanGestureRecognizer that trigged this function
     */
     func handleDrag(recognizer: UIPanGestureRecognizer){
-        var point = recognizer.locationInView(self.imgView)
+        let point = recognizer.locationInView(self.imgView)
         var newX = false
         var newY = false
         var newOrigin: CGPoint = CGPoint(x: 0, y: 0)
@@ -331,8 +331,8 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
             return
         }
         
-        var xOffset = (point.x - previousTouchLocation.x) * MAX_ZOOM_SCALE
-        var yOffset = (point.y - previousTouchLocation.y) * MAX_ZOOM_SCALE
+        let xOffset = (point.x - previousTouchLocation.x) * MAX_ZOOM_SCALE
+        let yOffset = (point.y - previousTouchLocation.y) * MAX_ZOOM_SCALE
         
         previousTouchLocation = point
         
@@ -369,7 +369,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     }
     
     // Disable user interaction because app crashes if user taps on imageview while the scroll view is zooming
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView!) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         self.scrollView.userInteractionEnabled = false
     }
     
@@ -377,7 +377,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     When the scroll view has zoomed in on a body part, place a pain pointer at the center-ish of the layer.
 
     */
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         self.scrollView.userInteractionEnabled = true
         if self.zoomedIn {
             // Create pointer and place on screen
@@ -435,7 +435,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         if self.isMale {
             imgName = "malefront.svg"
         }
-        var test: SVGKImage = SVGKImage(named: imgName)
+        let test: SVGKImage = SVGKImage(named: imgName)
         test.size = CGSize(width: vectorWidth, height: self.scrollView.frame.size.height)
         imgView.image = test
     }
@@ -459,7 +459,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         if self.isMale {
             imgName = "maleback.svg"
         }
-        var test: SVGKImage = SVGKImage(named: imgName)
+        let test: SVGKImage = SVGKImage(named: imgName)
         test.size = CGSize(width: vectorWidth, height: self.scrollView.frame.size.height)
         imgView.image = test
     }
@@ -483,8 +483,8 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         // Turn current pointer to gray and add a new pain pointer
         currentPointer.image = UIImage(named: "pointerlight")
         var newFrame = CGRect(x: currentPointer.frame.origin.x + 10, y: currentPointer.frame.origin.y + 10, width: PAIN_POINTER_WIDTH, height: PAIN_POINTER_HEIGHT)
-        var testPoint = CGPoint(x: newFrame.origin.x + (newFrame.size.width/2), y: newFrame.origin.y + newFrame.size.height)
-        var hitLayer: CALayer = self.imgView.layer.hitTest(testPoint)
+        let testPoint = CGPoint(x: newFrame.origin.x + (newFrame.size.width/2), y: newFrame.origin.y + newFrame.size.height)
+        let hitLayer: CALayer = self.imgView.layer.hitTest(testPoint)
         // If this location is not in the body part layer, place the pointer to the upper left of the current pointer
         if !(hitLayer.superlayer == lastTappedLayer?.superlayer) {
             newFrame.origin.x -= 2 * 10
@@ -554,7 +554,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "painRatingSegue" {
-            var vc: PainRatingViewController = segue.destinationViewController as! PainRatingViewController
+            let vc: PainRatingViewController = segue.destinationViewController as! PainRatingViewController
             vc.useBlueColor = self.useBlueColor
         }
     }

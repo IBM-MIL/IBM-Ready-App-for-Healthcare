@@ -1333,7 +1333,9 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = PP64RT7P8Z;
@@ -1681,6 +1683,7 @@
 					"$(PROJECT_DIR)/ReadyAppPT/External",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.mil.ReadyAppPT;
 				PRODUCT_NAME = ReadyAppPT;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ReadyAppPT/ReadyAppPT-Bridging-Header.h";
@@ -1721,6 +1724,7 @@
 					"$(PROJECT_DIR)/ReadyAppPT/External",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.mil.ReadyAppPT;
 				PRODUCT_NAME = ReadyAppPT;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ReadyAppPT/ReadyAppPT-Bridging-Header.h";
@@ -1810,6 +1814,7 @@
 					"$(PROJECT_DIR)/ReadyAppPT/External",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.mil.ReadyAppPT;
 				PRODUCT_NAME = ReadyAppPT;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ReadyAppPT/ReadyAppPT-Bridging-Header.h";
@@ -1862,6 +1867,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.mil.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ReadyAppPT/ReadyAppPT-Bridging-Header.h";
@@ -1907,6 +1913,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.mil.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ReadyAppPT/ReadyAppPT-Bridging-Header.h";
@@ -1952,6 +1959,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.mil.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ReadyAppPT/ReadyAppPT-Bridging-Header.h";
@@ -1971,6 +1979,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ReadyAppPT/External/SVProgressHUD";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREFIX_HEADER = "ReadyAppPT/ReadyAppPT-Prefix.pch";

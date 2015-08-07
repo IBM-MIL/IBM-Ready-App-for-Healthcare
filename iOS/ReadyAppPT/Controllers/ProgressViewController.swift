@@ -68,7 +68,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
     Method to simply open the side panel
     */
     func openSideMenu() {
-        var container = self.navigationController?.parentViewController as! ContainerViewController
+        let container = self.navigationController?.parentViewController as! ContainerViewController
         container.toggleLeftPanel()
         self.webView.userInteractionEnabled = false
         tapGestureRecognizer.enabled = true
@@ -77,10 +77,10 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
     /**
     Method to handle taps when the side menu is open
     
-    :param: recognizer tap gesture used to call method
+    - parameter recognizer: tap gesture used to call method
     */
     func handleTap(recognizer: UITapGestureRecognizer) {
-        var container = self.navigationController?.parentViewController as! ContainerViewController
+        let container = self.navigationController?.parentViewController as! ContainerViewController
         // check if expanded so tapgesture isn't enabled when it shouldn't be
         if container.currentState == SlideOutState.LeftExpanded {
             container.toggleLeftPanel()
@@ -95,8 +95,8 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
     /**
     Simple syntax method to delay execution of some code
     
-    :param: delay   amount of delay in seconds
-    :param: closure Code to be executed after delay, on main thread
+    - parameter delay:   amount of delay in seconds
+    - parameter closure: Code to be executed after delay, on main thread
     */
     func delay(delay:Double, closure:()->()) {
         dispatch_after(
@@ -112,26 +112,26 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
     /**
     Method to inform view that the webview content has changed, thus, take the appropriate actions
     
-    :param: pathComponents array of strings represnting what the webView route has changed to
+    - parameter pathComponents: array of strings represnting what the webView route has changed to
     */
     func webViewHasChanged(pathComponents: Array<String>) {
         
         SVProgressHUD.showWithMaskType(SVProgressHUDMaskType.Gradient)
-        var surrenderRoute = Utils.prepareCodeInjectionString("surrenderRouteControl();")
+        let surrenderRoute = Utils.prepareCodeInjectionString("surrenderRouteControl();")
         self.webView.stringByEvaluatingJavaScriptFromString(surrenderRoute)
-        var localeLoad = Utils.prepareCodeInjectionString("setLanguage('\(NSLocale.currentLocale().localeIdentifier)')")
+        let localeLoad = Utils.prepareCodeInjectionString("setLanguage('\(NSLocale.currentLocale().localeIdentifier)')")
         self.webView.stringByEvaluatingJavaScriptFromString(localeLoad)
 
         // Put data in easily comparable formats
         var lastElement = pathComponents.last
-        let items = split(lastElement!, maxSplit: Int.max, allowEmptySlices: false, isSeparator: { $0 == "_" })
+        let items = (lastElement!).characters.split(Int.max, allowEmptySlices: false, isSeparator: { $0 == "_" }).map { String($0) }
 
         // determine the time unit for which to collect data in.
-        if var it = find(items, "year") {
+        if var _ = items.indexOf("year") {
             timeUnit = "year"
-        } else if var it = find(items, "week") {
+        } else if var _ = items.indexOf("week") {
             timeUnit = "week"
-        } else if var it = find(items, "month") {
+        } else if var _ = items.indexOf("month") {
             timeUnit = "month"
         } else {
             timeUnit = "day"
@@ -164,19 +164,19 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
             }
         } else if items.count == 3 {
             
-            if var steps = find(items, "steps") {
+            if var steps = items.indexOf("steps") {
                 self.currentGoal = DataManager.dataManager.currentPatient.stepGoal.integerValue
                 populateIndividualView(HKQuantityTypeIdentifierStepCount)
                 
-            } else if var hr = find(items, "hr") {
+            } else if var hr = items.indexOf("hr") {
                 self.currentGoal = 70
                 populateIndividualView(HKQuantityTypeIdentifierHeartRate)
                 
-            } else if var calories = find(items, "calories") {
+            } else if var calories = items.indexOf("calories") {
                 self.currentGoal = DataManager.dataManager.currentPatient.calorieGoal.integerValue
                 populateIndividualView(HKQuantityTypeIdentifierActiveEnergyBurned)
                 
-            } else if var weight = find(items, "weight") {
+            } else if var weight = items.indexOf("weight") {
                 self.currentGoal = 175
                 populateIndividualView(HKQuantityTypeIdentifierBodyMass)
                 
@@ -215,76 +215,76 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
         var stepJson = ""
         var painJson = ""
         
-        var heartType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)
-        var intervalData = Utils.intervalDataForUnit(timeUnit)
+        let heartType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
+        let intervalData = Utils.intervalDataForUnit(timeUnit)
         HealthKitManager.healthKitManager.getAverageDataInRange(startDate!, end: endDate!, interval: intervalData, type: heartType, callback: {(json) in
             self.delay(0.0, closure: {
                 heartJson = json
                 if weightJson != "" && stepJson != "" && calorieJson != "" && painJson != "" {
                     SVProgressHUD.dismiss()
-                    var jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
+                    let jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
                     self.webView.stringByEvaluatingJavaScriptFromString(jsonInjection)
                     
-                    var resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
+                    let resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
                     self.webView.stringByEvaluatingJavaScriptFromString(resumeRoute)
                 }
 
             })
         })
         
-       var weightType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)
+       let weightType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
         HealthKitManager.healthKitManager.getAverageDataInRange(startDate!, end: endDate!, interval: intervalData, type: weightType, callback: {(json) in
             self.delay(0.0, closure: {
                 weightJson = json
                 if heartJson != "" && stepJson != "" && calorieJson != "" && painJson != "" {
                     SVProgressHUD.dismiss()
-                    var jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
+                    let jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
                     self.webView.stringByEvaluatingJavaScriptFromString(jsonInjection)
                     
-                    var resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
+                    let resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
                     self.webView.stringByEvaluatingJavaScriptFromString(resumeRoute)
                 }
             })
         })
         
-        var calorieType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)
+        let calorieType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
         HealthKitManager.healthKitManager.getSumDataInRange(startDate!, end: endDate!, interval: intervalData, type: calorieType, callback: {(json) in
             self.delay(0.0, closure: {
                 calorieJson = json
                 if weightJson != "" && stepJson != "" && heartJson != "" && painJson != "" {
                     SVProgressHUD.dismiss()
-                    var jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
+                    let jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
                     self.webView.stringByEvaluatingJavaScriptFromString(jsonInjection)
                     
-                    var resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
+                    let resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
                     self.webView.stringByEvaluatingJavaScriptFromString(resumeRoute)
                 }
             })
         })
         
-        var stepType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        let stepType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
         HealthKitManager.healthKitManager.getSumDataInRange(startDate!, end: endDate!, interval: intervalData, type: stepType, callback: { (json) in
             self.delay(0.0, closure: {
                 stepJson = json
                 if weightJson != "" && heartJson != "" && calorieJson != "" && painJson != "" {
                     SVProgressHUD.dismiss()
-                    var jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
+                    let jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
                     self.webView.stringByEvaluatingJavaScriptFromString(jsonInjection)
                     
-                    var resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
+                    let resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
                     self.webView.stringByEvaluatingJavaScriptFromString(resumeRoute)
                 }
             })
         })
 
-        var painData = PainData.fetchDataInRange(self.managedObjectContext!, start: startDate!, end: todaysDate, dateComps: intervalData, timeUnit: timeUnit)
+        let painData = PainData.fetchDataInRange(self.managedObjectContext!, start: startDate!, end: todaysDate, dateComps: intervalData, timeUnit: timeUnit)
         painJson = painData.json
         if heartJson != "" && stepJson != "" && calorieJson != "" && weightJson != "" {
             SVProgressHUD.dismiss()
-            var jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
+            let jsonInjection = Utils.prepareGraphInjectionString("applyData(['\(heartJson)','\(weightJson)','\(stepJson)','\(calorieJson)','\(painJson)']);")
             self.webView.stringByEvaluatingJavaScriptFromString(jsonInjection)
             
-            var resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
+            let resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
             self.webView.stringByEvaluatingJavaScriptFromString(resumeRoute)
         }
         
@@ -295,22 +295,22 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
     */
     func populateIndividualView(type: String) {
         var startDate: NSDate?, endDate: NSDate?
-        var intervalData = Utils.intervalDataForUnit(timeUnit)
+        let intervalData = Utils.intervalDataForUnit(timeUnit)
         dataLock = ("", "", "")
         
         /* Calculate the correct date range and display current date range */
         if timeUnit == "day" {
-            var localizedDate = Utils.localizedMonthDay(todaysDate, dateStyle: NSDateFormatterStyle.LongStyle)
-            var formatter = NSDateFormatter()
+            let localizedDate = Utils.localizedMonthDay(todaysDate, dateStyle: NSDateFormatterStyle.LongStyle)
+            let formatter = NSDateFormatter()
             formatter.dateFormat = "hh a"
-            var timeString = formatter.stringFromDate(todaysDate)
+            let timeString = formatter.stringFromDate(todaysDate)
             formattedDate = localizedDate + " - " + timeString
             
             startDate = todaysDate.dateTwoDaysAgo()
             endDate = todaysDate.dateOffset()
             
         } else if timeUnit == "week" {
-            var localizedDate = Utils.localizedMonthDay(todaysDate, dateStyle: NSDateFormatterStyle.LongStyle)
+            let localizedDate = Utils.localizedMonthDay(todaysDate, dateStyle: NSDateFormatterStyle.LongStyle)
             formattedDate = localizedDate
             
             startDate = todaysDate.dateTwoWeeksAgo()
@@ -322,8 +322,8 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
             }
             
         } else if timeUnit == "month" {
-            var beginDay = Utils.localizedMonthDay(todaysDate.dateOneWeeksAgo(), dateStyle: NSDateFormatterStyle.MediumStyle)
-            var endDay = Utils.localizedMonthDay(todaysDate, dateStyle: NSDateFormatterStyle.MediumStyle)
+            let beginDay = Utils.localizedMonthDay(todaysDate.dateOneWeeksAgo(), dateStyle: NSDateFormatterStyle.MediumStyle)
+            let endDay = Utils.localizedMonthDay(todaysDate, dateStyle: NSDateFormatterStyle.MediumStyle)
             formattedDate = "\(beginDay) - \(endDay)"
             
             
@@ -333,8 +333,8 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
             if type == HKQuantityTypeIdentifierStepCount || type == HKQuantityTypeIdentifierActiveEnergyBurned { self.currentGoal *= 30 }
             
         } else {
-            var month = Utils.extractMonthNameFromDate(todaysDate)
-            var year = Utils.extractYearFromDate(todaysDate)
+            let month = Utils.extractMonthNameFromDate(todaysDate)
+            let year = Utils.extractYearFromDate(todaysDate)
             formattedDate = "\(month) \(year)"
             
             startDate = todaysDate.dateTwoYearsAgo()
@@ -346,11 +346,11 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
         
         /* Collect pain data and inject into webView if selected */
         if type == "painData" {
-            var painData = PainData.fetchDataInRange(self.managedObjectContext!, start: startDate!, end: todaysDate, dateComps: intervalData, timeUnit: timeUnit)
+            let painData = PainData.fetchDataInRange(self.managedObjectContext!, start: startDate!, end: todaysDate, dateComps: intervalData, timeUnit: timeUnit)
             
             self.currentGoal = 2
             var error: NSError?
-            injectSumMetricData((painData.average as NSString).doubleValue, error: error)
+            injectSumMetricData((painData.average as NSString).doubleValue, error: &error)
             
             dataLock.graphString = Utils.prepareGraphInjectionString("applyData(['\(painData.json)']);")
             if dataLock.graphString != "" && dataLock.metaString != "" && dataLock.performanceString != "" {
@@ -363,7 +363,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
         /* Collect data for other individual metrics based on type */
         
         // Populate the graph for an individual metric
-        var hkType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(type)
+        let hkType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(type)!
         
         if type == HKQuantityTypeIdentifierStepCount || type == HKQuantityTypeIdentifierActiveEnergyBurned {
             
@@ -401,7 +401,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
                                     self.dataLock.performanceString = Utils.prepareCodeInjectionString("setPerformance(\(val.format(self.format)))")
                                 }
                             } else {
-                                var val: Double = 0
+                                let val: Double = 0
                                 self.dataLock.performanceString = Utils.prepareCodeInjectionString("setPerformance(\(val.format(self.format)))")
                             }
                             
@@ -413,8 +413,8 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
                 })
                 
                 self.delay(0.0, closure: {
-                    var dateUnit = Utils.prepareCodeInjectionString("setUnit('\(Utils.unitLabelFor(self.timeUnit))')")
-                    var date = Utils.prepareCodeInjectionString("setTimeFrame('\(self.formattedDate)')")
+                    let dateUnit = Utils.prepareCodeInjectionString("setUnit('\(Utils.unitLabelFor(self.timeUnit))')")
+                    let date = Utils.prepareCodeInjectionString("setTimeFrame('\(self.formattedDate)')")
                     
                     self.dataLock.metaString = date + dateUnit
                     if self.dataLock.graphString != "" && self.dataLock.metaString != "" && self.dataLock.performanceString != "" {
@@ -431,12 +431,12 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
                             if data != nil {
                                 if let val = data[WeightInPoundsData.Current.rawValue] {
 
-                                    var localizedWeight = Utils.getLocalizedWeight(val)
+                                    let localizedWeight = Utils.getLocalizedWeight(val)
                                     self.dataLock.performanceString = Utils.prepareCodeInjectionString("setPerformance('\(localizedWeight)')")
                                 }
                                 
                             } else {
-                                var val: Double = 0
+                                let val: Double = 0
                                 self.dataLock.performanceString = Utils.prepareCodeInjectionString("setPerformance(\(val.format(self.format)))")
     
                             }
@@ -450,8 +450,8 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
                 })
                 
                 self.delay(0.0, closure: {
-                    var dateUnit = Utils.prepareCodeInjectionString("setUnit('\(Utils.unitLabelFor(self.timeUnit))')")
-                    var date = Utils.prepareCodeInjectionString("setTimeFrame('\(self.formattedDate)')")
+                    let dateUnit = Utils.prepareCodeInjectionString("setUnit('\(Utils.unitLabelFor(self.timeUnit))')")
+                    let date = Utils.prepareCodeInjectionString("setTimeFrame('\(self.formattedDate)')")
                     
                     self.dataLock.metaString = dateUnit + date
                     if self.dataLock.graphString != "" && self.dataLock.metaString != "" && self.dataLock.performanceString != "" {
@@ -477,8 +477,8 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
     /**
     Callback method to inject data into individual metric view categories
     
-    :param: result value returned from healthkit method
-    :param: error  error value if any
+    - parameter result: value returned from healthkit method
+    - parameter error:  error value if any
     */
     func injectSumMetricData(result: Double, error: NSError!) {
         if error == nil{
@@ -488,9 +488,9 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
                     finalResult = Utils.getLocalizedEnergy(result)
                 }
                 self.dataLock.performanceString = Utils.prepareCodeInjectionString("setPerformance(\(finalResult))")
-                var dateUnit = Utils.prepareCodeInjectionString("setUnit('\(Utils.unitLabelFor(self.timeUnit))')")
-                var date = Utils.prepareCodeInjectionString("setTimeFrame('\(self.formattedDate)')")
-                var metricGoal = Utils.prepareCodeInjectionString("setGoal(\(self.currentGoal))")
+                let dateUnit = Utils.prepareCodeInjectionString("setUnit('\(Utils.unitLabelFor(self.timeUnit))')")
+                let date = Utils.prepareCodeInjectionString("setTimeFrame('\(self.formattedDate)')")
+                let metricGoal = Utils.prepareCodeInjectionString("setGoal(\(self.currentGoal))")
                 self.dataLock.metaString = date + dateUnit + metricGoal
                 
                 if self.dataLock.graphString != "" && self.dataLock.metaString != "" && self.dataLock.performanceString != "" {
@@ -508,7 +508,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
         SVProgressHUD.dismiss()
         self.webView.stringByEvaluatingJavaScriptFromString(self.dataLock.metaString + self.dataLock.performanceString + self.dataLock.graphString)
         
-        var resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
+        let resumeRoute = Utils.prepareCodeInjectionString("resumeRouteControl();")
         self.webView.stringByEvaluatingJavaScriptFromString(resumeRoute)
     }
 

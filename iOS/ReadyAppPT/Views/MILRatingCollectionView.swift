@@ -63,7 +63,7 @@ class MILRatingCollectionView: UICollectionView, UICollectionViewDelegate, UICol
     }
 
     // Init method called from storyboard
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initView()
 
@@ -121,12 +121,12 @@ class MILRatingCollectionView: UICollectionView, UICollectionViewDelegate, UICol
     /**
     Method to round corners enough to make a circle based on diameter.
     
-    :param: view     UIView to circlefy
-    :param: diameter the desired diameter of your view
+    - parameter view:     UIView to circlefy
+    - parameter diameter: the desired diameter of your view
     */
     func setRoundedViewToDiameter(view: UIView, diameter: CGFloat) {
-        var saveCenter = view.center
-        var newFrame = CGRectMake(view.frame.origin.x, view.frame.origin.y, diameter, diameter)
+        let saveCenter = view.center
+        let newFrame = CGRectMake(view.frame.origin.x, view.frame.origin.y, diameter, diameter)
         view.frame = newFrame
         view.layer.cornerRadius = diameter / 2.0
         view.center = saveCenter
@@ -137,16 +137,16 @@ class MILRatingCollectionView: UICollectionView, UICollectionViewDelegate, UICol
     /**
     Method replicating the functionality of indexPathForItemAtPoint(), which was not working with the custom flow layout
     
-    :param: point center point to find most centered cell
+    - parameter point: center point to find most centered cell
     
-    :returns: UICollectionViewLayoutAttributes of the centered cell
+    - returns: UICollectionViewLayoutAttributes of the centered cell
     */
     func grabCellAttributesAtPoint(point: CGPoint) -> UICollectionViewLayoutAttributes? {
         
-        var visible = self.indexPathsForVisibleItems()
+        let visible = self.indexPathsForVisibleItems()
         
         for paths in visible {
-            var layoutAttributes = self.layoutAttributesForItemAtIndexPath(paths as! NSIndexPath)
+            let layoutAttributes = self.layoutAttributesForItemAtIndexPath(paths )
             
             // true when center point is within a cell's frame
             if CGRectContainsPoint(layoutAttributes!.frame, point) {
@@ -160,26 +160,26 @@ class MILRatingCollectionView: UICollectionView, UICollectionViewDelegate, UICol
     /**
     Method that recognizes center cell and highlights it while leaving other cells normal
     
-    :param: scrollView scrollView built into the UICollectionView
+    - parameter scrollView: scrollView built into the UICollectionView
     */
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
         // Get centered point within collectionView contentSize, y value not crucial, just needs to always be in center
-        var centerPoint = CGPointMake(self.center.x + self.contentOffset.x,
+        let centerPoint = CGPointMake(self.center.x + self.contentOffset.x,
             self.contentSize.height / 2)
         
-        if var attributes = grabCellAttributesAtPoint(centerPoint) {
+        if let attributes = grabCellAttributesAtPoint(centerPoint) {
             
             // true when center cell has changed, revert old center cell to normal cell
             if selectedIndexPath != attributes.indexPath {
                 if let oldPath = selectedIndexPath {
-                    if var previousCenterCell = self.cellForItemAtIndexPath(oldPath) as? RatingCollectionViewCell {
+                    if let previousCenterCell = self.cellForItemAtIndexPath(oldPath) as? RatingCollectionViewCell {
                         previousCenterCell.setAsNormalCell()
                     }
                 }
                 
                 // make current center cell a highlighted cell
-                var cell = self.cellForItemAtIndexPath(attributes.indexPath) as! RatingCollectionViewCell
+                let cell = self.cellForItemAtIndexPath(attributes.indexPath) as! RatingCollectionViewCell
                 cell.setAsHighlightedCell()
                 selectedIndexPath = attributes.indexPath
                 
@@ -191,7 +191,7 @@ class MILRatingCollectionView: UICollectionView, UICollectionViewDelegate, UICol
     Autolayout constraints for the circular background view
     */
     func setUpAutoLayoutConstraints() {
-        self.circularView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.circularView.translatesAutoresizingMaskIntoConstraints = false
         
         self.dummyBackgroundView.addConstraint(NSLayoutConstraint(
             item:self.circularView, attribute:.CenterX,
