@@ -503,6 +503,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
     - parameter pathComponents: components that help route to the appropriate action
     */
     func nativeViewHasChanged(pathComponents: Array<String>) {
+        // Tapping UIWebView button removes web view in iOS 9
         if pathComponents.last == "vid_library" {
             SVProgressHUD.showWithMaskType(SVProgressHUDMaskType.Gradient)
             // Load exercise data from server before navigating to VideoPlayerViewController

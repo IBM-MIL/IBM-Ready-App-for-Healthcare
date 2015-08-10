@@ -94,16 +94,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CustomAlertVie
         patientIDTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         
-        // TODO: unwrap text fields
-        // sign in with credentials in text fields
-        if (patientIDTextField.text!.isEmpty || passwordTextField.text!.isEmpty) {
-            self.alertView.hidden = false
+        if let patientText = patientIDTextField.text, passwordText = passwordTextField.text {
+            
+            // sign in with credentials in text fields
+            if (patientText.isEmpty || passwordText.isEmpty) {
+                self.alertView.hidden = false
+            }
+            else {
+                SVProgressHUD.show()
+                let language : String = (NSLocale.currentLocale().localeIdentifier)
+                appDelegate.submitAuthentication(patientIDTextField.text!, password: passwordTextField.text!, locale: language)
+            }
+            
         }
-        else {
-            SVProgressHUD.show()
-            let language : String = (NSLocale.currentLocale().localeIdentifier)
-            appDelegate.submitAuthentication(patientIDTextField.text!, password: passwordTextField.text!, locale: language)
-        }
+
     }
     
     /**
