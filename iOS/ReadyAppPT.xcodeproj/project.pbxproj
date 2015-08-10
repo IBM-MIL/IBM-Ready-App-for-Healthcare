@@ -65,6 +65,8 @@
 		2E44C75019FEC1BE006989B3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		2E44C75119FEC1CE006989B3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
 		2E44C75B19FECDB1006989B3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44C75A19FECDB1006989B3 /* DashboardViewController.swift */; };
+		2E4C08441B79108D0070624B /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4C08431B79108D0070624B /* SVIndefiniteAnimatedView.m */; };
+		2E4C08451B7910950070624B /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4C08431B79108D0070624B /* SVIndefiniteAnimatedView.m */; };
 		2E56B8981A1A591D00067894 /* MILRatingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56B8971A1A591D00067894 /* MILRatingCollectionView.swift */; };
 		2E56B8991A1A5A9D00067894 /* MILRatingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E56B8971A1A591D00067894 /* MILRatingCollectionView.swift */; };
 		2E67A0171A029E6900AEBE53 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E67A0161A029E6900AEBE53 /* Patient.swift */; };
@@ -282,6 +284,8 @@
 		2E44C74219FEC0A5006989B3 /* ReadyAppPT-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ReadyAppPT-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E44C74519FEC0A5006989B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E44C75A19FECDB1006989B3 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		2E4C08421B79108D0070624B /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		2E4C08431B79108D0070624B /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		2E56B8971A1A591D00067894 /* MILRatingCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MILRatingCollectionView.swift; sourceTree = "<group>"; };
 		2E67A0161A029E6900AEBE53 /* Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2E7A45121A02ECF100B76E63 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -898,6 +902,8 @@
 		2E7A45111A02ECF100B76E63 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				2E4C08421B79108D0070624B /* SVIndefiniteAnimatedView.h */,
+				2E4C08431B79108D0070624B /* SVIndefiniteAnimatedView.m */,
 				2E7A45121A02ECF100B76E63 /* SVProgressHUD-Prefix.pch */,
 				2E7A45131A02ECF100B76E63 /* SVProgressHUD.bundle */,
 				2E7A45141A02ECF100B76E63 /* SVProgressHUD.h */,
@@ -1522,6 +1528,7 @@
 				2E44C75B19FECDB1006989B3 /* DashboardViewController.swift in Sources */,
 				2E341D851A2CC31E00038471 /* RoutineViewController.swift in Sources */,
 				2EA898FC19FFE0010089ACCF /* ContainerViewController.swift in Sources */,
+				2E4C08441B79108D0070624B /* SVIndefiniteAnimatedView.m in Sources */,
 				2E270A651A25A708009B206D /* ListTableViewCell.swift in Sources */,
 				2E7A45171A02ECF100B76E63 /* SVProgressHUD.m in Sources */,
 				CD152AA91A325243001B6972 /* FormsViewController.swift in Sources */,
@@ -1605,6 +1612,7 @@
 				2E8E29411A22B602009B6B08 /* WLProcedureCaller.swift in Sources */,
 				2EA20F6E1A1FE00D0026285D /* AppDelegate.swift in Sources */,
 				2E2773EB1A24466500C78871 /* PainDataTests.swift in Sources */,
+				2E4C08451B7910950070624B /* SVIndefiniteAnimatedView.m in Sources */,
 				CD8505FE1A38B1C200D3DB11 /* CustomAlertView.swift in Sources */,
 				2E8E293B1A22B5B7009B6B08 /* DashboardViewController.swift in Sources */,
 				2EFC559D1A2EE6AF0000AAB2 /* EndRoutineViewController.swift in Sources */,

@@ -38,8 +38,6 @@ class PainDataTests: XCTestCase {
     // Method tests the data model, PainData utility methods wouldn't work (casting issue)
     func testCreateAndRead() {
         
-        let entity = NSEntityDescription.entityForName("PainData", inManagedObjectContext: context)
-
         for index in 1...10 {
             let newItem: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(painDataName, inManagedObjectContext: context)
             newItem.setValue(index, forKey: "painRating")
