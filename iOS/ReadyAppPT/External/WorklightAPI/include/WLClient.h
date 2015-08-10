@@ -160,6 +160,8 @@ extern NSMutableDictionary *piggyBackData;
  * @param notificationType Constants that indicate the types of notifications that the application accepts. For more information, see the <a href="http://developerns.apple.com/library/ios/" \l "documentation/UIKit/Reference/UIApplication_Class/Reference/Reference.html"> link Apple documentation.</a>
  * @param delegate A standard IBM MobileFirst Platform delegate with onSuccess and onFailure methods to indicate success or failure of the subscription to the IBM MobileFirst Platform Server.
  */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 -(void) subscribeWithToken:(NSData *)deviceToken adapter:(NSString *)adapter eventSource: (NSString *)eventSource eventSourceID: (int)eventSourceID notificationType:(UIRemoteNotificationType) types delegate:(id <WLDelegate>)delegate;
 
 /**
@@ -175,7 +177,7 @@ extern NSMutableDictionary *piggyBackData;
  * @param options Optional. This parameter contains data that is passed to the IBM MobileFirst Platform Server, which is used by the adapter.
  */
 -(void) subscribeWithToken:(NSData *)deviceToken adapter:(NSString *)adapter eventSource: (NSString *)eventSource eventSourceID: (int)eventSourceID notificationType:(UIRemoteNotificationType) types delegate:(id <WLDelegate>)delegate options:(NSDictionary *)options;
-
+#pragma clang diagnostic pop
 /**
  * This method unsubscribes to notifications from the specified event source in the specified adapter.
  *

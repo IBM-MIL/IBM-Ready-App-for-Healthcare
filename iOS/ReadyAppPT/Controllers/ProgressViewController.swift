@@ -349,7 +349,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
             let painData = PainData.fetchDataInRange(self.managedObjectContext!, start: startDate!, end: todaysDate, dateComps: intervalData, timeUnit: timeUnit)
             
             self.currentGoal = 2
-            var error: NSError?
+            let error: NSError? = nil
             injectSumMetricData((painData.average as NSString).doubleValue, error: error)
             
             dataLock.graphString = Utils.prepareGraphInjectionString("applyData(['\(painData.json)']);")

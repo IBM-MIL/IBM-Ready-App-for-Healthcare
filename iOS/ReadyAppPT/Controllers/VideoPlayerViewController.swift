@@ -240,7 +240,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
                 currentTime = 0
             }
             if !firstTimerStart {
-                var initialTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "videoTimeInterval", userInfo: nil, repeats: true)
+                _ = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "videoTimeInterval", userInfo: nil, repeats: true)
                 firstTimerStart = true
             }
             

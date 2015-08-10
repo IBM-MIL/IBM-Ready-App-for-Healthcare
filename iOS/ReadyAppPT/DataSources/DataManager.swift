@@ -53,7 +53,6 @@ class DataManager: NSObject, WLDataDelegate {
         let params : [String] = [userID]
         self.userId = userID
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
     }
     
     /**
@@ -105,7 +104,6 @@ class DataManager: NSObject, WLDataDelegate {
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [userID]
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
     }
     /*
     Method called to get routines
@@ -120,6 +118,5 @@ class DataManager: NSObject, WLDataDelegate {
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [routineId]
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
     }
 }

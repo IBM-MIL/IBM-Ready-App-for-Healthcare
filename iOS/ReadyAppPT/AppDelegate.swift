@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Init method that sets up caching for the applicaiton as well as other backend services
     */
     override init() {
-        var cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage();
+        _ = NSHTTPCookieStorage.sharedHTTPCookieStorage();
         
         let cacheMemorySize = 8 * 1024 * 1024;
         let cacheDiskSize = 32 * 1024 * 1024;

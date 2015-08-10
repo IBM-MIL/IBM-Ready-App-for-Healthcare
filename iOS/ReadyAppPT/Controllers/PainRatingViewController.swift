@@ -235,7 +235,6 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     
     func keyboardWillHide(notification: NSNotification) {
         let info : NSDictionary = notification.userInfo!
-        var kbFrame = (info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue).CGRectValue()
         let duration = info.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSTimeInterval
         
         UIView.animateWithDuration(duration, animations: ({

@@ -84,7 +84,6 @@ class FormsDataManager: NSObject, WLDataDelegate {
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [username]
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
 
     }
     

@@ -49,7 +49,7 @@ class WLProcedureCaller {
     }
     
     func onSuccess(response: WLResponse){
-        let elapsedTime = NSDate().timeIntervalSinceDate(logWLStartTime)
+        // let elapsedTime = NSDate().timeIntervalSinceDate(logWLStartTime)
         self.dataDelegate.onPostExecute()
         self.response.onSuccess(response)
     }

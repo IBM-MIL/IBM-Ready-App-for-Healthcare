@@ -315,8 +315,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
     */
     func handleDrag(recognizer: UIPanGestureRecognizer){
         let point = recognizer.locationInView(self.imgView)
-        var newX = false
-        var newY = false
+
         var newOrigin: CGPoint = CGPoint(x: 0, y: 0)
         
         // If panning is over, reset the previousTouchLocation
@@ -381,7 +380,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         self.scrollView.userInteractionEnabled = true
         if self.zoomedIn {
             // Create pointer and place on screen
-            var imgLayer = lastTappedLayer!.superlayer!.superlayer
+            let imgLayer = lastTappedLayer!.superlayer!.superlayer
             var centerOfLayer = CGPointMake(CGRectGetMidX(lastTappedLayer!.superlayer!.frame), CGRectGetMidY(lastTappedLayer!.superlayer!.frame))
             centerOfLayer.x += imgLayer!.frame.origin.x
             centerOfLayer.y += imgLayer!.frame.origin.y
@@ -595,7 +594,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
             self.painPointers.removeAll(keepCapacity: true)
             
             // Zoom out
-            var rectToZoomInto = CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: scrollView.frame.size.height)
+            let rectToZoomInto = CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: scrollView.frame.size.height)
             self.scrollView.zoomToRect(rectToZoomInto, animated:true)
             
             // Show/hide appropriate buttons

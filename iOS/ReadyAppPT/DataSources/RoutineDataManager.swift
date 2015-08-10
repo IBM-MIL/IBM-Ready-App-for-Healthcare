@@ -85,6 +85,5 @@ class RoutineDataManager: NSObject, WLDataDelegate {
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [userID]
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
     }
 }

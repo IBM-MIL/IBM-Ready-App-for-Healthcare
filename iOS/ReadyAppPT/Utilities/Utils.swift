@@ -43,7 +43,7 @@ class Utils {
     - returns: String of Json
     */
     class func JSONStringify(value: AnyObject, prettyPrinted: Bool) -> String {
-        var options: NSJSONWritingOptions = NSJSONWritingOptions.PrettyPrinted // Seems to be only option
+        let options: NSJSONWritingOptions = NSJSONWritingOptions.PrettyPrinted // Seems to be only option
         if NSJSONSerialization.isValidJSONObject(value) {
             do {
                 let data = try NSJSONSerialization.dataWithJSONObject(value, options: options)
@@ -145,10 +145,10 @@ class Utils {
         
         if pieces.count >= 2 {
             let year = "\(Utils.extractYearFromDate(date))"
-            if var index = pieces.indexOf(year) {
+            if let index = pieces.indexOf(year) {
                 pieces.removeAtIndex(index)
             }
-            var finalString = " ".join(pieces)
+            let finalString = " ".join(pieces)
             return finalString
         } else {
             return "\(pieces.first!)"
@@ -163,7 +163,7 @@ class Utils {
     - returns: String with time unit description
     */
     class func unitLabelFor(unit: String) -> String {
-        var intervalComponents = NSDateComponents()
+
         switch (unit) {
         case "day":
             return NSLocalizedString("Today", comment: "n/a")
@@ -307,8 +307,8 @@ class Utils {
         let massFormatter = NSMassFormatter()
         massFormatter.numberFormatter.maximumFractionDigits = 0
         massFormatter.forPersonMassUse = true
-        var numFormat = HKQuantity(unit: HKUnit.poundUnit(), doubleValue: value)
-        var kgWeight = numFormat.doubleValueForUnit(HKUnit(fromString: "kg"))
+        let numFormat = HKQuantity(unit: HKUnit.poundUnit(), doubleValue: value)
+        let kgWeight = numFormat.doubleValueForUnit(HKUnit(fromString: "kg"))
         var localizedMass = massFormatter.stringFromKilograms(kgWeight)
         var pieces = localizedMass.characters.split(Int.max, allowEmptySlices: false, isSeparator: {$0 == " "}).map { String($0) }
         
@@ -325,8 +325,8 @@ class Utils {
     class func getLocalizedWeightUnit(value: Double) -> String {
         let massFormatter = NSMassFormatter()
         massFormatter.forPersonMassUse = true
-        var numFormat = HKQuantity(unit: HKUnit.poundUnit(), doubleValue: value)
-        var kgWeight = numFormat.doubleValueForUnit(HKUnit(fromString: "kg"))
+        let numFormat = HKQuantity(unit: HKUnit.poundUnit(), doubleValue: value)
+        let kgWeight = numFormat.doubleValueForUnit(HKUnit(fromString: "kg"))
         var localizedMass = massFormatter.stringFromKilograms(kgWeight)
         var pieces = localizedMass.characters.split(Int.max, allowEmptySlices: false, isSeparator: {$0 == " "}).map { String($0) }
         return pieces.last!
@@ -352,8 +352,8 @@ class Utils {
         var pieces = localizedEnergyBurnt.characters.split(Int.max, allowEmptySlices: false, isSeparator: {$0 == " "}).map { String($0) }
         
         // remove all characters that are not numbers
-        var tempString = pieces.first!.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
-        var finalString = "".join(tempString)
+        let tempString = pieces.first!.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+        let finalString = "".join(tempString)
 
         return finalString
     }
@@ -373,7 +373,7 @@ class Utils {
         // some languages don't use spaces between value and unit, so we must parse the unit out.
         var finalString = pieces.last!
         if pieces.count < 2 {
-            var tempString = pieces.first!.componentsSeparatedByCharactersInSet(NSCharacterSet.letterCharacterSet().invertedSet)
+            let tempString = pieces.first!.componentsSeparatedByCharactersInSet(NSCharacterSet.letterCharacterSet().invertedSet)
             finalString = "".join(tempString)
         }
         return finalString

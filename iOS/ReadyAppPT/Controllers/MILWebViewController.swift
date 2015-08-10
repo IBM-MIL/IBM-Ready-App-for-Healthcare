@@ -27,15 +27,15 @@ class MILWebViewController : UIViewController, UIWebViewDelegate{
         self.view.addSubview(webView)
         webView.layer.zPosition = -1
 
-        var bundle : NSBundle = NSBundle.mainBundle()
+        let bundle : NSBundle = NSBundle.mainBundle()
         var urlParts = startPage.componentsSeparatedByString(MIL_URL_SEPARATOR)
         
         if(urlParts.count == 0){
             return
         }else{
             fragment = buildFragment(urlParts)
-            var url : NSURL = NSURL(fileURLWithPath: bundle.pathForResource(urlParts[0], ofType: nil)!, isDirectory: false)
-            var fullUrl : NSURL = NSURL(string: MIL_URL_SEPARATOR + fragment, relativeToURL: url.absoluteURL)!
+            let url : NSURL = NSURL(fileURLWithPath: bundle.pathForResource(urlParts[0], ofType: nil)!, isDirectory: false)
+            let fullUrl : NSURL = NSURL(string: MIL_URL_SEPARATOR + fragment, relativeToURL: url.absoluteURL)!
             print("full path to start page was \(fullUrl.absoluteString)")
             currentURL = NSURLRequest(URL: url)
             webView.loadRequest(NSURLRequest(URL: url))
