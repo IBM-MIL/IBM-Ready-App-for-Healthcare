@@ -164,19 +164,19 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
             }
         } else if items.count == 3 {
             
-            if var steps = items.indexOf("steps") {
+            if var _ = items.indexOf("steps") {
                 self.currentGoal = DataManager.dataManager.currentPatient.stepGoal.integerValue
                 populateIndividualView(HKQuantityTypeIdentifierStepCount)
                 
-            } else if var hr = items.indexOf("hr") {
+            } else if var _ = items.indexOf("hr") {
                 self.currentGoal = 70
                 populateIndividualView(HKQuantityTypeIdentifierHeartRate)
                 
-            } else if var calories = items.indexOf("calories") {
+            } else if var _ = items.indexOf("calories") {
                 self.currentGoal = DataManager.dataManager.currentPatient.calorieGoal.integerValue
                 populateIndividualView(HKQuantityTypeIdentifierActiveEnergyBurned)
                 
-            } else if var weight = items.indexOf("weight") {
+            } else if var _ = items.indexOf("weight") {
                 self.currentGoal = 175
                 populateIndividualView(HKQuantityTypeIdentifierBodyMass)
                 
@@ -349,8 +349,8 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
             let painData = PainData.fetchDataInRange(self.managedObjectContext!, start: startDate!, end: todaysDate, dateComps: intervalData, timeUnit: timeUnit)
             
             self.currentGoal = 2
-            var error: NSError? = nil
-            injectSumMetricData((painData.average as NSString).doubleValue, error: &error)
+            var error: NSError?
+            injectSumMetricData((painData.average as NSString).doubleValue, error: error)
             
             dataLock.graphString = Utils.prepareGraphInjectionString("applyData(['\(painData.json)']);")
             if dataLock.graphString != "" && dataLock.metaString != "" && dataLock.performanceString != "" {

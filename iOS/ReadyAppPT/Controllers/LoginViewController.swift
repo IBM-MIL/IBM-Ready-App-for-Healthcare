@@ -93,15 +93,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CustomAlertVie
         // dismiss keyboard to ensure invalid text is hidden on future attempts
         patientIDTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
-                
+        
+        // TODO: unwrap text fields
         // sign in with credentials in text fields
-        if (patientIDTextField.text.isEmpty || passwordTextField.text.isEmpty) {
+        if (patientIDTextField.text!.isEmpty || passwordTextField.text!.isEmpty) {
             self.alertView.hidden = false
         }
         else {
             SVProgressHUD.show()
             let language : String = (NSLocale.currentLocale().localeIdentifier)
-            appDelegate.submitAuthentication(patientIDTextField.text, password: passwordTextField.text, locale: language)
+            appDelegate.submitAuthentication(patientIDTextField.text!, password: passwordTextField.text!, locale: language)
         }
     }
     

@@ -251,9 +251,9 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
     This method populates the sidePanel with data about the patient received from the server.
     */
     func populateSidePanelWithUserData() {
-        var thePatient =  DataManager.dataManager.currentPatient
+        let thePatient =  DataManager.dataManager.currentPatient
         leftViewController!.userIDLabel.text = "\(thePatient.userID)"
-        var components = NSCalendar.currentCalendar().components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: thePatient.dateOfNextVisit)
+        //var components = NSCalendar.currentCalendar().components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: thePatient.dateOfNextVisit)
         
         // creates a localized month/day formatted string
         var localizedDate = NSDateFormatter.localizedStringFromDate(thePatient.dateOfNextVisit, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
@@ -261,7 +261,7 @@ class ContainerViewController: UIViewController, CenterViewControllerDelegate, U
         if pieces.count >= 2 {
             leftViewController!.dateLabel.text = "\(pieces.first!)/\(pieces[1])"
         }
-        var middleString = NSLocalizedString("of", comment: "n/a")
+        let middleString = NSLocalizedString("of", comment: "n/a")
         leftViewController!.weekLabel.text = "\(thePatient.visitsUsed) \(middleString) \(thePatient.visitsTotal)"
 
     }

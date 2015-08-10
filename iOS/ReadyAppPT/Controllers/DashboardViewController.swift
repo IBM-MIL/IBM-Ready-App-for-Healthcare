@@ -117,7 +117,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
         thirdLeadingConstant = self.view.frame.size.width
         
         // dismiss metrics tab after initial startup
-        var initialTimer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "initialTabAnimation", userInfo: nil, repeats: false)
+        _ = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "initialTabAnimation", userInfo: nil, repeats: false)
         
         //send notification to challenge handler
         let userInfo:Dictionary<String,UIViewController!> = ["DashboardViewController" : self]
@@ -620,7 +620,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
         self.stepsTab.hidden = false
         self.caloriesTab.hidden = true
         
-        var leftTabConstraintConstant = self.view.frame.size.width - initialTabWidth
+        let leftTabConstraintConstant = self.view.frame.size.width - initialTabWidth
         
         // firstTab constraints which can change based on availableTabs
         self.view.addConstraints(

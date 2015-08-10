@@ -484,7 +484,7 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         currentPointer.image = UIImage(named: "pointerlight")
         var newFrame = CGRect(x: currentPointer.frame.origin.x + 10, y: currentPointer.frame.origin.y + 10, width: PAIN_POINTER_WIDTH, height: PAIN_POINTER_HEIGHT)
         let testPoint = CGPoint(x: newFrame.origin.x + (newFrame.size.width/2), y: newFrame.origin.y + newFrame.size.height)
-        let hitLayer: CALayer = self.imgView.layer.hitTest(testPoint)
+        let hitLayer: CALayer = self.imgView.layer.hitTest(testPoint)!
         // If this location is not in the body part layer, place the pointer to the upper left of the current pointer
         if !(hitLayer.superlayer == lastTappedLayer?.superlayer) {
             newFrame.origin.x -= 2 * 10
@@ -568,9 +568,9 @@ class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGest
         if (self.zoomedIn) {
             // Clear the last tapped layer
             if let lastLayer = lastTappedLayer {
-                var parentLayer = lastLayer.superlayer
+                let parentLayer = lastLayer.superlayer
                 for var index = 0; index < parentLayer!.sublayers!.count; ++index {
-                    if let childLayer = parentLayer!.sublayers[index] as? CAShapeLayer {
+                    if let childLayer = parentLayer!.sublayers![index] as? CAShapeLayer {
                         childLayer.fillColor = originalFillColors[index]
                         childLayer.opacity = 1.0
                     }

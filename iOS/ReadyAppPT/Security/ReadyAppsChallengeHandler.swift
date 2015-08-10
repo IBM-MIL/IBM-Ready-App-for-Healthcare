@@ -183,7 +183,7 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
     - parameter response:
     */
     override func handleChallenge(response: WLResponse!) {
-        if let lvc = appDelegate.loginViewController.navigationController?.visibleViewController as? LoginViewController {
+        if let _ = appDelegate.loginViewController.navigationController?.visibleViewController as? LoginViewController {
             print("Already showing login view controller");
         } else {
             print("show login view controller")
