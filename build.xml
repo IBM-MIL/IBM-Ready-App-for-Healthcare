@@ -6,7 +6,7 @@
   <property name="build" location="build"/>
   <property name="dist" location="dist" />
   <property name="src.html" location="hybrid"/>
-  <property name="src.android" location="Android/Physio/app/src/main/assets/html"/>
+  <property name="src.android" location="android/Physio/app/src/main/assets/html"/>
   <property name="src.ios" location="iOS/html"/>
 
   <target name="build-android" description="compile and distribute the source for Android" >
@@ -165,11 +165,11 @@
       <exclude name="**/.git*" />
       <exclude name="**/.DS_Store" />
       <exclude name="iOS/**" />
-      <exclude name="Android/Physio/build/**" />
-      <exclude name="Android/Physio/app/build/**" />
-      <exclude name="Android/Physio/spinnerwheel/build/**" />
-      <exclude name="Android/Physio/ReadyAppsLibrary/build/**" />
-      <exclude name="Android/Physio/android.jks" />
+      <exclude name="android/Physio/build/**" />
+      <exclude name="android/Physio/app/build/**" />
+      <exclude name="android/Physio/spinnerwheel/build/**" />
+      <exclude name="android/Physio/ReadyAppsLibrary/build/**" />
+      <exclude name="android/Physio/android.jks" />
       <exclude name="automatedUITests/iOS_Automated_UI_Testing" />
       <!-- These are artifacts that live only on the build machine.  -->
       <exclude name="IBMMobileFirst/**" />
@@ -195,7 +195,7 @@
       <exclude name="automatedUITests/**" />
       <exclude name="**/.git*" />
       <exclude name="**/.DS_Store" />
-      <exclude name="Android/**" />
+      <exclude name="android/**" />
       <exclude name="iOS/build/**" />
       <exclude name="iOS/upload-tmp/**" />
       <exclude name="iOS/buildenvoy_temp/**" />
@@ -227,11 +227,11 @@
       <exclude name="**/.git*" />
       <exclude name="**/.DS_Store" />
       <exclude name="iOS/**" />
-      <exclude name="Android/Physio/build/**" />
-      <exclude name="Android/Physio/app/build/**" />
-      <exclude name="Android/Physio/spinnerwheel/build/**" />
-      <exclude name="Android/Physio/ReadyAppsLibrary/build/**" />
-      <exclude name="Android/Physio/android.jks" />
+      <exclude name="android/Physio/build/**" />
+      <exclude name="android/Physio/app/build/**" />
+      <exclude name="android/Physio/spinnerwheel/build/**" />
+      <exclude name="android/Physio/ReadyAppsLibrary/build/**" />
+      <exclude name="android/Physio/android.jks" />
       <exclude name="automatedUITests/iOS_Automated_UI_Testing" />
       <!-- These are artifacts that live only on the build machine.  -->
       <exclude name="IBMMobileFirst/**" />
@@ -252,11 +252,11 @@
       <exclude name="hybrid/js/bower_components/d3/**" />
       <exclude name="hybrid/js/bower_components/moment/**" />
       <exclude name="hybrid/js/vendor/**" />
-      <exclude name="Android/Physio/app/libs/*.jar" />
-      <exclude name="Android/Physio/spinnerwheel/*" />
-      <exclude name="Android/Physio/spinnerwheel/build/**" />
-      <exclude name="Android/Physio/spinnerwheel/libs/**" />
-      <exclude name="Android/Physio/spinnerwheel/src/**" />
+      <exclude name="android/Physio/app/libs/*.jar" />
+      <exclude name="android/Physio/spinnerwheel/*" />
+      <exclude name="android/Physio/spinnerwheel/build/**" />
+      <exclude name="android/Physio/spinnerwheel/libs/**" />
+      <exclude name="android/Physio/spinnerwheel/src/**" />
     </fileset>
   </zip>
  </target>
@@ -270,7 +270,7 @@
       <exclude name="automatedUITests/**" />
       <exclude name="**/.git*" />
       <exclude name="**/.DS_Store" />
-      <exclude name="Android/**" />
+      <exclude name="android/**" />
       <exclude name="iOS/build/**" />
       <exclude name="iOS/upload-tmp/**" />
       <exclude name="iOS/buildenvoy_temp/**" />
