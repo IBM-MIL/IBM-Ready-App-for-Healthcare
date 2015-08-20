@@ -5,7 +5,7 @@
   <!-- set global properties for this build -->
   <property name="build" location="build"/>
   <property name="dist" location="dist" />
-  <property name="src.html" location="html"/>
+  <property name="src.html" location="hybrid"/>
   <property name="src.android" location="Android/Physio/app/src/main/assets/html"/>
   <property name="src.ios" location="iOS/html"/>
 
@@ -245,13 +245,13 @@
       <exclude name="cpd-output-android.xml" />
       <exclude name="cpd-output-ios.xml" />
       <!-- Removing open source from the project to be safe legally. -->
-      <exclude name="html/js/bower_components/angular/**" />
-      <exclude name="html/js/bower_components/angular-mocks/**" />
-      <exclude name="html/js/bower_components/angular-route/**" />
-      <exclude name="html/js/bower_components/angular-touch/**" />
-      <exclude name="html/js/bower_components/d3/**" />
-      <exclude name="html/js/bower_components/moment/**" />
-      <exclude name="html/js/vendor/**" />
+      <exclude name="hybrid/js/bower_components/angular/**" />
+      <exclude name="hybrid/js/bower_components/angular-mocks/**" />
+      <exclude name="hybrid/js/bower_components/angular-route/**" />
+      <exclude name="hybrid/js/bower_components/angular-touch/**" />
+      <exclude name="hybrid/js/bower_components/d3/**" />
+      <exclude name="hybrid/js/bower_components/moment/**" />
+      <exclude name="hybrid/js/vendor/**" />
       <exclude name="Android/Physio/app/libs/*.jar" />
       <exclude name="Android/Physio/spinnerwheel/*" />
       <exclude name="Android/Physio/spinnerwheel/build/**" />
@@ -290,14 +290,14 @@
       <exclude name="cpd-output-android.xml" />
       <exclude name="cpd-output-ios.xml" />
       <!-- Removing open source from the project to be safe legally. -->
-      <exclude name="html/js/bower_components/angular/**" />
-      <exclude name="html/js/bower_components/angular-mocks/**" />
-      <exclude name="html/js/bower_components/angular-route/**" />
-      <exclude name="html/js/bower_components/angular-touch/**" />
-      <exclude name="html/js/bower_components/d3/**" />
-      <exclude name="html/js/bower_components/moment/**" />
-      <exclude name="html/js/vendor/*.js" />
-      <exclude name="iOS/html/*.js" />
+      <exclude name="hybrid/js/bower_components/angular/**" />
+      <exclude name="hybrid/js/bower_components/angular-mocks/**" />
+      <exclude name="hybrid/js/bower_components/angular-route/**" />
+      <exclude name="hybrid/js/bower_components/angular-touch/**" />
+      <exclude name="hybrid/js/bower_components/d3/**" />
+      <exclude name="hybrid/js/bower_components/moment/**" />
+      <exclude name="hybrid/js/vendor/*.js" />
+      <exclude name="iOS/hybrid/*.js" />
       <exclude name="iOS/ReadyAppPT/External/*" />
       <exclude name="iOS/ReadyAppPT/External/SVProgressHUD/**" />
       <exclude name="iOS/ReadyAppPT/External/WorklightAPI/**" />
