@@ -3,11 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>protocol</key>
-	<string>https</string>
+	<string>Your-MobileFirst-Server-Protocol</string>
 	<key>host</key>
-	<string>lexdcy040171.ecloud.edst.ibm.com</string>
+	<string>Your-MobileFirst-Server-Host</string>
 	<key>port</key>
-	<string>8443</string>
 	<key>wlServerContext</key>
 	<string>/ReadyAppsMobileFirst/</string>
 	<key>application id</key>
