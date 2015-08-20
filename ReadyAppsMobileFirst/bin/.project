@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ReadyAppsMobileFirst</name>
+	<name>healthcare-mfpf</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -40,7 +40,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1418678269278</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -49,7 +49,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1418678269280</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>

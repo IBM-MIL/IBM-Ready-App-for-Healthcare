@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="ReadyAppsMobileFirst">
+    <wb-module deploy-name="healthcare-mfpf">
         <wb-resource deploy-path="/" source-path="/apps/ReadyAppsMobileFirstiOS"/>
-        <property name="context-root" value="ReadyAppsMobileFirst"/>
+        <property name="context-root" value="healthcare-mfpf"/>
     </wb-module>
 </project-modules>
