@@ -1,7 +1,0 @@
-# Non-project-specific build files:
-# Ant builds
-/bin
-/junitXml
-/html
-/dist
-android.automated.testing.properties
