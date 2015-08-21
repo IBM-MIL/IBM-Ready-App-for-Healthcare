@@ -11,7 +11,7 @@ import random
 import json
 import os
 
-PATH_TO_XCODE_JSON = './../iOS/ReadyAppPT/Resources/'
+PATH_TO_XCODE_JSON = './../iOS/Healthcare/Resources/'
 PATH_TO_ANDROID_JSON = './../Android/Physio/app/src/main/assets/'
 
 NUM_DATA_POINTS = 24*30 #24 hours for 30 days

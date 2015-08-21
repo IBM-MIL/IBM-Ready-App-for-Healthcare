@@ -15,7 +15,7 @@
 	<property name="HTML_REPORTS_DIR" value="html" />
 	<property name="IOS_SERVER_JAR" value="ios-server-standalone-0.6.6-SNAPSHOT.jar" />
 	<var name="DEFAULT_PORT" value="4455" />
-	<var name="DEFAULT_APP_NAME" value="ReadyAppPT" />
+	<var name="DEFAULT_APP_NAME" value="Healthcare" />
 	<var name="DEFAULT_APP_VERSION" value="0.0.1" />
 	<var name="GEN_HTML_REPORTS" value="true" />
 	<property name="SERVER_WAIT_TIME" value="10" />

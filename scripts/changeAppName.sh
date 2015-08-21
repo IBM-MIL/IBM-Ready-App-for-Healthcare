@@ -11,7 +11,7 @@ SCRIPT_DIR=`dirname "$0"`
 # Lets setup all our known variables
 OPTIND=1
 BASE_DIR=${SCRIPT_DIR}/..
-declare -a FILES_WTIH_APP_NAME=( ${BASE_DIR}/Android/Physio/app/src/main/res/values/strings.xml ${BASE_DIR}/iOS/ReadyAppPT/en.lproj/Main.storyboard ${BASE_DIR}/docs/index.html ${BASE_DIR}/html/index.html)
+declare -a FILES_WTIH_APP_NAME=( ${BASE_DIR}/Android/Physio/app/src/main/res/values/strings.xml ${BASE_DIR}/iOS/Healthcare/en.lproj/Main.storyboard ${BASE_DIR}/docs/index.html ${BASE_DIR}/html/index.html)
 APP_NAME=`cat "${SCRIPT_DIR}/appname.txt"`
 NEW_APP_NAME="NewName"
 

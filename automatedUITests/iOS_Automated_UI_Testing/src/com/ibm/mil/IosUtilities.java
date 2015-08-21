@@ -52,7 +52,7 @@ public class IosUtilities {
 	//set up the ios web driver
 	public WebDriver iosTestSetupWebDriver(WebDriver driver) throws Exception {
 		// create a selenium desiredCapabilities object with the right values.
-		String appName = getKeyValue("APP_NAME", "ReadyAppPT");
+		String appName = getKeyValue("APP_NAME", "Healthcare");
 		String appVersion = getKeyValue("APP_VERSION", "0.0.1");
 		String port = getKeyValue("PORT", "4455");
 		
