@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/Physio/ReadyAppsLibrary/src/androidTest/androidTest.iml" filepath="$PROJECT_DIR$/Physio/ReadyAppsLibrary/src/androidTest/androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Physio/app/src/androidTest/androidTest1.iml" filepath="$PROJECT_DIR$/Physio/app/src/androidTest/androidTest1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Physio/spinnerwheel/src/main/main.iml" filepath="$PROJECT_DIR$/Physio/spinnerwheel/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Physio/ReadyAppsLibrary/src/main/main1.iml" filepath="$PROJECT_DIR$/Physio/ReadyAppsLibrary/src/main/main1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Physio/app/src/main/main2.iml" filepath="$PROJECT_DIR$/Physio/app/src/main/main2.iml" />
-    </modules>
+    <modules />
   </component>
 </project>
-

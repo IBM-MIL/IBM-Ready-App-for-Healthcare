@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="libcrypto.so.1.0.02">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Physio/app/src/main/assets/WorkLight/jsonstore/assets/featurelibs/armeabi-v7a/libcrypto.so.1.0.0.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
