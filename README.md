@@ -1,4 +1,4 @@
-![](README assets/banner.png)
+![](README_assets/banner.png)
 # IBM-Ready-App-for-Healthcare
 
 ### Overview
