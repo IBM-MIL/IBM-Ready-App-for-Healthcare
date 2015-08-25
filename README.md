@@ -1,20 +1,25 @@
+![](README_assets/banner.png)
 # IBM-Ready-App-for-Healthcare
 
-#Overview
+### Overview
 
-IBM Ready App for Healthcare is the first app delivered for the IBM ReadyApp Program.  It seeks to improve patient recovery timeframes and patient adherence to at home physical therapy programs by tracking patient progress regardless of wearable. Ready App for Heatlhcare utilizes the MobileFirst Platform Foundation and is integrated with HealthKit and Google Fit.
+IBM Ready App for Healthcare is the first of the IBM Ready App Series. 
 
-The user credentials for login into IBM Ready App for Healthcare are:
 
-| Patient ID | Password |
-|---------|----------|
-| user1   | password1 |
+This app 
+* improves patient recovery timeframes 
+* increases patient adherence to at-home physical therapy programs 
+* tracks patient progress regardless of wearable utilized
+* gives patients access to a customized, at-home exercise library that can be accessed anywhere
+* enables patients to track and manage pain levels throughout the recovery process
 
-For demo purposes, if users would like to see pre-populated HealthKit/Google Fit data, they can log out of the app and log in again with the following credentials:
+With this app, patients can also fill out medical questionnaires and progress reports from any place with their mobile device prior to their in-clinic appointments.
 
-| Patient ID | Password |
-|---------|----------|
-| user2   | password2 |
+### Getting started
+Please visit the [Getting Started page](http://lexdcy040194.ecloud.edst.ibm.com/physio_1_0_2/getting_started) to set up the project.
 
-##Documentation
-For access to the full documentation please visit http://lexdcy040194.ecloud.edst.ibm.com/physio_1_0_2/home
+### Documentation
+Please visit [this page](http://lexdcy040194.ecloud.edst.ibm.com/physio_1_0_2/home) for access to the full documentation.
+
+### License
+IBM Ready App for Healthcare is available under the IBM Ready Apps License Agreement. See the [License file](https://github.com/IBM-MIL/IBM-Ready-App-for-Healthcare/blob/master/LICENSE.txt) for more details.
