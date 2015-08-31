@@ -1,5 +1,5 @@
 ![](README_assets/banner.png)
-# IBM-Ready-App-for-Healthcare
+# IBM Ready App for Healthcare
 
 ### Overview
 
