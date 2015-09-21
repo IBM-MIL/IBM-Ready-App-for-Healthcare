@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.username = username
         self.password = password
         self.locale = locale
-        let adapterName : String = "ReadyAppsAdapter"
+        let adapterName : String = "HealthcareAdapter"
         let procedureName : String = "submitAuthentication"
         var loginInvocationData = WLProcedureInvocationData(adapterName: adapterName, procedureName: procedureName)
         loginInvocationData.parameters = [ username, password, locale]

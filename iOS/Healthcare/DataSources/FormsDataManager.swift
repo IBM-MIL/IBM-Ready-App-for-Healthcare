@@ -79,7 +79,7 @@ class FormsDataManager: NSObject, WLDataDelegate {
     func getQuestionnaireForUser(username: String!, callback: (FormsResultType)->()) {
         formsCallBack = callback
         
-        let adapterName : String = "ReadyAppsAdapter"
+        let adapterName : String = "HealthcareAdapter"
         let procedureName : String = "getQuestionnaireForUser"
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [username]

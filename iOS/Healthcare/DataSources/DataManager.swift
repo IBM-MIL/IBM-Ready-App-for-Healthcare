@@ -47,7 +47,7 @@ class DataManager: NSObject, WLDataDelegate {
         // Override point for customization after application launch.
         logInCallback = callback
         
-        let adapterName : String = "ReadyAppsAdapter"
+        let adapterName : String = "HealthcareAdapter"
         let procedureName : String = "getUserObject"
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [userID]
@@ -100,7 +100,7 @@ class DataManager: NSObject, WLDataDelegate {
     
     */
     func getRoutines(userID: String!) {
-        let adapterName : String = "ReadyAppsAdapter"
+        let adapterName : String = "HealthcareAdapter"
         let procedureName : String = "getRoutines"
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [userID]
@@ -115,7 +115,7 @@ class DataManager: NSObject, WLDataDelegate {
     
     */
     func getRoutinesForPatient(routineId: String!) {
-        let adapterName : String = "ReadyAppsAdapter"
+        let adapterName : String = "HealthcareAdapter"
         let procedureName : String = "getRoutinesForPatient"
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [routineId]

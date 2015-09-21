@@ -80,7 +80,7 @@ class RoutineDataManager: NSObject, WLDataDelegate {
     func getRoutines(userID: String!, callback: (RoutineResultType)->()) {
         routineCallback = callback
         
-        let adapterName : String = "ReadyAppsAdapter"
+        let adapterName : String = "HealthcareAdapter"
         let procedureName : String = "getRoutines"
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [userID]

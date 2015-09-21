@@ -83,7 +83,7 @@ class ExerciseDataManager: NSObject, WLDataDelegate {
         exerciseCallBack = callback
         
         //isFromDashboard = true
-        let adapterName : String = "ReadyAppsAdapter"
+        let adapterName : String = "HealthcareAdapter"
         let procedureName : String = "getExercisesForRoutine"
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [routineId]
