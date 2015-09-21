@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+		<!-- Licensed Materials - Property of IBM
+			 5725-I43 (C) Copyright IBM Corp. 2006, 2014. All Rights Reserved.
+			 US Government Users Restricted Rights - Use, duplication or
+             disclosure restricted by GSA ADP Schedule Contract with IBM Corp. -->	
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Login</title>
+		<style>
+			html, body {
+				margin: 0 auto;
+				padding: 0;
+				text-align: center;
+			}
+			
+			#authenticatorLoginFormWrapper {
+				border: 2px solid #989898;
+				border-radius: 4px;
+				-moz-box-shadow: 0 0 4px 4px #ccc;
+				-webkit-box-shadow: 0 0 4px 4px #ccc;
+				box-shadow: 0 0 4px 4px #ccc;
+				display: inline-block;
+				margin: 36px 0 0;
+				padding: 44px 53px;
+				text-align: left;
+				width: 265px;
+			}
+			
+			#authenticatorLoginFormWrapper h1 {
+				background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFUAAAAeCAMAAABqtKLHAAAAAXNSR0IArs4c6QAAAKhQTFRF////mJiY8PDw6OjoqKioyMjI4ODgAAAAwMDAuLi4YGBgMDAwcHBwoKCgaGhoAFiIAHioCEhwAGiYAGCQAHCgAGCYAICwAIC4AIi4QEBA2NjYAFiAAHiwAGCI0NDQgICAWFhYSEhIkJCQADBIeHh4ADhQADBAODg4EFBwAGiQCFB4GFh4cJCosLCwCFBwEFB4ICAgIFiAOGB4QGB4WICQYICYeJiweKCwSqN4OwAAANVJREFUSMfdlk0OhCAMhd+CBDhCN7Nqwsr7X2+UP6FgxiFs4BkTbOUZP4sUuhYgAkSs4FUGkUTV3Kxfrt5EyTvjg6B033UlvSFwikUiIDi0Hud6yokE+8msN+BaUJABlG8peXENYJKrq5cA1tYDgaaQUoICAsrjf7i2pjERUB/FeHuugkBRqIxxruJr3ZXqgJ25Pq7YvFgJwLT/QI4yluZqrX2/w1CZSGC4rkJvGs6R3TB1AqpxtTAf662nvj8uAGa+qz9GOqLYDCkMc+11b/G6GzYXgi/6uhyAhaXJ7gAAAABJRU5ErkJggg%3D%3D');
+				height:30px;
+				margin: 0;
+				overflow: hidden;
+				padding: 0;
+				text-indent: 100%;
+				white-space: nowrap;
+				width: 85px;
+			}
+			
+			#authenticatorLoginFormWrapper h2 {
+				color: #303030;
+				font-family: arial,helvetica,sans-serif;
+				font-size: 14px;
+				font-weight: normal;
+				margin: 0;
+				padding: 60px 0 0;
+			}
+			
+			#authenticatorLoginFormWrapper form {
+			
+			}
+			
+			#authenticatorLoginFormWrapper form label {
+				display: none;
+			}
+			
+			#authenticatorLoginFormWrapper form input {
+				border: 1px solid #ccc;
+				color: #707070;
+				font-family: arial, helvetica, sans-serif;
+				font-size: 12px;
+				font-weight: normal;
+				margin: 8px 0;
+				padding: 5px;
+				width: 190px;
+			}
+			
+			#authenticatorLoginFormWrapper form input#login {
+				background: -moz-linear-gradient(center top, #0088b8 5%, #005880 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0088b8), color-stop(1, #005880));
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088b8', endColorstr='#005880');
+				background-color: #0088b8;
+				border: 1px solid #084870;
+				-moz-border-radius: 6px;
+				-webkit-border-radius: 6px;
+				border-radius: 4px;
+				color: #fff;
+				display: inline-block;
+				font-family: arial, helvetica, sans-serif;
+				font-size: 12px;
+				font-weight: bold;
+				margin: 24px 0 0 0;
+				padding: 4px 12px;
+				text-shadow: 1px 1px 0px #528ecc;
+				width: auto;
+			}
+			
+			#authenticatorLoginFormWrapper form input#login:hover {
+				background: -moz-linear-gradient(center top, #005880 5%, #0088b8 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #005880), color-stop(1, #0088b8));
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#005880', endColorstr='#0088b8');
+				background-color: #005880;
+			}
+			
+			#authenticatorLoginFormWrapper form input#login:active {
+				position: relative;
+				top: 1px;
+			}
+			
+			#authenticatorLoginFormWrapper #copyright {
+				border-top: 1px solid #c8c8c8;
+				color: #606060;
+				font-family: arial, helvetica, sans-serif;
+				font-size: 11px;
+				margin: 30px 0;
+				padding: 18px 0 0;
+			}
+			
+			#authenticatorLoginFormWrapper #copyright a {
+				color: #006098;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body onload="isPopup(); setFocus();">
+		<div id="authenticatorLoginFormWrapper">
+			<h1>IBM</h1>
+			<h2>IBM MobileFirst Platform</h2>
+			<form method="post" action="j_security_check">
+				<p id="error">${errorMessage}</p>
+				<label for="j_username">User name:</label>
+				<input type="text" id="j_username" name="j_username" placeholder="User name" />
+				<br />
+				<label for="j_password">Password:</label>
+				<input type="password" id="j_password" name="j_password" placeholder="Password" />
+				<br />
+				<input type="submit" id="login" name="login" value="Log In" />
+			</form>
+			<p id="copyright">&copy; 2006, 2012 IBM Corporation. <a href="#" target="_blank">Trademark</a></p>
+		</div>
+		<script>
+			function createCookie(name, value, days) {
+				var expires = '',
+					date;
+				if (days) {
+					date = new Date();
+					date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+					expires += '; expires=' + date.toGMTString();
+				}
+				document.cookie = name + '=' + value + expires + '; path=/';
+			}
+			
+			function readCookie(name) {
+				var nameEQ = name + '=',
+					i,
+					ca = document.cookie.split(';'),
+					c;
+				for (i = 0; i < ca.length; i++) {
+					c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1, c.length);
+					}
+					if (c.indexOf(nameEQ) == 0) {
+						return c.substring(nameEQ.length, c.length);
+					}
+				}
+				return null;
+			}
+			
+			function eraseCookie(name) {
+				createCookie(name, '', -1);
+			}
+			
+			function areCookiesEnabled() {
+				var r = false;
+				createCookie('testing', 'Hello', 1);
+				if (readCookie('testing') != null) {
+					r = true;
+					eraseCookie('testing');
+				}
+				return r;
+			}
+			
+			function isPopup() {
+				var POPUP_INDICATOR = 'action=popup';
+				if (window.location.search.indexOf(POPUP_INDICATOR) > 0) {
+					document.getElementById('authenticatorLoginFormWrapper').className = 'isPopup';
+				}
+			}
+			
+			function setFocus() {
+				document.getElementById('j_username').focus();
+			}
+			
+			if (!areCookiesEnabled()) {
+				alert('Cookies are currently disabled in your browser settings. Please enable them and reload the page.');
+			}
+		</script>
+	</body>
+</html>

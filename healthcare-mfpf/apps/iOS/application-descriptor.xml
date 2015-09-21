@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed Materials - Property of IBM
+    5725-I43 (C) Copyright IBM Corp. 2011, 2013. All Rights Reserved.
+    US Government Users Restricted Rights - Use, duplication or
+    disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+-->
+<nativeIOSApp id="iOS" platformVersion="6.3.0.00.20141127-1357" bundleId="com.iOS" 
+	version="1.0" xmlns="http://www.worklight.com/native-ios-descriptor">
+	
+	<displayName>iOS</displayName>
+	<description>iOS</description>
+	
+</nativeIOSApp>
