@@ -5,8 +5,8 @@
   <!-- set global properties for this build -->
   <property name="build" location="build"/>
   <property name="dist" location="dist" />
-  <property name="src.html" location="html"/>
-  <property name="src.android" location="Android/Physio/app/src/main/assets/html"/>
+  <property name="src.html" location="hybrid"/>
+  <property name="src.android" location="android/app/src/main/assets/html"/>
   <property name="src.ios" location="iOS/html"/>
 
   <target name="build-android" description="compile and distribute the source for Android" >
@@ -165,11 +165,11 @@
       <exclude name="**/.git*" />
       <exclude name="**/.DS_Store" />
       <exclude name="iOS/**" />
-      <exclude name="Android/Physio/build/**" />
-      <exclude name="Android/Physio/app/build/**" />
-      <exclude name="Android/Physio/spinnerwheel/build/**" />
-      <exclude name="Android/Physio/ReadyAppsLibrary/build/**" />
-      <exclude name="Android/Physio/android.jks" />
+      <exclude name="android/build/**" />
+      <exclude name="android/app/build/**" />
+      <exclude name="android/spinnerwheel/build/**" />
+      <exclude name="android/ReadyAppsLibrary/build/**" />
+      <exclude name="android/android.jks" />
       <exclude name="automatedUITests/iOS_Automated_UI_Testing" />
       <!-- These are artifacts that live only on the build machine.  -->
       <exclude name="IBMMobileFirst/**" />
@@ -195,7 +195,7 @@
       <exclude name="automatedUITests/**" />
       <exclude name="**/.git*" />
       <exclude name="**/.DS_Store" />
-      <exclude name="Android/**" />
+      <exclude name="android/**" />
       <exclude name="iOS/build/**" />
       <exclude name="iOS/upload-tmp/**" />
       <exclude name="iOS/buildenvoy_temp/**" />
@@ -227,11 +227,11 @@
       <exclude name="**/.git*" />
       <exclude name="**/.DS_Store" />
       <exclude name="iOS/**" />
-      <exclude name="Android/Physio/build/**" />
-      <exclude name="Android/Physio/app/build/**" />
-      <exclude name="Android/Physio/spinnerwheel/build/**" />
-      <exclude name="Android/Physio/ReadyAppsLibrary/build/**" />
-      <exclude name="Android/Physio/android.jks" />
+      <exclude name="android/build/**" />
+      <exclude name="android/app/build/**" />
+      <exclude name="android/spinnerwheel/build/**" />
+      <exclude name="android/ReadyAppsLibrary/build/**" />
+      <exclude name="android/android.jks" />
       <exclude name="automatedUITests/iOS_Automated_UI_Testing" />
       <!-- These are artifacts that live only on the build machine.  -->
       <exclude name="IBMMobileFirst/**" />
@@ -245,18 +245,18 @@
       <exclude name="cpd-output-android.xml" />
       <exclude name="cpd-output-ios.xml" />
       <!-- Removing open source from the project to be safe legally. -->
-      <exclude name="html/js/bower_components/angular/**" />
-      <exclude name="html/js/bower_components/angular-mocks/**" />
-      <exclude name="html/js/bower_components/angular-route/**" />
-      <exclude name="html/js/bower_components/angular-touch/**" />
-      <exclude name="html/js/bower_components/d3/**" />
-      <exclude name="html/js/bower_components/moment/**" />
-      <exclude name="html/js/vendor/**" />
-      <exclude name="Android/Physio/app/libs/*.jar" />
-      <exclude name="Android/Physio/spinnerwheel/*" />
-      <exclude name="Android/Physio/spinnerwheel/build/**" />
-      <exclude name="Android/Physio/spinnerwheel/libs/**" />
-      <exclude name="Android/Physio/spinnerwheel/src/**" />
+      <exclude name="hybrid/js/bower_components/angular/**" />
+      <exclude name="hybrid/js/bower_components/angular-mocks/**" />
+      <exclude name="hybrid/js/bower_components/angular-route/**" />
+      <exclude name="hybrid/js/bower_components/angular-touch/**" />
+      <exclude name="hybrid/js/bower_components/d3/**" />
+      <exclude name="hybrid/js/bower_components/moment/**" />
+      <exclude name="hybrid/js/vendor/**" />
+      <exclude name="android/app/libs/*.jar" />
+      <exclude name="android/spinnerwheel/*" />
+      <exclude name="android/spinnerwheel/build/**" />
+      <exclude name="android/spinnerwheel/libs/**" />
+      <exclude name="android/spinnerwheel/src/**" />
     </fileset>
   </zip>
  </target>
@@ -270,7 +270,7 @@
       <exclude name="automatedUITests/**" />
       <exclude name="**/.git*" />
       <exclude name="**/.DS_Store" />
-      <exclude name="Android/**" />
+      <exclude name="android/**" />
       <exclude name="iOS/build/**" />
       <exclude name="iOS/upload-tmp/**" />
       <exclude name="iOS/buildenvoy_temp/**" />
@@ -290,21 +290,21 @@
       <exclude name="cpd-output-android.xml" />
       <exclude name="cpd-output-ios.xml" />
       <!-- Removing open source from the project to be safe legally. -->
-      <exclude name="html/js/bower_components/angular/**" />
-      <exclude name="html/js/bower_components/angular-mocks/**" />
-      <exclude name="html/js/bower_components/angular-route/**" />
-      <exclude name="html/js/bower_components/angular-touch/**" />
-      <exclude name="html/js/bower_components/d3/**" />
-      <exclude name="html/js/bower_components/moment/**" />
-      <exclude name="html/js/vendor/*.js" />
-      <exclude name="iOS/html/*.js" />
-      <exclude name="iOS/ReadyAppPT/External/*" />
-      <exclude name="iOS/ReadyAppPT/External/SVProgressHUD/**" />
-      <exclude name="iOS/ReadyAppPT/External/WorklightAPI/**" />
-      <exclude name="iOS/ReadyAppPT/External/YoutubePlayer/**" />
-      <exclude name="iOS/ReadyAppPT/External/usr/**" />
-      <exclude name="iOS/ReadyAppPT/Resources/Roboto" />
-      <exclude name="iOS/ReadyAppPT/Resources/roboto-slab/**" />
+      <exclude name="hybrid/js/bower_components/angular/**" />
+      <exclude name="hybrid/js/bower_components/angular-mocks/**" />
+      <exclude name="hybrid/js/bower_components/angular-route/**" />
+      <exclude name="hybrid/js/bower_components/angular-touch/**" />
+      <exclude name="hybrid/js/bower_components/d3/**" />
+      <exclude name="hybrid/js/bower_components/moment/**" />
+      <exclude name="hybrid/js/vendor/*.js" />
+      <exclude name="iOS/hybrid/*.js" />
+      <exclude name="iOS/Healthcare/External/*" />
+      <exclude name="iOS/Healthcare/External/SVProgressHUD/**" />
+      <exclude name="iOS/Healthcare/External/WorklightAPI/**" />
+      <exclude name="iOS/Healthcare/External/YoutubePlayer/**" />
+      <exclude name="iOS/Healthcare/External/usr/**" />
+      <exclude name="iOS/Healthcare/Resources/Roboto" />
+      <exclude name="iOS/Healthcare/Resources/roboto-slab/**" />
     </fileset>
   </zip>
  </target>

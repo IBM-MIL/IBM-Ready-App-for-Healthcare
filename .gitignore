@@ -1,4 +1,3 @@
 bin/
 build/
-
-/ReadyAppPT.xcodeproj/xcuserdata/*
+scripts/

@@ -5,3 +5,5 @@ ocunit2junit
 RemoteBuildAndDeploy_DST.xml
 runAutomation.sh
 uia2junit
+
+Healthcare.xcodeproj/xcuserdata/*

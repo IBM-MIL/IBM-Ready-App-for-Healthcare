@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>protocol</key>
+	<string>Your-MobileFirst-Server-Protocol</string>
+	<key>host</key>
+	<string>Your-MobileFirst-Server-Host</string>
+	<key>port</key>
+	<string></string>
+	<key>wlServerContext</key>
+	<string>/healthcare-mfpf/</string>
+	<key>application id</key>
+	<string>iOS</string>
+	<key>application version</key>
+	<string>1.0</string>
+	<key>environment</key>
+	<string>iOSnative</string>
+	<key>wlUid</key>
+	<string>wY/mbnwKTDDYQUvuQCdSgg==</string>
+	<key>platformVersion</key>
+	<string>6.3.0.0</string>
+</dict>
+</plist>
