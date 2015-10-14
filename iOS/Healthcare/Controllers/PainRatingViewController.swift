@@ -57,7 +57,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
             alertColor = UIColor.readyAppBlue()
         }
         alertViewButtons = CustomAlertViewButtons.initWithButtonColor(alertColor, alertText: alertText)
-        alertViewButtons.setTranslatesAutoresizingMaskIntoConstraints(false)
+        alertViewButtons.translatesAutoresizingMaskIntoConstraints = false
         alertViewButtons.delegate = self
         alertViewButtons.hidden = true
         self.view.addSubview(alertViewButtons)
@@ -70,7 +70,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
             alertImageName = "checkmark_blue"
         }
         alertViewSimple = CustomAlertView.initWithText(alertText, imageName: alertImageName)
-        alertViewSimple.setTranslatesAutoresizingMaskIntoConstraints(false)
+        alertViewSimple.translatesAutoresizingMaskIntoConstraints = false
         alertViewSimple.delegate = self
         alertViewSimple.hidden = true
         self.view.addSubview(alertViewSimple)
@@ -99,7 +99,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         originalCenter = self.view.center
         
-        var tapGesture = UITapGestureRecognizer(target: self, action: "textViewTapped")
+        let tapGesture = UITapGestureRecognizer(target: self, action: "textViewTapped")
         self.descriptionTextView.addGestureRecognizer(tapGesture)
         self.descriptionTextView.text = placeHolder
         
@@ -116,7 +116,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     */
     func setupAlertViewConstraints() {
         var viewsDict = Dictionary<String, UIView>()
-        var metricsDict = ["simpleOffsetLeft": self.view.frame.size.width, "simpleOffsetRight": -self.view.frame.size.width]
+        let metricsDict = ["simpleOffsetLeft": self.view.frame.size.width, "simpleOffsetRight": -self.view.frame.size.width]
         viewsDict["alertViewSimple"] = self.alertViewSimple
         viewsDict["alertViewButtons"] = self.alertViewButtons
         viewsDict["view"] = self.view
@@ -135,7 +135,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
         self.view.removeConstraints(self.buttonAlertLeftConstraint as! [NSLayoutConstraint])
         
         var viewsDict = Dictionary<String, UIView>()
-        var metricsDict = ["buttonOffsetLeft": -self.view.frame.size.width, "buttonOffsetRight": self.view.frame.size.width]
+        let metricsDict = ["buttonOffsetLeft": -self.view.frame.size.width, "buttonOffsetRight": self.view.frame.size.width]
         viewsDict["alertViewSimple"] = self.alertViewSimple
         viewsDict["alertViewButtons"] = self.alertViewButtons
         viewsDict["view"] = self.view
@@ -161,7 +161,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     Method to open the side panel
     */
     func openSideMenu() {
-        var container = self.navigationController?.parentViewController as! ContainerViewController
+        let container = self.navigationController?.parentViewController as! ContainerViewController
         container.toggleLeftPanel()
     }
     
@@ -182,12 +182,12 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
         }, completion: { done in
             self.alertViewButtons.hidden = true
         })
-        var painRating: Int = self.milCollectionView.selectedIndexPath!.row
-        var painDescription = self.descriptionTextView.text == placeHolder ? "" : self.descriptionTextView.text
+        let painRating: Int = self.milCollectionView.selectedIndexPath!.row
+        let painDescription = self.descriptionTextView.text == placeHolder ? "" : self.descriptionTextView.text
         PainData.createInManagedObjectContext(self.managedObjectContext!, rating: painRating, description: painDescription)
         PainData.saveData(self.managedObjectContext!)
         
-        var timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: Selector("navigateToRoot"), userInfo: nil, repeats: false)
+        _ = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: Selector("navigateToRoot"), userInfo: nil, repeats: false)
     }
     
     /**
@@ -197,7 +197,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     Otherwise we will pop back to the entering view controller.
     */
     func navigateToRoot() {
-        var numViewControllers = self.navigationController?.viewControllers.count
+        let numViewControllers = self.navigationController?.viewControllers.count
  
         if self.useBlueColor {
             Utils.returnToDashboard()
@@ -205,8 +205,8 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
             if numViewControllers == NUM_CONTROLLERS_IN_PAIN_FLOW {
                 Utils.returnToDashboard()
             } else if numViewControllers > NUM_CONTROLLERS_IN_PAIN_FLOW {
-                var indexToPopTo = numViewControllers! - NUM_CONTROLLERS_IN_PAIN_FLOW - 1
-                var vc: UIViewController = self.navigationController?.viewControllers[indexToPopTo] as! UIViewController
+                let indexToPopTo = numViewControllers! - NUM_CONTROLLERS_IN_PAIN_FLOW - 1
+                let vc: UIViewController = (self.navigationController?.viewControllers[indexToPopTo])!
                 self.navigationController?.popToViewController(vc, animated: true)
             }
         }
@@ -223,9 +223,9 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     // Keyboard methods are implemented so that the textView remains visible when keyboard is present
     
     func keyboardWillShow(notification: NSNotification) {
-        var info : NSDictionary = notification.userInfo!
-        var kbFrame = (info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue).CGRectValue()
-        var duration = info.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSTimeInterval
+        let info : NSDictionary = notification.userInfo!
+        let kbFrame = (info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue).CGRectValue()
+        let duration = info.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSTimeInterval
         
         UIView.animateWithDuration(duration, animations: ({
             self.view.center = CGPointMake(self.originalCenter.x, self.originalCenter.y - kbFrame.height)
@@ -234,9 +234,8 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        var info : NSDictionary = notification.userInfo!
-        var kbFrame = (info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue).CGRectValue()
-        var duration = info.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSTimeInterval
+        let info : NSDictionary = notification.userInfo!
+        let duration = info.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSTimeInterval
         
         UIView.animateWithDuration(duration, animations: ({
             self.view.center = self.originalCenter
@@ -249,11 +248,11 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     /**
     TextView delegate method to recognize a done key press and then dismiss the keyboard if so.
     
-    :param: textView The text view containing the changes
-    :param: range    The current selection range
-    :param: text     The text to insert
+    - parameter textView: The text view containing the changes
+    - parameter range:    The current selection range
+    - parameter text:     The text to insert
     
-    :returns: true if editing should continue, false if not.
+    - returns: true if editing should continue, false if not.
     */
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -273,7 +272,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     /**
     If placeholder is the only text, put cursor at front of textView
     
-    :param: textView callback activated for this textView
+    - parameter textView: callback activated for this textView
     */
     func textViewDidBeginEditing(textView: UITextView) {
         if textView.text == placeHolder {
@@ -284,13 +283,13 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     /**
     Essentially creates the placeholder functionality in UITextView
     
-    :param: textView callback activated for this textView
+    - parameter textView: callback activated for this textView
     */
     func textViewDidChange(textView: UITextView) {
-        var placeholder = placeHolder as NSString
+        let placeholder = placeHolder as NSString
         if (textView.text as NSString).length > placeholder.length{
             
-            var substring : String = (textView.text as NSString).substringFromIndex(1)
+            let substring : String = (textView.text as NSString).substringFromIndex(1)
             if substring == placeholder {
                 textView.text = (textView.text as NSString).substringToIndex(1)
                 textView.textColor = UIColor(red: 78/255.0, green: 77/255.0, blue: 73/255.0, alpha: 1.0)
@@ -312,7 +311,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     
     // Set preDelegate and preDataSource to have this method called, add extra customization in here, for example: cell.backgroundColor = UIColor.yellowColor()
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.milCollectionView.ratingCellID, forIndexPath: indexPath) as! RatingCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.milCollectionView.ratingCellID, forIndexPath: indexPath) as! RatingCollectionViewCell
 
         return cell
     }
@@ -320,7 +319,7 @@ class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectio
     /**
     Called when submit button is pressed and displays an alert to confirm the users choice
     
-    :param: sender button calling this method
+    - parameter sender: button calling this method
     */
     @IBAction func submitPain(sender: AnyObject) {
         self.alertViewButtons.hidden = false

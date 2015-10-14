@@ -26,12 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Init method that sets up caching for the applicaiton as well as other backend services
     */
     override init() {
-        var cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage();
+        _ = NSHTTPCookieStorage.sharedHTTPCookieStorage();
         
-        var cacheMemorySize = 8 * 1024 * 1024;
-        var cacheDiskSize = 32 * 1024 * 1024;
+        let cacheMemorySize = 8 * 1024 * 1024;
+        let cacheDiskSize = 32 * 1024 * 1024;
         
-        var sharedCache = NSURLCache(memoryCapacity: cacheMemorySize, diskCapacity: cacheDiskSize, diskPath: "nsurlcache");
+        let sharedCache = NSURLCache(memoryCapacity: cacheMemorySize, diskCapacity: cacheDiskSize, diskPath: "nsurlcache");
         
         NSURLCache.setSharedURLCache(sharedCache);
       
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Do any additional setup after loading the view.
-        println("Connecting to MobileFirst Server...");
+        print("Connecting to MobileFirst Server...");
         connectListener = ReadyAppsConnectListener()
         
         // Connect to MobileFirst server
@@ -54,22 +54,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
-        var presentedViewController = window?.rootViewController?.presentedViewController
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
+        let presentedViewController = window?.rootViewController?.presentedViewController
         
         // All this disables rotation on all views except on the video player view controller for better video viewing
-        if var presented = presentedViewController {
+        if let presented = presentedViewController {
             let classString = NSStringFromClass(presented.classForCoder)
             if classString == "AVFullScreenViewController" {
                 UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.None)
-                return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
+                return UIInterfaceOrientationMask.AllButUpsideDown
             }
         }
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+        return UIInterfaceOrientationMask.Portrait
     }
     
     func handleLoginViewController(notification: NSNotification){
-        println("in handleLoginViewController")
+        print("in handleLoginViewController")
         let userInfo:Dictionary<String,UIViewController!> = notification.userInfo as! Dictionary<String,UIViewController!>
         self.loginViewController = userInfo["LoginViewController"] as! LoginViewController
         
@@ -78,8 +78,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /**
     This method creates a secure tunnel between the client and the server, so the user can be authenticated
     
-    :param: username of the user
-    :param: password provided by the user
+    - parameter username: of the user
+    - parameter password: provided by the user
     */
     func submitAuthentication(username : String, password : String, locale : String){
         self.username = username
@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.locale = locale
         let adapterName : String = "HealthcareAdapter"
         let procedureName : String = "submitAuthentication"
-        var loginInvocationData = WLProcedureInvocationData(adapterName: adapterName, procedureName: procedureName)
+        let loginInvocationData = WLProcedureInvocationData(adapterName: adapterName, procedureName: procedureName)
         loginInvocationData.parameters = [ username, password, locale]
         self.challengeHandler.submitAdapterAuthentication(loginInvocationData, options: nil)
         
@@ -98,16 +98,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     This method handles the opening of a URL when from another iOS application.
     Calls a javascript openURL method in order to work with hybrid view
     
-    :param: application The singleton app object
-    :param: url         An object representing a URL
+    - parameter application: The singleton app object
+    - parameter url:         An object representing a URL
     
-    :returns: true if delegate handled URL correctly, false if otherwise
+    - returns: true if delegate handled URL correctly, false if otherwise
     */
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        var jsString = "handleOpenURL(\"\(url)\");";
+        let jsString = "handleOpenURL(\"\(url)\");";
         self.viewController?.webView.stringByEvaluatingJavaScriptFromString(jsString)
         
-        var notification = NSNotification(name: "IBMMILNotification", object: url)
+        let notification = NSNotification(name: "IBMMILNotification", object: url)
         NSNotificationCenter.defaultCenter().postNotification(notification)
         
         return true;
@@ -152,9 +152,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.ibm.mil.Healthcare" in the application's documents Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.ibm.mil.ReadyAppPT" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -170,18 +170,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Healthcare.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+        do {
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+        } catch var error1 as NSError {
+            error = error1
             coordinator = nil
             // Report any error we got.
-            let dict = NSMutableDictionary()
+            var dict = [NSObject : AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
+        } catch {
+            fatalError()
         }
         
         return coordinator
@@ -203,11 +208,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog("Unresolved error \(error), \(error!.userInfo)")
+                    abort()
+                }
             }
         }
     }

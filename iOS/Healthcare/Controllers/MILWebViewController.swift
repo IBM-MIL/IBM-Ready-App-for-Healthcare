@@ -27,16 +27,16 @@ class MILWebViewController : UIViewController, UIWebViewDelegate{
         self.view.addSubview(webView)
         webView.layer.zPosition = -1
 
-        var bundle : NSBundle = NSBundle.mainBundle()
+        let bundle : NSBundle = NSBundle.mainBundle()
         var urlParts = startPage.componentsSeparatedByString(MIL_URL_SEPARATOR)
         
         if(urlParts.count == 0){
             return
         }else{
             fragment = buildFragment(urlParts)
-            var url : NSURL = NSURL(fileURLWithPath: bundle.pathForResource(urlParts[0], ofType: nil)!, isDirectory: false)!
-            var fullUrl : NSURL = NSURL(string: MIL_URL_SEPARATOR + fragment, relativeToURL: url.absoluteURL)!
-            println("full path to start page was \(fullUrl.absoluteString)")
+            let url : NSURL = NSURL(fileURLWithPath: bundle.pathForResource(urlParts[0], ofType: nil)!, isDirectory: false)
+            let fullUrl : NSURL = NSURL(string: MIL_URL_SEPARATOR + fragment, relativeToURL: url.absoluteURL)!
+            print("full path to start page was \(fullUrl.absoluteString)")
             currentURL = NSURLRequest(URL: url)
             webView.loadRequest(NSURLRequest(URL: url))
         }
@@ -57,14 +57,14 @@ class MILWebViewController : UIViewController, UIWebViewDelegate{
     func setupWebViewConstraints(){
         let bindings = ["webView": webView]
         
-        var verticalConstraints : String = "V:|-0-[webView]-0-|"
-        var horizontalConstraints : String = "H:|-0-[webView]-0-|"
+        let verticalConstraints : String = "V:|-0-[webView]-0-|"
+        let horizontalConstraints : String = "H:|-0-[webView]-0-|"
         
-        webView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        webView.removeConstraints(webView.constraints())
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.removeConstraints(webView.constraints)
         
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(horizontalConstraints, options: nil, metrics: nil, views: bindings))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(verticalConstraints, options:nil, metrics: nil, views: bindings))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(horizontalConstraints, options: [], metrics: nil, views: bindings))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(verticalConstraints, options:[], metrics: nil, views: bindings))
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
@@ -74,7 +74,7 @@ class MILWebViewController : UIViewController, UIWebViewDelegate{
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        println("loaded URL: \(request.URL!.fragment)")
+        print("loaded URL: \(request.URL!.fragment)")
         
         let path = request.URL!.fragment
         
@@ -82,17 +82,17 @@ class MILWebViewController : UIViewController, UIWebViewDelegate{
             return true
         }
         
-        var pathStr : String = path! as String
+        let pathStr : String = path! as String
         var pathItems : Array<String>? = pathStr.componentsSeparatedByString("/")
         if(pathItems == nil || pathItems?.count <= 2){
             return true
         }
         
-        var mainRoute : String? = pathItems?[1]
+        let mainRoute : String? = pathItems?[1]
         
         switch(mainRoute!){
         case "WebView":
-            println("MILWebView - HTML content called ShowContent")
+            print("MILWebView - HTML content called ShowContent")
             if let del = delegate {
                 del.webViewHasChanged?(pathItems!)
             }
@@ -100,7 +100,7 @@ class MILWebViewController : UIViewController, UIWebViewDelegate{
             
         case "NativeView":
             if(pathItems?.count < 3){
-                println("MILWebView ERROR: didn't specify a ViewController in the correct syntax.  For example: /ViewController/NextView")
+                print("MILWebView ERROR: didn't specify a ViewController in the correct syntax.  For example: /ViewController/NextView")
                 return false
             }
 

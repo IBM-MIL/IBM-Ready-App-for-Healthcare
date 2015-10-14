@@ -30,7 +30,7 @@ class Forms: NSObject {
         
         let stringResult = worklightResponseJson["result"] as! String
         let data = stringResult.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        let jsonResult = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: nil) as! NSDictionary
+        let jsonResult = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves) as! NSDictionary
         
         self.id = jsonResult["_id"] as! String
         self.textDescription = jsonResult["textDescription"] as! String

@@ -9,9 +9,9 @@ extension UIFont {
     
     class func printAllFontNames(){
         for family in UIFont.familyNames(){
-            println(family)
-            for font in UIFont.fontNamesForFamilyName((family as! String)){
-                println("\t\(font)")
+            print(family)
+            for font in UIFont.fontNamesForFamilyName((family )){
+                print("\t\(font)")
             }
         }
     }

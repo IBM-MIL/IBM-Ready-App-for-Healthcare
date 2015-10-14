@@ -34,9 +34,9 @@ class ExerciseListViewController: UIViewController, UITableViewDelegate, UITable
         
         // Setup the alert view
         
-        var alertImageName = "x_blue"
+        let alertImageName = "x_blue"
         alertViewSimple = CustomAlertView.initWithText(alertText, imageName: alertImageName)
-        alertViewSimple.setTranslatesAutoresizingMaskIntoConstraints(false)
+        alertViewSimple.translatesAutoresizingMaskIntoConstraints = false
         alertViewSimple.delegate = self
         alertViewSimple.hidden = true
         self.view.addSubview(alertViewSimple)
@@ -93,7 +93,7 @@ class ExerciseListViewController: UIViewController, UITableViewDelegate, UITable
     Method to open the side panel
     */
     func openSideMenu() {
-        var container = self.navigationController?.parentViewController as! ContainerViewController
+        let container = self.navigationController?.parentViewController as! ContainerViewController
         container.toggleLeftPanel()
         self.exerciseTableView.userInteractionEnabled = false
         tapGestureRecognizer.enabled = true
@@ -102,10 +102,10 @@ class ExerciseListViewController: UIViewController, UITableViewDelegate, UITable
     /**
     Method to handle taps when the side menu is open
     
-    :param: recognizer tap gesture used to call method
+    - parameter recognizer: tap gesture used to call method
     */
     func handleTap(recognizer: UITapGestureRecognizer) {
-        var container = self.navigationController?.parentViewController as! ContainerViewController
+        let container = self.navigationController?.parentViewController as! ContainerViewController
         
         // check if expanded so tapgesture isn't enabled when it shouldn't be
         if container.currentState == SlideOutState.LeftExpanded {
@@ -125,7 +125,7 @@ class ExerciseListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("exerciseCell") as! ListTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("exerciseCell") as! ListTableViewCell
         
         if indexPath.row == 0 {
             cell.primaryLabel.textColor = UIColor.readyAppBlue()
@@ -145,14 +145,14 @@ class ExerciseListViewController: UIViewController, UITableViewDelegate, UITable
         if indexPath.row == 0 {
             SVProgressHUD.showWithMaskType(SVProgressHUDMaskType.Gradient)
             
-            var routineDataManager = RoutineDataManager.routineDataManager
+            let routineDataManager = RoutineDataManager.routineDataManager
             routineDataManager.getRoutines(DataManager.dataManager.currentPatient.userID, callback: routineDataGathered)
             
             //check if routines has been populated since they could be invoked when the user has timedout
             //if rountines is nil, make sure it has been populated before moving on
             
             var routineID : [String] = DataManager.dataManager.currentPatient.routineId
-            var exerciseDataManager = ExerciseDataManager.exerciseDataManager
+            let exerciseDataManager = ExerciseDataManager.exerciseDataManager
             exerciseDataManager.getExercisesForRoutine(routineID[0], callback: exerciseDataGathered)
             
             
@@ -164,7 +164,7 @@ class ExerciseListViewController: UIViewController, UITableViewDelegate, UITable
     /**
     Callback method that gets called when data is returned from the server
     
-    :param: result the result stating if the database call was successful
+    - parameter result: the result stating if the database call was successful
     */
     func routineDataGathered(result: RoutineResultType) {
         dataReturned.routine = result
@@ -187,7 +187,7 @@ class ExerciseListViewController: UIViewController, UITableViewDelegate, UITable
     Callback method that gets called when data is returned from the server (in the case that user is logged in and
     there was no timeout. In the case of a user timeout, the ReadyAppsChallengeHandler:customResponse is called.
     
-    :param: result the result stating if the database call was successful
+    - parameter result: the result stating if the database call was successful
     */
     func exerciseDataGathered(result: ExerciseResultType) {
         dataReturned.exercise = result
