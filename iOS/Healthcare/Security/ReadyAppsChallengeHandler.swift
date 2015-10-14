@@ -95,10 +95,8 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
     override func isCustomResponse(response: WLResponse!) -> Bool {
         print("--------- isCustomResponse in readyapps------")
         //check for bad token here
-        print("-------")
-        print(response.responseText)
-        print(response.getResponseJson())
         if (response != nil && response.getResponseJson() != nil) {
+            print(response.getResponseJson())
             let jsonResponse = response.getResponseJson() as NSDictionary
             let authRequired = jsonResponse.objectForKey("authRequired") as! Bool?
             if authRequired != nil {
