@@ -1683,7 +1683,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Healthcare;
-				PROVISIONING_PROFILE = "75a89f1b-08da-41c1-90f5-57cc356b899c";
+				PROVISIONING_PROFILE = "e66c1032-8f7d-47d9-b666-fd0ee0d83073";
 				SWIFT_OBJC_BRIDGING_HEADER = "Healthcare/Healthcare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1723,7 +1723,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Healthcare;
-				PROVISIONING_PROFILE = "75a89f1b-08da-41c1-90f5-57cc356b899c";
+				PROVISIONING_PROFILE = "e66c1032-8f7d-47d9-b666-fd0ee0d83073";
 				SWIFT_OBJC_BRIDGING_HEADER = "Healthcare/Healthcare-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1812,7 +1812,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Healthcare;
-				PROVISIONING_PROFILE = "75a89f1b-08da-41c1-90f5-57cc356b899c";
+				PROVISIONING_PROFILE = "e66c1032-8f7d-47d9-b666-fd0ee0d83073";
 				SWIFT_OBJC_BRIDGING_HEADER = "Healthcare/Healthcare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
