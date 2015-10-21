@@ -218,7 +218,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
         let heartType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
         let intervalData = Utils.intervalDataForUnit(timeUnit)
         HealthKitManager.healthKitManager.getAverageDataInRange(startDate!, end: endDate!, interval: intervalData, type: heartType, callback: {(json) in
-            self.delay(0.0, closure: {
+            self.delay(0.5, closure: {
                 heartJson = json
                 if weightJson != "" && stepJson != "" && calorieJson != "" && painJson != "" {
                     SVProgressHUD.dismiss()
@@ -234,7 +234,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
         
        let weightType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
         HealthKitManager.healthKitManager.getAverageDataInRange(startDate!, end: endDate!, interval: intervalData, type: weightType, callback: {(json) in
-            self.delay(0.0, closure: {
+            self.delay(0.5, closure: {
                 weightJson = json
                 if heartJson != "" && stepJson != "" && calorieJson != "" && painJson != "" {
                     SVProgressHUD.dismiss()
@@ -249,7 +249,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
         
         let calorieType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
         HealthKitManager.healthKitManager.getSumDataInRange(startDate!, end: endDate!, interval: intervalData, type: calorieType, callback: {(json) in
-            self.delay(0.0, closure: {
+            self.delay(0.5, closure: {
                 calorieJson = json
                 if weightJson != "" && stepJson != "" && heartJson != "" && painJson != "" {
                     SVProgressHUD.dismiss()
@@ -264,7 +264,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
         
         let stepType: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
         HealthKitManager.healthKitManager.getSumDataInRange(startDate!, end: endDate!, interval: intervalData, type: stepType, callback: { (json) in
-            self.delay(0.0, closure: {
+            self.delay(0.5, closure: {
                 stepJson = json
                 if weightJson != "" && heartJson != "" && calorieJson != "" && painJson != "" {
                     SVProgressHUD.dismiss()
@@ -378,7 +378,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
             
             // Get graph data to inject
             HealthKitManager.healthKitManager.getSumDataInRange(startDate!, end: endDate!, interval: intervalData, type: hkType, callback: { (json) in
-                self.delay(0.0, closure: {
+                self.delay(0.5, closure: {
                     
                     self.dataLock.graphString = Utils.prepareGraphInjectionString("applyData(['\(json)']);")
                     if self.dataLock.graphString != "" && self.dataLock.metaString != "" && self.dataLock.performanceString != "" {
@@ -395,7 +395,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
                 // Placing heart rate method call here because of specific accessors like .Average
                 HealthKitManager.healthKitManager.getHeartRateData(startDate!, callback: { (data, err) in
                     if err == nil {
-                        self.delay(0.0, closure: {
+                        self.delay(0.5, closure: {
                             if data != nil{
                                 if let val = data[HeartRateData.Average.rawValue] {
                                     self.dataLock.performanceString = Utils.prepareCodeInjectionString("setPerformance(\(val.format(self.format)))")
@@ -412,7 +412,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
                     }
                 })
                 
-                self.delay(0.0, closure: {
+                self.delay(0.5, closure: {
                     let dateUnit = Utils.prepareCodeInjectionString("setUnit('\(Utils.unitLabelFor(self.timeUnit))')")
                     let date = Utils.prepareCodeInjectionString("setTimeFrame('\(self.formattedDate)')")
                     
@@ -427,7 +427,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
                 // Placing weight method call here because of specific accessors like .Current
                 HealthKitManager.healthKitManager.getWeightInPoundsData(startDate!, callback: { (data, err) in
                     if err == nil {
-                        self.delay(0.0, closure: {
+                        self.delay(0.5, closure: {
                             if data != nil {
                                 if let val = data[WeightInPoundsData.Current.rawValue] {
 
@@ -449,7 +449,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
                     }
                 })
                 
-                self.delay(0.0, closure: {
+                self.delay(0.5, closure: {
                     let dateUnit = Utils.prepareCodeInjectionString("setUnit('\(Utils.unitLabelFor(self.timeUnit))')")
                     let date = Utils.prepareCodeInjectionString("setTimeFrame('\(self.formattedDate)')")
                     
@@ -462,7 +462,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
             
             // Get graph data to inject
             HealthKitManager.healthKitManager.getAverageDataInRange(startDate!, end: endDate!, interval: intervalData, type: hkType, callback: {(json) in
-                self.delay(0.0, closure: {
+                self.delay(0.5, closure: {
                     
                     self.dataLock.graphString = Utils.prepareGraphInjectionString("applyData(['\(json)']);")
                     if self.dataLock.graphString != "" && self.dataLock.metaString != "" && self.dataLock.performanceString != "" {
@@ -482,7 +482,7 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
     */
     func injectSumMetricData(result: Double, error: NSError?) {
         if error == nil{
-            self.delay(0.4, closure: {
+            self.delay(0.5, closure: {
                 var finalResult = result.format(self.format)
                 if self.isCalorieData {
                     finalResult = Utils.getLocalizedEnergy(result)
