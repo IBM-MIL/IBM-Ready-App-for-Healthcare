@@ -1,9 +1,9 @@
 /*
  *  Licensed Materials - Property of IBM
  *  © Copyright IBM Corporation 2014. All Rights Reserved.
- *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
- *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
- *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part
  *  of such an application, in customer's own products.
  */
 
@@ -27,24 +27,24 @@ angular.module('ReadyAppHC').controller('metricsWeightCtrl', function($scope, $c
 
     // Inheritance
     angular.extend(this, $controller('milSyncedGraphCtrl', {$scope: $scope, selectedTab: tab}));
-    
+
     $scope.unit = $filter("translate")("_loading_");
     $scope.currTimeFrame = "";
     $scope.currPerformance = "...";
-    
+
     $scope.measurementUnit = $filter("translate")("_weight_units_scrubber_");
-    
+
     $scope.init = function() {
         $scope.baseRoute = "/WebView/metrics_weight";
     };
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsCaloriesCtrl.viewAllClicked
      *  @description Redirects this back to the {@linkcode metricsCtrl} view, keeping the currently selected
      *  tab consistant.
      */
     $scope.viewAllClicked = function() {
-        
+
         switch($scope.selectedTab) {
             case $scope.dayVal:
                 $scope.switchRoute('/WebView/metrics_day');
@@ -60,7 +60,7 @@ angular.module('ReadyAppHC').controller('metricsWeightCtrl', function($scope, $c
                 break;
         }
     };
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl.setUnit
      *  @description Sets the unit that corresponds to the {@linkcode currTimeFrame} property.
@@ -69,7 +69,7 @@ angular.module('ReadyAppHC').controller('metricsWeightCtrl', function($scope, $c
     $scope.setUnit = function(unit) {
         $scope.unit = unit;
     }
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl.setTimeFrame
      *  @description Sets the point in time that corresponds to the {@linkcode unit} property.
@@ -78,7 +78,7 @@ angular.module('ReadyAppHC').controller('metricsWeightCtrl', function($scope, $c
     $scope.setTimeFrame = function(timeFrame) {
         $scope.currTimeFrame = timeFrame;
     }
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.metricsWeightCtrl.setPerformance
      *  @description Sets the weight in {@linkcode currTimeFrame}.
@@ -87,8 +87,8 @@ angular.module('ReadyAppHC').controller('metricsWeightCtrl', function($scope, $c
     $scope.setPerformance = function(performance) {
         $scope.currPerformance = performance;
     }
-    
+
     // Go
     $scope.init();
-    
-})
+
+});

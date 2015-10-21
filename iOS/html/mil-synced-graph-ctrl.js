@@ -1,9 +1,9 @@
 /*
  *  Licensed Materials - Property of IBM
  *  © Copyright IBM Corporation 2014. All Rights Reserved.
- *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
- *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
- *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part
  *  of such an application, in customer's own products.
  */
 
@@ -28,17 +28,17 @@
  *  @copyright © 2014 IBM Corporation. All Rights Reserved.
  */
 angular.module('ReadyAppHC').controller('milSyncedGraphCtrl', function($scope, $controller, selectedTab) {
-    
+
     // Inheritance
     angular.extend(this, $controller('milTabbedGraphCtrl', {$scope: $scope, selectedTab: selectedTab}));
-    
+
     $scope.transformData = {
         xGraph : 0
     };
     $scope.iter = 0;
     $scope.data = undefined;
     $scope.dataLength = undefined;
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.applyData
      *  @description Sets the {@linkcode data} property in this controller and broadcasts an event that causes
@@ -49,24 +49,24 @@ angular.module('ReadyAppHC').controller('milSyncedGraphCtrl', function($scope, $
             $scope.data = data;
             data.length > 0 ? $scope.dataLength = JSON.parse(data[0]).length : $scope.dataLength = 0;
         });
-        
+
         $scope.$broadcast('invalidate_graph', $scope.transformData.xGraph);
     };
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.milTabbedGraphCtrl.milSyncedGraphCtrl.nom
      *  @description Called by a graph when it wants to consume data. Implementations of {@linkcode bar-graph} and {@linkcode line-graph} call this function at the point where they want to consume JSON data (ie, when the graph is told to invalidate via a broadcast). This function uses the {@linkcode iter} property to determine what element in the {@linkcode data} array needs to be given to the graph.
      */
-    $scope.nom = function() {        
+    $scope.nom = function() {
         var val = $scope.iter;
-        
+
         if ($scope.iter < $scope.data.length - 1) {
             $scope.iter++;
         } else {
             $scope.iter = 0;
         }
-        
+
         return $scope.data[val];
     };
-    
+
 });

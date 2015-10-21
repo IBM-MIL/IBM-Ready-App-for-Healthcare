@@ -30,7 +30,10 @@ class Utils {
     - returns: a clean script to inject into the javascript
     */
     class func prepareGraphInjectionString(json: String) -> String {
-        return "setTimeout(function() {   var scope = angular.element(document.getElementById('scope')).scope();\nscope." + json + " }, 50);"
+        
+        let newJson = json.stringByReplacingOccurrencesOfString("\n", withString: "")
+        
+        return "setTimeout(function() { console.log('Hello world'); var scope = angular.element(document.getElementById('scope')).scope(); scope." + newJson + "}, 50);"
     }
     
     /**
