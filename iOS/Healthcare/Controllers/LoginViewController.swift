@@ -251,9 +251,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CustomAlertVie
         let kbFrame = (info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue).CGRectValue()
         let duration = info.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSTimeInterval
 
+        // Method gets called everytime text field is selected, so we have a fixed point for the view's frame
         UIView.animateWithDuration(duration, animations: ({
-            self.view.frame = CGRectOffset(self.view.frame, 0, -kbFrame.size.height)
-            self.view.layoutIfNeeded()
+            self.view.frame = CGRectMake(self.view.frame.origin.x, -kbFrame.size.height, self.view.frame.size.width, self.view.frame.size.height)
         }))
     }
     
@@ -264,12 +264,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, CustomAlertVie
     */
     func keyboardWillHide(notification: NSNotification) {
         let info : NSDictionary = notification.userInfo!
-        let kbFrame = (info.objectForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue).CGRectValue()
         let duration = info.objectForKey(UIKeyboardAnimationDurationUserInfoKey) as! NSTimeInterval
         
         UIView.animateWithDuration(duration, animations: ({
-            self.view.frame = CGRectOffset(self.view.frame, 0, kbFrame.size.height)
-            self.view.layoutIfNeeded()
+            self.view.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height)
         }))
     }
 }
