@@ -1,9 +1,9 @@
 /*
  *  Licensed Materials - Property of IBM
  *  © Copyright IBM Corporation 2014. All Rights Reserved.
- *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
- *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
- *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part
  *  of such an application, in customer's own products.
  */
 
@@ -22,10 +22,10 @@
  *  @copyright © 2014 IBM Corporation. All Rights Reserved.
  */
 angular.module('ReadyAppHC').controller('milCtrl', function($scope, $location, $route, $rootScope, $translate) {
-    
+
     // Used to determine if the route should change
     $scope.clientIsReady = true;
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.switchRoute
      *  @description An extension of the {@linkcode $location}.{@linkcode path} service that allows you to specify
@@ -38,7 +38,7 @@ angular.module('ReadyAppHC').controller('milCtrl', function($scope, $location, $
             console.warn("milCtrl: A route change was requested, but the hybrid has surrendered routing control at this time. (Did you call resumeRouteControl() first?)");
             return;
         }
-        
+
         if (reload === false) {
             var lastRoute = $route.current;
             var un = $rootScope.$on('$locationChangeSuccess', function () {
@@ -48,7 +48,7 @@ angular.module('ReadyAppHC').controller('milCtrl', function($scope, $location, $
         }
         return $location.path.apply($location, [path]);
     };
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.setLanguage
      *  @description Sets the language to be used, using {@linkcode i18n.js} as the language reference.
@@ -60,7 +60,7 @@ angular.module('ReadyAppHC').controller('milCtrl', function($scope, $location, $
         // Reload
         $route.reload();
     };
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.resumeRouteControl
      *  @description Acts as a callback that the native portion of the app uses to let
@@ -69,7 +69,7 @@ angular.module('ReadyAppHC').controller('milCtrl', function($scope, $location, $
     $scope.resumeRouteControl = function() {
         $scope.clientIsReady = true;
     };
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.surrenderControl
      *  @description Lets the hybrid know that is cannot process route changes at this time.
@@ -77,5 +77,5 @@ angular.module('ReadyAppHC').controller('milCtrl', function($scope, $location, $
     $scope.surrenderRouteControl = function() {
         $scope.clientIsReady = false;
     };
-    
+
 });

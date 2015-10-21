@@ -23,13 +23,13 @@ class Patient: NSObject {
     /**
     An alternative init method that allows for populating all the properties of the object
     
-    :param: userID          The ID of the patient
-    :param: password        The password for the patient
-    :param: dateOfNextVisit NSDate object representing the date of the next visit to doctor
-    :param: visitsUsed      The number of visits the patient has used on visit plan
-    :param: visitsTotal     The number of visits the patient has planned with doctor in total
-    :param: stepGoal     The step goal for the patient as a number
-    :param: calorieGoal     The calorie goal for the patient as a number
+    - parameter userID:          The ID of the patient
+    - parameter password:        The password for the patient
+    - parameter dateOfNextVisit: NSDate object representing the date of the next visit to doctor
+    - parameter visitsUsed:      The number of visits the patient has used on visit plan
+    - parameter visitsTotal:     The number of visits the patient has planned with doctor in total
+    - parameter stepGoal:     The step goal for the patient as a number
+    - parameter calorieGoal:     The calorie goal for the patient as a number
     
     */
     init(userID : String, password : String, dateOfNextVisit: NSDate, visitsUsed: NSNumber, visitsTotal: NSNumber, stepGoal : NSNumber, calorieGoal : NSNumber, routineId : [String]!, questionnaire : String!) {

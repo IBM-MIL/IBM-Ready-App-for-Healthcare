@@ -37,38 +37,38 @@ class VideoTableViewCell: UITableViewCell {
     /**
     Method to format text, part bold and part light. Specifically for labels on the VideoTableViewCell
     
-    :param: min  the number of minutes for an exercise
-    :param: rep  the number of reps for an exercise
-    :param: sets the number of sets for an exercise
+    - parameter min:  the number of minutes for an exercise
+    - parameter rep:  the number of reps for an exercise
+    - parameter sets: the number of sets for an exercise
     */
     func setExerciseStats(min: Int, rep: Int, sets: Int) {
         
-        var lightFont = UIFont(name: "RobotoSlab-Light", size: 13)!
-        var boldFont = UIFont(name: "RobotoSlab-Bold", size: 13)!
+        let lightFont = UIFont(name: "RobotoSlab-Light", size: 13)!
+        let boldFont = UIFont(name: "RobotoSlab-Bold", size: 13)!
 
-        var attr = [NSFontAttributeName:lightFont]
-        var subAttr = [NSFontAttributeName:boldFont]
+        let attr = [NSFontAttributeName:lightFont]
+        let subAttr = [NSFontAttributeName:boldFont]
         
-        var minText = NSLocalizedString(" MIN", comment: "n/a")
-        var repText = NSLocalizedString(" REP", comment: "n/a")
-        var setsText = NSLocalizedString(" SET", comment: "n/a")
+        let minText = NSLocalizedString(" MIN", comment: "n/a")
+        let repText = NSLocalizedString(" REP", comment: "n/a")
+        let setsText = NSLocalizedString(" SET", comment: "n/a")
         
-        var stringMin = Utils.formatSingleDigits(min)
-        var stringRep = Utils.formatSingleDigits(rep)
-        var stringSets = Utils.formatSingleDigits(sets)
+        let stringMin = Utils.formatSingleDigits(min)
+        let stringRep = Utils.formatSingleDigits(rep)
+        let stringSets = Utils.formatSingleDigits(sets)
         
-        var theRange = NSMakeRange(0, count(stringMin))
-        var attributedString = NSMutableAttributedString(string: stringMin + minText, attributes: attr)
+        var theRange = NSMakeRange(0, stringMin.characters.count)
+        let attributedString = NSMutableAttributedString(string: stringMin + minText, attributes: attr)
         attributedString.setAttributes(subAttr, range: theRange)
         minuteLabel.attributedText = attributedString
         
-        theRange = NSMakeRange(0, count(stringRep))
-        var repAttributedString = NSMutableAttributedString(string: stringRep + repText, attributes: attr)
+        theRange = NSMakeRange(0, stringRep.characters.count)
+        let repAttributedString = NSMutableAttributedString(string: stringRep + repText, attributes: attr)
         repAttributedString.setAttributes(subAttr, range: theRange)
         repsLabel.attributedText = repAttributedString
         
-        theRange = NSMakeRange(0, count(stringSets))
-        var setsAttributedString = NSMutableAttributedString(string: stringSets + setsText, attributes: attr)
+        theRange = NSMakeRange(0, stringSets.characters.count)
+        let setsAttributedString = NSMutableAttributedString(string: stringSets + setsText, attributes: attr)
         setsAttributedString.setAttributes(subAttr, range: theRange)
         setsLabel.attributedText = setsAttributedString
         

@@ -60,8 +60,8 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
         
         self.navigationController?.navigationBar.translucent = false
         // if coming from dashboard, disable side panel
-        if var presenting = self.navigationController?.viewControllers.first as? DashboardViewController {
-            if var del = presenting.centerViewDelegate {
+        if let presenting = self.navigationController?.viewControllers.first as? DashboardViewController {
+            if let del = presenting.centerViewDelegate {
                 del.togglePanGesture?(false)
             }
         }
@@ -88,7 +88,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
             showSublabel = false
         }
         self.alertView = CustomAlertViewExercise.initWithText(alertText, showSublabel: showSublabel, buttonText: buttonText)
-        self.alertView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.alertView.translatesAutoresizingMaskIntoConstraints = false
         self.alertView.delegate = self
         self.alertView.hidden = true
         self.view.addSubview(alertView)
@@ -138,7 +138,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
     */
     func createVideoToolbarItems() {
         
-        var grayColor = UIColor(red: 204.0/255.0, green: 203.0/255.0, blue: 203.0/255.0, alpha: 1.0)
+        let grayColor = UIColor(red: 204.0/255.0, green: 203.0/255.0, blue: 203.0/255.0, alpha: 1.0)
         
         playButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Play, target: self, action: "playVideo")
         playButton.tintColor = grayColor
@@ -165,14 +165,14 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
         totalTimeButton = UIBarButtonItem(customView: totalTimeLabel)
         
         // for manual airplay controls
-        var mediaPlayer = MPVolumeView(frame: CGRectMake(0, 0, 40, 44))
+        let mediaPlayer = MPVolumeView(frame: CGRectMake(0, 0, 40, 44))
         mediaPlayer.showsVolumeSlider = false
         mediaPlayer.tintColor = grayColor
         airplayButton = UIBarButtonItem(customView: mediaPlayer)
         
         progressSlider.frame = CGRectMake(0,0,self.view.frame.size.width/3, 30)
         progressSlider.addTarget(self, action: "scrubVideo", forControlEvents: UIControlEvents.TouchUpInside)
-        var thumbImage = UIImage(named: "thumb_slider")
+        let thumbImage = UIImage(named: "thumb_slider")
         progressSlider.setThumbImage(thumbImage, forState: UIControlState.Normal)
         
     }
@@ -230,7 +230,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
         Delegate method to detect a change in state of the video player.
     */
     func playerView(playerView: YTPlayerView!, didChangeToState state: YTPlayerState) {
-        if state.value == kYTPlayerStatePlaying.value {
+        if state.rawValue == kYTPlayerStatePlaying.rawValue {
             videoPlaying = true
             if !isFullScreen {
                 toggleVideoControls()
@@ -240,18 +240,18 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
                 currentTime = 0
             }
             if !firstTimerStart {
-                var initialTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "videoTimeInterval", userInfo: nil, repeats: true)
+                _ = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "videoTimeInterval", userInfo: nil, repeats: true)
                 firstTimerStart = true
             }
             
             
-        } else if state.value == kYTPlayerStatePaused.value {
+        } else if state.rawValue == kYTPlayerStatePaused.rawValue {
             videoPlaying = false
             if !isFullScreen {
                 toggleVideoControls()
             }
             
-        } else if state.value == kYTPlayerStateEnded.value {
+        } else if state.rawValue == kYTPlayerStateEnded.rawValue {
             self.progressSlider.value = self.progressSlider.maximumValue
             videoPlaying = false
             exerciseComplete = true
@@ -277,12 +277,12 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
     Called every half second to update the slider and number labels on the video control toolbar.
     */
     func videoTimeInterval() {
-        var seconds = self.playerView.currentTime()
-        var currentTime = computeTime(seconds)
+        let seconds = self.playerView.currentTime()
+        let currentTime = computeTime(seconds)
         self.currentTimeLabel.text = "\(Int(currentTime.min)):\(Utils.formatSingleDigits(Int(currentTime.sec)))"
         
-        var total = self.playerView.duration()
-        var totalTime = computeTime(Float(total))
+        let total = self.playerView.duration()
+        let totalTime = computeTime(Float(total))
         self.totalTimeLabel.text = "-\(Int(totalTime.min - currentTime.min)):\(Utils.formatSingleDigits(Int(totalTime.sec - currentTime.sec)))"
        
         self.progressSlider.value = seconds
@@ -291,13 +291,13 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
     /**
     Method to compute the minutes and time from just seconds.
     
-    :param: seconds total number of seconds to sort out.
+    - parameter seconds: total number of seconds to sort out.
     
-    :returns: a tuple of minutes and seconds to update labels with.
+    - returns: a tuple of minutes and seconds to update labels with.
     */
     func computeTime(seconds: Float) -> (min: Float, sec: Float) {
-        var currentMinutes = seconds / 60;
-        var currentSeconds = seconds % 60;
+        let currentMinutes = seconds / 60;
+        let currentSeconds = seconds % 60;
         return (currentMinutes, currentSeconds)
     }
     
@@ -311,7 +311,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
     /**
     Method called when user clicks next routine
     
-    :param: sender sending object
+    - parameter sender: sending object
     */
     @IBAction func nextRoutine(sender: AnyObject) {
 
@@ -350,7 +350,7 @@ class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomA
     Method to reset the view controller for a new video with new data.
     */
     func resetVideoData() {
-        var nextExercise = self.exerciseList[self.currentExercise]
+        let nextExercise = self.exerciseList[self.currentExercise]
         
         // set video data from the server for the next video
         self.exerciseTitle.text = nextExercise.exerciseDescription

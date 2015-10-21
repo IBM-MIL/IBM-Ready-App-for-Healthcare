@@ -20,7 +20,11 @@ class PainDataTests: XCTestCase {
         // work around from using the main core data stack in the app target
         model = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())
         coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-        store = coordinator.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil, error: nil)
+        do {
+            store = try coordinator.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
+        } catch _ {
+            store = nil
+        }
         context = NSManagedObjectContext()
         context.persistentStoreCoordinator = coordinator
 
@@ -34,8 +38,6 @@ class PainDataTests: XCTestCase {
     // Method tests the data model, PainData utility methods wouldn't work (casting issue)
     func testCreateAndRead() {
         
-        let entity = NSEntityDescription.entityForName("PainData", inManagedObjectContext: context)
-
         for index in 1...10 {
             let newItem: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(painDataName, inManagedObjectContext: context)
             newItem.setValue(index, forKey: "painRating")
@@ -45,14 +47,16 @@ class PainDataTests: XCTestCase {
         }
         
         let fetchRequest = NSFetchRequest(entityName: painDataName)
-        if let fetchResults = context.executeFetchRequest(fetchRequest, error: nil) {
+        do {
+            let fetchResults = try context.executeFetchRequest(fetchRequest)
             for result in fetchResults {
-                var rating: Int? = result.valueForKey("painRating") as? Int
-                var description: AnyObject? = result.valueForKey("painDescription")
+                let rating: Int? = result.valueForKey("painRating") as? Int
+                let description: AnyObject? = result.valueForKey("painDescription")
                 XCTAssertTrue(rating > 0 && rating < 11, "Object rating is out of range")
                 XCTAssertNotNil(description, "Object descripion is empty")
-                println("desc: \(rating!) and \(description!)")
+                print("desc: \(rating!) and \(description!)")
             }
+        } catch _ {
         }
     }
     

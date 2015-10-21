@@ -15,9 +15,9 @@ class RatingCollectionViewCell: UICollectionViewCell {
     /**
     Init method to initialize the UICollectionViewCell with a number label
     
-    :param: frame size of the cell
+    - parameter frame: size of the cell
     
-    :returns: UICollectionViewCell object
+    - returns: UICollectionViewCell object
     */
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +30,7 @@ class RatingCollectionViewCell: UICollectionViewCell {
         setUpAutoLayoutConstraints()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -61,7 +61,7 @@ class RatingCollectionViewCell: UICollectionViewCell {
     }
     
     func setUpAutoLayoutConstraints() {
-        self.numberLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.numberLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.addConstraint(NSLayoutConstraint(
             item:self.numberLabel, attribute:.CenterX,

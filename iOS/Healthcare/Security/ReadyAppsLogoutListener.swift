@@ -21,8 +21,8 @@ class ReadyAppsLogoutListener : NSObject, WLDelegate {
     Handles the logout user success scenario
     */
     func onSuccess(response: WLResponse!) {
-        println("onSuccess in LogoutListener")
-        println("Successfully loggeed out of MobileFirst Server. Response: \(response)");
+        print("onSuccess in LogoutListener")
+        print("Successfully loggeed out of MobileFirst Server. Response: \(response)");
         appDelegate.isLogoutSuccess = true
     }
     
@@ -30,8 +30,8 @@ class ReadyAppsLogoutListener : NSObject, WLDelegate {
     Handles the logout user failure scenario
     */
     func onFailure(response: WLFailResponse!) {
-        println("onFailure in LogoutListener")
-        println("Failed logging out of MobileFirst Server. Response: \(response)");
+        print("onFailure in LogoutListener")
+        print("Failed logging out of MobileFirst Server. Response: \(response)");
         appDelegate.isLogoutSuccess = false
     }
 }

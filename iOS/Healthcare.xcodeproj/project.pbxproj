@@ -1333,6 +1333,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
@@ -1659,6 +1660,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
@@ -1681,8 +1683,9 @@
 					"$(PROJECT_DIR)/Healthcare/External",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.mil.ReadyAppPT;
 				PRODUCT_NAME = Healthcare;
-				PROVISIONING_PROFILE = "75a89f1b-08da-41c1-90f5-57cc356b899c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Healthcare/Healthcare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1703,6 +1706,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
@@ -1721,8 +1725,9 @@
 					"$(PROJECT_DIR)/Healthcare/External",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.mil.ReadyAppPT;
 				PRODUCT_NAME = Healthcare;
-				PROVISIONING_PROFILE = "75a89f1b-08da-41c1-90f5-57cc356b899c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Healthcare/Healthcare-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1739,6 +1744,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Healthcare/External/SVProgressHUD";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1770,7 +1776,7 @@
 					"-weak-lSystem",
 					"-force_load",
 				);
-				PROVISIONING_PROFILE = "3c036849-217d-4591-9448-10a42f418ede";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1790,6 +1796,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
@@ -1810,8 +1817,9 @@
 					"$(PROJECT_DIR)/Healthcare/External",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.mil.ReadyAppPT;
 				PRODUCT_NAME = Healthcare;
-				PROVISIONING_PROFILE = "75a89f1b-08da-41c1-90f5-57cc356b899c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Healthcare/Healthcare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1970,6 +1978,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Healthcare/External/SVProgressHUD";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -2001,7 +2010,7 @@
 					"-weak-lSystem",
 					"-force_load",
 				);
-				PROVISIONING_PROFILE = "3c036849-217d-4591-9448-10a42f418ede";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2018,6 +2027,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Healthcare/External/SVProgressHUD";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -2048,7 +2058,7 @@
 					"-weak-lSystem",
 					"-force_load",
 				);
-				PROVISIONING_PROFILE = "3c036849-217d-4591-9448-10a42f418ede";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";

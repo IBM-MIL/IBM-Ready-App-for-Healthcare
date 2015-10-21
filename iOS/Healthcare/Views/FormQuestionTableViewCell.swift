@@ -19,7 +19,7 @@ class FormQuestionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
        
-        questionLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
         questionLabel.numberOfLines = 0
         questionLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
     }

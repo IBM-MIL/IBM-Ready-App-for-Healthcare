@@ -34,12 +34,12 @@ class FormsDataManager: NSObject, WLDataDelegate {
     /**
     Delgate method for WorkLight. Called when connection and return is successful
     
-    :param: response Response from WorkLight
+    - parameter response: Response from WorkLight
     */
     func onSuccess(response: WLResponse!) {
         let responseJson = response.getResponseJson() as NSDictionary
-        println("---formsDataManager onSuccess")
-        println(response.responseText)
+        print("---formsDataManager onSuccess")
+        print(response.responseText)
         // on success, call utils method to format data
         forms = Utils.getQuestionnaireForUser(responseJson)
         formsCallBack(FormsResultType.Success)
@@ -48,11 +48,11 @@ class FormsDataManager: NSObject, WLDataDelegate {
     /**
     Delgate method for WorkLight. Called when connection or return is unsuccessful
     
-    :param: response Response from WorkLight
+    - parameter response: Response from WorkLight
     */
     func onFailure(response: WLFailResponse!) {
-        println("---formsDataManager onFailure")
-        println(response.responseText)
+        print("---formsDataManager onFailure")
+        print(response.responseText)
         formsCallBack(FormsResultType.Failure)
     }
     
@@ -73,8 +73,8 @@ class FormsDataManager: NSObject, WLDataDelegate {
     /**
     Method called to get exercises from the server
     
-    :param: username the username to get questions for
-    :param: callback  callback for when we have a result
+    - parameter username: the username to get questions for
+    - parameter callback:  callback for when we have a result
     */
     func getQuestionnaireForUser(username: String!, callback: (FormsResultType)->()) {
         formsCallBack = callback
@@ -84,7 +84,6 @@ class FormsDataManager: NSObject, WLDataDelegate {
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [username]
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
 
     }
     
