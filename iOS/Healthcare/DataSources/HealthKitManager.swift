@@ -81,88 +81,101 @@ class HealthKitManager: NSObject {
         let data = NSData(contentsOfFile: filePath!)
         let jsonResult = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves) as! NSDictionary
         let metrics = jsonResult["Metrics"] as! NSDictionary
+        var quantityType: HKQuantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)! // Starting quantity type
         
         // Populate heart rate data
-        let heartRateDict = metrics["HeartRate"] as! NSArray
-        var rateType: HKQuantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
-        let heartRateBPM = HKUnit.countUnit().unitDividedByUnit(HKUnit.minuteUnit())
-        for heartRatePoint in heartRateDict {
-            let timeDiff = heartRatePoint["timeDiff"] as! String
-            let heartRateValue = heartRatePoint["value"] as! String
-            let timeDiffDouble = (timeDiff as NSString).doubleValue
-            let heartRateDouble = (heartRateValue as NSString).doubleValue
+        if let heartRateDict = metrics["HeartRate"] as? [[String:AnyObject]] {
+            let heartRateBPM = HKUnit.countUnit().unitDividedByUnit(HKUnit.minuteUnit())
             
-            let rateQuantity = HKQuantity(unit: heartRateBPM, doubleValue: heartRateDouble)
-            var date: NSDate = NSDate()
-            date = date.dateByAddingTimeInterval(timeDiffDouble / -1000)
-            
-            let rateSample = HKQuantitySample(type: rateType, quantity: rateQuantity, startDate: date, endDate: date)
-            healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
-                //println("healthkit save heart rate object = \(success) error = \(error)")
-            })
+            for heartRatePoint in heartRateDict {
+                
+                let timeDiff = heartRatePoint["timeDiff"] as! String
+                let heartRateValue = heartRatePoint["value"] as! String
+                let timeDiffDouble = (timeDiff as NSString).doubleValue
+                let heartRateDouble = (heartRateValue as NSString).doubleValue
+                
+                let rateQuantity = HKQuantity(unit: heartRateBPM, doubleValue: heartRateDouble)
+                var date: NSDate = NSDate()
+                date = date.dateByAddingTimeInterval(timeDiffDouble / -1000)
+                
+                let rateSample = HKQuantitySample(type: quantityType, quantity: rateQuantity, startDate: date, endDate: date)
+                healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
+                    // Generates a lot of output, so print lines are commented out
+                    //print("healthkit save heart rate object = \(success) possible error = \(error)")
+                })
+            }
         }
         
         // Populate body weight data
-        let bodyWeightDict = metrics["BodyWeight"] as! NSArray
-        rateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
-        for bodyWeightPoint in bodyWeightDict {
-            let timeDiffString = bodyWeightPoint["timeDiff"] as! String
-            let bodyWeightString = bodyWeightPoint["value"] as! String
-            let timeDiff = (timeDiffString as NSString).doubleValue
-            let bodyWeight = (bodyWeightString as NSString).doubleValue
+        if let bodyWeightDict = metrics["BodyWeight"] as? [[String:AnyObject]] {
+            quantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
             
-            let rateQuantity = HKQuantity(unit: HKUnit.poundUnit(), doubleValue: bodyWeight)
-            var date: NSDate = NSDate()
-            date = date.dateByAddingTimeInterval(timeDiff / -1000)
-            
-            let rateSample = HKQuantitySample(type: rateType, quantity: rateQuantity, startDate: date, endDate: date)
-            healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
-                //println("healthkit save body weight object = \(success) error = \(error)")
-            })
+            for bodyWeightPoint in bodyWeightDict {
+                
+                let timeDiffString = bodyWeightPoint["timeDiff"] as! String
+                let bodyWeightString = bodyWeightPoint["value"] as! String
+                let timeDiff = (timeDiffString as NSString).doubleValue
+                let bodyWeight = (bodyWeightString as NSString).doubleValue
+                
+                let rateQuantity = HKQuantity(unit: HKUnit.poundUnit(), doubleValue: bodyWeight)
+                var date: NSDate = NSDate()
+                date = date.dateByAddingTimeInterval(timeDiff / -1000)
+                
+                let rateSample = HKQuantitySample(type: quantityType, quantity: rateQuantity, startDate: date, endDate: date)
+                healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
+                    //print("healthkit save body weight object = \(success) possible error = \(error)")
+                })
+            }
         }
         
         // Populate calories data
-        let caloriesDict = metrics["Calories"] as! NSArray
-        rateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
-        for caloriesPoint in caloriesDict {
-            let timeDiffString = caloriesPoint["timeDiff"] as! String
-            let caloriesString = caloriesPoint["value"] as! String
-            let timeDiff = (timeDiffString as NSString).doubleValue
-            let calories = (caloriesString as NSString).doubleValue
+        if let caloriesDict = metrics["Calories"] as? [[String:AnyObject]] {
+            quantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
             
-            let rateQuantity = HKQuantity(unit: HKUnit.kilocalorieUnit() , doubleValue: calories)
-            var date: NSDate = NSDate()
-            date = date.dateByAddingTimeInterval(timeDiff / -1000)
-            
-            let rateSample = HKQuantitySample(type: rateType, quantity: rateQuantity, startDate: date, endDate: date)
-            healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
-                //println("healthkit save calories object = \(success) error = \(error)")
-            })
+            for caloriesPoint in caloriesDict {
+                
+                let timeDiffString = caloriesPoint["timeDiff"] as! String
+                let caloriesString = caloriesPoint["value"] as! String
+                let timeDiff = (timeDiffString as NSString).doubleValue
+                let calories = (caloriesString as NSString).doubleValue
+                
+                let rateQuantity = HKQuantity(unit: HKUnit.kilocalorieUnit() , doubleValue: calories)
+                var date: NSDate = NSDate()
+                date = date.dateByAddingTimeInterval(timeDiff / -1000)
+                
+                let rateSample = HKQuantitySample(type: quantityType, quantity: rateQuantity, startDate: date, endDate: date)
+                healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
+                    //print("healthkit save calories object = \(success) possible error = \(error)")
+                })
+            }
         }
         
         // Populate steps data
-        let stepsDict = metrics["Steps"] as! NSArray
-        rateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
-        let totalStepsPoints = stepsDict.count
-        var pointsCount = 0
-        for stepsPoint in stepsDict {
-            let timeDiffString = stepsPoint["timeDiff"] as! String
-            let stepsString = stepsPoint["value"] as! String
-            let timeDiff = (timeDiffString as NSString).doubleValue
-            let steps = (stepsString as NSString).doubleValue
+        if let stepsDict = metrics["Steps"] as? [[String:AnyObject]] {
+            quantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
             
-            let rateQuantity = HKQuantity(unit: HKUnit.countUnit(), doubleValue: steps)
-            var date: NSDate = NSDate()
-            date = date.dateByAddingTimeInterval(timeDiff / -1000)
-            
-            let rateSample = HKQuantitySample(type: rateType, quantity: rateQuantity, startDate: date, endDate: date)
-            healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
-                pointsCount++
-                if (pointsCount == totalStepsPoints) {
-                    callback(shouldProgress: true)
-                }
-                //println("healthkit save steps object = \(success) error = \(error)")
-            })
+            let totalStepsPoints = stepsDict.count
+            var pointsCount = 0
+            for stepsPoint in stepsDict {
+                
+                let timeDiffString = stepsPoint["timeDiff"] as! String
+                let stepsString = stepsPoint["value"] as! String
+                let timeDiff = (timeDiffString as NSString).doubleValue
+                let steps = (stepsString as NSString).doubleValue
+                
+                let rateQuantity = HKQuantity(unit: HKUnit.countUnit(), doubleValue: steps)
+                var date: NSDate = NSDate()
+                date = date.dateByAddingTimeInterval(timeDiff / -1000)
+                
+                let rateSample = HKQuantitySample(type: quantityType, quantity: rateQuantity, startDate: date, endDate: date)
+                healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
+                    pointsCount++
+                    if (pointsCount == totalStepsPoints) {
+                        callback(shouldProgress: true)
+                    }
+                    //print("healthkit save steps object = \(success) possible error = \(error)")
+                })
+            }
         }
     }
     

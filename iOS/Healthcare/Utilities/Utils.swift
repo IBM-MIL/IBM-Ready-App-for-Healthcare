@@ -247,17 +247,17 @@ class Utils {
     
     class func getRoutines(worklightResponseJson: NSDictionary) -> [Routine]{
         var routines : [Routine] = []
+
+        // Cast as an array of dictionarys to avoid compiler warnings later
+        if let jsonResultArray = worklightResponseJson["result"] as? [[String:AnyObject]] {
         
-        let jsonResultArray = worklightResponseJson["result"] as! NSArray
-        
-        for jsonResult in jsonResultArray{
-            let routine = Routine()
-            routine.id = jsonResult["_id"] as! String
-            routine.routineTitle = jsonResult["routineTitle"] as! String
-            let exerciseArray = jsonResult["exercises"] as! NSArray
-            print("\(exerciseArray)")
-            // routine.exercises = jsonResult["exercises"] as! NSArray
-            routines.append(routine)
+            for jsonResult in jsonResultArray {
+                
+                let routine = Routine()
+                routine.id = jsonResult["_id"] as! String
+                routine.routineTitle = jsonResult["routineTitle"] as! String
+                routines.append(routine)
+            }
         }
         return routines
     }
@@ -265,21 +265,22 @@ class Utils {
     class func getExercisesforRoutine(worklightResponseJson: NSDictionary) -> [Exercise]{
         var exercises : [Exercise] = []
         
-        let jsonResultArray = worklightResponseJson["result"] as! NSArray
+        if let jsonResultArray = worklightResponseJson["result"] as? [[String:AnyObject]] {
         
-        for jsonResult in jsonResultArray {
-            print("Result: \(jsonResult)")
-            let exercise = Exercise()
-            exercise.id = jsonResult["_id"] as! String
-            print(jsonResult["exerciseTitle"])
-            exercise.exerciseTitle = jsonResult["exerciseTitle"] as! String
-            exercise.exerciseDescription = jsonResult["description"] as! String!
-            exercise.minutes = jsonResult["minutes"] as! NSNumber
-            exercise.repetitions = jsonResult["repetitions"] as! NSNumber
-            exercise.sets = jsonResult["sets"] as! NSNumber
-            exercise.videoURL = jsonResult["url"] as! String
-            exercise.tools = jsonResult["tools"] as! String
-            exercises.append(exercise)
+            for jsonResult in jsonResultArray {
+                
+                let exercise = Exercise()
+                exercise.id = jsonResult["_id"] as! String
+                print(jsonResult["exerciseTitle"])
+                exercise.exerciseTitle = jsonResult["exerciseTitle"] as! String
+                exercise.exerciseDescription = jsonResult["description"] as! String!
+                exercise.minutes = jsonResult["minutes"] as! NSNumber
+                exercise.repetitions = jsonResult["repetitions"] as! NSNumber
+                exercise.sets = jsonResult["sets"] as! NSNumber
+                exercise.videoURL = jsonResult["url"] as! String
+                exercise.tools = jsonResult["tools"] as! String
+                exercises.append(exercise)
+            }
         }
         return exercises
     }
@@ -287,14 +288,16 @@ class Utils {
     class func getQuestionnaireForUser(worklightResponseJson: NSDictionary) -> [Forms]{
         var forms : [Forms] = []
         
-        let jsonResultArray = worklightResponseJson["result"] as! NSArray
+        if let jsonResultArray = worklightResponseJson["result"] as? [[String:AnyObject]] {
         
-        for jsonResult in jsonResultArray{
-            let form = Forms()
-            form.id = jsonResult["_id"] as! String
-            form.textDescription = jsonResult["text"] as! String
-            form.type = jsonResult["type"] as! String!
-            forms.append(form)
+            for jsonResult in jsonResultArray {
+                
+                let form = Forms()
+                form.id = jsonResult["_id"] as! String
+                form.textDescription = jsonResult["text"] as! String
+                form.type = jsonResult["type"] as! String!
+                forms.append(form)
+            }
         }
         return forms
     }
