@@ -1660,6 +1660,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
@@ -1683,7 +1684,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Healthcare;
-				PROVISIONING_PROFILE = "e66c1032-8f7d-47d9-b666-fd0ee0d83073";
+				PROVISIONING_PROFILE = "75a89f1b-08da-41c1-90f5-57cc356b899c";
 				SWIFT_OBJC_BRIDGING_HEADER = "Healthcare/Healthcare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1704,6 +1705,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
@@ -1723,7 +1725,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Healthcare;
-				PROVISIONING_PROFILE = "e66c1032-8f7d-47d9-b666-fd0ee0d83073";
+				PROVISIONING_PROFILE = "75a89f1b-08da-41c1-90f5-57cc356b899c";
 				SWIFT_OBJC_BRIDGING_HEADER = "Healthcare/Healthcare-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1791,6 +1793,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
@@ -1812,7 +1815,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Healthcare;
-				PROVISIONING_PROFILE = "e66c1032-8f7d-47d9-b666-fd0ee0d83073";
+				PROVISIONING_PROFILE = "75a89f1b-08da-41c1-90f5-57cc356b899c";
 				SWIFT_OBJC_BRIDGING_HEADER = "Healthcare/Healthcare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";

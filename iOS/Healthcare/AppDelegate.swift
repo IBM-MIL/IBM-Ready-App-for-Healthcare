@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Set the logger level for MFP
+        OCLogger.setLevel(OCLogger_FATAL)
+        
         // Do any additional setup after loading the view.
         print("Connecting to MobileFirst Server...");
         connectListener = ReadyAppsConnectListener()
@@ -69,7 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func handleLoginViewController(notification: NSNotification){
-        print("in handleLoginViewController")
         let userInfo:Dictionary<String,UIViewController!> = notification.userInfo as! Dictionary<String,UIViewController!>
         self.loginViewController = userInfo["LoginViewController"] as! LoginViewController
         

@@ -66,13 +66,4 @@ class WLProcedureCaller {
         
     }
     
-//    func getJSONData(dictionary: NSDictionary) -> String{
-//        
-//        var error : NSError
-//        let jsonData = NSJSONSerialization(
-//        
-//        
-//    
-//    }
-    
 }
