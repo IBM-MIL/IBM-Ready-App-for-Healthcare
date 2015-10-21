@@ -201,7 +201,7 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
             self.view.layoutIfNeeded()
         }, completion: nil)
         
-        UIView.animateWithDuration(0.3, delay: 0.1, options: [], animations: {
+        UIView.animateWithDuration(0.3, delay: 0.2, options: [], animations: {
             self.secondTabConstraint.constant = self.secondLeadingConstant
             self.view.layoutIfNeeded()
         }, completion: nil)

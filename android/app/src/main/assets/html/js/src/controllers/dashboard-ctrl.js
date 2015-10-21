@@ -1,9 +1,9 @@
 /*
  *  Licensed Materials - Property of IBM
  *  © Copyright IBM Corporation 2014. All Rights Reserved.
- *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty 
- *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to 
- *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part 
+ *  This sample program is provided AS IS and may be used, executed, copied and modified without royalty
+ *  payment by customer (a) for its own instruction and study, (b) in order to develop applications designed to
+ *  run with an IBM product, either for customer's own internal use or for redistribution by customer, as part
  *  of such an application, in customer's own products.
  */
 
@@ -24,7 +24,7 @@
  *  @copyright © 2014 IBM Corporation. All Rights Reserved.
  */
 angular.module('ReadyAppHC').controller('dashboardCtrl', function($scope, $controller, $filter) {
-    
+
     // Inheritance
     angular.extend(this, $controller('milCtrl', {$scope: $scope}));
 
@@ -32,7 +32,7 @@ angular.module('ReadyAppHC').controller('dashboardCtrl', function($scope, $contr
     $scope.exercises = "...";
     $scope.sessions = "...";
     $scope.date = $filter("translate")("_loading_");
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.dashboardCtrl.setMinutes
      *  @description Sets the exercises field in the dashboard hybrid view. The default value is -1.
@@ -41,7 +41,7 @@ angular.module('ReadyAppHC').controller('dashboardCtrl', function($scope, $contr
     $scope.setMinutes = function(mins) {
         $scope.minutes = mins;
     }
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.dashboardCtrl.setExercises
      *  @description Sets the exercises field in the dashboard hybrid view. The default value is -1.
@@ -50,7 +50,7 @@ angular.module('ReadyAppHC').controller('dashboardCtrl', function($scope, $contr
     $scope.setExercises = function(exercises) {
         $scope.exercises = exercises;
     }
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.dashboardCtrl.setSessions
      *  @description Sets the sessions field in the dashboard hybrid view. The default value is -1.
@@ -59,7 +59,7 @@ angular.module('ReadyAppHC').controller('dashboardCtrl', function($scope, $contr
     $scope.setSessions = function(sessions) {
         $scope.sessions = sessions;
     }
-    
+
     /**
      *  @function ReadyAppHC.milCtrl.dashboardCtrl.setDate
      *  @description Sets the date field in the dashboard hybrid view.
@@ -68,12 +68,12 @@ angular.module('ReadyAppHC').controller('dashboardCtrl', function($scope, $contr
     $scope.setDate = function(date) {
         $scope.date = date;
     }
-    
+
     // Necessary to find screen height for older versions of
     // Android webview
     //document.getElementById('dshbrd_fill-height')
     //        .style.height = window.innerHeight + 'px';
-    if (document.getElementById('a')) {   
+    if (document.getElementById('a')) {
         document.getElementById('a')
             .style.height = window.innerHeight + 'px';
     }

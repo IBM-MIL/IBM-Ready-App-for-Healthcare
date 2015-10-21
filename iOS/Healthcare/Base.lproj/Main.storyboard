@@ -2362,11 +2362,12 @@
                         <viewControllerLayoutGuide type="bottom" id="L81-rz-fgu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6yh-8A-eDr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Physio" id="Wru-hv-MIE">
                         <barButtonItem key="leftBarButtonItem" image="back_button" id="TnC-gf-iwy">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2409,6 +2410,6 @@
         <image name="whitearrow" width="10" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LIk-uI-nVh"/>
+        <segue reference="Dg6-xx-kiY"/>
     </inferredMetricsTieBreakers>
 </document>
