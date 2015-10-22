@@ -34,7 +34,7 @@ public class LoginInvokeListener implements WLResponseListener {
         }
 
         WLProcedureInvocationData invocationData =
-                new WLProcedureInvocationData("ReadyAppsAdapter", "getUserObject");
+                new WLProcedureInvocationData("HealthcareAdapter", "getUserObject");
         Object[] parameters = new Object[]{userID};
         invocationData.setParameters(parameters);
         WLRequestOptions options = new WLRequestOptions();
@@ -49,7 +49,7 @@ public class LoginInvokeListener implements WLResponseListener {
     }
 
     public void onFailure(WLFailResponse response) {
-        Log.i(TAG, "Login failed, error: " + response.getErrorMsg());
+        Log.e(TAG, "Login failed, error: " + response.getErrorMsg());
         loginCallback.handleLogin(LoginListenerInterface.ResultType.FAILURE);
     }
 

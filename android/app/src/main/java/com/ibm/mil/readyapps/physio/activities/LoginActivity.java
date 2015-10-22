@@ -173,7 +173,7 @@ public class LoginActivity extends Activity implements DataNotifier {
         String password = mPasswordText.getText().toString();
         String locale = getResources().getConfiguration().locale.toString();
 
-        WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("ReadyAppsAdapter", "submitAuthentication");
+        WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("HealthcareAdapter", "submitAuthentication");
         Object[] params = new Object[] {patientId, password, locale};
         wlProcedureCaller.invoke(params, new WLResponseListener() {
             @Override public void onSuccess(final WLResponse wlResponse) {
@@ -277,7 +277,7 @@ public class LoginActivity extends Activity implements DataNotifier {
     }
 
     private void loadUserData() {
-        WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("ReadyAppsAdapter", "getUserObject");
+        WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("HealthcareAdapter", "getUserObject");
         wlProcedureCaller.invoke(null, new WLResponseListener() {
             @Override public void onSuccess(WLResponse wlResponse) {
                 Patient currentPatient = new Patient(wlResponse.getResponseJSON());
@@ -294,7 +294,7 @@ public class LoginActivity extends Activity implements DataNotifier {
     }
 
     private void loadFormData() {
-        WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("ReadyAppsAdapter", "getQuestionnaireForUser");
+        WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("HealthcareAdapter", "getQuestionnaireForUser");
         wlProcedureCaller.invoke(null, new WLResponseListener() {
             @Override public void onSuccess(WLResponse wlResponse) {
                 Form[] forms = getFormsFromJson(wlResponse.getResponseJSON());
@@ -339,7 +339,7 @@ public class LoginActivity extends Activity implements DataNotifier {
     }
 
     private void loadRoutineData() {
-        WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("ReadyAppsAdapter", "getRoutines");
+        WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("HealthcareAdapter", "getRoutines");
         wlProcedureCaller.invoke(null, new WLResponseListener() {
             @Override public void onSuccess(WLResponse wlResponse) {
                 Routine[] routines = getRoutinesFromJson(wlResponse.getResponseJSON());
@@ -384,7 +384,7 @@ public class LoginActivity extends Activity implements DataNotifier {
         }
 
         for (final Routine routine : routines) {
-            WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("ReadyAppsAdapter", "getExercisesForRoutine");
+            WLProcedureCaller wlProcedureCaller = new WLProcedureCaller("HealthcareAdapter", "getExercisesForRoutine");
             Object[] params = new Object[] {routine.getId()};
             wlProcedureCaller.invoke(params, new WLResponseListener() {
                 @Override public void onSuccess(final WLResponse wlResponse) {
