@@ -10,7 +10,7 @@ import UIKit
     where on their body they are feeling pain.  Once a body part (like an arm) is selected, the view zooms in
     and allows the user to place up to 5 specific pain pointers on that body part.
 */
-class PainLocationViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, CustomAlertViewDelegate {
+class PainLocationViewController: HealthcareUIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate, CustomAlertViewDelegate {
 
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var backBarButton: UIBarButtonItem!

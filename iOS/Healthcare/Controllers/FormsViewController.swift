@@ -10,7 +10,7 @@ This view controller presents a Questionnaire for the user to answer when they a
 be easily updated by changing the 'questions' variable.  The table view has been setup to automatically expand based on the size of the question
 so if the question is very long it will all be displayed.
 */
-class FormsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FormsViewController: HealthcareUIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var formsDataManager = FormsDataManager.formsDataManager
     var thePatient =  DataManager.dataManager.currentPatient

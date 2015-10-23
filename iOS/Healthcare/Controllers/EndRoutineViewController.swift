@@ -8,7 +8,7 @@ import UIKit
 /**
 View Controller displayed when user wants to end exercise routine.
 */
-class EndRoutineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CustomAlertViewButtonsDelegate {
+class EndRoutineViewController: HealthcareUIViewController, UITableViewDelegate, UITableViewDataSource, CustomAlertViewButtonsDelegate {
     
     var endRoutineString = NSLocalizedString("Why did you end your routine?", comment: "n/a")
     var questions = [

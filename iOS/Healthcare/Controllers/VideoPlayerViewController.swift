@@ -9,7 +9,7 @@ import MediaPlayer
 /**
 View Controller to display video and infor about the selected exercise
 */
-class VideoPlayerViewController: UIViewController, YTPlayerViewDelegate, CustomAlertViewExerciseDelegate {
+class VideoPlayerViewController: HealthcareUIViewController, YTPlayerViewDelegate, CustomAlertViewExerciseDelegate {
 
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var videoToolBar: UIToolbar!

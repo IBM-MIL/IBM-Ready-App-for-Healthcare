@@ -148,6 +148,14 @@ class DashboardViewController: MILWebViewController, UIGestureRecognizerDelegate
         if let del = centerViewDelegate {
             del.togglePanGesture?(true)
         }
+        
+        #if !Debug
+            let tracker = GAI.sharedInstance().defaultTracker
+            tracker.set(kGAIScreenName, value: NSStringFromClass(self.dynamicType))
+            
+            let builder = GAIDictionaryBuilder.createScreenView()
+            tracker.send(builder.build() as [NSObject : AnyObject])
+        #endif
     }
     
     override func didReceiveMemoryWarning() {
