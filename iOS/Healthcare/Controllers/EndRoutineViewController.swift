@@ -8,7 +8,7 @@ import UIKit
 /**
 View Controller displayed when user wants to end exercise routine.
 */
-class EndRoutineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CustomAlertViewButtonsDelegate {
+class EndRoutineViewController: HealthcareUIViewController, UITableViewDelegate, UITableViewDataSource, CustomAlertViewButtonsDelegate {
     
     var endRoutineString = NSLocalizedString("Why did you end your routine?", comment: "n/a")
     var questions = [
@@ -30,10 +30,10 @@ class EndRoutineViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tableView.tableFooterView = UIView(frame: CGRectZero)      //elimanates any empty cells at the bottom of the table view
         
         // Setup the alert view that will be displayed when the user ends the routine
-        var alertText = NSLocalizedString("Are you sure you want to end your routine?", comment: "")
-        var alertColor = UIColor.readyAppBlue()
+        let alertText = NSLocalizedString("Are you sure you want to end your routine?", comment: "")
+        let alertColor = UIColor.readyAppBlue()
         self.alertView = CustomAlertViewButtons.initWithButtonColor(alertColor, alertText: alertText)
-        self.alertView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.alertView.translatesAutoresizingMaskIntoConstraints = false
         self.alertView.delegate = self
         self.alertView.hidden = true
         self.view.addSubview(alertView)
@@ -99,7 +99,7 @@ class EndRoutineViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("questionCell") as! FormQuestionTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("questionCell") as! FormQuestionTableViewCell
         
         cell.questionLabel.text = questions[indexPath.row]
         return cell
@@ -107,7 +107,7 @@ class EndRoutineViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! FormQuestionTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! FormQuestionTableViewCell
         cell.selectedCell()
     }
 

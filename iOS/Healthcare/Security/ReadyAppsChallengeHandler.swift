@@ -41,10 +41,10 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
     /**
     Callback to handle notifications received from registered view controllers. This callback sets the respective boolean flag to false
     once the view has been covered by another view controller.
-    :param: notification
+    - parameter notification:
     */
     func readyAppsViewDidDisappearCallback (notification : NSNotification!) {
-        println("in readyAppsViewDidDisappearCallback")
+        print("in readyAppsViewDidDisappearCallback")
         
         let userInfo:Dictionary<String,Bool!> = notification.userInfo as! Dictionary<String,Bool!>
         
@@ -64,11 +64,11 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
     /**
     Callback to handle notifications received from registered view controllers. This callback sets instance of the view controller, so it can be used 
     to display the login view controller when the user has been logged out
-    :param: notification
+    - parameter notification:
     */
     func readyAppObserverCallback(notification : NSNotification!) {
         
-        println("in readyAppObserverCallback")
+        print("in readyAppObserverCallback")
         
         let userInfo:Dictionary<String,UIViewController!> = notification.userInfo as! Dictionary<String,UIViewController!>
         
@@ -90,15 +90,15 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
     
     /**
     Callback method for MobileFirst platform authenticator which determines if the user has been timed out.
-    :param: response
+    - parameter response:
     */
     override func isCustomResponse(response: WLResponse!) -> Bool {
-        println("--------- isCustomResponse in readyapps------")
+        print("--------- isCustomResponse in readyapps------")
         //check for bad token here
-        println(response.getResponseJson())
         if (response != nil && response.getResponseJson() != nil) {
-            var jsonResponse = response.getResponseJson() as NSDictionary
-            var authRequired = jsonResponse.objectForKey("authRequired") as! Bool?
+            print(response.getResponseJson())
+            let jsonResponse = response.getResponseJson() as NSDictionary
+            let authRequired = jsonResponse.objectForKey("authRequired") as! Bool?
             if authRequired != nil {
                 return authRequired!
             }
@@ -108,14 +108,14 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
     
     /**
     Callback method for MobileFirst platform which handles the success scenario
-    :param: response
+    - parameter response:
     */
     override func onSuccess(response: WLResponse!) {
-        println("challenge handler on onSuccess")
-        println(response)
+        print("challenge handler on onSuccess")
+        print(response)
         submitSuccess(response)
         //if the user is logging on for the first time, process sign in and dismiss the loginview controller
-            var dataManager = DataManager.dataManager
+            let dataManager = DataManager.dataManager
         if (firstTimeLogin) {
             dataManager.signIn(self.appDelegate.username, password: self.appDelegate.password, callback: appDelegate.loginViewController.processSignIn)
             firstTimeLogin = false
@@ -125,7 +125,7 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
             dataManager.signIn(self.appDelegate.username, password: self.appDelegate.password, callback: appDelegate.loginViewController.processSignIn)            
         } else {
             //dismiss the loginviewcontroller and take them back to the screen they were on
-            println("coming from different part of app")
+            print("coming from different part of app")
             SVProgressHUD.dismiss()
             self.loginViewController.dismissViewControllerAnimated(true, completion: nil)
             
@@ -134,17 +134,17 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
     
     /**
     Callback method for MobileFirst platform which handles the failure scenario
-    :param: response
+    - parameter response:
     */
     override func onFailure(response: WLFailResponse!) {
-        println("on ReadyAppsChallengeHandler onFailure");
+        print("on ReadyAppsChallengeHandler onFailure");
         submitFailure(response)
         
-        println(response)
+        print(response)
         
         if(response.getResponseJson() != nil) {
-            var jsonResponse = response.getResponseJson() as NSDictionary
-            var authRequired = jsonResponse.objectForKey("authRequired") as! Bool?
+            let jsonResponse = response.getResponseJson() as NSDictionary
+            let authRequired = jsonResponse.objectForKey("authRequired") as! Bool?
             if authRequired != nil {
                 if authRequired == true {
                     appDelegate.logout("SingleStepAuthRealm")
@@ -165,8 +165,8 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
                 //logout user and reconnect
                 //reconnect if the user is authentication
                 //show error on the login page since we are coming from a different part of the app
-                println("challenge handler on failure -- coming from different part of the app")
-                if var loginVC = loginViewController {
+                print("challenge handler on failure -- coming from different part of the app")
+                if let loginVC = loginViewController {
                     loginVC.alertView.hidden = false
                 }
             }
@@ -180,13 +180,13 @@ class ReadyAppsChallengeHandler : ChallengeHandler {
     /**
     Callback method for MobileFirst platform which handles challenge presented by the server, It shows the login view controllers, so the user
     can re-authenticate.
-    :param: response
+    - parameter response:
     */
     override func handleChallenge(response: WLResponse!) {
-        if let lvc = appDelegate.loginViewController.navigationController?.visibleViewController as? LoginViewController {
-            println("Already showing login view controller");
+        if let _ = appDelegate.loginViewController.navigationController?.visibleViewController as? LoginViewController {
+            print("Already showing login view controller");
         } else {
-            println("show login view controller")
+            print("show login view controller")
             SVProgressHUD.dismiss()
             isUserTimedOut = true
             

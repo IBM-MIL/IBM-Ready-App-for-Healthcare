@@ -21,16 +21,16 @@ class ReadyAppsConnectListener : NSObject, WLDelegate {
     Handles the login user success scenario
     */
     func onSuccess(response: WLResponse!) {
-        println("onSuccess in ConnectListener")
-        println("Successfully connected to MobileFirst Server. Response: \(response)");
+        print("onSuccess in ConnectListener")
+        print("Successfully connected to MobileFirst Server. Response: \(response)");
     }
     
     /**
     Handles the login user failure scenario
     */
     func onFailure(response: WLFailResponse!) {
-        println("onFailure in ConnectListener")
-        println("Failed connecting to MobileFirst Server. Response: \(response)");
+        print("onFailure in ConnectListener")
+        print("Failed connecting to MobileFirst Server. Response: \(response)");
         appDelegate.loginViewController.showAlertForServerConnectionFailure()
     }
 }

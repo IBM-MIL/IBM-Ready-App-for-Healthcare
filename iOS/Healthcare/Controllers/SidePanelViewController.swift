@@ -43,7 +43,7 @@ class SidePanelViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cellID")as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellID")!
         
         cell.textLabel!.textColor = UIColor.whiteColor()
         cell.textLabel!.font = UIFont(name: "RobotoSlab-Regular", size: 18)
@@ -58,13 +58,13 @@ class SidePanelViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // set up our custom highlighting of the cell
     func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.contentView.backgroundColor = UIColor.readyAppDarkBlue()
         cell?.backgroundColor = UIColor.readyAppDarkBlue()
     }
     
     func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.contentView.backgroundColor = UIColor.readyAppBlue()
         cell?.backgroundColor = UIColor.readyAppBlue()
     }
@@ -73,28 +73,28 @@ class SidePanelViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if indexPath.row == 0 {
-            var container = self.containerVC()
+            let container = self.containerVC()
             container?.updateCenterViewController(container!.centerViewController)
         }
         else if indexPath.row == 1 {
-            var progressVC = UIStoryboard.progressViewController()
+            let progressVC = UIStoryboard.progressViewController()
             progressVC?.viewType = "metrics"
             self.containerVC()?.updateCenterViewController(progressVC!)
             
         } else if indexPath.row == 2 {
-            var painVC = UIStoryboard.painLocationViewController()
+            let painVC = UIStoryboard.painLocationViewController()
             self.containerVC()?.updateCenterViewController(painVC!)
         } else if indexPath.row == 3 {
-            var exerciseVC = UIStoryboard.exerciseListViewController()
+            let exerciseVC = UIStoryboard.exerciseListViewController()
             self.containerVC()?.updateCenterViewController(exerciseVC!)
         } else if indexPath.row == 4 {
-            var formsVC = UIStoryboard.formsViewController()
+            let formsVC = UIStoryboard.formsViewController()
             self.containerVC()?.updateCenterViewController(formsVC!)
         } else if indexPath.row == 5 {
             appDelegate.logout("SingleStepAuthRealm")
             SVProgressHUD.dismiss()
             if DataManager.dataManager.currentPatient.userID == "user2"{
-                var alert = UIAlertController(title: NSLocalizedString("Delete HealthKit Data", comment: "n/a"), message: NSLocalizedString("You are about to delete all data created by this app. Data created from other sources will be unaffected.", comment: "n/a"), preferredStyle: .Alert)
+                let alert = UIAlertController(title: NSLocalizedString("Delete HealthKit Data", comment: "n/a"), message: NSLocalizedString("You are about to delete all data created by this app. Data created from other sources will be unaffected.", comment: "n/a"), preferredStyle: .Alert)
                 let OKAction = UIAlertAction(title: NSLocalizedString("OK", comment: "n/a"), style: .Default) { (action) in
                     
                     // If okay, show HUD again, get permissions (which will call the function to load the data)
@@ -128,10 +128,10 @@ class SidePanelViewController: UIViewController, UITableViewDelegate, UITableVie
     /**
     Method to get a reference of the ContainerViewController
     
-    :returns: the ContainerViewController instance
+    - returns: the ContainerViewController instance
     */
     func containerVC() -> ContainerViewController? {
-        if var viewController = self.parentViewController {
+        if let viewController = self.parentViewController {
             if viewController.isKindOfClass(ContainerViewController.self) {
                 return viewController as? ContainerViewController
             }
@@ -142,9 +142,9 @@ class SidePanelViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: Autolayout constraints
     
     func setupAutoLayoutConstraints() {
-        self.view.removeConstraints(self.view.constraints())
-        self.menuTableView.removeConstraints(self.menuTableView.constraints())
-        self.topHalfView.removeConstraints(self.topHalfView.constraints())
+        self.view.removeConstraints(self.view.constraints)
+        self.menuTableView.removeConstraints(self.menuTableView.constraints)
+        self.topHalfView.removeConstraints(self.topHalfView.constraints)
         
         var viewsDictionary = Dictionary <String, UIView>()
         viewsDictionary["menuTableView"] = self.menuTableView
@@ -166,17 +166,17 @@ class SidePanelViewController: UIViewController, UITableViewDelegate, UITableVie
         // menu tableview constraints
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[menuTableView(\(self.view.frame.size.height/2))]|", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[menuTableView(\(self.view.frame.size.height/2))]|", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|[menuTableView(\(self.view.frame.size.width - 100))]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|[menuTableView(\(self.view.frame.size.width - 100))]", options: [], metrics: nil, views: viewsDictionary))
         // topHalfView constraints
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|[topHalfView(\(self.view.frame.size.height/2))]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:|[topHalfView(\(self.view.frame.size.height/2))]", options: [], metrics: nil, views: viewsDictionary))
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|[topHalfView(\(self.view.frame.size.width - 100))]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|[topHalfView(\(self.view.frame.size.width - 100))]", options: [], metrics: nil, views: viewsDictionary))
         
         // Base constraints off centering middle element
         self.topHalfView.addConstraint(
@@ -186,40 +186,40 @@ class SidePanelViewController: UIViewController, UITableViewDelegate, UITableVie
         // Next visit constraints
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-20-[dateLabel(96)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-20-[dateLabel(96)]", options: [], metrics: nil, views: viewsDictionary))
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-20-[nextVisitLabel(68)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-20-[nextVisitLabel(68)]", options: [], metrics: nil, views: viewsDictionary))
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[dateLabel][nextVisitLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[dateLabel][nextVisitLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
         
         // UserID constraints
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-20-[userIDLabel(128)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-20-[userIDLabel(128)]", options: [], metrics: nil, views: viewsDictionary))
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[userIDLabel(40)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[userIDLabel(40)]", options: [], metrics: nil, views: viewsDictionary))
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-20-[userIDTitle(50)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-20-[userIDTitle(50)]", options: [], metrics: nil, views: viewsDictionary))
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[userIDLabel][userIDTitle(20)]->=20-[dateLabel]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[userIDLabel][userIDTitle(20)]->=20-[dateLabel]", options: [], metrics: nil, views: viewsDictionary))
         
         // progress constraints
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-20-[weekLabel(173)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-20-[weekLabel(173)]", options: [], metrics: nil, views: viewsDictionary))
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[nextVisitLabel]->=20-[weekLabel(40)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[nextVisitLabel]->=20-[weekLabel(40)]", options: [], metrics: nil, views: viewsDictionary))
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-20-[recoveryLabel(140)]", options: nil, metrics: nil, views: viewsDictionary))
+                "H:|-20-[recoveryLabel(140)]", options: [], metrics: nil, views: viewsDictionary))
         self.topHalfView.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[weekLabel][recoveryLabel(20)]", options: nil, metrics: nil, views: viewsDictionary))
+                "V:[weekLabel][recoveryLabel(20)]", options: [], metrics: nil, views: viewsDictionary))
     }
 }

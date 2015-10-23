@@ -38,9 +38,9 @@ class DataManager: NSObject, WLDataDelegate {
     /**
     Method called by to sign in a user
     
-    :param: userID string value passed from another class
-    :param: password string value passed from another class
-    :param: callback function from the class that called this function. Is executed with a enum as a parameter
+    - parameter userID: string value passed from another class
+    - parameter password: string value passed from another class
+    - parameter callback: function from the class that called this function. Is executed with a enum as a parameter
     
     */
     func signIn(userID: String!, password: String!, callback: (LogInResultType)->()) {
@@ -53,13 +53,12 @@ class DataManager: NSObject, WLDataDelegate {
         let params : [String] = [userID]
         self.userId = userID
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
     }
     
     /**
     Delgate method for WorkLight. Called when connection and return is successful
     
-    :param: response Response from WorkLight
+    - parameter response: Response from WorkLight
     */
     func onSuccess(response: WLResponse!) {
         let responseJson = response.getResponseJson() as NSDictionary
@@ -72,10 +71,10 @@ class DataManager: NSObject, WLDataDelegate {
     /**
     Delgate method for WorkLight. Called when connection or return is unsuccessful
     
-    :param: response Response from WorkLight
+    - parameter response: Response from WorkLight
     */
     func onFailure(response: WLFailResponse!) {
-        println(response.responseText)
+        print(response.responseText)
         logInCallback(LogInResultType.FailWrongPassword)
     }
     
@@ -105,7 +104,6 @@ class DataManager: NSObject, WLDataDelegate {
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [userID]
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
     }
     /*
     Method called to get routines
@@ -120,6 +118,5 @@ class DataManager: NSObject, WLDataDelegate {
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [routineId]
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
     }
 }

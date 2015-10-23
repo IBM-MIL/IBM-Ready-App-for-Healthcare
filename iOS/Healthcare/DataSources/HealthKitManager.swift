@@ -72,121 +72,134 @@ class HealthKitManager: NSObject {
     /**
     Populates HealthKit with data from the healthData.json file. This currently includes Heart Rate, Body Weight, Calories Burned, and Steps Taken data for 30 days previous to the current day.
     
-    :param: callback Callback function. This will be triggered when the last HealthKit value is saved and will progress the app to the Dashboard.
+    - parameter callback: Callback function. This will be triggered when the last HealthKit value is saved and will progress the app to the Dashboard.
     */
     func populateHealthKit(callback: (shouldProgress: Bool)->()) {
         
         // Get JSON data from the file
         let filePath = NSBundle.mainBundle().pathForResource("healthData", ofType: "json")
         let data = NSData(contentsOfFile: filePath!)
-        var jsonResult = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: nil) as! NSDictionary
-        var metrics = jsonResult["Metrics"] as! NSDictionary
+        let jsonResult = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves) as! NSDictionary
+        let metrics = jsonResult["Metrics"] as! NSDictionary
+        var quantityType: HKQuantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)! // Starting quantity type
         
         // Populate heart rate data
-        var heartRateDict = metrics["HeartRate"] as! NSArray
-        var rateType: HKQuantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)
-        let heartRateBPM = HKUnit.countUnit().unitDividedByUnit(HKUnit.minuteUnit())
-        for heartRatePoint in heartRateDict {
-            var timeDiff = heartRatePoint["timeDiff"] as! String
-            var heartRateValue = heartRatePoint["value"] as! String
-            var timeDiffDouble = (timeDiff as NSString).doubleValue
-            var heartRateDouble = (heartRateValue as NSString).doubleValue
+        if let heartRateDict = metrics["HeartRate"] as? [[String:AnyObject]] {
+            let heartRateBPM = HKUnit.countUnit().unitDividedByUnit(HKUnit.minuteUnit())
             
-            let rateQuantity = HKQuantity(unit: heartRateBPM, doubleValue: heartRateDouble)
-            var date: NSDate = NSDate()
-            date = date.dateByAddingTimeInterval(timeDiffDouble / -1000)
-            
-            let rateSample = HKQuantitySample(type: rateType, quantity: rateQuantity, startDate: date, endDate: date)
-            healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError!) -> Void in
-                //println("healthkit save heart rate object = \(success) error = \(error)")
-            })
+            for heartRatePoint in heartRateDict {
+                
+                let timeDiff = heartRatePoint["timeDiff"] as! String
+                let heartRateValue = heartRatePoint["value"] as! String
+                let timeDiffDouble = (timeDiff as NSString).doubleValue
+                let heartRateDouble = (heartRateValue as NSString).doubleValue
+                
+                let rateQuantity = HKQuantity(unit: heartRateBPM, doubleValue: heartRateDouble)
+                var date: NSDate = NSDate()
+                date = date.dateByAddingTimeInterval(timeDiffDouble / -1000)
+                
+                let rateSample = HKQuantitySample(type: quantityType, quantity: rateQuantity, startDate: date, endDate: date)
+                healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
+                    // Generates a lot of output, so print lines are commented out
+                    //print("healthkit save heart rate object = \(success) possible error = \(error)")
+                })
+            }
         }
         
         // Populate body weight data
-        var bodyWeightDict = metrics["BodyWeight"] as! NSArray
-        rateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)
-        for bodyWeightPoint in bodyWeightDict {
-            var timeDiffString = bodyWeightPoint["timeDiff"] as! String
-            var bodyWeightString = bodyWeightPoint["value"] as! String
-            var timeDiff = (timeDiffString as NSString).doubleValue
-            var bodyWeight = (bodyWeightString as NSString).doubleValue
+        if let bodyWeightDict = metrics["BodyWeight"] as? [[String:AnyObject]] {
+            quantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
             
-            let rateQuantity = HKQuantity(unit: HKUnit.poundUnit(), doubleValue: bodyWeight)
-            var date: NSDate = NSDate()
-            date = date.dateByAddingTimeInterval(timeDiff / -1000)
-            
-            let rateSample = HKQuantitySample(type: rateType, quantity: rateQuantity, startDate: date, endDate: date)
-            healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError!) -> Void in
-                //println("healthkit save body weight object = \(success) error = \(error)")
-            })
+            for bodyWeightPoint in bodyWeightDict {
+                
+                let timeDiffString = bodyWeightPoint["timeDiff"] as! String
+                let bodyWeightString = bodyWeightPoint["value"] as! String
+                let timeDiff = (timeDiffString as NSString).doubleValue
+                let bodyWeight = (bodyWeightString as NSString).doubleValue
+                
+                let rateQuantity = HKQuantity(unit: HKUnit.poundUnit(), doubleValue: bodyWeight)
+                var date: NSDate = NSDate()
+                date = date.dateByAddingTimeInterval(timeDiff / -1000)
+                
+                let rateSample = HKQuantitySample(type: quantityType, quantity: rateQuantity, startDate: date, endDate: date)
+                healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
+                    //print("healthkit save body weight object = \(success) possible error = \(error)")
+                })
+            }
         }
         
         // Populate calories data
-        var caloriesDict = metrics["Calories"] as! NSArray
-        rateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)
-        for caloriesPoint in caloriesDict {
-            var timeDiffString = caloriesPoint["timeDiff"] as! String
-            var caloriesString = caloriesPoint["value"] as! String
-            var timeDiff = (timeDiffString as NSString).doubleValue
-            var calories = (caloriesString as NSString).doubleValue
+        if let caloriesDict = metrics["Calories"] as? [[String:AnyObject]] {
+            quantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
             
-            let rateQuantity = HKQuantity(unit: HKUnit.kilocalorieUnit() , doubleValue: calories)
-            var date: NSDate = NSDate()
-            date = date.dateByAddingTimeInterval(timeDiff / -1000)
-            
-            let rateSample = HKQuantitySample(type: rateType, quantity: rateQuantity, startDate: date, endDate: date)
-            healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError!) -> Void in
-                //println("healthkit save calories object = \(success) error = \(error)")
-            })
+            for caloriesPoint in caloriesDict {
+                
+                let timeDiffString = caloriesPoint["timeDiff"] as! String
+                let caloriesString = caloriesPoint["value"] as! String
+                let timeDiff = (timeDiffString as NSString).doubleValue
+                let calories = (caloriesString as NSString).doubleValue
+                
+                let rateQuantity = HKQuantity(unit: HKUnit.kilocalorieUnit() , doubleValue: calories)
+                var date: NSDate = NSDate()
+                date = date.dateByAddingTimeInterval(timeDiff / -1000)
+                
+                let rateSample = HKQuantitySample(type: quantityType, quantity: rateQuantity, startDate: date, endDate: date)
+                healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
+                    //print("healthkit save calories object = \(success) possible error = \(error)")
+                })
+            }
         }
         
         // Populate steps data
-        var stepsDict = metrics["Steps"] as! NSArray
-        rateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
-        var totalStepsPoints = stepsDict.count
-        var pointsCount = 0
-        for stepsPoint in stepsDict {
-            var timeDiffString = stepsPoint["timeDiff"] as! String
-            var stepsString = stepsPoint["value"] as! String
-            var timeDiff = (timeDiffString as NSString).doubleValue
-            var steps = (stepsString as NSString).doubleValue
+        if let stepsDict = metrics["Steps"] as? [[String:AnyObject]] {
+            quantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
             
-            let rateQuantity = HKQuantity(unit: HKUnit.countUnit(), doubleValue: steps)
-            var date: NSDate = NSDate()
-            date = date.dateByAddingTimeInterval(timeDiff / -1000)
-            
-            let rateSample = HKQuantitySample(type: rateType, quantity: rateQuantity, startDate: date, endDate: date)
-            healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError!) -> Void in
-                pointsCount++
-                if (pointsCount == totalStepsPoints) {
-                    callback(shouldProgress: true)
-                }
-                //println("healthkit save steps object = \(success) error = \(error)")
-            })
+            let totalStepsPoints = stepsDict.count
+            var pointsCount = 0
+            for stepsPoint in stepsDict {
+                
+                let timeDiffString = stepsPoint["timeDiff"] as! String
+                let stepsString = stepsPoint["value"] as! String
+                let timeDiff = (timeDiffString as NSString).doubleValue
+                let steps = (stepsString as NSString).doubleValue
+                
+                let rateQuantity = HKQuantity(unit: HKUnit.countUnit(), doubleValue: steps)
+                var date: NSDate = NSDate()
+                date = date.dateByAddingTimeInterval(timeDiff / -1000)
+                
+                let rateSample = HKQuantitySample(type: quantityType, quantity: rateQuantity, startDate: date, endDate: date)
+                healthStore.saveObject(rateSample, withCompletion: {(success:Bool, error: NSError?) -> Void in
+                    pointsCount++
+                    if (pointsCount == totalStepsPoints) {
+                        callback(shouldProgress: true)
+                    }
+                    //print("healthkit save steps object = \(success) possible error = \(error)")
+                })
+            }
         }
     }
     
     /**
     Builds the set NSet of HKObjectTypes that are read from HealthKit
     
-    :returns: NSet of HKObjectTypes
+    - returns: NSet of HKObjectTypes
     */
     func getReadTypes() -> NSSet {
         
         //HeartRate
-        let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)
+        let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
         
         //StepCount
-        let stepCountType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        let stepCountType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
         
         //bodyMass
-        let bodyMassType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)
+        let bodyMassType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
         
         //EnergyBurned
-        let energyBurnedType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)
+        let energyBurnedType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
         
         //Sex
-        let sexType = HKCharacteristicType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex)
+        let sexType = HKCharacteristicType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex)!
         
         return NSSet(objects:heartRateType, stepCountType, bodyMassType, energyBurnedType, sexType)
     }
@@ -194,20 +207,20 @@ class HealthKitManager: NSObject {
     /**
     Builds the set NSet of HKObjectTypes that are written to HealthKit
     
-    :returns: NSet of HKObjectTypes
+    - returns: NSet of HKObjectTypes
     */
     func getWriteTypes() -> NSSet {
         //HeartRate
-        let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)
+        let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
         
         //StepCount
-        let stepCountType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        let stepCountType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
         
         //bodyMass
-        let bodyMassType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)
+        let bodyMassType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
         
         //EnergyBurned
-        let energyBurnedType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)
+        let energyBurnedType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
         
         return NSSet(objects:heartRateType, stepCountType, bodyMassType, energyBurnedType)
     }
@@ -215,13 +228,14 @@ class HealthKitManager: NSObject {
     /**
     Used to call the HealthKit permissions alert
     
-    :param: callback callback function
+    - parameter callback: callback function
     */
     func getPermissionsForHealthKit(callback: (shouldProgress: Bool)->()){
         let readTypes = self.getReadTypes()
         let writeTypes = self.getWriteTypes()
         if HKHealthStore.isHealthDataAvailable(){
-            healthStore.requestAuthorizationToShareTypes(writeTypes as Set<NSObject>, readTypes: readTypes as Set<NSObject>, completion: { (done, err) in
+            
+            healthStore.requestAuthorizationToShareTypes(writeTypes as? Set<HKSampleType>, readTypes: readTypes as? Set<HKObjectType>, completion: { (done, err) -> Void in
                 if (self.shouldPopulateHealthKit) {
                     self.populateHealthKit(callback)
                 } else {
@@ -231,22 +245,18 @@ class HealthKitManager: NSObject {
         }
     }
     
-    func getHeartInRange() {
-        var type: HKQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)
-    }
-    
     /**
     This method is bassed a callback which will be called with a dictionary containing the min, max, and average heart rates as well as an error for accessing HealthKit
     
-    :param: startDate The beginning of the time period to query Health Kit
-    :param: callback  callback function
+    - parameter startDate: The beginning of the time period to query Health Kit
+    - parameter callback:  callback function
     */
     func getHeartRateData(startDate: NSDate, callback: ([String: Double]!, NSError!) -> ()){
         
         let readTypes = self.getReadTypes()
         let writeTypes = self.getWriteTypes()
         if HKHealthStore.isHealthDataAvailable(){
-            healthStore.requestAuthorizationToShareTypes(writeTypes as Set<NSObject>, readTypes: readTypes as Set<NSObject>, completion: { (success, error) in
+            healthStore.requestAuthorizationToShareTypes(writeTypes as? Set<HKSampleType>, readTypes: readTypes as? Set<HKObjectType>, completion: { (success, error) in
                 if(success){
                     let timeSortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: true)
                     
@@ -257,7 +267,7 @@ class HealthKitManager: NSObject {
                     let query = HKSampleQuery(sampleType: self.getSampleTypeForEnum(HealthDataType.HeartRate), predicate: predicate, limit: Int.max, sortDescriptors: [timeSortDescriptor]) { (query, results, error) in
                         
                         if(results == nil){
-                            println("ERROR in getHeartRateData - data was nil")
+                            print("ERROR in getHeartRateData - data was nil")
                             return
                         }
                         
@@ -268,7 +278,7 @@ class HealthKitManager: NSObject {
                         var total = 0.0
                         let quantitySamples = results as! [HKQuantitySample]
                         for quantitySample in quantitySamples {
-                            var value = quantitySample.quantity.doubleValueForUnit(HKUnit.countUnit().unitDividedByUnit(HKUnit.minuteUnit()))
+                            let value = quantitySample.quantity.doubleValueForUnit(HKUnit.countUnit().unitDividedByUnit(HKUnit.minuteUnit()))
                             if max < value {
                                 max = value
                             }
@@ -305,15 +315,15 @@ class HealthKitManager: NSObject {
     /**
     This method is bassed a callback which will be called with a Double value of the total steps as well as an error for accessing HealthKit
     
-    :param: startDate The beginning of the time period to query Health Kit
-    :param: callback  callback function
+    - parameter startDate: The beginning of the time period to query Health Kit
+    - parameter callback:  callback function
     */
-    func getSteps(startDate: NSDate, callback: (Double, NSError!) -> ()){
+    func getSteps(startDate: NSDate, callback: (Double, NSError?) -> ()){
         
         let readTypes = self.getReadTypes()
         let writeTypes = self.getWriteTypes()
         if HKHealthStore.isHealthDataAvailable(){
-            healthStore.requestAuthorizationToShareTypes(writeTypes as Set<NSObject>, readTypes: readTypes as Set<NSObject>, completion: { (success, error) in
+            healthStore.requestAuthorizationToShareTypes(writeTypes as? Set<HKSampleType>, readTypes: readTypes as? Set<HKObjectType>, completion: { (success, error) in
                 if(success){
                     let timeSortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: true)
                     
@@ -344,15 +354,15 @@ class HealthKitManager: NSObject {
     /**
     This method is bassed a callback which will be called with a dictionary containing the start and current weight as well as an error for accessing HealthKit
     
-    :param: startDate The beginning of the time period to query Health Kit
-    :param: callback  callback function
+    - parameter startDate: The beginning of the time period to query Health Kit
+    - parameter callback:  callback function
     */
     func getWeightInPoundsData(startDate: NSDate, callback: ([String: Double]!, NSError!) -> ()){
         
         let readTypes = self.getReadTypes()
         let writeTypes = self.getWriteTypes()
         if HKHealthStore.isHealthDataAvailable(){
-            healthStore.requestAuthorizationToShareTypes(writeTypes as Set<NSObject>, readTypes: readTypes as Set<NSObject>, completion: { (success, error) in
+            healthStore.requestAuthorizationToShareTypes(writeTypes as? Set<HKSampleType>, readTypes: readTypes as? Set<HKObjectType>, completion: { (success, error) in
                 if(success){
                     let timeSortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: true)
                     
@@ -390,15 +400,15 @@ class HealthKitManager: NSObject {
     /**
     This method is bassed a callback which will be called with a Double value of the total calories as well as an error for accessing HealthKit
     
-    :param: startDate The beginning of the time period to query Health Kit
-    :param: callback  callback function
+    - parameter startDate: The beginning of the time period to query Health Kit
+    - parameter callback:  callback function
     */
     func getCaloriesBurned(startDate: NSDate, callback: (Double, NSError!) -> ()){
         
         let readTypes = self.getReadTypes()
         let writeTypes = self.getWriteTypes()
         if HKHealthStore.isHealthDataAvailable(){
-            healthStore.requestAuthorizationToShareTypes(writeTypes as Set<NSObject>, readTypes: readTypes as Set<NSObject>, completion: { (success, error) in
+            healthStore.requestAuthorizationToShareTypes(writeTypes as? Set<HKSampleType>, readTypes: readTypes as? Set<HKObjectType>, completion: { (success, error) in
                 if(success){
                     let timeSortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: true)
                     
@@ -430,13 +440,18 @@ class HealthKitManager: NSObject {
     /**
     This method get the entered Sex of the user from healthkit to determine which vector graphic to display on the pain location page.
     
-    :returns: A Boolean which is true if user is Male or Not Set, false if Female
+    - returns: A Boolean which is true if user is Male or Not Set, false if Female. Defaults to true
     */
     func isMale() -> Bool {
-        var sex: HKBiologicalSexObject = healthStore.biologicalSexWithError(nil)!
-        if sex.biologicalSex == HKBiologicalSex.Female {
-            return false
-        } else {
+        do {
+            let sex: HKBiologicalSexObject = try healthStore.biologicalSex()
+            if sex.biologicalSex == HKBiologicalSex.Female {
+                return false
+            } else {
+                return true
+            }
+        } catch {
+            print("Error reading sex of user: \(error)")
             return true
         }
     }
@@ -444,23 +459,22 @@ class HealthKitManager: NSObject {
     /**
     Internal function to get a specific HKSampleType
     
-    :param: type Class enum
+    - parameter type: Class enum
     
-    :returns: The HKSampleType
+    - returns: The HKSampleType
     */
     private func getSampleTypeForEnum(type: HealthDataType) -> HKSampleType {
         
         switch(type){
         case HealthDataType.HeartRate:
-            return HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)
+            return HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
         case HealthDataType.StepCount:
-            return HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+            return HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!
         case HealthDataType.BodyMass:
-            return HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)
-        case HealthDataType.ActiveEnergyBurned:
-            return HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)
-        default:
-            return HKSampleType()
+            return HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
+        default://HealthDataType.ActiveEnergyBurned:
+            return HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!
+
         }
     }
     
@@ -469,23 +483,23 @@ class HealthKitManager: NSObject {
     /**
     Method for a collection of HealthKit data that uses a Sum result
     
-    :param: start         starting date range
-    :param: end           ending date range
-    :param: interval      date component representing how to separate data
-    :param: type          type of HealthKit data to gather
-    :param: callback      callback to report results to
+    - parameter start:         starting date range
+    - parameter end:           ending date range
+    - parameter interval:      date component representing how to separate data
+    - parameter type:          type of HealthKit data to gather
+    - parameter callback:      callback to report results to
     */
     func getSumDataInRange(start: NSDate, end: NSDate, interval: NSDateComponents, type: HKQuantityType, callback: (String) -> ()) {
         
         var jsonObject: [AnyObject] = [AnyObject]()
         var xValue: Int = 1
         
-        var predicate = HKQuery.predicateForSamplesWithStartDate(start, endDate: end, options: HKQueryOptions.StrictEndDate)
-        var query = HKStatisticsCollectionQuery(quantityType: type, quantitySamplePredicate: predicate, options: HKStatisticsOptions.CumulativeSum, anchorDate: start, intervalComponents: interval)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(start, endDate: end, options: HKQueryOptions.StrictEndDate)
+        let query = HKStatisticsCollectionQuery(quantityType: type, quantitySamplePredicate: predicate, options: HKStatisticsOptions.CumulativeSum, anchorDate: start, intervalComponents: interval)
         
-        query.initialResultsHandler = { (statsQuery: HKStatisticsCollectionQuery!, collection: HKStatisticsCollection!, error: NSError!) in
-            if collection != nil {
-                collection.enumerateStatisticsFromDate(start, toDate: end, withBlock: { (result, stop) in
+        query.initialResultsHandler = { (statsQuery: HKStatisticsCollectionQuery, collection: HKStatisticsCollection?, error: NSError?) in
+            if let statCollection = collection {
+                statCollection.enumerateStatisticsFromDate(start, toDate: end, withBlock: { (result, stop) in
                     
                     if let sum: HKQuantity = result.sumQuantity() {
 
@@ -515,22 +529,22 @@ class HealthKitManager: NSObject {
     /**
     Method for a collection of HealthKit data that uses a Average result
     
-    :param: start         starting date range
-    :param: end           ending date range
-    :param: interval      date component representing how to separate data
-    :param: type          type of HealthKit data to gather
-    :param: callback      callback to report results to
+    - parameter start:         starting date range
+    - parameter end:           ending date range
+    - parameter interval:      date component representing how to separate data
+    - parameter type:          type of HealthKit data to gather
+    - parameter callback:      callback to report results to
     */
     func getAverageDataInRange(start: NSDate, end: NSDate, interval: NSDateComponents, type: HKQuantityType, callback: (String) -> ()) {
         var jsonObject: [AnyObject] = [AnyObject]()
         var xValue: Int = 1
         
-        var predicate = HKQuery.predicateForSamplesWithStartDate(start, endDate: end, options: HKQueryOptions.StrictEndDate)
-        var query = HKStatisticsCollectionQuery(quantityType: type, quantitySamplePredicate: predicate, options: HKStatisticsOptions.DiscreteAverage, anchorDate: start, intervalComponents: interval)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(start, endDate: end, options: HKQueryOptions.StrictEndDate)
+        let query = HKStatisticsCollectionQuery(quantityType: type, quantitySamplePredicate: predicate, options: HKStatisticsOptions.DiscreteAverage, anchorDate: start, intervalComponents: interval)
         
-        query.initialResultsHandler = { (statsQuery: HKStatisticsCollectionQuery!, collection: HKStatisticsCollection!, error: NSError!) in
-            if collection != nil {
-                collection.enumerateStatisticsFromDate(start, toDate: end, withBlock: { (result, stop) in
+        query.initialResultsHandler = { (statsQuery: HKStatisticsCollectionQuery, collection: HKStatisticsCollection?, error: NSError?) in
+            if let statCollection = collection {
+                statCollection.enumerateStatisticsFromDate(start, toDate: end, withBlock: { (result, stop) in
                     if let avr: HKQuantity = result.averageQuantity() {
                         var avrUnit = ""
                         if type == self.getSampleTypeForEnum(HealthDataType.BodyMass) as! HKQuantityType {
@@ -558,7 +572,7 @@ class HealthKitManager: NSObject {
     /**
     Method for deleting all the HealthKit data created from the app
     
-    :param: callback      callback to do something on completion
+    - parameter callback:      callback to do something on completion
     */
     func deleteHealthKitData(callback: ()->()){
         self.deleteHeartRates({
@@ -575,21 +589,21 @@ class HealthKitManager: NSObject {
     /**
     Method for deleting the Heart Rate data created from the app
     
-    :param: callback      callback to do something on completion
+    - parameter callback:      callback to do something on completion
     */
     func deleteHeartRates(callback: ()->()){
         
         let readTypes = self.getReadTypes()
         let writeTypes = self.getWriteTypes()
         if HKHealthStore.isHealthDataAvailable(){
-            healthStore.requestAuthorizationToShareTypes(writeTypes as Set<NSObject>, readTypes: readTypes as Set<NSObject>, completion: { (success, error) in
+            healthStore.requestAuthorizationToShareTypes(writeTypes as? Set<HKSampleType>, readTypes: readTypes as? Set<HKObjectType>, completion: { (success, error) in
                 if(success){
                     let predicate = HKQuery.predicateForObjectsFromSource(HKSource.defaultSource())
                     let query = HKSampleQuery(sampleType: self.getSampleTypeForEnum(HealthDataType.HeartRate), predicate: predicate, limit: Int.max, sortDescriptors: nil) { (query, results, error) in
                         
                         let quantitySamples = results as! [HKQuantitySample]
                         if quantitySamples.count > 0{
-                            for (index, quantitySample) in enumerate(quantitySamples) {
+                            for (index, quantitySample) in quantitySamples.enumerate() {
                                 self.healthStore.deleteObject(quantitySample, withCompletion: { (success, error) in
                                     if index == quantitySamples.count-1{
                                         callback()
@@ -610,21 +624,21 @@ class HealthKitManager: NSObject {
     /**
     Method for deleting the Steps data created from the app
     
-    :param: callback      callback to do something on completion
+    - parameter callback:      callback to do something on completion
     */
     func deleteSteps(callback: ()->()){
         
         let readTypes = self.getReadTypes()
         let writeTypes = self.getWriteTypes()
         if HKHealthStore.isHealthDataAvailable(){
-            healthStore.requestAuthorizationToShareTypes(writeTypes as Set<NSObject>, readTypes: readTypes as Set<NSObject>, completion: { (success, error) in
+            healthStore.requestAuthorizationToShareTypes(writeTypes as? Set<HKSampleType>, readTypes: readTypes as? Set<HKObjectType>, completion: { (success, error) in
                 if(success){
                     let predicate = HKQuery.predicateForObjectsFromSource(HKSource.defaultSource())
                     let query = HKSampleQuery(sampleType: self.getSampleTypeForEnum(HealthDataType.StepCount), predicate: predicate, limit: Int.max, sortDescriptors: nil) { (query, results, error) in
                         
                         let quantitySamples = results as! [HKQuantitySample]
                         if quantitySamples.count > 0{
-                            for (index, quantitySample) in enumerate(quantitySamples) {
+                            for (index, quantitySample) in quantitySamples.enumerate() {
                                 self.healthStore.deleteObject(quantitySample, withCompletion: { (success, error) in
                                     if index == quantitySamples.count-1{
                                         callback()
@@ -646,21 +660,21 @@ class HealthKitManager: NSObject {
     /**
     Method for deleting the Weight data created from the app
     
-    :param: callback      callback to do something on completion
+    - parameter callback:      callback to do something on completion
     */
     func deleteWeightData(callback: ()->()){
         
         let readTypes = self.getReadTypes()
         let writeTypes = self.getWriteTypes()
         if HKHealthStore.isHealthDataAvailable(){
-            healthStore.requestAuthorizationToShareTypes(writeTypes as Set<NSObject>, readTypes: readTypes as Set<NSObject>, completion: { (success, error) in
+            healthStore.requestAuthorizationToShareTypes(writeTypes as? Set<HKSampleType>, readTypes: readTypes as? Set<HKObjectType>, completion: { (success, error) in
                 if(success){
                     let predicate = HKQuery.predicateForObjectsFromSource(HKSource.defaultSource())
                     let query = HKSampleQuery(sampleType: self.getSampleTypeForEnum(HealthDataType.BodyMass), predicate: predicate, limit: Int.max, sortDescriptors: nil) { (query, results, error) in
                         
                         let quantitySamples = results as! [HKQuantitySample]
                         if quantitySamples.count > 0{
-                            for (index, quantitySample) in enumerate(quantitySamples) {
+                            for (index, quantitySample) in quantitySamples.enumerate() {
                                 self.healthStore.deleteObject(quantitySample, withCompletion: { (success, error) in
                                     if index == quantitySamples.count-1{
                                         callback()
@@ -682,14 +696,14 @@ class HealthKitManager: NSObject {
     /**
     Method for deleting the Calories Burned data created from the app
     
-    :param: callback      callback to do something on completion
+    - parameter callback:      callback to do something on completion
     */
     func deleteCaloriesBurned(callback: ()->()){
         
         let readTypes = self.getReadTypes()
         let writeTypes = self.getWriteTypes()
         if HKHealthStore.isHealthDataAvailable(){
-            healthStore.requestAuthorizationToShareTypes(writeTypes as Set<NSObject>, readTypes: readTypes as Set<NSObject>, completion: { (success, error) in
+            healthStore.requestAuthorizationToShareTypes(writeTypes as? Set<HKSampleType>, readTypes: readTypes as? Set<HKObjectType>, completion: { (success, error) in
                 if(success){
                     let predicate = HKQuery.predicateForObjectsFromSource(HKSource.defaultSource())
                     
@@ -697,7 +711,7 @@ class HealthKitManager: NSObject {
                         
                         let quantitySamples = results as! [HKQuantitySample]
                         if quantitySamples.count > 0{
-                            for (index, quantitySample) in enumerate(quantitySamples) {
+                            for (index, quantitySample) in quantitySamples.enumerate() {
                                 self.healthStore.deleteObject(quantitySample, withCompletion: { (success, error) in
                                     if index == quantitySamples.count-1{
                                         callback()

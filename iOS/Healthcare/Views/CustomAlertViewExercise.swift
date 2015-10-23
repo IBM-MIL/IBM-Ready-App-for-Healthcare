@@ -32,14 +32,14 @@ class CustomAlertViewExercise: UIView {
     /**
     Function to initialize the alert view.
     
-    :param: alertText    The text that will be shown in the main label.
-    :param: showSublabel Indicates whether or not to show the sublabel which contains the countdown timer to the next exercise.
-    :param: buttonText   The text to be displayed in the button.
+    - parameter alertText:    The text that will be shown in the main label.
+    - parameter showSublabel: Indicates whether or not to show the sublabel which contains the countdown timer to the next exercise.
+    - parameter buttonText:   The text to be displayed in the button.
     
-    :returns: An instance of the alert view.
+    - returns: An instance of the alert view.
     */
     class func initWithText(alertText: String, showSublabel: Bool, buttonText: String) -> CustomAlertViewExercise {
-        var view = UINib(nibName: "CustomAlertViewExercise", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! CustomAlertViewExercise
+        let view = UINib(nibName: "CustomAlertViewExercise", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! CustomAlertViewExercise
         view.labelMain.text = alertText
         view.nextButton.setTitle(buttonText, forState: UIControlState.Normal)
         
@@ -66,7 +66,7 @@ class CustomAlertViewExercise: UIView {
     When called this starts a timer to decrement the text in the sublabel.
     */
     func startTimer() {
-        var newText = NSLocalizedString("Your next exercise will start in 0:10", comment: "")
+        let newText = NSLocalizedString("Your next exercise will start in 0:10", comment: "")
         self.sublabel.text = newText
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTimerLabel:"), userInfo: nil, repeats: true)
         timerValue = TIMER_START
@@ -81,7 +81,7 @@ class CustomAlertViewExercise: UIView {
             timer.invalidate()
             self.delegate?.handleNextButtonPressed()
         } else {
-            var newText = NSLocalizedString("Your next exercise will start in 0:0", comment: "")
+            let newText = NSLocalizedString("Your next exercise will start in 0:0", comment: "")
             self.sublabel.text = newText + "\(timerValue)"
         }
     }

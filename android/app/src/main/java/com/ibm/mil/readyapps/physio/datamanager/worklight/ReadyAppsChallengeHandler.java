@@ -61,7 +61,7 @@ public class ReadyAppsChallengeHandler extends ChallengeHandler {
     public void submitLogin(String userName, String password, String locale) {
         Object[] parameters = new Object[]{userName, password, locale};
         WLProcedureInvocationData invocationData =
-                new WLProcedureInvocationData("ReadyAppsAdapter", "submitAuthentication");
+                new WLProcedureInvocationData("HealthcareAdapter", "submitAuthentication");
         invocationData.setParameters(parameters);
         WLRequestOptions options = new WLRequestOptions();
         options.setTimeout(30000);

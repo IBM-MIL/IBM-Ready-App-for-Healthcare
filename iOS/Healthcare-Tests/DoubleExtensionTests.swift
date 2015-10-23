@@ -24,8 +24,8 @@ class DoubleExtensionTests: XCTestCase {
     Method that test doubles are formatted as desired through the extension.
     */
     func testDoubleFormat() {
-        var firstDouble: Double = 3.1426
-        var secondDouble: Double = 123.98
+        let firstDouble: Double = 3.1426
+        let secondDouble: Double = 123.98
         var desiredFormat = ".0"
         
         var formattedOne = firstDouble.format(desiredFormat)

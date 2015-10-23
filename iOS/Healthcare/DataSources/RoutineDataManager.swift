@@ -35,12 +35,12 @@ class RoutineDataManager: NSObject, WLDataDelegate {
     /**
     Delgate method for WorkLight. Called when connection and return is successful
     
-    :param: response Response from WorkLight
+    - parameter response: Response from WorkLight
     */
     func onSuccess(response: WLResponse!) {
         let responseJson = response.getResponseJson() as NSDictionary
-        println("---routinesDataManager onSuccess")
-        println(response.responseText)
+        print("---routinesDataManager onSuccess")
+        print(response.responseText)
         // on success, call utils method to format data
         routines = Utils.getRoutines(responseJson)
         routineCallback(RoutineResultType.Success)
@@ -49,11 +49,11 @@ class RoutineDataManager: NSObject, WLDataDelegate {
     /**
     Delgate method for WorkLight. Called when connection or return is unsuccessful
     
-    :param: response Response from WorkLight
+    - parameter response: Response from WorkLight
     */
     func onFailure(response: WLFailResponse!) {
-        println("---routinesDataManager onFailure")
-        println(response.responseText)
+        print("---routinesDataManager onFailure")
+        print(response.responseText)
         routineCallback(RoutineResultType.Failure)
     }
     
@@ -74,8 +74,8 @@ class RoutineDataManager: NSObject, WLDataDelegate {
     /**
     Method called to get routines from the server
     
-    :param: userID the user ID to get routine data for
-    :param: callback  callback for when we have a result
+    - parameter userID: the user ID to get routine data for
+    - parameter callback:  callback for when we have a result
     */
     func getRoutines(userID: String!, callback: (RoutineResultType)->()) {
         routineCallback = callback
@@ -85,6 +85,5 @@ class RoutineDataManager: NSObject, WLDataDelegate {
         let caller = WLProcedureCaller(adapterName : adapterName, procedureName: procedureName, dataDelegate: self)
         let params : [String] = [userID]
         caller.invokeWithResponse(self, params: params)
-        var userExists = false
     }
 }

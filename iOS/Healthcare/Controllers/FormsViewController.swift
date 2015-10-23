@@ -10,7 +10,7 @@ This view controller presents a Questionnaire for the user to answer when they a
 be easily updated by changing the 'questions' variable.  The table view has been setup to automatically expand based on the size of the question
 so if the question is very long it will all be displayed.
 */
-class FormsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FormsViewController: HealthcareUIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var formsDataManager = FormsDataManager.formsDataManager
     var thePatient =  DataManager.dataManager.currentPatient
@@ -74,7 +74,7 @@ class FormsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     /**
     Callback method that gets called when data has been returned from server
     
-    :param: result the result stating if the database call was successful
+    - parameter result: the result stating if the database call was successful
     */
     func formsDataGathered(result: FormsResultType) {
         SVProgressHUD.dismiss()
@@ -88,7 +88,7 @@ class FormsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     Method to open the side panel
     */
     func openSideMenu() {
-        var container = self.navigationController?.parentViewController as! ContainerViewController
+        let container = self.navigationController?.parentViewController as! ContainerViewController
         container.toggleLeftPanel()
         self.tableView.userInteractionEnabled = false
         tapGestureRecognizer.enabled = true
@@ -97,10 +97,10 @@ class FormsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     /**
     Method to handle taps when the side menu is open
     
-    :param: recognizer tap gesture used to call method
+    - parameter recognizer: tap gesture used to call method
     */
     func handleTap(recognizer: UITapGestureRecognizer) {
-        var container = self.navigationController?.parentViewController as! ContainerViewController
+        let container = self.navigationController?.parentViewController as! ContainerViewController
         container.toggleLeftPanel()
         self.tableView.userInteractionEnabled = true
         tapGestureRecognizer.enabled = false
@@ -113,10 +113,10 @@ class FormsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("questionCell") as! FormQuestionTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("questionCell") as! FormQuestionTableViewCell
         
         if var forms = self.currentForms {
-            var form = forms[indexPath.row]
+            let form = forms[indexPath.row]
             cell.questionLabel.text = form.textDescription
         } else {
             cell.questionLabel.text = questions[indexPath.row]
@@ -126,7 +126,7 @@ class FormsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! FormQuestionTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! FormQuestionTableViewCell
         cell.selectedCell()
     }
 
@@ -135,7 +135,7 @@ class FormsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goToPainFromNext" {
-            var vc: PainLocationViewController = segue.destinationViewController as! PainLocationViewController
+            let vc: PainLocationViewController = segue.destinationViewController as! PainLocationViewController
             vc.useBlueColor = true
         }
     }

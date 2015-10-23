@@ -10,9 +10,9 @@ extension Double {
     /**
     Double extension method that Formats a Double to a string as a specified format
     
-    :param: f Format of the string
+    - parameter f: Format of the string
     
-    :returns: String representation of the Double
+    - returns: String representation of the Double
     */
     func format(f: String) -> String {
         return NSString(format: "%\(f)f", self) as String

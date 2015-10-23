@@ -5,7 +5,7 @@ Licensed Materials - Property of IBM
 
 /*
 A suite of basic tests to demonstrate how to unit test on the iOS platform. The tests depend on
-the BasicFunctions class, which must enable Healthcare-Tests in its target membership in order
+the BasicFunctions class, which must enable ReadyAppPT-Tests in its target membership in order
 to be accessible from the testing framework.
 
 For a good article on iOS unit testing, read http://nshipster.com/xctestcase/
@@ -47,7 +47,7 @@ class SampleTestingProjectTests: XCTestCase {
     }
     
     func testBinaryTreeSum() {
-        var tree = BinaryTree(val: 5, left: BinaryTree(val: 3, left: nil, right: nil), right: BinaryTree(val: 4, left: nil, right: nil))
+        let tree = BinaryTree(val: 5, left: BinaryTree(val: 3, left: nil, right: nil), right: BinaryTree(val: 4, left: nil, right: nil))
         XCTAssertEqual(BinaryTree.computeSum(tree), 12, "sum of binary tree with nodes 3, 4, 5 should be 12")
     }
     

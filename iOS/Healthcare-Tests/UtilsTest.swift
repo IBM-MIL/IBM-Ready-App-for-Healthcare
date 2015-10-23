@@ -5,6 +5,7 @@ Licensed Materials - Property of IBM
 
 import UIKit
 import XCTest
+@testable import Healthcare
 
 /**
 *  Unit tests for various methods in the Utils class.
@@ -24,10 +25,10 @@ class UtilsTest: XCTestCase {
     Method to test every single digit number gets a 0 prefix on it.
     */
     func testSingleDigitFormat() {
-        var noPrefix = Utils.formatSingleDigits(5)
+        let noPrefix = Utils.formatSingleDigits(5)
         XCTAssertEqual(noPrefix, "05", "zero was not added in front of the digit")
         
-        var withPrefix = Utils.formatSingleDigits(05)
+        let withPrefix = Utils.formatSingleDigits(05)
         XCTAssertEqual(withPrefix, "05", "\(withPrefix) does not match 05")
     }
     
@@ -35,17 +36,17 @@ class UtilsTest: XCTestCase {
     Method to test we can extract the correct data from an NSDate.
     */
     func testDateExtraction() {
-        var myDate = "Mon, 06 Sep 2009 16:45:00 -0900"
-        var dateFormatter: NSDateFormatter = NSDateFormatter()
-        var locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let myDate = "Mon, 06 Sep 2009 16:45:00 -0900"
+        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        let locale = NSLocale(localeIdentifier: "en_US_POSIX")
         dateFormatter.locale = locale
         dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
-        var sepDate = dateFormatter.dateFromString(myDate)
+        let sepDate = dateFormatter.dateFromString(myDate)
         
-        var month = Utils.extractMonthNameFromDate(sepDate!)
+        let month = Utils.extractMonthNameFromDate(sepDate!)
         XCTAssertEqual(month, "September", "Month returned is not September")
         
-        var day = Utils.extractDayFromDate(sepDate!)
+        let day = Utils.extractDayFromDate(sepDate!)
         XCTAssertEqual(day, 6, "Day returned is not the 6th")
     }
 
@@ -73,16 +74,16 @@ class UtilsTest: XCTestCase {
     }
     
     func testIntervalDateForUnit() {
-        var dateOne = Utils.intervalDataForUnit("day")
+        let dateOne = Utils.intervalDataForUnit("day")
         XCTAssertEqual(dateOne.hour, 1, "Hour interval should be equal to 1")
         
-        var dateTwo = Utils.intervalDataForUnit("week")
+        let dateTwo = Utils.intervalDataForUnit("week")
         XCTAssertEqual(dateTwo.day, 1, "Day interval should be equal to 1")
     
-        var dateThree = Utils.intervalDataForUnit("month")
+        let dateThree = Utils.intervalDataForUnit("month")
         XCTAssertEqual(dateThree.day, 7, "Day interval should be equal to 7")
         
-        var dateFour = Utils.intervalDataForUnit("year")
+        let dateFour = Utils.intervalDataForUnit("year")
         XCTAssertEqual(dateFour.month, 1, "Month interval should be equal to 1")
     }
     
