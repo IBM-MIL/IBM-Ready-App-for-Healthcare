@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/spinnerwheel/Spinnerwheel.iml" filepath="$PROJECT_DIR$/spinnerwheel/Spinnerwheel.iml" />
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spinnerwheel/spinnerwheel.iml" filepath="$PROJECT_DIR$/spinnerwheel/spinnerwheel.iml" />
     </modules>
   </component>
 </project>
