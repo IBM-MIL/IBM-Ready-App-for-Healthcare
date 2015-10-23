@@ -9,7 +9,7 @@ import CoreData
 /**
 This is the last viewController in the pain management flow, used to give a numerical rating and description of pain.
 */
-class PainRatingViewController: UIViewController,UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, CustomAlertViewDelegate, CustomAlertViewButtonsDelegate {
+class PainRatingViewController: HealthcareUIViewController,UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, CustomAlertViewDelegate, CustomAlertViewButtonsDelegate {
     
     var NUM_CONTROLLERS_IN_PAIN_FLOW = 2    //used to for navigation after pain report is submitted
     

@@ -9,7 +9,7 @@ import UIKit
 This view controller handles all the login logic and user interaction.
 This includes authentication with the server and moving the view up when the keyboard appears.
 */
-class LoginViewController: UIViewController, UITextFieldDelegate, CustomAlertViewExerciseDelegate {
+class LoginViewController: HealthcareUIViewController, UITextFieldDelegate, CustomAlertViewExerciseDelegate {
 
 
     @IBOutlet weak var patientIDTextField: UITextField!

@@ -5,6 +5,7 @@ Licensed Materials - Property of IBM
 
 import UIKit
 import XCTest
+@testable import Healthcare
 
 /**
 *  Unit tests for various methods in the Utils class.

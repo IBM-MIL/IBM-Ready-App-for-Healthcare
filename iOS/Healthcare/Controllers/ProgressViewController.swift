@@ -52,6 +52,18 @@ class ProgressViewController: MILWebViewController, MILWebViewDelegate {
         tapGestureRecognizer.enabled = false
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        #if !Debug
+            let tracker = GAI.sharedInstance().defaultTracker
+            tracker.set(kGAIScreenName, value: NSStringFromClass(self.dynamicType))
+            
+            let builder = GAIDictionaryBuilder.createScreenView()
+            tracker.send(builder.build() as [NSObject : AnyObject])
+        #endif
+        
+        super.viewWillAppear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

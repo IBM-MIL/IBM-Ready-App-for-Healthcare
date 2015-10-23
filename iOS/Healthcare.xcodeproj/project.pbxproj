@@ -37,30 +37,24 @@
 		2E08668E1A16774D00C8A578 /* RatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E08668D1A16774D00C8A578 /* RatingCollectionViewCell.swift */; };
 		2E08668F1A16774D00C8A578 /* RatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E08668D1A16774D00C8A578 /* RatingCollectionViewCell.swift */; };
 		2E19CEBB1A2D0BEF00D4CAFA /* RoutineOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E19CEBA1A2D0BEF00D4CAFA /* RoutineOptionsViewController.swift */; };
-		2E19CEBC1A2D0BEF00D4CAFA /* RoutineOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E19CEBA1A2D0BEF00D4CAFA /* RoutineOptionsViewController.swift */; };
 		2E19CEBE1A2D20A500D4CAFA /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E19CEBD1A2D20A500D4CAFA /* VideoTableViewCell.swift */; };
-		2E19CEBF1A2D20A500D4CAFA /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E19CEBD1A2D20A500D4CAFA /* VideoTableViewCell.swift */; };
 		2E19CEC01A2D31AF00D4CAFA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D278F1A2630C8003496DE /* UIColorExtension.swift */; };
 		2E1B844D1A12A10000B7D8DD /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1B844C1A12A10000B7D8DD /* ProgressViewController.swift */; };
 		2E25EC0E19F7064000664E9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25EC0B19F7064000664E9D /* AppDelegate.swift */; };
 		2E25EC1C19F7082A00664E9D /* Healthcare.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E25EC1B19F7082A00664E9D /* Healthcare.xcassets */; };
 		2E270A651A25A708009B206D /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E270A641A25A708009B206D /* ListTableViewCell.swift */; };
 		2E270A661A25A708009B206D /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E270A641A25A708009B206D /* ListTableViewCell.swift */; };
-		2E27232D1A1E77A20065A5DA /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1B844C1A12A10000B7D8DD /* ProgressViewController.swift */; };
 		2E27232F1A1E7EC80065A5DA /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27232E1A1E7EC80065A5DA /* NSDateExtension.swift */; };
 		2E2723301A1E7EC80065A5DA /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27232E1A1E7EC80065A5DA /* NSDateExtension.swift */; };
 		2E2773EB1A24466500C78871 /* PainDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2773EA1A24466500C78871 /* PainDataTests.swift */; };
 		2E341D851A2CC31E00038471 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E341D841A2CC31E00038471 /* RoutineViewController.swift */; };
-		2E341D861A2CC31E00038471 /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E341D841A2CC31E00038471 /* RoutineViewController.swift */; };
 		2E37D98A1A2E3157002BD88B /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E37D9891A2E3157002BD88B /* VideoPlayerViewController.swift */; };
-		2E37D98B1A2E3157002BD88B /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E37D9891A2E3157002BD88B /* VideoPlayerViewController.swift */; };
 		2E37D98F1A2E5EE9002BD88B /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37D98E1A2E5EE9002BD88B /* YTPlayerView.m */; };
 		2E37D9901A2E5EE9002BD88B /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37D98E1A2E5EE9002BD88B /* YTPlayerView.m */; };
 		2E37D9961A2E6496002BD88B /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 2E37D9951A2E6496002BD88B /* Assets */; };
 		2E37D9971A2E6496002BD88B /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 2E37D9951A2E6496002BD88B /* Assets */; };
 		2E38657C1A13F2B800026D9D /* PainRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E38657B1A13F2B800026D9D /* PainRatingViewController.swift */; };
 		2E42BF7B1A043ED1006EF0EF /* SidePanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE304501A0429DD0062787B /* SidePanelTests.swift */; };
-		2E42BF7F1A043F59006EF0EF /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA898FD19FFE0B60089ACCF /* SidePanelViewController.swift */; };
 		2E44C74F19FEC1A4006989B3 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		2E44C75019FEC1BE006989B3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		2E44C75119FEC1CE006989B3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
@@ -72,12 +66,7 @@
 		2E7A45171A02ECF100B76E63 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7A45151A02ECF100B76E63 /* SVProgressHUD.m */; };
 		2E7A45191A02ED3800B76E63 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7A45181A02ED3800B76E63 /* QuartzCore.framework */; };
 		2E7DE71A1A259746001D5993 /* ExerciseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DE7191A259746001D5993 /* ExerciseListViewController.swift */; };
-		2E7DE71B1A259746001D5993 /* ExerciseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DE7191A259746001D5993 /* ExerciseListViewController.swift */; };
-		2E7DE71C1A259B9B001D5993 /* PainLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8642EA1A1E4ABB00E7E9B3 /* PainLocationViewController.swift */; };
 		2E86D0001A0D781100A37345 /* UtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E86CFFF1A0D781100A37345 /* UtilsTest.swift */; };
-		2E8E293A1A22B5AD009B6B08 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA898FB19FFE0010089ACCF /* ContainerViewController.swift */; };
-		2E8E293B1A22B5B7009B6B08 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44C75A19FECDB1006989B3 /* DashboardViewController.swift */; };
-		2E8E293C1A22B5C1009B6B08 /* PainRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E38657B1A13F2B800026D9D /* PainRatingViewController.swift */; };
 		2E8E293D1A22B5C9009B6B08 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587CBE319FEEF6400A7A2C8 /* DataManager.swift */; };
 		2E8E293E1A22B5D4009B6B08 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E67A0161A029E6900AEBE53 /* Patient.swift */; };
 		2E8E29411A22B602009B6B08 /* WLProcedureCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4970B1A1E54F100B1BC92 /* WLProcedureCaller.swift */; };
@@ -85,32 +74,25 @@
 		2E93CDDA1A15543100B59F3A /* UICollectionViewFlowLayoutCenterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E93CDD91A15543100B59F3A /* UICollectionViewFlowLayoutCenterItem.swift */; };
 		2E9713521A0D81230034536C /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573383A1A002B8D00A25350 /* DoubleExtension.swift */; };
 		2E9713541A0D81AB0034536C /* DoubleExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9713531A0D81AB0034536C /* DoubleExtensionTests.swift */; };
-		2EA20F6D1A1FDFCD0026285D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EBBEAC1A0ACEE700BD00A4 /* HealthKitManager.swift */; };
-		2EA20F6E1A1FE00D0026285D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25EC0B19F7064000664E9D /* AppDelegate.swift */; };
 		2EA4E77B19FAB3ED005B681D /* NSURLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA4E77A19FAB3ED005B681D /* NSURLExtension.swift */; };
 		2EA898FC19FFE0010089ACCF /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA898FB19FFE0010089ACCF /* ContainerViewController.swift */; };
 		2EA898FE19FFE0B60089ACCF /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA898FD19FFE0B60089ACCF /* SidePanelViewController.swift */; };
 		2EB43D331A1BFA47008CECA2 /* Healthcare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EB43D311A1BFA47008CECA2 /* Healthcare.xcdatamodeld */; };
 		2EB43D341A1BFA47008CECA2 /* Healthcare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EB43D311A1BFA47008CECA2 /* Healthcare.xcdatamodeld */; };
 		2EB43D361A1BFA6F008CECA2 /* PainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB43D351A1BFA6F008CECA2 /* PainData.swift */; };
-		2EB43D371A1BFA6F008CECA2 /* PainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB43D351A1BFA6F008CECA2 /* PainData.swift */; };
 		2EB593F91A07D85E00A769C1 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB593F81A07D85E00A769C1 /* LoginTests.swift */; };
 		2EE990EC1A3A4CDC007A3E2E /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8505FC1A38B05D00D3DB11 /* CustomAlertView.xib */; };
 		2EE990ED1A3A4CDD007A3E2E /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8505FC1A38B05D00D3DB11 /* CustomAlertView.xib */; };
 		2EE990EE1A3A4CE0007A3E2E /* CustomAlertViewButtons.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8506031A38EA5700D3DB11 /* CustomAlertViewButtons.xib */; };
 		2EFC559C1A2EE6AF0000AAB2 /* EndRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC559B1A2EE6AF0000AAB2 /* EndRoutineViewController.swift */; };
-		2EFC559D1A2EE6AF0000AAB2 /* EndRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC559B1A2EE6AF0000AAB2 /* EndRoutineViewController.swift */; };
 		2EFD50EC1A07EEBF0052508B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05040AF21A016F65003B98AF /* libsqlite3.dylib */; };
 		2EFD50EE1A07EED20052508B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7A45181A02ED3800B76E63 /* QuartzCore.framework */; };
 		2EFD51421A0831220052508B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFD51411A0831220052508B /* Utils.swift */; };
-		2EFD51431A0831220052508B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFD51411A0831220052508B /* Utils.swift */; };
 		305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		7231C39B1A1B07420095DBAA /* MILWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7231C39A1A1B07420095DBAA /* MILWebViewController.swift */; };
 		7E8523601A48C072007BEC3B /* ReadyAppsLogoutListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED028B51A4799F600467DF1 /* ReadyAppsLogoutListener.swift */; };
-		7E8523611A48C115007BEC3B /* ReadyAppsLogoutListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED028B51A4799F600467DF1 /* ReadyAppsLogoutListener.swift */; };
 		7E9152FA1A43554C008D6FEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9152F91A43554C008D6FEC /* LoginViewController.swift */; };
-		7E9152FB1A43554C008D6FEC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9152F91A43554C008D6FEC /* LoginViewController.swift */; };
 		7EE09F4E1A46413800EDF3CA /* sqlcipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE09EF81A46413800EDF3CA /* sqlcipher.framework */; };
 		7EE09F4F1A46413800EDF3CA /* libWorklightStaticLibProjectNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE09F4C1A46413800EDF3CA /* libWorklightStaticLibProjectNative.a */; };
 		7EE09F501A46413800EDF3CA /* Localizations.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EE09F4D1A46413800EDF3CA /* Localizations.bundle */; };
@@ -166,6 +148,11 @@
 		80A0E2431A964C5100EF486F /* scrubber-popover.js in Resources */ = {isa = PBXBuildFile; fileRef = 80A0E20F1A964C5100EF486F /* scrubber-popover.js */; };
 		80A0E2441A964C5100EF486F /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 80A0E2101A964C5100EF486F /* style.css */; };
 		80A0E2451A964C5100EF486F /* time-graph.js in Resources */ = {isa = PBXBuildFile; fileRef = 80A0E2111A964C5100EF486F /* time-graph.js */; };
+		A20372161BDAD96E000D5F74 /* libGGLAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20372051BDAD96E000D5F74 /* libGGLAnalytics.a */; settings = {ASSET_TAGS = (); }; };
+		A20372171BDAD96E000D5F74 /* libGGLCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20372061BDAD96E000D5F74 /* libGGLCore.a */; settings = {ASSET_TAGS = (); }; };
+		A20372181BDAD96E000D5F74 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20372151BDAD96E000D5F74 /* libGoogleAnalytics.a */; settings = {ASSET_TAGS = (); }; };
+		A203721A1BDADB21000D5F74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20372191BDADB21000D5F74 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = (); }; };
+		A203721D1BDAE1F4000D5F74 /* HealthcareUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A203721C1BDAE1F4000D5F74 /* HealthcareUIViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A21316281A30C43A00B324A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A213162A1A30C43A00B324A8 /* Localizable.strings */; };
 		A25FD56A1A0AD607007C9B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25FD56D1A0AD607007C9B16 /* Main.storyboard */; };
 		A25FD56B1A0AD607007C9B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25FD56D1A0AD607007C9B16 /* Main.storyboard */; };
@@ -178,12 +165,7 @@
 		A2BABDB21A4260510049A1C2 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDA31A425C5F0049A1C2 /* Routine.swift */; };
 		A2BABDB31A4260570049A1C2 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDA11A425C5F0049A1C2 /* Exercise.swift */; };
 		A2BABDB71A4261230049A1C2 /* ReadyAppsChallengeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDB51A4261230049A1C2 /* ReadyAppsChallengeHandler.swift */; };
-		A2BABDB81A4261230049A1C2 /* ReadyAppsChallengeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDB51A4261230049A1C2 /* ReadyAppsChallengeHandler.swift */; };
 		A2BABDB91A4261230049A1C2 /* ReadyAppsConnectListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDB61A4261230049A1C2 /* ReadyAppsConnectListener.swift */; };
-		A2BABDBA1A4261230049A1C2 /* ReadyAppsConnectListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDB61A4261230049A1C2 /* ReadyAppsConnectListener.swift */; };
-		A2BABDBB1A4264B40049A1C2 /* RoutineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDAE1A425F240049A1C2 /* RoutineDataManager.swift */; };
-		A2BABDBC1A4264B90049A1C2 /* FormsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDAD1A425F240049A1C2 /* FormsDataManager.swift */; };
-		A2BABDBD1A4264BC0049A1C2 /* ExerciseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDAC1A425F240049A1C2 /* ExerciseDataManager.swift */; };
 		A2BABDBF1A4269A40049A1C2 /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDA21A425C5F0049A1C2 /* Forms.swift */; };
 		CD09D0421A23EA47008949FA /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0351A23EA47008949FA /* LICENSE.txt */; };
 		CD09D0431A23EA47008949FA /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0361A23EA47008949FA /* Roboto-Black.ttf */; };
@@ -201,7 +183,6 @@
 		CD38B9F91A23E24800BFFA36 /* femaleback.svg in Resources */ = {isa = PBXBuildFile; fileRef = CD38B9F61A23E24800BFFA36 /* femaleback.svg */; };
 		CD38B9FA1A23E24800BFFA36 /* femalefront.svg in Resources */ = {isa = PBXBuildFile; fileRef = CD38B9F71A23E24800BFFA36 /* femalefront.svg */; };
 		CD38B9FB1A23E24800BFFA36 /* maleback.svg in Resources */ = {isa = PBXBuildFile; fileRef = CD38B9F81A23E24800BFFA36 /* maleback.svg */; };
-		CD6359261A32551700EBB290 /* FormsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD152AA81A325243001B6972 /* FormsViewController.swift */; };
 		CD6359281A325F7000EBB290 /* FormQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6359271A325F7000EBB290 /* FormQuestionTableViewCell.swift */; };
 		CD6359291A32607700EBB290 /* FormQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6359271A325F7000EBB290 /* FormQuestionTableViewCell.swift */; };
 		CD7D278E1A262EF3003496DE /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D278D1A262EF3003496DE /* UIFontExtension.swift */; };
@@ -447,6 +428,27 @@
 		80A0E20F1A964C5100EF486F /* scrubber-popover.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "scrubber-popover.js"; path = "html/scrubber-popover.js"; sourceTree = "<group>"; };
 		80A0E2101A964C5100EF486F /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = style.css; path = html/style.css; sourceTree = "<group>"; };
 		80A0E2111A964C5100EF486F /* time-graph.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "time-graph.js"; path = "html/time-graph.js"; sourceTree = "<group>"; };
+		A20371FC1BDAD96E000D5F74 /* Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Analytics.h; sourceTree = "<group>"; };
+		A20371FD1BDAD96E000D5F74 /* GGLContext+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GGLContext+Analytics.h"; sourceTree = "<group>"; };
+		A20372001BDAD96E000D5F74 /* Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
+		A20372011BDAD96E000D5F74 /* GGLConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLConfiguration.h; sourceTree = "<group>"; };
+		A20372021BDAD96E000D5F74 /* GGLContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLContext.h; sourceTree = "<group>"; };
+		A20372031BDAD96E000D5F74 /* GGLErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLErrorCode.h; sourceTree = "<group>"; };
+		A20372051BDAD96E000D5F74 /* libGGLAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGGLAnalytics.a; sourceTree = "<group>"; };
+		A20372061BDAD96E000D5F74 /* libGGLCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGGLCore.a; sourceTree = "<group>"; };
+		A203720A1BDAD96E000D5F74 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		A203720B1BDAD96E000D5F74 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		A203720C1BDAD96E000D5F74 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		A203720D1BDAD96E000D5F74 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		A203720E1BDAD96E000D5F74 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		A203720F1BDAD96E000D5F74 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		A20372101BDAD96E000D5F74 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		A20372111BDAD96E000D5F74 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		A20372121BDAD96E000D5F74 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		A20372131BDAD96E000D5F74 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		A20372151BDAD96E000D5F74 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		A20372191BDADB21000D5F74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A203721C1BDAE1F4000D5F74 /* HealthcareUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthcareUIViewController.swift; sourceTree = "<group>"; };
 		A21316211A30C30B00B324A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A21316221A30C3A400B324A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		A21316231A30C3A900B324A8 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -648,12 +650,15 @@
 				7EE09F4E1A46413800EDF3CA /* sqlcipher.framework in Frameworks */,
 				CD38B9F51A23DEFE00BFFA36 /* libSVGKit-iOS.1.2.0.a in Frameworks */,
 				2E7A45191A02ED3800B76E63 /* QuartzCore.framework in Frameworks */,
+				A20372181BDAD96E000D5F74 /* libGoogleAnalytics.a in Frameworks */,
 				057F6DD31A2E61EE00D3D063 /* HealthKit.framework in Frameworks */,
 				CD8643731A1E507900E7E9B3 /* libxml2.dylib in Frameworks */,
 				CD8643711A1E507100E7E9B3 /* CoreImage.framework in Frameworks */,
 				CD86436F1A1E506C00E7E9B3 /* CoreText.framework in Frameworks */,
+				A20372161BDAD96E000D5F74 /* libGGLAnalytics.a in Frameworks */,
 				7EE09F4F1A46413800EDF3CA /* libWorklightStaticLibProjectNative.a in Frameworks */,
 				05040AF31A016F65003B98AF /* libsqlite3.dylib in Frameworks */,
+				A20372171BDAD96E000D5F74 /* libGGLCore.a in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 			);
@@ -677,6 +682,7 @@
 		0527D3741A02990000B219C1 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				A20371F71BDAD96E000D5F74 /* GoogleAnalyticsServices */,
 				2E37D98C1A2E5EE9002BD88B /* YoutubePlayer */,
 				0540229D1A1E51F0000DC63E /* WorklightAPI */,
 				CD38B96D1A23DEFE00BFFA36 /* libSVGKit-iOS.1.2.0.a */,
@@ -764,6 +770,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A20372191BDADB21000D5F74 /* GoogleService-Info.plist */,
 				A213162A1A30C43A00B324A8 /* Localizable.strings */,
 				0540229B1A1E51DE000DC63E /* worklight.plist */,
 				CD38B9F61A23E24800BFFA36 /* femaleback.svg */,
@@ -810,6 +817,7 @@
 		2E25EC1019F7065400664E9D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A203721C1BDAE1F4000D5F74 /* HealthcareUIViewController.swift */,
 				7E9152F91A43554C008D6FEC /* LoginViewController.swift */,
 				2EA898FB19FFE0010089ACCF /* ContainerViewController.swift */,
 				2E44C75A19FECDB1006989B3 /* DashboardViewController.swift */,
@@ -1091,6 +1099,120 @@
 				7EE09F4B1A46413800EDF3CA /* WLWifiVisibleAccessPointsChangeTrigger.h */,
 			);
 			path = include;
+			sourceTree = "<group>";
+		};
+		A20371F71BDAD96E000D5F74 /* GoogleAnalyticsServices */ = {
+			isa = PBXGroup;
+			children = (
+				A20371F81BDAD96E000D5F74 /* Google */,
+				A20372071BDAD96E000D5F74 /* GoogleAnalytics */,
+			);
+			path = GoogleAnalyticsServices;
+			sourceTree = "<group>";
+		};
+		A20371F81BDAD96E000D5F74 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				A20371F91BDAD96E000D5F74 /* Headers */,
+				A20372041BDAD96E000D5F74 /* Libraries */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		A20371F91BDAD96E000D5F74 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A20371FA1BDAD96E000D5F74 /* GGLAnalytics */,
+				A20371FE1BDAD96E000D5F74 /* GGLCore */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		A20371FA1BDAD96E000D5F74 /* GGLAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				A20371FB1BDAD96E000D5F74 /* Public */,
+			);
+			path = GGLAnalytics;
+			sourceTree = "<group>";
+		};
+		A20371FB1BDAD96E000D5F74 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				A20371FC1BDAD96E000D5F74 /* Analytics.h */,
+				A20371FD1BDAD96E000D5F74 /* GGLContext+Analytics.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		A20371FE1BDAD96E000D5F74 /* GGLCore */ = {
+			isa = PBXGroup;
+			children = (
+				A20371FF1BDAD96E000D5F74 /* Public */,
+			);
+			path = GGLCore;
+			sourceTree = "<group>";
+		};
+		A20371FF1BDAD96E000D5F74 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				A20372001BDAD96E000D5F74 /* Core.h */,
+				A20372011BDAD96E000D5F74 /* GGLConfiguration.h */,
+				A20372021BDAD96E000D5F74 /* GGLContext.h */,
+				A20372031BDAD96E000D5F74 /* GGLErrorCode.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		A20372041BDAD96E000D5F74 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A20372051BDAD96E000D5F74 /* libGGLAnalytics.a */,
+				A20372061BDAD96E000D5F74 /* libGGLCore.a */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		A20372071BDAD96E000D5F74 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				A20372081BDAD96E000D5F74 /* Headers */,
+				A20372141BDAD96E000D5F74 /* Libraries */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		A20372081BDAD96E000D5F74 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A20372091BDAD96E000D5F74 /* Public */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		A20372091BDAD96E000D5F74 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				A203720A1BDAD96E000D5F74 /* GAI.h */,
+				A203720B1BDAD96E000D5F74 /* GAIDictionaryBuilder.h */,
+				A203720C1BDAD96E000D5F74 /* GAIEcommerceFields.h */,
+				A203720D1BDAD96E000D5F74 /* GAIEcommerceProduct.h */,
+				A203720E1BDAD96E000D5F74 /* GAIEcommerceProductAction.h */,
+				A203720F1BDAD96E000D5F74 /* GAIEcommercePromotion.h */,
+				A20372101BDAD96E000D5F74 /* GAIFields.h */,
+				A20372111BDAD96E000D5F74 /* GAILogger.h */,
+				A20372121BDAD96E000D5F74 /* GAITrackedViewController.h */,
+				A20372131BDAD96E000D5F74 /* GAITracker.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		A20372141BDAD96E000D5F74 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A20372151BDAD96E000D5F74 /* libGoogleAnalytics.a */,
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		A2BABDB41A4260ED0049A1C2 /* Security */ = {
@@ -1459,6 +1581,7 @@
 				80A0E23F1A964C5100EF486F /* RobotoSlab-Light.ttf in Resources */,
 				80A0E22E1A964C5100EF486F /* metrics-pain.html in Resources */,
 				2E37D9961A2E6496002BD88B /* Assets in Resources */,
+				A203721A1BDADB21000D5F74 /* GoogleService-Info.plist in Resources */,
 				CD09D0421A23EA47008949FA /* LICENSE.txt in Resources */,
 				80A0E2431A964C5100EF486F /* scrubber-popover.js in Resources */,
 				CD09D0471A23EA47008949FA /* Roboto-Italic.ttf in Resources */,
@@ -1516,6 +1639,7 @@
 				A2BABDB91A4261230049A1C2 /* ReadyAppsConnectListener.swift in Sources */,
 				A2BABDA61A425C5F0049A1C2 /* Routine.swift in Sources */,
 				05C4970C1A1E54F100B1BC92 /* WLProcedureCaller.swift in Sources */,
+				A203721D1BDAE1F4000D5F74 /* HealthcareUIViewController.swift in Sources */,
 				A2BABDB01A425F240049A1C2 /* FormsDataManager.swift in Sources */,
 				2E1B844D1A12A10000B7D8DD /* ProgressViewController.swift in Sources */,
 				2E44C75B19FECDB1006989B3 /* DashboardViewController.swift in Sources */,
@@ -1560,54 +1684,30 @@
 				2E93CDD61A1520F600B59F3A /* HealthKitTests.swift in Sources */,
 				2E8E293D1A22B5C9009B6B08 /* DataManager.swift in Sources */,
 				2E37D9901A2E5EE9002BD88B /* YTPlayerView.m in Sources */,
-				2E7DE71C1A259B9B001D5993 /* PainLocationViewController.swift in Sources */,
 				2E2723301A1E7EC80065A5DA /* NSDateExtension.swift in Sources */,
 				A2BABDB21A4260510049A1C2 /* Routine.swift in Sources */,
 				2E9713521A0D81230034536C /* DoubleExtension.swift in Sources */,
-				7E8523611A48C115007BEC3B /* ReadyAppsLogoutListener.swift in Sources */,
 				2E8E293E1A22B5D4009B6B08 /* Patient.swift in Sources */,
-				2E19CEBC1A2D0BEF00D4CAFA /* RoutineOptionsViewController.swift in Sources */,
 				2E08668F1A16774D00C8A578 /* RatingCollectionViewCell.swift in Sources */,
 				2E041FE91A1BF037005DAB13 /* MILWebViewController.swift in Sources */,
-				2EB43D371A1BFA6F008CECA2 /* PainData.swift in Sources */,
 				2E08668C1A1671AA00C8A578 /* UICollectionViewFlowLayoutCenterItem.swift in Sources */,
 				A2BABDBF1A4269A40049A1C2 /* Forms.swift in Sources */,
 				2E56B8991A1A5A9D00067894 /* MILRatingCollectionView.swift in Sources */,
 				1305D46419FEC54B00AB0BEC /* BasicFunctions.swift in Sources */,
 				A2BABDB31A4260570049A1C2 /* Exercise.swift in Sources */,
 				1305D46319FEC53D00AB0BEC /* BasicTests.swift in Sources */,
-				A2BABDBC1A4264B90049A1C2 /* FormsDataManager.swift in Sources */,
-				2E19CEBF1A2D20A500D4CAFA /* VideoTableViewCell.swift in Sources */,
-				A2BABDBA1A4261230049A1C2 /* ReadyAppsConnectListener.swift in Sources */,
-				A2BABDBD1A4264BC0049A1C2 /* ExerciseDataManager.swift in Sources */,
-				2E341D861A2CC31E00038471 /* RoutineViewController.swift in Sources */,
 				CD8506071A38F53A00D3DB11 /* CustomAlertViewButtons.swift in Sources */,
-				7E9152FB1A43554C008D6FEC /* LoginViewController.swift in Sources */,
-				2E7DE71B1A259746001D5993 /* ExerciseListViewController.swift in Sources */,
-				2E37D98B1A2E3157002BD88B /* VideoPlayerViewController.swift in Sources */,
 				2E19CEC01A2D31AF00D4CAFA /* UIColorExtension.swift in Sources */,
-				CD6359261A32551700EBB290 /* FormsViewController.swift in Sources */,
-				2E8E293C1A22B5C1009B6B08 /* PainRatingViewController.swift in Sources */,
 				2EB43D341A1BFA47008CECA2 /* Healthcare.xcdatamodeld in Sources */,
-				A2BABDBB1A4264B40049A1C2 /* RoutineDataManager.swift in Sources */,
 				CD85057D1A37838000D3DB11 /* SVProgressHUD.m in Sources */,
-				2E42BF7F1A043F59006EF0EF /* SidePanelViewController.swift in Sources */,
 				CDD6F80A1A3F6AC200BA8992 /* CustomAlertViewExercise.swift in Sources */,
-				2EFD51431A0831220052508B /* Utils.swift in Sources */,
 				2E86D0001A0D781100A37345 /* UtilsTest.swift in Sources */,
 				2E9713541A0D81AB0034536C /* DoubleExtensionTests.swift in Sources */,
 				CD6359291A32607700EBB290 /* FormQuestionTableViewCell.swift in Sources */,
-				A2BABDB81A4261230049A1C2 /* ReadyAppsChallengeHandler.swift in Sources */,
-				2E27232D1A1E77A20065A5DA /* ProgressViewController.swift in Sources */,
-				2E8E293A1A22B5AD009B6B08 /* ContainerViewController.swift in Sources */,
 				2EB593F91A07D85E00A769C1 /* LoginTests.swift in Sources */,
 				2E8E29411A22B602009B6B08 /* WLProcedureCaller.swift in Sources */,
-				2EA20F6E1A1FE00D0026285D /* AppDelegate.swift in Sources */,
 				2E2773EB1A24466500C78871 /* PainDataTests.swift in Sources */,
 				CD8505FE1A38B1C200D3DB11 /* CustomAlertView.swift in Sources */,
-				2E8E293B1A22B5B7009B6B08 /* DashboardViewController.swift in Sources */,
-				2EFC559D1A2EE6AF0000AAB2 /* EndRoutineViewController.swift in Sources */,
-				2EA20F6D1A1FDFCD0026285D /* HealthKitManager.swift in Sources */,
 				2E42BF7B1A043ED1006EF0EF /* SidePanelTests.swift in Sources */,
 				2E270A661A25A708009B206D /* ListTableViewCell.swift in Sources */,
 			);
@@ -1661,6 +1761,7 @@
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
@@ -1681,6 +1782,8 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI",
 					"$(PROJECT_DIR)/Healthcare/External",
+					"$(PROJECT_DIR)/Healthcare/External/GoogleAnalyticsServices/Google/Libraries",
+					"$(PROJECT_DIR)/Healthcare/External/GoogleAnalyticsServices/GoogleAnalytics/Libraries",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.mil.ReadyAppPT;
@@ -1707,6 +1810,7 @@
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
@@ -1723,6 +1827,8 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI",
 					"$(PROJECT_DIR)/Healthcare/External",
+					"$(PROJECT_DIR)/Healthcare/External/GoogleAnalyticsServices/Google/Libraries",
+					"$(PROJECT_DIR)/Healthcare/External/GoogleAnalyticsServices/GoogleAnalytics/Libraries",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.mil.ReadyAppPT;
@@ -1797,6 +1903,7 @@
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
@@ -1815,6 +1922,8 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI",
 					"$(PROJECT_DIR)/Healthcare/External",
+					"$(PROJECT_DIR)/Healthcare/External/GoogleAnalyticsServices/Google/Libraries",
+					"$(PROJECT_DIR)/Healthcare/External/GoogleAnalyticsServices/GoogleAnalytics/Libraries",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.mil.ReadyAppPT;

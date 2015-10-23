@@ -5,6 +5,7 @@ Licensed Materials - Property of IBM
 
 import UIKit
 import XCTest
+@testable import Healthcare
 
 /**
 *  A unit test class for the SidePanelViewController.

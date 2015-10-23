@@ -52,6 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Register authentication challenge handlers
         self.challengeHandler = ReadyAppsChallengeHandler()
         WLClient.sharedInstance().registerChallengeHandler(self.challengeHandler)
+        
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        // Optional: configure GAI options.
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true  // report uncaught exceptions
        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLoginViewController:", name: "loginVCKey", object: nil)
         return true

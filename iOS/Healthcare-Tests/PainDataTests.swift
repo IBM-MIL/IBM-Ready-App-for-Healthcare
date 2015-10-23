@@ -6,6 +6,7 @@ Licensed Materials - Property of IBM
 import UIKit
 import XCTest
 import CoreData
+@testable import Healthcare
 
 class PainDataTests: XCTestCase {
     
