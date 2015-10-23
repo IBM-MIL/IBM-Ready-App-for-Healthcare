@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>TRACKING_ID</key>
-	<string>UA-62299725-11</string>
+	<string>{YOUR_TRACKING_ID_HERE}</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
@@ -19,6 +19,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<false/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:287949081746:ios:529902ddc9c1c7f0</string>
+	<string>{YOUR_APP_ID_HERE}</string>
 </dict>
 </plist>
