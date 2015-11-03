@@ -22,4 +22,4 @@ Please visit the [Getting Started page](http://lexdcy040194.ecloud.edst.ibm.com/
 Please visit [this page](http://lexdcy040194.ecloud.edst.ibm.com/physio_1_0_2/home) for access to the full documentation.
 
 ### License
-IBM Ready App for Healthcare is available under the IBM Ready Apps License Agreement. See the [License file](https://github.com/IBM-MIL/IBM-Ready-App-for-Healthcare/blob/master/LICENSE.txt) for more details.
+IBM Ready App for Healthcare is available under the IBM Ready Apps License Agreement. See the [License file](https://github.com/IBM-MIL/IBM-Ready-App-for-Healthcare/blob/master/License.txt) for more details.

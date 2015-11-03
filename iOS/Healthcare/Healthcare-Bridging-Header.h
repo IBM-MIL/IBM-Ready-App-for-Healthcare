@@ -18,3 +18,4 @@
 #import "SVGKFastImageView.h"
 #import "YTPlayerView.h"
 #import "ChallengeHandler.h"
+#import "Analytics.h"

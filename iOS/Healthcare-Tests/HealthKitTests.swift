@@ -5,6 +5,7 @@ Licensed Materials - Property of IBM
 
 import UIKit
 import XCTest
+@testable import Healthcare
 
 /**
 *  Test class to verify healthkit data is working properly

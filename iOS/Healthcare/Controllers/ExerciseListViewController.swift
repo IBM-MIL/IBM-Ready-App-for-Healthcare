@@ -8,7 +8,7 @@ import UIKit
 /**
 View controller to display a list of exercise categories.
 */
-class ExerciseListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CustomAlertViewDelegate {
+class ExerciseListViewController: HealthcareUIViewController, UITableViewDelegate, UITableViewDataSource, CustomAlertViewDelegate {
     
     var areaTypes = [NSLocalizedString("Assigned", comment: "n/a"), NSLocalizedString("Neck", comment: "n/a"), NSLocalizedString("Back", comment: "n/a") , NSLocalizedString("Torso", comment: "n/a"), NSLocalizedString("Arm", comment: "n/a"), NSLocalizedString("Hand", comment: "n/a"), NSLocalizedString("Leg", comment: "n/a"), NSLocalizedString("Feet", comment: "n/a")]
 

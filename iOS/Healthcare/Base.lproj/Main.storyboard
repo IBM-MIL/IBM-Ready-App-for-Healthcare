@@ -83,7 +83,7 @@
         <!--Side Panel View Controller-->
         <scene sceneID="0mq-qU-J0A">
             <objects>
-                <viewController storyboardIdentifier="LeftViewController" id="uHU-Hu-PHF" customClass="SidePanelViewController" customModule="Healthcare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeftViewController" id="uHU-Hu-PHF" customClass="SidePanelViewController" customModule="Healthcare" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i32-Qb-Gc2"/>
                         <viewControllerLayoutGuide type="bottom" id="Dim-mS-JYb"/>
