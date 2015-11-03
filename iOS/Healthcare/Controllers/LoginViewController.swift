@@ -5,6 +5,13 @@ Licensed Materials - Property of IBM
 
 import UIKit
 
+enum UIUserInterfaceIdiom : Int {
+    case Unspecified
+    
+    case Phone // iPhone and iPod touch style UI
+    case Pad // iPad style UI
+}
+
 /**
 This view controller handles all the login logic and user interaction.
 This includes authentication with the server and moving the view up when the keyboard appears.
@@ -52,6 +59,17 @@ class LoginViewController: HealthcareUIViewController, UITextFieldDelegate, Cust
         let userInfo:Dictionary<String,UIViewController!> = ["LoginViewController" : self]
         NSNotificationCenter.defaultCenter().postNotificationName("loginVCKey", object: nil, userInfo: userInfo)
 
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            
+            let alert = UIAlertController(title: NSLocalizedString("Warning", comment: "n/a"), message: NSLocalizedString("HealthKit is not supported on iPad. Please download RA Healthcare on an iPhone", comment: "n/a"), preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "n/a"), style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     /**
