@@ -14,6 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.datamanager.DataManager;
 import com.ibm.mil.readyapps.physio.utils.AndroidUtils;
@@ -24,6 +27,11 @@ public class LibraryFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("Exercises list screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         setListAdapter(new LibraryAdapter(getActivity(),
                 getResources().getStringArray(R.array.library_items)));

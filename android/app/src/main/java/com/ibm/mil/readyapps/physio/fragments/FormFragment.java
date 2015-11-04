@@ -17,6 +17,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.datamanager.DataManager;
 import com.ibm.mil.readyapps.physio.models.Form;
@@ -31,6 +34,11 @@ public class FormFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("Forms screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         View view = inflater.inflate(R.layout.fragment_form, container, false);
 
         // set custom typeface on header and footer text

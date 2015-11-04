@@ -15,9 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.activities.LandingActivity;
 import com.ibm.mil.readyapps.physio.datamanager.DataManager;
@@ -44,6 +47,12 @@ public class VideoFragment extends Fragment implements YouTubePlayer.OnInitializ
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("Exercise video screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_video, container, false);
         setupView(layout);

@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.datamanager.DataManager;
 import com.ibm.mil.readyapps.physio.models.Exercise;
@@ -30,6 +33,11 @@ public class ExerciseFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("Exercise screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
 
         // set custom typeface on header text
