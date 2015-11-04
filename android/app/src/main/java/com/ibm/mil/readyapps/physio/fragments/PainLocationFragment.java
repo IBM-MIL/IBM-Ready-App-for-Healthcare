@@ -24,6 +24,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.activities.LandingActivity;
 import com.ibm.mil.readyapps.physio.interfaces.BackPressHandler;
@@ -64,6 +67,11 @@ public class PainLocationFragment extends Fragment implements BackPressHandler {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("Pain location screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_pain_location, container, false);
         bodyLayout = (RelativeLayout) root.findViewById(R.id.bodyContainer);

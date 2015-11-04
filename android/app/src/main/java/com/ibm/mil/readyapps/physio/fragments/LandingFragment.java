@@ -16,7 +16,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.datamanager.DataManager;
 import com.ibm.mil.readyapps.physio.datamanager.HealthDataRetriever;
@@ -65,6 +68,11 @@ public class LandingFragment extends Fragment implements OnPageChangeListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("Landing screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_landing, container, false);
         setupView(layout);

@@ -15,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.activities.LandingActivity;
 import com.ibm.mil.readyapps.physio.models.PainReport;
@@ -44,6 +47,11 @@ public class PainManagementFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("Pain management screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         /*
          * Two layouts exist only to defeat an Android API bug where customizing certain
          * background drawables at run-time would cause the layout to break when the EditText
