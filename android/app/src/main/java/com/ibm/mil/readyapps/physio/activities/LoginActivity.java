@@ -13,7 +13,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
+import com.apphance.android.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -42,6 +43,11 @@ import com.worklight.wlclient.api.WLFailResponse;
 import com.worklight.wlclient.api.WLResponse;
 import com.worklight.wlclient.api.WLResponseListener;
 
+//MQA Imports
+import com.apphance.android.Apphance;
+import com.apphance.android.Apphance.Mode;
+import com.apphance.android.common.Configuration;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,6 +64,7 @@ import java.util.List;
  */
 public class LoginActivity extends Activity implements DataNotifier {
     private static final String TAG = LoginActivity.class.getName();
+    public static final String APP_KEY = "4f69d7662c78a5291250fba8f603767d2ec871fb";
 
     private EditText mPatientText;
     private EditText mPasswordText;
@@ -68,6 +75,14 @@ public class LoginActivity extends Activity implements DataNotifier {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Configuration configuration = new Configuration.Builder(this)
+                .withAPIKey(APP_KEY)
+                .withMode(Mode.QA)
+                .withReportOnShakeEnabled(true)
+                .build();
+
+        Apphance.startNewSession(LoginActivity.this, configuration);
 
         fitClient = HealthDataRetriever.getClient(this);
         if (!fitClient.isConnected()) {
@@ -119,7 +134,7 @@ public class LoginActivity extends Activity implements DataNotifier {
     @Override
     protected void onStart() {
         super.onStart();
-
+        Apphance.onStart(this);
         if (fitClient != null) {
             fitClient.connect();
         }
@@ -128,7 +143,7 @@ public class LoginActivity extends Activity implements DataNotifier {
     @Override
     protected void onStop() {
         super.onStop();
-
+        Apphance.onStop(this);
         if (fitClient != null) {
             if (fitClient.isConnected()) {
                 fitClient.disconnect();

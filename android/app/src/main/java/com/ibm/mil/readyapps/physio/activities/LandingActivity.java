@@ -29,6 +29,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.apphance.android.Apphance;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.datamanager.DataManager;
@@ -99,7 +100,7 @@ public class LandingActivity extends ActionBarActivity implements AdapterView.On
     @Override
     protected void onStart() {
         super.onStart();
-
+        Apphance.onStart(this);
         if (mClient != null) {
             mClient.connect();
         }
@@ -108,7 +109,7 @@ public class LandingActivity extends ActionBarActivity implements AdapterView.On
     @Override
     protected void onStop() {
         super.onStop();
-
+        Apphance.onStop(this);
         if (mClient != null) {
             if (mClient.isConnected()) {
                 mClient.disconnect();
