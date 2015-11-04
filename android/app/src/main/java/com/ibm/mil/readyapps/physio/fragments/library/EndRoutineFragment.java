@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.activities.LandingActivity;
 import com.ibm.mil.readyapps.physio.utils.AndroidUtils;
@@ -29,6 +32,11 @@ public class EndRoutineFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("End routine screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         View view = inflater.inflate(R.layout.fragment_routine_end, container, false);
 
         // set custom typeface for header and footer text

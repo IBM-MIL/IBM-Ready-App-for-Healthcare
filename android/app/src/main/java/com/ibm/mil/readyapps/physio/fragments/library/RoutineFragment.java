@@ -14,6 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.datamanager.DataManager;
 import com.ibm.mil.readyapps.physio.models.Routine;
@@ -26,6 +29,11 @@ public class RoutineFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("Exercise routine screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         setListAdapter(new RoutineAdapter(getActivity(),
                 DataManager.getCurrentPatient().getRoutines()));

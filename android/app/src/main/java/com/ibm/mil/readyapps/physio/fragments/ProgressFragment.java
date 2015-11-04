@@ -14,7 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.ibm.mil.readyapps.physio.PhysioApplication;
 import com.ibm.mil.readyapps.physio.R;
 import com.ibm.mil.readyapps.physio.datamanager.DataManager;
 import com.ibm.mil.readyapps.physio.datamanager.HealthDataRetriever;
@@ -108,6 +111,11 @@ public class ProgressFragment extends Fragment implements OnPageChangeListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Google Analytics
+        Tracker tracker = PhysioApplication.tracker;
+        tracker.setScreenName("Progress screen");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_progress, container, false);
         setupView(layout);
