@@ -51,4 +51,5 @@ dependencies {
     compile files('src/main/assets/WorkLight/gcm.jar')
     compile 'io.realm:realm-android:0.76.0'
     compile project(':Spinnerwheel')
+    compile project(':MQA-Android-2.9.6')
 }

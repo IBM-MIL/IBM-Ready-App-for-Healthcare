@@ -1,1 +1,1 @@
-include ':app', ':ReadyAppsLibrary', ':Spinnerwheel'
+include ':app', ':ReadyAppsLibrary', ':Spinnerwheel', ':MQA-Android-2.9.6'

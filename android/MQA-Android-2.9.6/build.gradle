@@ -1,0 +1,2 @@
+configurations.create("default")
+artifacts.add("default", file('MQA-Android-2.9.6.aar'))
