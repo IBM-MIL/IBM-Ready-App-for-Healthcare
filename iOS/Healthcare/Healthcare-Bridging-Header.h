@@ -19,3 +19,5 @@
 #import "YTPlayerView.h"
 #import "ChallengeHandler.h"
 #import "Analytics.h"
+#import <Q4M/MQALogger.h>
+#import "MQAExceptionHandler.h"

@@ -61,6 +61,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = true  // report uncaught exceptions
+        
+        //Set the SDK mode Market vs QA for Production and Pre-Production
+        #if Debug
+            MQALogger.settings().mode = MQAMode.QA
+            #elseif Release
+            MQALogger.settings().mode = MQAMode.Market
+        #endif
+        
+        // Set the application key
+        MQALogger.startNewSessionWithApplicationKey("42bd41d740adbbb3a87ce182a893407aa0291f12")
+        
+        //Enable MQA Crash Reporting
+        NSSetUncaughtExceptionHandler(exceptionHandlerPointer)
        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLoginViewController:", name: "loginVCKey", object: nil)
         return true
