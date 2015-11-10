@@ -167,7 +167,8 @@
 		A2BABDB71A4261230049A1C2 /* ReadyAppsChallengeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDB51A4261230049A1C2 /* ReadyAppsChallengeHandler.swift */; };
 		A2BABDB91A4261230049A1C2 /* ReadyAppsConnectListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDB61A4261230049A1C2 /* ReadyAppsConnectListener.swift */; };
 		A2BABDBF1A4269A40049A1C2 /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDA21A425C5F0049A1C2 /* Forms.swift */; };
-		B1D0EB571BF24F0A004D7C40 /* q4m.zip in Resources */ = {isa = PBXBuildFile; fileRef = B1D0EB561BF24F0A004D7C40 /* q4m.zip */; settings = {ASSET_TAGS = (); }; };
+		B15AE0FE1BF2A248009ACF64 /* Q4M.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AE0FD1BF2A248009ACF64 /* Q4M.framework */; };
+		B15AE0FF1BF2A25C009ACF64 /* Q4M.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AE0FD1BF2A248009ACF64 /* Q4M.framework */; settings = {ASSET_TAGS = (); }; };
 		B1D0EB591BF24F71004D7C40 /* MQAExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D0EB581BF24F70004D7C40 /* MQAExceptionHandler.m */; settings = {ASSET_TAGS = (); }; };
 		B1D0EB611BF25068004D7C40 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB601BF25068004D7C40 /* AudioToolbox.framework */; };
 		B1D0EB631BF2508C004D7C40 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB621BF2508C004D7C40 /* AVFoundation.framework */; };
@@ -176,8 +177,6 @@
 		B1D0EB691BF250FB004D7C40 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB681BF250FB004D7C40 /* CoreTelephony.framework */; };
 		B1D0EB6B1BF25115004D7C40 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB6A1BF25115004D7C40 /* CoreVideo.framework */; };
 		B1D0EB6D1BF2512F004D7C40 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB6C1BF2512F004D7C40 /* MediaPlayer.framework */; };
-		B1D0EB6F1BF2559B004D7C40 /* Q4M.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB6E1BF2559B004D7C40 /* Q4M.framework */; settings = {ASSET_TAGS = (); }; };
-		B1D0EB701BF27967004D7C40 /* Q4M.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB6E1BF2559B004D7C40 /* Q4M.framework */; settings = {ASSET_TAGS = (); }; };
 		CD09D0421A23EA47008949FA /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0351A23EA47008949FA /* LICENSE.txt */; };
 		CD09D0431A23EA47008949FA /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0361A23EA47008949FA /* Roboto-Black.ttf */; };
 		CD09D0441A23EA47008949FA /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD09D0371A23EA47008949FA /* Roboto-BlackItalic.ttf */; };
@@ -480,7 +479,7 @@
 		A2BABDAE1A425F240049A1C2 /* RoutineDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineDataManager.swift; sourceTree = "<group>"; };
 		A2BABDB51A4261230049A1C2 /* ReadyAppsChallengeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadyAppsChallengeHandler.swift; sourceTree = "<group>"; };
 		A2BABDB61A4261230049A1C2 /* ReadyAppsConnectListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadyAppsConnectListener.swift; sourceTree = "<group>"; };
-		B1D0EB561BF24F0A004D7C40 /* q4m.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = q4m.zip; sourceTree = "<group>"; };
+		B15AE0FD1BF2A248009ACF64 /* Q4M.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Q4M.framework; path = Healthcare/ExternalLibs/Q4M.framework; sourceTree = "<group>"; };
 		B1D0EB581BF24F70004D7C40 /* MQAExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQAExceptionHandler.m; sourceTree = "<group>"; };
 		B1D0EB5A1BF24F98004D7C40 /* MQAExceptionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MQAExceptionHandler.h; sourceTree = "<group>"; };
 		B1D0EB601BF25068004D7C40 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -490,7 +489,6 @@
 		B1D0EB681BF250FB004D7C40 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B1D0EB6A1BF25115004D7C40 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		B1D0EB6C1BF2512F004D7C40 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		B1D0EB6E1BF2559B004D7C40 /* Q4M.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Q4M.framework; sourceTree = "<group>"; };
 		CD09D0351A23EA47008949FA /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		CD09D0361A23EA47008949FA /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		CD09D0371A23EA47008949FA /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -665,7 +663,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1D0EB6F1BF2559B004D7C40 /* Q4M.framework in Frameworks */,
+				B15AE0FE1BF2A248009ACF64 /* Q4M.framework in Frameworks */,
 				B1D0EB6D1BF2512F004D7C40 /* MediaPlayer.framework in Frameworks */,
 				B1D0EB6B1BF25115004D7C40 /* CoreVideo.framework in Frameworks */,
 				B1D0EB691BF250FB004D7C40 /* CoreTelephony.framework in Frameworks */,
@@ -708,7 +706,7 @@
 				2EFD50EE1A07EED20052508B /* QuartzCore.framework in Frameworks */,
 				2EFD50EC1A07EEBF0052508B /* libsqlite3.dylib in Frameworks */,
 				2E44C75119FEC1CE006989B3 /* MobileCoreServices.framework in Frameworks */,
-				B1D0EB701BF27967004D7C40 /* Q4M.framework in Frameworks */,
+				B15AE0FF1BF2A25C009ACF64 /* Q4M.framework in Frameworks */,
 				2E44C75019FEC1BE006989B3 /* CoreGraphics.framework in Frameworks */,
 				2E44C74F19FEC1A4006989B3 /* AssetsLibrary.framework in Frameworks */,
 			);
@@ -829,7 +827,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B1D0EB6E1BF2559B004D7C40 /* Q4M.framework */,
+				B15AE0FD1BF2A248009ACF64 /* Q4M.framework */,
 				B1D0EB6C1BF2512F004D7C40 /* MediaPlayer.framework */,
 				B1D0EB6A1BF25115004D7C40 /* CoreVideo.framework */,
 				B1D0EB681BF250FB004D7C40 /* CoreTelephony.framework */,
@@ -837,7 +835,6 @@
 				B1D0EB641BF250AC004D7C40 /* CoreMedia.framework */,
 				B1D0EB621BF2508C004D7C40 /* AVFoundation.framework */,
 				B1D0EB601BF25068004D7C40 /* AudioToolbox.framework */,
-				B1D0EB561BF24F0A004D7C40 /* q4m.zip */,
 				057F6DD21A2E61EE00D3D063 /* HealthKit.framework */,
 				05C4971E1A1E6B9500B1BC92 /* CoreLocation.framework */,
 				05C4971C1A1E5D9000B1BC92 /* libstdc++.6.dylib */,
@@ -1469,7 +1466,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = "${SRCROOT}";
+			buildWorkingDirectory = "${SRCROOT}/Healthcare/ExternalLibs";
 			dependencies = (
 			);
 			name = "Healthcare-Unpack-MQA";
@@ -1523,7 +1520,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = PP64RT7P8Z;
@@ -1652,7 +1649,6 @@
 				80A0E23F1A964C5100EF486F /* RobotoSlab-Light.ttf in Resources */,
 				80A0E22E1A964C5100EF486F /* metrics-pain.html in Resources */,
 				2E37D9961A2E6496002BD88B /* Assets in Resources */,
-				B1D0EB571BF24F0A004D7C40 /* q4m.zip in Resources */,
 				A203721A1BDADB21000D5F74 /* GoogleService-Info.plist in Resources */,
 				CD09D0421A23EA47008949FA /* LICENSE.txt in Resources */,
 				80A0E2431A964C5100EF486F /* scrubber-popover.js in Resources */,
@@ -1828,7 +1824,7 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1844,6 +1840,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Healthcare/ExternalLibs",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -1880,7 +1877,7 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1896,6 +1893,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Healthcare/ExternalLibs",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
@@ -1976,7 +1974,7 @@
 		2E25EC0819F6E1C000664E9D /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1992,6 +1990,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Healthcare/ExternalLibs",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2042,6 +2041,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Healthcare/ExternalLibs",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2094,6 +2094,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Healthcare/ExternalLibs",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREFIX_HEADER = "";
@@ -2139,6 +2140,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)/Healthcare/External/WorklightAPI/Frameworks",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Healthcare/ExternalLibs",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREFIX_HEADER = "";
@@ -2260,6 +2262,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Healthcare/External/SVProgressHUD";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREFIX_HEADER = "Healthcare/Healthcare-Prefix.pch";
