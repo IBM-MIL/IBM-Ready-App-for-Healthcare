@@ -1469,7 +1469,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = "${SRCROOT}/iOS";
+			buildWorkingDirectory = "${SRCROOT}";
 			dependencies = (
 			);
 			name = "Healthcare-Unpack-MQA";
