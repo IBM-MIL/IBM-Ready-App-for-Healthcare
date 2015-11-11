@@ -4,6 +4,8 @@
  */
 package com.ibm.mil.readyapps.physio.fragments;
 
+import android.app.FragmentManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -14,6 +16,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -499,7 +502,7 @@ public class PainLocationFragment extends Fragment implements BackPressHandler {
             Drawable l_pointer = getResources().getDrawable(R.drawable.pointerlight_3x);
             l_pointer.setBounds(0, 0, 44, 65);
             frontBtn.setCompoundDrawables(l_pointer, null, null, null);
-            frontBtn.setLayoutParams(new LinearLayout.LayoutParams(dipToPixels(37), dipToPixels(34)));
+            frontBtn.setLayoutParams(new LinearLayout.LayoutParams((int)dipToPixels(37),(int) dipToPixels(34)));
             frontBtn.setTextColor(getResources().getColor(R.color.ready_dark_gray));
             frontBtn.setText("+");
 
@@ -816,9 +819,15 @@ public class PainLocationFragment extends Fragment implements BackPressHandler {
         pointers.clear();
     }
 
-    private int dipToPixels(int dp) {
+    /*private int dipToPixels(int dp) {
         int px = Math.round(dp * (DisplayMetrics.DENSITY_XXHIGH / DisplayMetrics.DENSITY_DEFAULT));
         return px;
+    }*/
+
+    private int dipToPixels(float dipValue) {
+        Context context = this.getActivity().getApplicationContext();
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
     }
 
 }
