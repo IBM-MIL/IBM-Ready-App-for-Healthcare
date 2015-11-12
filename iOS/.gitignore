@@ -7,3 +7,5 @@ runAutomation.sh
 uia2junit
 
 Healthcare.xcodeproj/xcuserdata/*
+Healthcare/ExternalLibs/Q4M.framework
+Healthcare/ExternalLibs/Users/
