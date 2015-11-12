@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05040AF31A016F65003B98AF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05040AF21A016F65003B98AF /* libsqlite3.dylib */; };
 		0540229C1A1E51DE000DC63E /* worklight.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0540229B1A1E51DE000DC63E /* worklight.plist */; };
 		054022FC1A1E51F0000DC63E /* Cookies.mom in Resources */ = {isa = PBXBuildFile; fileRef = 054022F41A1E51F0000DC63E /* Cookies.mom */; };
 		054022FD1A1E51F0000DC63E /* PleaseWaitViewController~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 054022F51A1E51F0000DC63E /* PleaseWaitViewController~iPad.xib */; };
@@ -22,10 +21,6 @@
 		05C497101A1E55FD00B1BC92 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C4970F1A1E55FD00B1BC92 /* CFNetwork.framework */; };
 		05C497121A1E564900B1BC92 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C497111A1E564900B1BC92 /* CoreData.framework */; };
 		05C497131A1E567200B1BC92 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0573383C1A002C8F00A25350 /* Security.framework */; };
-		05C497151A1E567B00B1BC92 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C497141A1E567B00B1BC92 /* libz.1.dylib */; };
-		05C497171A1E568300B1BC92 /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C497161A1E568300B1BC92 /* libc++.1.dylib */; };
-		05C4971B1A1E56AD00B1BC92 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C4971A1A1E56AD00B1BC92 /* libstdc++.6.0.9.dylib */; };
-		05C4971D1A1E5D9000B1BC92 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C4971C1A1E5D9000B1BC92 /* libstdc++.6.dylib */; };
 		05C4971F1A1E6B9500B1BC92 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C4971E1A1E6B9500B1BC92 /* CoreLocation.framework */; };
 		05EBBEAD1A0ACEE700BD00A4 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EBBEAC1A0ACEE700BD00A4 /* HealthKitManager.swift */; };
 		1305D46119FEC43300AB0BEC /* BasicFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305D46019FEC43300AB0BEC /* BasicFunctions.swift */; };
@@ -36,6 +31,13 @@
 		2E08668C1A1671AA00C8A578 /* UICollectionViewFlowLayoutCenterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E93CDD91A15543100B59F3A /* UICollectionViewFlowLayoutCenterItem.swift */; };
 		2E08668E1A16774D00C8A578 /* RatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E08668D1A16774D00C8A578 /* RatingCollectionViewCell.swift */; };
 		2E08668F1A16774D00C8A578 /* RatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E08668D1A16774D00C8A578 /* RatingCollectionViewCell.swift */; };
+		2E14C97C1BF5264D00F260ED /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C97B1BF5264D00F260ED /* libstdc++.6.0.9.tbd */; };
+		2E14C97E1BF5265600F260ED /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C97D1BF5265600F260ED /* libstdc++.6.tbd */; };
+		2E14C9801BF5265C00F260ED /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C97F1BF5265C00F260ED /* libstdc++.tbd */; };
+		2E14C9821BF5266500F260ED /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C9811BF5266500F260ED /* libc++.1.tbd */; };
+		2E14C9841BF5266D00F260ED /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C9831BF5266D00F260ED /* libz.1.tbd */; };
+		2E14C9861BF5267500F260ED /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C9851BF5267500F260ED /* libxml2.tbd */; };
+		2E14C9881BF5267C00F260ED /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C9871BF5267C00F260ED /* libsqlite3.tbd */; };
 		2E19CEBB1A2D0BEF00D4CAFA /* RoutineOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E19CEBA1A2D0BEF00D4CAFA /* RoutineOptionsViewController.swift */; };
 		2E19CEBE1A2D20A500D4CAFA /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E19CEBD1A2D20A500D4CAFA /* VideoTableViewCell.swift */; };
 		2E19CEC01A2D31AF00D4CAFA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D278F1A2630C8003496DE /* UIColorExtension.swift */; };
@@ -85,7 +87,6 @@
 		2EE990ED1A3A4CDD007A3E2E /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8505FC1A38B05D00D3DB11 /* CustomAlertView.xib */; };
 		2EE990EE1A3A4CE0007A3E2E /* CustomAlertViewButtons.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8506031A38EA5700D3DB11 /* CustomAlertViewButtons.xib */; };
 		2EFC559C1A2EE6AF0000AAB2 /* EndRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC559B1A2EE6AF0000AAB2 /* EndRoutineViewController.swift */; };
-		2EFD50EC1A07EEBF0052508B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05040AF21A016F65003B98AF /* libsqlite3.dylib */; };
 		2EFD50EE1A07EED20052508B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7A45181A02ED3800B76E63 /* QuartzCore.framework */; };
 		2EFD51421A0831220052508B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFD51411A0831220052508B /* Utils.swift */; };
 		305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
@@ -208,7 +209,6 @@
 		CD8642EB1A1E4ABB00E7E9B3 /* PainLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8642EA1A1E4ABB00E7E9B3 /* PainLocationViewController.swift */; };
 		CD86436F1A1E506C00E7E9B3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD86436E1A1E506C00E7E9B3 /* CoreText.framework */; };
 		CD8643711A1E507100E7E9B3 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8643701A1E507100E7E9B3 /* CoreImage.framework */; };
-		CD8643731A1E507900E7E9B3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8643721A1E507900E7E9B3 /* libxml2.dylib */; };
 		CD8643751A1E508C00E7E9B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8643741A1E508C00E7E9B3 /* UIKit.framework */; };
 		CDD6F8071A3F64C300BA8992 /* CustomAlertViewExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD6F8061A3F64C300BA8992 /* CustomAlertViewExercise.swift */; };
 		CDD6F8091A3F64DB00BA8992 /* CustomAlertViewExercise.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD6F8081A3F64DB00BA8992 /* CustomAlertViewExercise.xib */; };
@@ -233,7 +233,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05040AF21A016F65003B98AF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0540229B1A1E51DE000DC63E /* worklight.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = worklight.plist; sourceTree = "<group>"; };
 		054022F41A1E51F0000DC63E /* Cookies.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Cookies.mom; sourceTree = "<group>"; };
 		054022F51A1E51F0000DC63E /* PleaseWaitViewController~iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PleaseWaitViewController~iPad.xib"; sourceTree = "<group>"; };
@@ -242,18 +241,12 @@
 		054022F81A1E51F0000DC63E /* SplashImageViewController-Portrait.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SplashImageViewController-Portrait.xib"; sourceTree = "<group>"; };
 		0573383A1A002B8D00A25350 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		0573383C1A002C8F00A25350 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		0573383E1A002CDC00A25350 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		057F6DD21A2E61EE00D3D063 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		0587CBE319FEEF6400A7A2C8 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		05C4970B1A1E54F100B1BC92 /* WLProcedureCaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLProcedureCaller.swift; sourceTree = "<group>"; };
 		05C4970D1A1E555500B1BC92 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		05C4970F1A1E55FD00B1BC92 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		05C497111A1E564900B1BC92 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		05C497141A1E567B00B1BC92 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = usr/lib/libz.1.dylib; sourceTree = SDKROOT; };
-		05C497161A1E568300B1BC92 /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "usr/lib/libc++.1.dylib"; sourceTree = SDKROOT; };
-		05C497181A1E569900B1BC92 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		05C4971A1A1E56AD00B1BC92 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
-		05C4971C1A1E5D9000B1BC92 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		05C4971E1A1E6B9500B1BC92 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		05EBBEA31A0ACC5800BD00A4 /* Healthcare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Healthcare.entitlements; path = Healthcare/Healthcare.entitlements; sourceTree = "<group>"; };
 		05EBBEAC1A0ACEE700BD00A4 /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -262,6 +255,13 @@
 		1D6058910D05DD3D006BFB54 /* Healthcare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Healthcare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2E08668D1A16774D00C8A578 /* RatingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingCollectionViewCell.swift; sourceTree = "<group>"; };
+		2E14C97B1BF5264D00F260ED /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		2E14C97D1BF5265600F260ED /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		2E14C97F1BF5265C00F260ED /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		2E14C9811BF5266500F260ED /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		2E14C9831BF5266D00F260ED /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
+		2E14C9851BF5267500F260ED /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		2E14C9871BF5267C00F260ED /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2E19CEBA1A2D0BEF00D4CAFA /* RoutineOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineOptionsViewController.swift; sourceTree = "<group>"; };
 		2E19CEBD1A2D20A500D4CAFA /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		2E1B844C1A12A10000B7D8DD /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
@@ -651,7 +651,6 @@
 		CD8642EA1A1E4ABB00E7E9B3 /* PainLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PainLocationViewController.swift; sourceTree = "<group>"; };
 		CD86436E1A1E506C00E7E9B3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		CD8643701A1E507100E7E9B3 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		CD8643721A1E507900E7E9B3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		CD8643741A1E508C00E7E9B3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CDD6F8061A3F64C300BA8992 /* CustomAlertViewExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertViewExercise.swift; sourceTree = "<group>"; };
 		CDD6F8081A3F64DB00BA8992 /* CustomAlertViewExercise.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertViewExercise.xib; sourceTree = "<group>"; };
@@ -663,6 +662,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E14C9881BF5267C00F260ED /* libsqlite3.tbd in Frameworks */,
+				2E14C9861BF5267500F260ED /* libxml2.tbd in Frameworks */,
+				2E14C9841BF5266D00F260ED /* libz.1.tbd in Frameworks */,
+				2E14C9821BF5266500F260ED /* libc++.1.tbd in Frameworks */,
+				2E14C9801BF5265C00F260ED /* libstdc++.tbd in Frameworks */,
+				2E14C97E1BF5265600F260ED /* libstdc++.6.tbd in Frameworks */,
+				2E14C97C1BF5264D00F260ED /* libstdc++.6.0.9.tbd in Frameworks */,
 				B15AE0FE1BF2A248009ACF64 /* Q4M.framework in Frameworks */,
 				B1D0EB6D1BF2512F004D7C40 /* MediaPlayer.framework in Frameworks */,
 				B1D0EB6B1BF25115004D7C40 /* CoreVideo.framework in Frameworks */,
@@ -673,10 +679,6 @@
 				B1D0EB611BF25068004D7C40 /* AudioToolbox.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				05C4971F1A1E6B9500B1BC92 /* CoreLocation.framework in Frameworks */,
-				05C4971D1A1E5D9000B1BC92 /* libstdc++.6.dylib in Frameworks */,
-				05C4971B1A1E56AD00B1BC92 /* libstdc++.6.0.9.dylib in Frameworks */,
-				05C497171A1E568300B1BC92 /* libc++.1.dylib in Frameworks */,
-				05C497151A1E567B00B1BC92 /* libz.1.dylib in Frameworks */,
 				05C497131A1E567200B1BC92 /* Security.framework in Frameworks */,
 				05C497121A1E564900B1BC92 /* CoreData.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
@@ -688,12 +690,10 @@
 				2E7A45191A02ED3800B76E63 /* QuartzCore.framework in Frameworks */,
 				A20372181BDAD96E000D5F74 /* libGoogleAnalytics.a in Frameworks */,
 				057F6DD31A2E61EE00D3D063 /* HealthKit.framework in Frameworks */,
-				CD8643731A1E507900E7E9B3 /* libxml2.dylib in Frameworks */,
 				CD8643711A1E507100E7E9B3 /* CoreImage.framework in Frameworks */,
 				CD86436F1A1E506C00E7E9B3 /* CoreText.framework in Frameworks */,
 				A20372161BDAD96E000D5F74 /* libGGLAnalytics.a in Frameworks */,
 				7EE09F4F1A46413800EDF3CA /* libWorklightStaticLibProjectNative.a in Frameworks */,
-				05040AF31A016F65003B98AF /* libsqlite3.dylib in Frameworks */,
 				A20372171BDAD96E000D5F74 /* libGGLCore.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 			);
@@ -704,7 +704,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EFD50EE1A07EED20052508B /* QuartzCore.framework in Frameworks */,
-				2EFD50EC1A07EEBF0052508B /* libsqlite3.dylib in Frameworks */,
 				2E44C75119FEC1CE006989B3 /* MobileCoreServices.framework in Frameworks */,
 				B15AE0FF1BF2A25C009ACF64 /* Q4M.framework in Frameworks */,
 				2E44C75019FEC1BE006989B3 /* CoreGraphics.framework in Frameworks */,
@@ -827,6 +826,13 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E14C9871BF5267C00F260ED /* libsqlite3.tbd */,
+				2E14C9851BF5267500F260ED /* libxml2.tbd */,
+				2E14C9831BF5266D00F260ED /* libz.1.tbd */,
+				2E14C9811BF5266500F260ED /* libc++.1.tbd */,
+				2E14C97F1BF5265C00F260ED /* libstdc++.tbd */,
+				2E14C97D1BF5265600F260ED /* libstdc++.6.tbd */,
+				2E14C97B1BF5264D00F260ED /* libstdc++.6.0.9.tbd */,
 				B15AE0FD1BF2A248009ACF64 /* Q4M.framework */,
 				B1D0EB6C1BF2512F004D7C40 /* MediaPlayer.framework */,
 				B1D0EB6A1BF25115004D7C40 /* CoreVideo.framework */,
@@ -837,21 +843,13 @@
 				B1D0EB601BF25068004D7C40 /* AudioToolbox.framework */,
 				057F6DD21A2E61EE00D3D063 /* HealthKit.framework */,
 				05C4971E1A1E6B9500B1BC92 /* CoreLocation.framework */,
-				05C4971C1A1E5D9000B1BC92 /* libstdc++.6.dylib */,
-				05C4971A1A1E56AD00B1BC92 /* libstdc++.6.0.9.dylib */,
-				05C497181A1E569900B1BC92 /* libstdc++.dylib */,
-				05C497161A1E568300B1BC92 /* libc++.1.dylib */,
-				05C497141A1E567B00B1BC92 /* libz.1.dylib */,
 				05C497111A1E564900B1BC92 /* CoreData.framework */,
 				05C4970F1A1E55FD00B1BC92 /* CFNetwork.framework */,
 				05C4970D1A1E555500B1BC92 /* SystemConfiguration.framework */,
 				CD8643741A1E508C00E7E9B3 /* UIKit.framework */,
-				CD8643721A1E507900E7E9B3 /* libxml2.dylib */,
 				CD8643701A1E507100E7E9B3 /* CoreImage.framework */,
 				CD86436E1A1E506C00E7E9B3 /* CoreText.framework */,
 				2E7A45181A02ED3800B76E63 /* QuartzCore.framework */,
-				05040AF21A016F65003B98AF /* libsqlite3.dylib */,
-				0573383E1A002CDC00A25350 /* libcommonCrypto.dylib */,
 				0573383C1A002C8F00A25350 /* Security.framework */,
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -1834,6 +1832,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
