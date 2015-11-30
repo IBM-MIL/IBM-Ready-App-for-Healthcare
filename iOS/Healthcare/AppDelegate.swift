@@ -62,18 +62,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = true  // report uncaught exceptions
         
+        var isDevelopment = true
+        // Read configurations from the Config.plist.
+        let configurationPath = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        if((configurationPath) != nil){
+            let configuration = NSDictionary(contentsOfFile: configurationPath!) as! [String: AnyObject]!
+            
+            if let isDev = configuration["isDevelopment"] as? Bool {
+                isDevelopment = isDev
+            }
+        }
+        
         //Set the SDK mode Market vs QA for Production and Pre-Production
         #if Debug
-            MQALogger.settings().mode = MQAMode.QA
-            #elseif Release
-            MQALogger.settings().mode = MQAMode.Market
+            // Do nothing
+            print("Something here")
+        #else
+            if isDevelopment {
+                MQALogger.settings().mode = MQAMode.QA
+            } else {
+                MQALogger.settings().mode = MQAMode.Market
+            }
+            
+            // Starts a quality assurance session using a key and QA mode
+            MQALogger.startNewSessionWithApplicationKey("42bd41d740adbbb3a87ce182a893407aa0291f12")
         #endif
         
-        // Set the application key
-        MQALogger.startNewSessionWithApplicationKey("42bd41d740adbbb3a87ce182a893407aa0291f12")
-        
-        //Enable MQA Crash Reporting
+        // Enables the quality assurance application crash reporting
         NSSetUncaughtExceptionHandler(exceptionHandlerPointer)
+        
+        // Fix for MQA no root view controller error (only occurs when not connected to the internet)
+        let windows = UIApplication.sharedApplication().windows
+        for window in windows {
+            if window.rootViewController == nil {
+                window.rootViewController = UIViewController()
+            }
+        }
        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleLoginViewController:", name: "loginVCKey", object: nil)
         return true

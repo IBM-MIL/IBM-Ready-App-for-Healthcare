@@ -149,14 +149,16 @@
 		80A0E2431A964C5100EF486F /* scrubber-popover.js in Resources */ = {isa = PBXBuildFile; fileRef = 80A0E20F1A964C5100EF486F /* scrubber-popover.js */; };
 		80A0E2441A964C5100EF486F /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 80A0E2101A964C5100EF486F /* style.css */; };
 		80A0E2451A964C5100EF486F /* time-graph.js in Resources */ = {isa = PBXBuildFile; fileRef = 80A0E2111A964C5100EF486F /* time-graph.js */; };
-		A20372161BDAD96E000D5F74 /* libGGLAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20372051BDAD96E000D5F74 /* libGGLAnalytics.a */; settings = {ASSET_TAGS = (); }; };
-		A20372171BDAD96E000D5F74 /* libGGLCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20372061BDAD96E000D5F74 /* libGGLCore.a */; settings = {ASSET_TAGS = (); }; };
-		A20372181BDAD96E000D5F74 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20372151BDAD96E000D5F74 /* libGoogleAnalytics.a */; settings = {ASSET_TAGS = (); }; };
-		A203721A1BDADB21000D5F74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20372191BDADB21000D5F74 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = (); }; };
-		A203721D1BDAE1F4000D5F74 /* HealthcareUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A203721C1BDAE1F4000D5F74 /* HealthcareUIViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		A20372161BDAD96E000D5F74 /* libGGLAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20372051BDAD96E000D5F74 /* libGGLAnalytics.a */; };
+		A20372171BDAD96E000D5F74 /* libGGLCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20372061BDAD96E000D5F74 /* libGGLCore.a */; };
+		A20372181BDAD96E000D5F74 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A20372151BDAD96E000D5F74 /* libGoogleAnalytics.a */; };
+		A203721A1BDADB21000D5F74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20372191BDADB21000D5F74 /* GoogleService-Info.plist */; };
+		A203721D1BDAE1F4000D5F74 /* HealthcareUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A203721C1BDAE1F4000D5F74 /* HealthcareUIViewController.swift */; };
 		A21316281A30C43A00B324A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A213162A1A30C43A00B324A8 /* Localizable.strings */; };
 		A25FD56A1A0AD607007C9B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25FD56D1A0AD607007C9B16 /* Main.storyboard */; };
 		A25FD56B1A0AD607007C9B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25FD56D1A0AD607007C9B16 /* Main.storyboard */; };
+		A2A171101C0CCA31007701B9 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2A1710F1C0CCA31007701B9 /* Config.plist */; };
+		A2A171161C0D02C8007701B9 /* Healthcare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2A171151C0D02C8007701B9 /* Healthcare-Info.plist */; };
 		A2BABDA41A425C5F0049A1C2 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDA11A425C5F0049A1C2 /* Exercise.swift */; };
 		A2BABDA51A425C5F0049A1C2 /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDA21A425C5F0049A1C2 /* Forms.swift */; };
 		A2BABDA61A425C5F0049A1C2 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDA31A425C5F0049A1C2 /* Routine.swift */; };
@@ -169,8 +171,8 @@
 		A2BABDB91A4261230049A1C2 /* ReadyAppsConnectListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDB61A4261230049A1C2 /* ReadyAppsConnectListener.swift */; };
 		A2BABDBF1A4269A40049A1C2 /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BABDA21A425C5F0049A1C2 /* Forms.swift */; };
 		B15AE0FE1BF2A248009ACF64 /* Q4M.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AE0FD1BF2A248009ACF64 /* Q4M.framework */; };
-		B15AE0FF1BF2A25C009ACF64 /* Q4M.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AE0FD1BF2A248009ACF64 /* Q4M.framework */; settings = {ASSET_TAGS = (); }; };
-		B1D0EB591BF24F71004D7C40 /* MQAExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D0EB581BF24F70004D7C40 /* MQAExceptionHandler.m */; settings = {ASSET_TAGS = (); }; };
+		B15AE0FF1BF2A25C009ACF64 /* Q4M.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AE0FD1BF2A248009ACF64 /* Q4M.framework */; };
+		B1D0EB591BF24F71004D7C40 /* MQAExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D0EB581BF24F70004D7C40 /* MQAExceptionHandler.m */; };
 		B1D0EB611BF25068004D7C40 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB601BF25068004D7C40 /* AudioToolbox.framework */; };
 		B1D0EB631BF2508C004D7C40 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB621BF2508C004D7C40 /* AVFoundation.framework */; };
 		B1D0EB651BF250AC004D7C40 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D0EB641BF250AC004D7C40 /* CoreMedia.framework */; };
@@ -293,7 +295,6 @@
 		2E93CDD91A15543100B59F3A /* UICollectionViewFlowLayoutCenterItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewFlowLayoutCenterItem.swift; sourceTree = "<group>"; };
 		2E9713531A0D81AB0034536C /* DoubleExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtensionTests.swift; sourceTree = "<group>"; };
 		2EA4E77A19FAB3ED005B681D /* NSURLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLExtension.swift; sourceTree = "<group>"; };
-		2EA4E78119FABCE4005B681D /* Healthcare-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Healthcare-Info.plist"; path = "Healthcare/Healthcare-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2EA898FB19FFE0010089ACCF /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		2EA898FD19FFE0B60089ACCF /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		2EB43D321A1BFA47008CECA2 /* Healthcare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Healthcare.xcdatamodel; sourceTree = "<group>"; };
@@ -471,6 +472,8 @@
 		A21316231A30C3A900B324A8 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Main.strings"; sourceTree = "<group>"; };
 		A21316291A30C43A00B324A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A213162B1A30C44200B324A8 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A2A1710F1C0CCA31007701B9 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		A2A171151C0D02C8007701B9 /* Healthcare-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Healthcare-Info.plist"; path = "Healthcare/Healthcare-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A2BABDA11A425C5F0049A1C2 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		A2BABDA21A425C5F0049A1C2 /* Forms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forms.swift; sourceTree = "<group>"; };
 		A2BABDA31A425C5F0049A1C2 /* Routine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
@@ -807,6 +810,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A2A171151C0D02C8007701B9 /* Healthcare-Info.plist */,
 				A20372191BDADB21000D5F74 /* GoogleService-Info.plist */,
 				A213162A1A30C43A00B324A8 /* Localizable.strings */,
 				0540229B1A1E51DE000DC63E /* worklight.plist */,
@@ -815,9 +819,9 @@
 				CD38B9F81A23E24800BFFA36 /* maleback.svg */,
 				CD38B8E21A23D32600BFFA36 /* malefront.svg */,
 				CD8642E71A1BEF4C00E7E9B3 /* healthData.json */,
-				2EA4E78119FABCE4005B681D /* Healthcare-Info.plist */,
 				CD09D0341A23EA47008949FA /* Roboto */,
 				1305D46019FEC43300AB0BEC /* BasicFunctions.swift */,
+				A2A1710F1C0CCA31007701B9 /* Config.plist */,
 			);
 			name = Resources;
 			path = Healthcare/Resources;
@@ -1575,6 +1579,7 @@
 				80A0E23A1A964C5100EF486F /* redpain_small.png in Resources */,
 				80A0E2281A964C5100EF486F /* metrics-calories-ctrl.js in Resources */,
 				CD09D0461A23EA47008949FA /* Roboto-BoldItalic.ttf in Resources */,
+				A2A171161C0D02C8007701B9 /* Healthcare-Info.plist in Resources */,
 				80A0E2191A964C5100EF486F /* bluesteps_small.png in Resources */,
 				80A0E2321A964C5100EF486F /* metrics-weight.html in Resources */,
 				054022FC1A1E51F0000DC63E /* Cookies.mom in Resources */,
@@ -1645,6 +1650,7 @@
 				80A0E21B1A964C5100EF486F /* d3.min.js in Resources */,
 				80A0E2451A964C5100EF486F /* time-graph.js in Resources */,
 				80A0E23F1A964C5100EF486F /* RobotoSlab-Light.ttf in Resources */,
+				A2A171101C0CCA31007701B9 /* Config.plist in Resources */,
 				80A0E22E1A964C5100EF486F /* metrics-pain.html in Resources */,
 				2E37D9961A2E6496002BD88B /* Assets in Resources */,
 				A203721A1BDADB21000D5F74 /* GoogleService-Info.plist in Resources */,
