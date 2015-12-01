@@ -78,7 +78,7 @@ public class LoginActivity extends Activity implements DataNotifier {
 
         Configuration configuration = new Configuration.Builder(this)
                 .withAPIKey(APP_KEY)
-                .withMode(Mode.QA)
+                .withMode(Mode.Market)
                 .withReportOnShakeEnabled(true)
                 .build();
 
