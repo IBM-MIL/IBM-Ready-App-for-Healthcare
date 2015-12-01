@@ -5,6 +5,7 @@
 <resources>
 
     <string name="app_name">Physio</string>
+    <string name="label_name">RA Healthcare</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
