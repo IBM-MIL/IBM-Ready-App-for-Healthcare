@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class Patient {
 
-    private static final String USER_ID = "userID";
+    private static final String USER_ID = "_id";
     private static final String DATE_OF_NEXT_VISIT = "dateOfNextVisit";
     private static final String VISITS_USED = "visitsUsed";
     private static final String VISITS_TOTAL = "visitsTotal";
